@@ -3,115 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Performance App</title>
+    <title>Elite Performance & Academy</title>
     <style>
         :root {
             --primary: #1a1a1a;
-            --accent: #d4af37; /* Gold for a professional feel */
+            --accent: #d4af37;
             --text: #ffffff;
             --bg: #121212;
+            --card: #1e1e1e;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 50px; }
+        
+        /* Navigation */
         nav { background: var(--primary); padding: 1rem; display: flex; justify-content: space-around; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
-        nav a { color: var(--text); text-decoration: none; font-weight: bold; cursor: pointer; }
-        .tab-content { display: none; padding: 2rem; max-width: 800px; margin: auto; }
+        nav a { color: var(--text); text-decoration: none; font-weight: bold; cursor: pointer; font-size: 0.9rem; }
+        nav a:hover { color: var(--accent); }
+
+        .tab-content { display: none; padding: 2rem; max-width: 900px; margin: auto; animation: fadeIn 0.3s; }
         .active { display: block; }
-        
-        /* Playbook/Quotes */
-        #quote-container { background: #1e1e1e; padding: 20px; border-left: 5px solid var(--accent); border-radius: 8px; text-align: center; margin-top: 20px; }
-        
-        /* Planner Sections */
-        .planner-section { background: #222; margin-bottom: 20px; padding: 15px; border-radius: 8px; border: 1px solid #333; }
-        textarea { width: 100%; background: #333; border: 1px solid #444; color: white; padding: 10px; border-radius: 5px; box-sizing: border-box; }
-        
-        /* Store Section */
-        .store-item { display: flex; gap: 2rem; align-items: flex-start; margin-top: 2rem; }
-        .book-img { width: 250px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .buy-btn { background: var(--accent); color: black; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; margin-top: 1rem; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Playbook Style */
+        .quote-card { background: var(--card); padding: 30px; border-radius: 15px; border-left: 8px solid var(--accent); text-align: center; margin-top: 20px; }
+        #daily-quote { font-size: 1.5rem; font-style: italic; margin-bottom: 10px; }
+        #quote-author { color: var(--accent); font-weight: bold; }
+
+        /* Planner Style */
+        .planner-box { background: var(--card); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #333; }
+        .planner-box h3 { color: var(--accent); margin-top: 0; }
+        textarea { width: 100%; background: #2a2a2a; border: 1px solid #444; color: white; padding: 12px; border-radius: 5px; box-sizing: border-box; font-size: 1rem; margin-top: 10px; resize: vertical; }
+
+        /* Store Style */
+        .store-grid { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; background: var(--card); padding: 25px; border-radius: 15px; }
+        .book-cover { width: 220px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
+        .book-info { flex: 1; min-width: 300px; }
+        .buy-link { background: var(--accent); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; margin-top: 20px; transition: transform 0.2s; }
+        .buy-link:hover { transform: scale(1.05); }
+
+        /* Academy/General Sections */
+        .card { background: var(--card); padding: 20px; border-radius: 10px; margin-bottom: 15px; }
+        h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <nav>
-    <a onclick="showTab('playbook')">Playbook</a>
-    <a onclick="showTab('planner')">Planner</a>
-    <a onclick="showTab('store')">Store</a>
+    <a onclick="showTab('playbook')">PLAYBOOK</a>
+    <a onclick="showTab('academy')">ACADEMY</a>
+    <a onclick="showTab('planner')">PLANNER</a>
+    <a onclick="showTab('store')">STORE</a>
 </nav>
 
 <section id="playbook" class="tab-content active">
     <h2>Daily Playbook</h2>
-    <div id="quote-container">
-        <p id="daily-quote">"Loading inspiration..."</p>
-        <cite id="quote-author"></cite>
+    <div class="quote-card">
+        <p id="daily-quote">"Loading today's mindset..."</p>
+        <p id="quote-author"></p>
+    </div>
+</section>
+
+<section id="academy" class="tab-content">
+    <h2>Academy</h2>
+    <div class="card">
+        <h3>Own The Jersey Program</h3>
+        <p>Elite training modules designed for the next generation of leaders on the court.</p>
+    </div>
+    <div class="card">
+        <h3>Registration & Events</h3>
+        <p>Sign up for upcoming camps and sessions here.</p>
     </div>
 </section>
 
 <section id="planner" class="tab-content">
-    <h2>Performance Planner</h2>
-    <div class="planner-section">
-        <h3>Goals</h3>
-        <p>Daily Focus:</p>
-        <textarea rows="2" placeholder="What's the main objective today?"></textarea>
-        <p>Monthly/Yearly Milestones:</p>
-        <textarea rows="4" placeholder="List your long-term vision..."></textarea>
+    <h2>Athlete Planner</h2>
+    
+    <div class="planner-box">
+        <h3>Goal Setting</h3>
+        <label>Daily Focus:</label>
+        <textarea rows="2" placeholder="What is the one thing you must win today?"></textarea>
+        <label>Monthly & Yearly Goals:</label>
+        <textarea rows="4" placeholder="List your high-level milestones..."></textarea>
     </div>
-    <div class="planner-section">
-        <h3>Reflection</h3>
-        <p>Strengths & Successes:</p>
-        <textarea rows="3" placeholder="What went well?"></textarea>
-        <p>Areas for Improvement:</p>
-        <textarea rows="3" placeholder="Where can we tighten up?"></textarea>
+
+    <div class="planner-box">
+        <h3>Improvement & Reflection</h3>
+        <label>Current Strengths:</label>
+        <textarea rows="2" placeholder="What are you dominating right now?"></textarea>
+        <label>Areas for Improvement / Challenges:</label>
+        <textarea rows="4" placeholder="What needs work? What challenges are you facing?"></textarea>
     </div>
 </section>
 
 <section id="store" class="tab-content">
     <h2>Elite Store</h2>
-    <div class="store-item">
-        <img src="book-cover.jpg" alt="Point Guard: A Diary" class="book-img">
-        <div>
+    <div class="store-grid">
+        <img src="book-cover.jpg" alt="Point Guard: A Diary Cover" class="book-cover" onerror="this.src='https://via.placeholder.com/220x330?text=Point+Guard+Diary'">
+        <div class="book-info">
             <h3>Point Guard: A Diary</h3>
-            <p><strong>By Keeton Cole</strong></p>
-            <p>An intimate look into the mindset, challenges, and triumphs of the game from a leader's perspective. Perfect for athletes looking to sharpen their mental edge and understand the grit required to play at the next level.</p>
-            <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="buy-btn">Purchase on Amazon.ca</a>
+            <p><em>By Keeton Cole</em></p>
+            <p>Step into the mindset of a leader. This diary chronicles the discipline, the mental hurdles, and the absolute focus required to command the floor. Whether you're an aspiring athlete or a coach, these insights provide the blueprint for the point guard mentality.</p>
+            <p><strong>Available now on Amazon.ca</strong></p>
+            <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="buy-link">View on Amazon.ca</a>
         </div>
     </div>
 </section>
 
 <script>
-    // Tab Logic
-    function showTab(id) {
-        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
+    // Tab Switching Function
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
     }
 
-    // Automated Quotes Logic (30 Days)
+    // 30-Day Rotating Motivational Quotes
     const quotes = [
-        { q: "You miss 100% of the shots you don’t take.", a: "Wayne Gretzky" },
         { q: "Hard work beats talent when talent doesn’t work hard.", a: "Tim Notke" },
-        { q: "I’ve failed over and over and over again in my life. And that is why I succeed.", a: "Michael Jordan" },
-        { q: "Success is no accident. It is hard work, perseverance, and sacrifice.", a: "Pelé" },
-        { q: "The only way to prove that you’re a good sport is to lose.", a: "Ernie Banks" },
+        { q: "I’ve failed over and over again in my life. And that is why I succeed.", a: "Michael Jordan" },
+        { q: "You miss 100% of the shots you don’t take.", a: "Wayne Gretzky" },
+        { q: "Success is no accident. It is hard work and sacrifice.", a: "Pelé" },
         { q: "Don't count the days, make the days count.", a: "Muhammad Ali" },
-        { q: "If you aren't going all the way, why go at all?", a: "Joe Namath" },
-        { q: "The more difficult the victory, the greater the happiness in winning.", a: "Pelé" },
         { q: "Champions keep playing until they get it right.", a: "Billie Jean King" },
-        { q: "You can’t put a limit on anything. The more you dream, the farther you get.", a: "Michael Phelps" },
-        // ... (remaining 20 quotes would be listed here to reach 30)
-        { q: "Winning isn’t everything, but wanting to win is.", a: "Vince Lombardi" }
+        { q: "The only way to prove you're a good sport is to lose.", a: "Ernie Banks" },
+        { q: "Winning isn't everything, but wanting to win is.", a: "Vince Lombardi" },
+        { q: "Your love of the game is your greatest strength.", a: "Keeton Cole" },
+        { q: "Great things come from hard work and perseverance. No excuses.", a: "Kobe Bryant" },
+        { q: "Everything negative—pressure, challenges—is an opportunity to rise.", a: "Kobe Bryant" },
+        { q: "If you're afraid to fail, then you're probably going to fail.", a: "Kobe Bryant" },
+        { q: "The more difficult the victory, the greater the happiness in winning.", a: "Pelé" },
+        { q: "You have to be able to accept failure to get better.", a: "LeBron James" },
+        { q: "Commitment is what transforms a promise into reality.", a: "Abraham Lincoln" },
+        { q: "Leadership is a potent combination of strategy and character.", a: "Norman Schwarzkopf" },
+        { q: "The best way to predict your future is to create it.", a: "Peter Drucker" },
+        { q: "Excellence is not a singular act, but a habit.", a: "Aristotle" },
+        { q: "Discipline is the bridge between goals and accomplishment.", a: "Jim Rohn" },
+        { q: "Don't wish it were easier, wish you were better.", a: "Jim Rohn" },
+        { q: "The difference between the impossible and the possible lies in a person's determination.", a: "Tommy Lasorda" },
+        { q: "Success is the result of perfection, hard work, learning from failure.", a: "Colin Powell" },
+        { q: "You can't put a limit on anything. The more you dream, the farther you get.", a: "Michael Phelps" },
+        { q: "Always turn a negative situation into a positive situation.", a: "Michael Jordan" },
+        { q: "I can accept failure, everyone fails at something. But I can't accept not trying.", a: "Michael Jordan" },
+        { q: "A trophy carries dust. Memories last forever.", a: "Mary Lou Retton" },
+        { q: "It's not whether you get knocked down; it's whether you get up.", a: "Vince Lombardi" },
+        { q: "Practice as if you are the worst; perform as if you are the best.", a: "Unknown" },
+        { q: "He who is not courageous enough to take risks will accomplish nothing in life.", a: "Muhammad Ali" },
+        { q: "The only place where success comes before work is in the dictionary.", a: "Vidal Sassoon" }
     ];
 
-    function updateDailyQuote() {
-        const date = new Date();
-        const dayOfMonth = date.getDate(); // Returns 1-31
-        const quoteIndex = (dayOfMonth - 1) % quotes.length;
-        document.getElementById('daily-quote').innerText = `"${quotes[quoteIndex].q}"`;
-        document.getElementById('quote-author').innerText = `- ${quotes[quoteIndex].a}`;
+    function loadDailyQuote() {
+        const now = new Date();
+        const day = now.getDate(); // 1-31
+        const index = (day - 1) % quotes.length;
+        document.getElementById('daily-quote').innerText = `"${quotes[index].q}"`;
+        document.getElementById('quote-author').innerText = `- ${quotes[index].a}`;
     }
 
-    // Initialize
-    updateDailyQuote();
+    // Run on load
+    window.onload = loadDailyQuote;
 </script>
 
 </body>
 </html>
-
