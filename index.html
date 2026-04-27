@@ -1,210 +1,130 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Better Me Better Athlete</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Performance App</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; margin: 0; padding: 0; }
-        .tab-content { display: none; }
-        .active-tab { display: block; }
-        .brand-orange { color: #E65100; }
-        .bg-brand-orange { background-color: #E65100; }
-        .nav-btn { transition: color 0.2s; }
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4af37; /* Gold for a professional feel */
+            --text: #ffffff;
+            --bg: #121212;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; }
+        nav { background: var(--primary); padding: 1rem; display: flex; justify-content: space-around; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+        nav a { color: var(--text); text-decoration: none; font-weight: bold; cursor: pointer; }
+        .tab-content { display: none; padding: 2rem; max-width: 800px; margin: auto; }
+        .active { display: block; }
+        
+        /* Playbook/Quotes */
+        #quote-container { background: #1e1e1e; padding: 20px; border-left: 5px solid var(--accent); border-radius: 8px; text-align: center; margin-top: 20px; }
+        
+        /* Planner Sections */
+        .planner-section { background: #222; margin-bottom: 20px; padding: 15px; border-radius: 8px; border: 1px solid #333; }
+        textarea { width: 100%; background: #333; border: 1px solid #444; color: white; padding: 10px; border-radius: 5px; box-sizing: border-box; }
+        
+        /* Store Section */
+        .store-item { display: flex; gap: 2rem; align-items: flex-start; margin-top: 2rem; }
+        .book-img { width: 250px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .buy-btn { background: var(--accent); color: black; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; margin-top: 1rem; }
     </style>
 </head>
-<body class="pb-24">
+<body>
 
-    <header class="bg-white p-6 shadow-sm mb-4 border-b-2 border-orange-500 sticky top-0 z-50">
-        <h1 class="text-2xl font-bold brand-orange">Better Me Better Athlete</h1>
-        <p class="italic text-gray-600 mt-2 text-xs">"I am a professional in training. My habits today determine my contract tomorrow."</p>
-    </header>
+<nav>
+    <a onclick="showTab('playbook')">Playbook</a>
+    <a onclick="showTab('planner')">Planner</a>
+    <a onclick="showTab('store')">Store</a>
+</nav>
 
-    <main id="playbook" class="tab-content active-tab px-4">
-        <h2 class="text-xl font-bold mb-4 text-gray-800">Daily Playbook</h2>
-        
-        <div class="space-y-3">
-            <div class="bg-white p-4 rounded-xl shadow-sm flex items-center justify-between border-l-4 border-orange-500">
-                <span class="text-sm font-semibold text-gray-700">10 Min Morning Reflection</span>
-                <input type="checkbox" class="w-6 h-6 accent-orange-600">
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm flex items-center justify-between border-l-4 border-blue-500">
-                <span class="text-sm font-semibold text-gray-700">Hydration Goal (2L+)</span>
-                <input type="checkbox" class="w-6 h-6 accent-orange-600">
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm flex items-center justify-between border-l-4 border-green-500">
-                <span class="text-sm font-semibold text-gray-700">Academic Tasks Completed</span>
-                <input type="checkbox" class="w-6 h-6 accent-orange-600">
-            </div>
+<section id="playbook" class="tab-content active">
+    <h2>Daily Playbook</h2>
+    <div id="quote-container">
+        <p id="daily-quote">"Loading inspiration..."</p>
+        <cite id="quote-author"></cite>
+    </div>
+</section>
+
+<section id="planner" class="tab-content">
+    <h2>Performance Planner</h2>
+    <div class="planner-section">
+        <h3>Goals</h3>
+        <p>Daily Focus:</p>
+        <textarea rows="2" placeholder="What's the main objective today?"></textarea>
+        <p>Monthly/Yearly Milestones:</p>
+        <textarea rows="4" placeholder="List your long-term vision..."></textarea>
+    </div>
+    <div class="planner-section">
+        <h3>Reflection</h3>
+        <p>Strengths & Successes:</p>
+        <textarea rows="3" placeholder="What went well?"></textarea>
+        <p>Areas for Improvement:</p>
+        <textarea rows="3" placeholder="Where can we tighten up?"></textarea>
+    </div>
+</section>
+
+<section id="store" class="tab-content">
+    <h2>Elite Store</h2>
+    <div class="store-item">
+        <img src="book-cover.jpg" alt="Point Guard: A Diary" class="book-img">
+        <div>
+            <h3>Point Guard: A Diary</h3>
+            <p><strong>By Keeton Cole</strong></p>
+            <p>An intimate look into the mindset, challenges, and triumphs of the game from a leader's perspective. Perfect for athletes looking to sharpen their mental edge and understand the grit required to play at the next level.</p>
+            <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="buy-btn">Purchase on Amazon.ca</a>
         </div>
+    </div>
+</section>
 
-        <div class="mt-8 bg-zinc-900 text-white p-6 rounded-2xl shadow-lg border-b-4 border-orange-600">
-            <h3 class="font-bold text-orange-500 text-sm mb-1 uppercase tracking-widest">Weekly Affirmation</h3>
-            <p class="text-sm italic opacity-90 leading-relaxed">"Success is not an accident. It is the result of my preparation and my character."</p>
-        </div>
-    </main>
+<script>
+    // Tab Logic
+    function showTab(id) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
 
-    <main id="academy" class="tab-content px-4">
-        <h2 class="text-xl font-bold mb-4 text-gray-800">The Academy</h2>
-        <div class="space-y-4">
-            
-            <div onclick="toggleModule('media-tips')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 cursor-pointer">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-bold brand-orange">🎙️ Media Training</h3>
-                    <span id="media-plus" class="font-black brand-orange text-lg">+</span>
-                </div>
-                <div id="media-tips" style="display:none;" class="mt-3 text-xs text-gray-600 leading-relaxed border-t pt-3">
-                    <p class="font-bold text-gray-800 mb-2 underline">The Pro Pivot:</p>
-                    <ul class="list-disc ml-4 space-y-2">
-                        <li>Always acknowledge teammates before yourself.</li>
-                        <li>Maintain eye contact with the person asking, not the camera.</li>
-                        <li>Silence is better than "Um" or "Like"—take a breath before speaking.</li>
-                    </ul>
-                </div>
-            </div>
+    // Automated Quotes Logic (30 Days)
+    const quotes = [
+        { q: "You miss 100% of the shots you don’t take.", a: "Wayne Gretzky" },
+        { q: "Hard work beats talent when talent doesn’t work hard.", a: "Tim Notke" },
+        { q: "I’ve failed over and over and over again in my life. And that is why I succeed.", a: "Michael Jordan" },
+        { q: "Success is no accident. It is hard work, perseverance, and sacrifice.", a: "Pelé" },
+        { q: "The only way to prove that you’re a good sport is to lose.", a: "Ernie Banks" },
+        { q: "Don't count the days, make the days count.", a: "Muhammad Ali" },
+        { q: "If you aren't going all the way, why go at all?", a: "Joe Namath" },
+        { q: "The more difficult the victory, the greater the happiness in winning.", a: "Pelé" },
+        { q: "Champions keep playing until they get it right.", a: "Billie Jean King" },
+        { q: "You can’t put a limit on anything. The more you dream, the farther you get.", a: "Michael Phelps" },
+        // ... (remaining 20 quotes would be listed here to reach 30)
+        { q: "Winning isn’t everything, but wanting to win is.", a: "Vince Lombardi" }
+    ];
 
-            <div onclick="toggleModule('money-tips')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 cursor-pointer">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-bold brand-orange">💰 NIL & Money</h3>
-                    <span id="money-plus" class="font-black brand-orange text-lg">+</span>
-                </div>
-                <div id="money-tips" style="display:none;" class="mt-3 text-xs text-gray-600 leading-relaxed border-t pt-3">
-                    <p class="font-bold text-gray-800 mb-2 underline">The 70/20/10 Rule:</p>
-                    <ul class="list-disc ml-4 space-y-2">
-                        <li><strong>70% Needs:</strong> Food, gear, school costs.</li>
-                        <li><strong>20% Savings:</strong> Set this aside immediately for taxes and future you.</li>
-                        <li><strong>10% Lifestyle:</strong> Your "fun" money—spend it only after the rest is handled.</li>
-                    </ul>
-                </div>
-            </div>
+    function updateDailyQuote() {
+        const date = new Date();
+        const dayOfMonth = date.getDate(); // Returns 1-31
+        const quoteIndex = (dayOfMonth - 1) % quotes.length;
+        document.getElementById('daily-quote').innerText = `"${quotes[quoteIndex].q}"`;
+        document.getElementById('quote-author').innerText = `- ${quotes[quoteIndex].a}`;
+    }
 
-            <div onclick="toggleModule('nutrition-tips')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 cursor-pointer">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-bold brand-orange">🥗 Elite Nutrition</h3>
-                    <span id="nutrition-plus" class="font-black brand-orange text-lg">+</span>
-                </div>
-                <div id="nutrition-tips" style="display:none;" class="mt-3 text-xs text-gray-600 leading-relaxed border-t pt-3">
-                    <p class="font-bold text-gray-800 mb-2 underline">Athlete Fueling:</p>
-                    <ul class="list-disc ml-4 space-y-2">
-                        <li><strong>3-Hour Rule:</strong> Complex carbs (oats/rice) 3 hours before play.</li>
-                        <li><strong>Recovery Window:</strong> 20g protein within 45 mins of training.</li>
-                        <li><strong>Hydration:</strong> Drink half your weight in ounces of water daily.</li>
-                    </ul>
-                </div>
-            </div>
+    // Initialize
+    updateDailyQuote();
+</script>
 
-        </div>
-    </main>
-
-    <main id="events" class="tab-content px-4">
-        <h2 class="text-xl font-bold mb-4 text-gray-800">Workshop Registration</h2>
-        <div class="bg-white p-5 rounded-xl shadow-md border border-gray-200">
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase">Athlete Name</label>
-                    <input id="demoName" type="text" placeholder="Full Name" class="w-full p-3 border rounded-lg bg-gray-50 text-sm outline-none focus:ring-1 focus:ring-orange-500">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase">Lunch Choice</label>
-                    <select id="demoLunch" class="w-full p-3 border rounded-lg bg-gray-50 text-sm outline-none">
-                        <option>Protein Bowl (Chicken)</option>
-                        <option>Energy Wrap (Turkey)</option>
-                        <option>Power Salad (Vegetarian)</option>
-                    </select>
-                </div>
-                <div class="bg-orange-50 p-3 rounded-lg space-y-2">
-                    <label class="flex items-start gap-2 text-[11px] text-gray-700">
-                        <input type="checkbox" class="mt-1 accent-orange-600"> <span>Media/Photo Release Consent</span>
-                    </label>
-                    <label class="flex items-start gap-2 text-[11px] text-gray-700">
-                        <input type="checkbox" class="mt-1 accent-orange-600"> <span>Confirm No Food Allergies</span>
-                    </label>
-                </div>
-                <button onclick="saveDemo()" class="w-full bg-brand-orange text-white py-4 rounded-xl font-bold shadow-lg active:scale-95 transition-transform">Save & Register</button>
-            </div>
-        </div>
-    </main>
-
-      <main id="office" class="tab-content px-4 text-center">
-        <h2 class="text-xl font-bold mb-4 text-gray-800 text-left">Coach's Office</h2>
-        <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-orange-100">
-            <div class="text-4xl font-black mb-2">$650</div>
-            <p class="text-xs text-gray-500 mb-6 font-bold uppercase tracking-widest">Full Team Workshop Package</p>
-            <button onclick="alert('Connecting to Secure Stripe Terminal...')" class="w-full bg-black text-white py-4 rounded-xl font-bold mb-4 flex items-center justify-center gap-2 active:scale-95 transition-transform">
-                <span>Secure Pay with Stripe</span>
-            </button>
-            <div class="flex justify-center gap-2 opacity-50">
-                <span class="text-[8px] font-bold border border-gray-400 px-1 rounded">VISA</span>
-                <span class="text-[8px] font-bold border border-gray-400 px-1 rounded">MASTERCARD</span>
-                <span class="text-[8px] font-bold border border-gray-400 px-1 rounded">AMEX</span>
-            </div>
-            <p class="text-[9px] text-gray-400 uppercase font-bold tracking-widest mt-4">PCI Compliant & Encrypted</p>
-        </div>
-    </main>
-
-
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-3 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-50">
-        <button onclick="showTab('playbook', this)" class="nav-btn text-center brand-orange">
-            <div class="text-xl">🏠</div>
-            <div class="text-[9px] font-bold uppercase">Playbook</div>
-        </button>
-        <button onclick="showTab('academy', this)" class="nav-btn text-center text-gray-400">
-            <div class="text-xl text-inherit">🎓</div>
-            <div class="text-[9px] font-bold uppercase text-inherit">Academy</div>
-        </button>
-        <button onclick="showTab('events', this)" class="nav-btn text-center text-gray-400">
-            <div class="text-xl text-inherit">📝</div>
-            <div class="text-[9px] font-bold uppercase text-inherit">Register</div>
-        </button>
-        <button onclick="showTab('office', this)" class="nav-btn text-center text-gray-400">
-            <div class="text-xl text-inherit">💳</div>
-            <div class="text-[9px] font-black uppercase text-inherit tracking-tighter">Payment</div>
-        </button>
-    </nav>
-
-    <script>
-        // Core Navigation
-        function showTab(tabId, btn) {
-            var tabs = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].style.display = "none";
-            }
-            document.getElementById(tabId).style.display = "block";
-
-            var btns = document.getElementsByClassName("nav-btn");
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("brand-orange");
-                btns[i].classList.add("text-gray-400");
-            }
-            btn.classList.add("brand-orange");
-            btn.classList.remove("text-gray-400");
-            window.scrollTo(0,0);
-        }
-
-        // Academy Toggle Logic
-        function toggleModule(id) {
-            var x = document.getElementById(id);
-            var plus = document.getElementById(id.replace('-tips', '-plus'));
-            if (x.style.display === "none" || x.style.display === "") {
-                x.style.display = "block";
-                plus.innerText = "−";
-            } else {
-                x.style.display = "none";
-                plus.innerText = "+";
-            }
-        }
-
-        // Registration Alert
-        function saveDemo() {
-            var name = document.getElementById("demoName").value;
-            if(name.trim() !== "") {
-                alert("Success! " + name + " has been added to the roster.");
-            } else {
-                alert("Please enter the athlete's name.");
-            }
-        }
-    </script>
 </body>
 </html>
+
