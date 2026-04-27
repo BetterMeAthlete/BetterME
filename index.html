@@ -1,62 +1,63 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTTYPE html>
+<htmal lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Elite Performance & Academy</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
         :root {
             --primary: #1a1a1a;
-            --accent: #d4af37;
+            --accent: #E65100; /* Matching the orange from your flyer */
             --text: #ffffff;
             --bg: #121212;
             --card: #1e1e1e;
         }
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 50px; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 80px; }
         
         /* Navigation */
-        nav { background: var(--primary); padding: 1rem; display: flex; justify-content: space-around; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
-        nav a { color: var(--text); text-decoration: none; font-weight: bold; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; }
+        nav { background: var(--primary); padding: 1rem; display: flex; justify-content: space-around; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); overflow-x: auto; }
+        nav a { color: var(--text); text-decoration: none; font-weight: bold; cursor: pointer; font-size: 0.75rem; text-transform: uppercase; white-space: nowrap; padding: 0 10px; }
         nav a:hover { color: var(--accent); }
 
-        .tab-content { display: none; padding: 2rem; max-width: 900px; margin: auto; animation: fadeIn 0.3s; }
+        .tab-content { display: none; padding: 1.5rem; max-width: 900px; margin: auto; animation: fadeIn 0.3s; }
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Card Styles */
-        .card { background: var(--card); padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
-        h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .card { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
+        h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; }
 
-        /* LOCKER ROOM Style */
-        .quote-card { background: var(--card); padding: 40px; border-radius: 15px; border-left: 8px solid var(--accent); text-align: center; }
-        #daily-quote { font-size: 1.6rem; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
-        #quote-author { color: var(--accent); font-weight: bold; font-size: 1.1rem; }
+        /* Locker Room */
+        .quote-card { background: var(--card); padding: 30px; border-radius: 15px; border-left: 8px solid var(--accent); text-align: center; }
+        #daily-quote { font-size: 1.4rem; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
+        #quote-author { color: var(--accent); font-weight: bold; }
 
-        /* Events Style */
-        .event-container { display: flex; flex-wrap: wrap; gap: 25px; align-items: center; }
-        .event-flyer { width: 100%; max-width: 400px; border-radius: 10px; border: 2px solid var(--accent); }
-        .btn-action { background: var(--accent); color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; transition: 0.3s; text-align: center; border: none; cursor: pointer; }
-        .btn-action:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
+        /* Registration Form */
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; color: #888; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; background: #2a2a2a; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; box-sizing: border-box; font-size: 0.9rem; }
+        
+        .btn-action { background: var(--accent); color: #fff; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 8px; display: block; width: 100%; transition: 0.3s; text-align: center; border: none; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        .btn-action:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
-        /* Planner Style */
-        textarea { width: 100%; background: #2a2a2a; border: 1px solid #444; color: white; padding: 12px; border-radius: 5px; box-sizing: border-box; font-size: 1rem; margin: 10px 0 20px 0; resize: vertical; }
-
-        /* Store Style */
-        .store-grid { display: flex; flex-wrap: wrap; gap: 30px; }
-        .book-cover { width: 220px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
+        /* Flyer Image */
+        .event-flyer { width: 100%; border-radius: 10px; border: 1px solid #444; margin-bottom: 20px; }
+        .book-cover { width: 180px; border-radius: 5px; display: block; margin: 0 auto 20px auto; }
     </style>
 </head>
 <body>
 
 <nav>
-    <a onclick="showTab('Locker Room')">Locker Room</a>
+    <a onclick="showTab('locker-room')">Locker Room</a>
     <a onclick="showTab('academy')">Academy</a>
     <a onclick="showTab('events')">Events</a>
     <a onclick="showTab('planner')">Planner</a>
     <a onclick="showTab('store')">Store</a>
+    <a onclick="showTab('payment')">Coach Office</a>
 </nav>
 
-<section id="locker room" class="tab-content active">
+<section id="locker-room" class="tab-content active">
     <h2>Thought Of The Day</h2>
     <div class="quote-card">
         <p id="daily-quote">"The grind never stops."</p>
@@ -67,22 +68,43 @@
 <section id="academy" class="tab-content">
     <h2>Academy</h2>
     <div class="card">
-        <h3>Own The Jersey Program</h3>
-        <p>Elite training modules designed for the next generation of leaders on the court. Focus on IQ, skill development, and the point guard mentality.</p>
+        <h3 style="color:var(--accent)">Own The Jersey Program</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6;">Elite training modules designed for the next generation of leaders on the court. Focus on IQ, skill development, and the point guard mentality.</p>
+    </div>
+    <div class="card">
+        <h3 style="color:var(--accent)">Master The Craft Rundown</h3>
+        <ul style="font-size: 0.85rem; list-style: none; padding: 0; line-height: 2;">
+            <li>🍽️ 3:00 PM - Dine In & Set Tone</li>
+            <li>🎙️ 3:50 PM - Panel Discussion</li>
+            <li>📹 4:45 PM - Media Training</li>
+            <li>💰 5:50 PM - Money Matters</li>
+        </ul>
     </div>
 </section>
 
 <section id="events" class="tab-content">
-    <h2>Upcoming Events</h2>
+    <h2>Workshop Registration</h2>
     <div class="card">
-        <div class="event-container">
-            <img src="flyer.jpg" alt="Event Flyer" class="event-flyer" onerror="this.src='https://via.placeholder.com/400x500?text=Event+Flyer+Coming+Soon'">
-            <div style="flex: 1; min-width: 300px;">
-                <h3>Current Event Registration</h3>
-                <p>Join our next session to take your game to the elite level. Space is limited—secure your spot today.</p>
-                <a href="#" target="_blank" class="btn-action">REGISTER NOW</a>
-            </div>
+        <img src="flyer.png" alt="Event Flyer" class="event-flyer" onerror="this.src='https://via.placeholder.com/400x500?text=Upload+flyer.png+to+GitHub'">
+        
+        <div class="input-group">
+            <label>Athlete Name</label>
+            <input type="text" id="regName" placeholder="Full Name">
         </div>
+        <div class="input-group">
+            <label>Meal Preference</label>
+            <select id="regMeal">
+                <option>Protein Bowl (Chicken)</option>
+                <option>Energy Wrap (Turkey)</option>
+                <option>Power Salad (Vegetarian)</option>
+            </select>
+        </div>
+        <div style="background: #2a2a2a; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+            <label style="display: flex; align-items: center; gap: 10px; color: #fff; cursor: pointer;">
+                <input type="checkbox" style="width: 20px;"> <span>Media Release Consent</span>
+            </label>
+        </div>
+        <button class="btn-action" onclick="alert('Registration Saved!')">Secure My Spot</button>
     </div>
 </section>
 
@@ -95,27 +117,24 @@
         <label>Monthly & Yearly Goals:</label>
         <textarea rows="4" placeholder="List your high-level milestones..."></textarea>
     </div>
-    <div class="card">
-        <h3 style="color:var(--accent)">Improvement & Reflection</h3>
-        <label>Current Strengths:</label>
-        <textarea rows="2" placeholder="What are you dominating right now?"></textarea>
-        <label>Areas for Improvement / Challenges:</label>
-        <textarea rows="4" placeholder="What needs work? What challenges are you facing?"></textarea>
-    </div>
 </section>
 
 <section id="store" class="tab-content">
     <h2>Elite Store</h2>
-    <div class="card">
-        <div class="store-grid">
-            <img src="book-cover.jpg" alt="Point Guard: A Diary Cover" class="book-cover" onerror="this.src='https://via.placeholder.com/220x330?text=Point+Guard+Diary'">
-            <div style="flex: 1; min-width: 300px;">
-                <h3>Point Guard: A Diary</h3>
-                <p><em>By Keeton Cole</em></p>
-                <p>Step into the mindset of a leader. This diary chronicles the discipline and the mental hurdles required to command the floor.</p>
-                <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="btn-action">BUY ON AMAZON.CA</a>
-            </div>
-        </div>
+    <div class="card" style="text-align: center;">
+        <img src="book-cover.jpg" alt="Point Guard Diary" class="book-cover" onerror="this.src='https://via.placeholder.com/220x330?text=Upload+book-cover.jpg+to+GitHub'">
+        <h3>Point Guard: A Diary</h3>
+        <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 20px;">Step into the mindset of a leader. Chronicles the discipline required to command the floor.</p>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="btn-action">BUY ON AMAZON</a>
+    </div>
+</section>
+
+<section id="payment" class="tab-content">
+    <h2>Coach Office</h2>
+    <div class="card" style="text-align: center; padding: 40px 20px;">
+        <div style="font-size: 3rem; font-weight: 900; margin-bottom: 10px;">$650</div>
+        <p style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 30px;">Team Workshop Package</p>
+        <button class="btn-action" style="background: #000;" onclick="alert('Redirecting to Stripe...')">Pay Securely</button>
     </div>
 </section>
 
@@ -124,26 +143,20 @@
         const tabs = document.querySelectorAll('.tab-content');
         tabs.forEach(tab => tab.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
+        window.scrollTo(0,0);
     }
 
     const quotes = [
         { q: "Hard work beats talent when talent doesn’t work hard.", a: "Tim Notke" },
         { q: "I’ve failed over and over again in my life. And that is why I succeed.", a: "Michael Jordan" },
-        { q: "You miss 100% of the shots you don’t take.", a: "Wayne Gretzky" },
-        { q: "Success is no accident. It is hard work and sacrifice.", a: "Pelé" },
-        { q: "Don't count the days, make the days count.", a: "Muhammad Ali" },
-        { q: "Champions keep playing until they get it right.", a: "Billie Jean King" },
-        { q: "Your love of the game is your greatest strength.", a: "Keeton Cole" },
-        { q: "Great things come from hard work and perseverance. No excuses.", a: "Kobe Bryant" },
         { q: "Excellence is not a singular act, but a habit.", a: "Aristotle" },
-        { q: "Discipline is the bridge between goals and accomplishment.", a: "Jim Rohn" },
-        // ... (The 30-day logic remains active)
+        { q: "Your love of the game is your greatest strength.", a: "Keeton Cole" },
+        { q: "Great things come from hard work and perseverance. No excuses.", a: "Kobe Bryant" }
     ];
 
     function loadDailyQuote() {
         const now = new Date();
-        const day = now.getDate();
-        const index = (day - 1) % quotes.length;
+        const index = now.getDate() % quotes.length;
         document.getElementById('daily-quote').innerText = `"${quotes[index].q}"`;
         document.getElementById('quote-author').innerText = `- ${quotes[index].a}`;
     }
