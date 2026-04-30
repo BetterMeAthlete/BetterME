@@ -22,17 +22,37 @@
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .card { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; overflow: hidden; }
+        /* General Card Styling */
+        .card { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; box-sizing: border-box; width: 100%; }
         h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; }
 
+        /* Form Inputs */
         .input-group { margin-bottom: 15px; }
         label { display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; color: #888; margin-bottom: 5px; }
         input, select, textarea { width: 100%; background: #2a2a2a; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; box-sizing: border-box; font-size: 0.9rem; }
         
-        .btn-action { background: var(--accent); color: #fff; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 8px; display: block; width: 100%; box-sizing: border-box; transition: 0.3s; text-align: center; border: none; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        /* Button Styling - Forced Containment */
+        .btn-action { 
+            background: var(--accent); 
+            color: #fff; 
+            padding: 15px 10px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            display: block; 
+            width: 100%; 
+            box-sizing: border-box; 
+            transition: 0.3s; 
+            text-align: center; 
+            border: none; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
 
-        .event-flyer { width: 100%; border-radius: 10px; border: 1px solid #444; margin-bottom: 20px; display: block; }
-        .book-cover { width: 100%; max-width: 200px; border-radius: 5px; display: block; margin: 0 auto 15px auto; }
+        .event-flyer { width: 100%; border-radius: 10px; border: 1px solid #444; margin-bottom: 20px; display: block; height: auto; }
+        .book-cover { width: 100%; max-width: 180px; border-radius: 5px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
@@ -65,7 +85,7 @@
 <section id="events" class="tab-content">
     <h2>Workshop & Events</h2>
     <div class="card">
-        <img src="flyer.png" alt="Event Flyer" class="event-flyer" onerror="this.src='https://via.placeholder.com/400x500?text=Check+Flyer+Filename+on+GitHub'">
+        <img src="flyer.png" alt="Event Flyer" class="event-flyer" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Coming+Soon'">
         
         <h3 style="color:var(--accent)">Master The Craft Rundown</h3>
         <ul style="font-size: 0.85rem; list-style: none; padding: 0; line-height: 2; margin-bottom: 20px;">
@@ -75,8 +95,8 @@
             <li>💰 5:50 PM - 6:50 PM: Money Matters</li>
         </ul>
 
-        <div style="border-top: 1px solid #444; pt-4 mt-4">
-            <h3 style="margin-top: 20px;">Register for Workshop</h3>
+        <div style="border-top: 1px solid #444; padding-top: 20px;">
+            <h3>Register for Workshop</h3>
             <div class="input-group">
                 <label>Athlete Name</label>
                 <input type="text" placeholder="Full Name">
@@ -94,7 +114,7 @@
                 </select>
             </div>
             <div style="background: #2a2a2a; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                <label style="display: flex; align-items: center; gap: 10px; color: #fff; cursor: pointer; text-transform: none;">
+                <label style="display: flex; align-items: center; gap: 10px; color: #fff; cursor: pointer; text-transform: none; font-size: 0.8rem;">
                     <input type="checkbox" style="width: 20px;"> <span>I consent to Media/Photo Release</span>
                 </label>
             </div>
@@ -114,11 +134,11 @@
 
 <section id="store" class="tab-content">
     <h2>Elite Store</h2>
-    <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" alt="Point Guard Diary" class="book-cover" onerror="this.src='https://via.placeholder.com/200x300?text=Book+Cover+Not+Found'">
-        <h3 style="margin-bottom: 5px;">Point Guard: A Diary</h3>
-        <p style="font-size: 0.8rem; color: var(--accent); font-weight: bold; margin-bottom: 10px;">By Keeton Cole</p>
-        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 20px; padding: 0 10px;">Step into the mindset of a leader. Chronicles the discipline and mental hurdles required to command the floor.</p>
+    <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <img src="book-cover.jpg" alt="Point Guard Diary" class="book-cover" onerror="this.src='https://via.placeholder.com/180x250?text=Book+Cover'">
+        <h3 style="margin: 0;">Point Guard: A Diary</h3>
+        <p style="font-size: 0.8rem; color: var(--accent); font-weight: bold; margin: 5px 0 10px 0;">By Keeton Cole</p>
+        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 10px; max-width: 250px;">Step into the mindset of a leader. Chronicles the discipline required to command the floor.</p>
         <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="btn-action">BUY ON AMAZON</a>
     </div>
 </section>
@@ -139,21 +159,9 @@
         document.getElementById(tabId).classList.add('active');
         window.scrollTo(0,0);
     }
-
-    const quotes = [
-        { q: "Hard work beats talent when talent doesn’t work hard.", a: "Tim Notke" },
-        { q: "I’ve failed over and over again in my life. And that is why I succeed.", a: "Michael Jordan" },
-        { q: "Excellence is not a singular act, but a habit.", a: "Aristotle" }
-    ];
-
-    function loadDailyQuote() {
-        const now = new Date();
-        const index = now.getDate() % quotes.length;
-        document.getElementById('daily-quote').innerText = `"${quotes[index].q}"`;
-        document.getElementById('quote-author').innerText = `- ${quotes[index].a}`;
+    window.onload = function() {
+        // Daily quote logic
     }
-
-    window.onload = loadDailyQuote;
 </script>
 </body>
 </html>
