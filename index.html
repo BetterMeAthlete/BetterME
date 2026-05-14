@@ -37,7 +37,7 @@
             backdrop-filter: blur(15px);
         }
 
-        nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; opacity: 0.6; cursor: pointer; }
+        nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; cursor: pointer; }
 
         .tab-content { display: none; padding: 20px; max-width: 600px; margin: auto; animation: fadeIn 0.4s ease; }
         .active { display: block !important; }
@@ -48,7 +48,6 @@
         .main-logo { width: 100%; max-width: 250px; height: auto; margin-bottom: 10px; display: inline-block; }
         .brand-text { font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; letter-spacing: 2px; margin: 0; }
 
-        /* FIXED BUTTONS - Centered & Contained */
         .btn-gold { 
             background: var(--gold-gradient); 
             color: #000; 
@@ -57,8 +56,8 @@
             font-weight: 800; 
             border-radius: 50px; 
             display: block; 
-            width: 90%;            /* Prevents leaking */
-            margin: 20px auto;     /* Centers horizontally */
+            width: 90%; 
+            margin: 20px auto; 
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
@@ -66,7 +65,7 @@
             letter-spacing: 1.5px;
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); 
             cursor: pointer;
-            box-sizing: border-box; /* Ensures padding doesn't push width out */
+            box-sizing: border-box; 
         }
 
         .card { 
@@ -76,26 +75,24 @@
             margin-bottom: 25px; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
             backdrop-filter: blur(10px);
-            text-align: center;    /* Keeps everything aligned */
+            text-align: center; 
         }
 
         .label-gold { color: var(--text-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; }
         
-        /* ACADEMY GRID - Larger for Tablet */
+        /* ACADEMY GRID - Now with 6 Modules */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .grid-item { 
             background: rgba(255,255,255,0.05); 
             border-radius: 18px; 
-            padding: 30px 15px; 
+            padding: 25px 10px; 
             text-align: center; 
             border: 1px solid rgba(255,255,255,0.1); 
         }
-        .grid-item div { font-size: 2.5rem; margin-bottom: 10px; } /* Larger Icons */
-        .grid-item p { font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; margin: 0; } /* Larger Font */
+        .grid-item div { font-size: 2.2rem; margin-bottom: 8px; }
+        .grid-item p { font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; margin: 0; }
         
-        input[type="checkbox"] { accent-color: var(--text-gold); transform: scale(1.5); margin-right: 15px; }
-        
-        .planner-row { text-align: left; padding: 10px 0; font-size: 1.1rem; }
+        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -104,14 +101,12 @@
     <a onclick="showTab('locker-room')">Locker</a>
     <a onclick="showTab('academy')">Academy</a>
     <a onclick="showTab('events')">Events</a>
-    <a onclick="showTab('planner')">Planner</a>
-    <a onclick="showTab('store')">Store</a>
-    <a onclick="showTab('payment')">Coach</a>
+    <a onclick="showTab('store')">The Vault</a>
 </nav>
 
 <section id="locker-room" class="tab-content active">
     <div class="hero-section">
-        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK" onerror="this.src='https://via.placeholder.com/250?text=LOGO+RELOADING...'">
+        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK" onerror="this.src='https://via.placeholder.com/250?text=HEARTWORK'">
         <h1 class="brand-text">HEARTWORK</h1>
     </div>
     <div class="card">
@@ -124,9 +119,11 @@
 <section id="academy" class="tab-content">
     <h2 style="font-family:'Archivo Black'; color:var(--text-gold); text-align:center;">Academy</h2>
     <div class="grid-2">
+        <div class="grid-item"><div>🗓️</div><p>PLANNER</p></div>
         <div class="grid-item"><div>🥗</div><p>NUTRITION</p></div>
         <div class="grid-item"><div>💰</div><p>FINANCES</p></div>
         <div class="grid-item"><div>📱</div><p>ETIQUETTE</p></div>
+        <div class="grid-item"><div>💼</div><p>BUSINESS IQ</p></div>
         <div class="grid-item"><div>🧠</div><p>MENTAL GRIT</p></div>
     </div>
 </section>
@@ -141,39 +138,29 @@
     </div>
 </section>
 
-<section id="planner" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center;">Planner</h2>
-    <div class="card">
-        <span class="label-gold">Daily Checklist</span>
-        <div style="margin-top: 10px;">
-            <div class="planner-row"><label><input type="checkbox"> 1% Mindset Reading</label></div>
-            <div class="planner-row"><label><input type="checkbox"> Recovery Protocols</label></div>
-            <div class="planner-row"><label><input type="checkbox"> Financial Tracking</label></div>
-            <div class="planner-row"><label><input type="checkbox"> Film Study</label></div>
-        </div>
-    </div>
-</section>
-
 <section id="store" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center;">Store</h2>
+    <h2 style="font-family:'Archivo Black'; text-align:center;">The Vault</h2>
+    
     <div class="card">
-        <img src="book-cover.jpg" style="width: 160px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/150x220?text=Book'">
+        <img src="book-cover.jpg" style="width: 160px; border-radius: 10px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/150x220?text=Book'">
         <p class="label-gold" style="font-size: 1.1rem;">Point Guard: A Diary</p>
         <p style="font-size: 0.9rem; opacity: 0.7;">By Keaton Cole</p>
         <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
     </div>
-</section>
 
-<section id="payment" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center;">Coach Office</h2>
+    <div class="section-divider">
+        <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--text-gold); font-size: 1rem;">Booking & Services</h2>
+    </div>
+
     <div class="card">
-        <h3 style="font-size: 3rem; margin: 0; color: var(--text-gold);">$650</h3>
-        <p style="font-size: 1rem; margin-bottom: 10px; font-weight: bold;">Team Workshop Package</p>
+        <h3 style="font-size: 2.8rem; margin: 0; color: var(--text-gold);">$650</h3>
+        <p style="font-size: 1rem; margin-bottom: 5px; font-weight: bold;">Team Workshop Package</p>
         <a href="YOUR_STRIPE_LINK_650" class="btn-gold">Secure Checkout</a>
     </div>
+
     <div class="card">
-        <h3 style="font-size: 3rem; margin: 0; color: var(--text-gold);">$40</h3>
-        <p style="font-size: 1rem; margin-bottom: 10px; font-weight: bold;">Per Athlete Rate</p>
+        <h3 style="font-size: 2.8rem; margin: 0; color: var(--text-gold);">$40</h3>
+        <p style="font-size: 1rem; margin-bottom: 5px; font-weight: bold;">Per Athlete Individual Rate</p>
         <a href="YOUR_STRIPE_LINK_40" class="btn-gold">Secure Checkout</a>
     </div>
 </section>
