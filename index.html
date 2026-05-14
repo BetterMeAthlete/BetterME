@@ -3,99 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heartwork Academy</title>
+    <title>Heartwork Academy | Keaton Cole</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap');
         
         :root {
-            --primary: #003087;      /* Deep Sapphire Blue */
-            --bg: #001d54;           /* Dark Navy Base */
-            --accent: #d4af37;       /* Heartwork Gold */
-            --card: rgba(255, 255, 255, 0.12); 
-            --text: #ffffff;
+            --sapphire: #001d54;
+            --sapphire-light: #0047ab;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
+            --card-bg: rgba(255, 255, 255, 0.07);
+            --text-gold: #d4af37;
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background: linear-gradient(160deg, var(--bg) 0%, #0047ab 100%);
-            color: var(--text); 
+            background: radial-gradient(circle at top, var(--sapphire-light), var(--sapphire));
+            color: white; 
             margin: 0; 
             padding-bottom: 100px;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
+        /* Navigation Bar */
         nav { 
-            background: rgba(0, 29, 84, 0.9); 
+            background: rgba(0, 29, 84, 0.95); 
             padding: 1.2rem 0.5rem; 
             display: flex; 
             justify-content: space-around; 
             position: sticky; 
             top: 0; 
             z-index: 100; 
-            border-bottom: 2px solid var(--accent);
-            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(20px);
             overflow-x: auto;
         }
 
         nav a { 
-            color: #ffffff; 
+            color: #fff; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 0.75rem; 
+            font-size: 0.65rem; 
             text-transform: uppercase; 
-            white-space: nowrap;
-            padding: 0 15px;
-            opacity: 0.7;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            padding: 5px 12px;
         }
 
-        .tab-content { display: none; padding: 20px; max-width: 500px; margin: auto; animation: slideIn 0.4s ease-out; }
+        .tab-content { display: none; padding: 20px; max-width: 480px; margin: auto; animation: fadeIn 0.5s ease; }
         .active { display: block !important; }
 
-        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .card { 
-            background: var(--card); 
-            padding: 22px; 
-            border-radius: 18px; 
-            margin-bottom: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        /* Mockup Styled Hero Logo */
+        .hero-container {
+            text-align: center;
+            padding: 40px 20px;
         }
 
-        h2 { 
-            font-family: 'Archivo Black', sans-serif; 
-            color: var(--text);
-            text-transform: uppercase;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            border-left: 4px solid var(--accent);
-            padding-left: 10px;
+        .main-logo {
+            width: 100%;
+            max-width: 220px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+            margin-bottom: 10px;
         }
 
-        .btn-action { 
-            background: var(--accent); 
-            color: #000; 
-            padding: 16px; 
+        .brand-name {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin: 0;
+            color: white;
+        }
+
+        /* Gold Gradient Button from Mockup */
+        .btn-gold { 
+            background: var(--gold-gradient); 
+            color: #1a1a1a; 
+            padding: 18px; 
             text-decoration: none; 
-            font-weight: 900; 
-            border-radius: 10px; 
+            font-weight: 800; 
+            border-radius: 40px; /* Rounded pill shape from mockup */
             display: block; 
             width: 100%; 
             box-sizing: border-box; 
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            margin-top: 20px;
         }
 
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        .logo-img { width: 100%; max-width: 260px; margin: 30px 0; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
-        
-        input[type="checkbox"] { accent-color: var(--accent); transform: scale(1.2); margin-right: 10px; }
+        /* Cards */
+        .card { 
+            background: var(--card-bg); 
+            padding: 24px; 
+            border-radius: 20px; 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 { font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; margin-bottom: 20px; color: var(--text-gold); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        .module-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .module-icon { font-size: 1.8rem; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -110,43 +133,38 @@
 </nav>
 
 <section id="locker-room" class="tab-content active">
-    <center><img src="logo.png" class="logo-img" onerror="this.src='https://via.placeholder.com/250x100?text=HEARTWORK'"></center>
-    <div class="card" style="border-top: 5px solid var(--accent);">
-        <p style="font-weight: 700; font-size: 1.2rem; line-height: 1.4;">"The grind is the Heartwork. Elite character is the result."</p>
-        <p style="color: var(--accent); font-weight: bold; margin-top: 10px; text-transform: uppercase; font-size: 0.8rem;">- Keaton Cole</p>
+    <div class="hero-container">
+        <img src="heartwork-flame.png" alt="Heartwork" class="main-logo" onerror="this.src='https://via.placeholder.com/200?text=FLAME+LOGO'">
+        <h1 class="brand-name">HEARTWORK</h1>
     </div>
+
+    <div class="card" style="background: rgba(0,0,0,0.3);">
+        <p style="font-size: 0.7rem; color: var(--text-gold); font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Daily Inspiration</p>
+        <p style="font-size: 1.1rem; font-weight: 600; line-height: 1.4;">"Elite character is non-negotiable."</p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 10px;">— Keaton Cole</p>
+    </div>
+
+    <a onclick="showTab('events')" class="btn-gold">Secure My Spot</a>
 </section>
 
 <section id="academy" class="tab-content">
     <h2>Micro-Learning</h2>
     <div class="grid-2">
-        <div class="card" style="text-align: center; padding: 15px;"><div>🥗</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">NUTRITION</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center; padding: 15px;"><div>💰</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">FINANCES</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center; padding: 15px;"><div>📱</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">ETIQUETTE</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center; padding: 15px;"><div>💼</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">BUSINESS IQ</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center; padding: 15px;"><div>🎯</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">GOALS</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center; padding: 15px;"><div>🧠</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">MENTAL GRIT</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
-    </div>
-</section>
-
-<section id="events" class="tab-content">
-    <h2>Master The Craft</h2>
-    <div class="card">
-        <img src="flyer.png" style="width:100%; border-radius: 10px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
-        <p style="margin-top: 15px; font-weight: bold;">Sept 27th | Elite Character Workshop</p>
-        <a href="#" class="btn-action" style="margin-top: 10px;">Secure Spot</a>
-    </div>
-</section>
-
-<section id="planner" class="tab-content">
-    <h2>Growth Planner</h2>
-    <div class="card">
-        <h3 style="margin-top: 0; color: var(--accent);">Daily Non-Negotiables</h3>
-        <div style="line-height: 2.5;">
-            <label><input type="checkbox"> 1% Mindset Reading</label><br>
-            <label><input type="checkbox"> Recovery Protocols</label><br>
-            <label><input type="checkbox"> Financial Tracking</label><br>
-            <label><input type="checkbox"> Film Study (30 mins)</label>
+        <div class="module-item">
+            <div class="module-icon">🥗</div>
+            <p style="font-size: 0.7rem; font-weight: bold;">NUTRITION</p>
+        </div>
+        <div class="module-item">
+            <div class="module-icon">💰</div>
+            <p style="font-size: 0.7rem; font-weight: bold;">FINANCES</p>
+        </div>
+        <div class="module-item">
+            <div class="module-icon">📱</div>
+            <p style="font-size: 0.7rem; font-weight: bold;">ETIQUETTE</p>
+        </div>
+        <div class="module-item">
+            <div class="module-icon">🧠</div>
+            <p style="font-size: 0.7rem; font-weight: bold;">MENTAL GRIT</p>
         </div>
     </div>
 </section>
@@ -154,39 +172,32 @@
 <section id="store" class="tab-content">
     <h2>The Vault</h2>
     <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" style="width: 150px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);" onerror="this.src='https://via.placeholder.com/150x200?text=Book+Cover'">
+        <img src="book-cover.jpg" style="width: 140px; border-radius: 10px;" onerror="this.src='https://via.placeholder.com/150x200?text=Book'">
         <h3 style="margin: 20px 0 5px 0;">Point Guard: A Diary</h3>
-        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 20px;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-action">Get on Amazon</a>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 20px;">By Keaton Cole</p>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold" style="font-size: 0.7rem; padding: 12px;">Amazon Link</a>
     </div>
 </section>
 
 <section id="payment" class="tab-content">
     <h2>Coach Office</h2>
     <div class="card" style="text-align: center;">
-        <h3 style="margin: 0; color: var(--accent); font-size: 2.2rem;">$650</h3>
-        <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;">Full Team Workshop Package</p>
-        <a href="YOUR_STRIPE_LINK_650" class="btn-action">Secure Checkout</a>
+        <h3 style="font-size: 2.5rem; margin: 0; color: var(--text-gold);">$650</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 20px;">Full Team Workshop Package</p>
+        <a href="YOUR_STRIPE_LINK_650" class="btn-gold">Secure Checkout</a>
     </div>
     <div class="card" style="text-align: center;">
-        <h3 style="margin: 0; color: var(--accent); font-size: 2.2rem;">$40</h3>
-        <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;">Per Athlete / Individual Rate</p>
-        <a href="YOUR_STRIPE_LINK_40" class="btn-action">Secure Checkout</a>
+        <h3 style="font-size: 2.5rem; margin: 0; color: var(--text-gold);">$40</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 20px;">Per Athlete Individual Rate</p>
+        <a href="YOUR_STRIPE_LINK_40" class="btn-gold">Secure Checkout</a>
     </div>
 </section>
 
 <script>
     function showTab(tabId) {
         const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-            tab.style.display = 'none';
-        });
-        const activeTab = document.getElementById(tabId);
-        if(activeTab) {
-            activeTab.classList.add('active');
-            activeTab.style.display = 'block';
-        }
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
         window.scrollTo(0,0);
     }
 </script>
