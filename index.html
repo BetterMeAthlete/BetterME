@@ -8,11 +8,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap');
         
         :root {
-            /* Exact Sapphire Gradient from Mockup */
             --sapphire-top: #0a2e6b;
             --sapphire-bottom: #000a1a;
             --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-bg: rgba(255, 255, 255, 0.08);
             --text-gold: #d4af37;
         }
 
@@ -27,123 +26,44 @@
         }
         
         nav { 
-            background: rgba(0, 10, 26, 0.9); 
+            background: rgba(0, 10, 26, 0.95); 
             padding: 1.2rem 0; 
             display: flex; 
             justify-content: space-around; 
             position: sticky; 
             top: 0; 
-            z-index: 100; 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
             backdrop-filter: blur(15px);
         }
 
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 0.65rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            opacity: 0.5;
-        }
+        nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.65rem; text-transform: uppercase; opacity: 0.6; padding: 5px; }
 
+        /* TAB LOGIC - FIXED */
         .tab-content { display: none; padding: 20px; max-width: 450px; margin: auto; animation: fadeIn 0.4s ease; }
         .active { display: block !important; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* The Hero Style from the Mockup */
-        .hero-section {
-            text-align: center;
-            padding: 50px 20px;
+        /* LOGO & HERO */
+        .hero-section { text-align: center; padding: 40px 20px; }
+        .main-logo { width: 100%; max-width: 220px; height: auto; margin-bottom: 10px; display: inline-block; }
+        .brand-text { font-family: 'Archivo Black', sans-serif; font-size: 2.2rem; letter-spacing: 2px; margin: 0; }
+
+        /* BUTTONS */
+        .btn-gold { 
+            background: var(--gold-gradient); color: #000; padding: 18px; text-decoration: none; font-weight: 800; border-radius: 50px; 
+            display: block; width: 100%; text-align: center; border: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); margin-top: 15px; cursor: pointer;
         }
 
-        .main-logo {
-            width: 100%;
-            max-width: 200px;
-            margin-bottom: -10px; /* Tighter spacing like the photo */
-        }
-
-        .brand-text {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2.4rem;
-            letter-spacing: 3px;
-            margin: 10px 0;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        /* The Exact Button Style from the Photo */
-        .btn-action { 
-            background: var(--gold-gradient); 
-            color: #000; 
-            padding: 18px; 
-            text-decoration: none; 
-            font-weight: 800; 
-            border-radius: 50px; /* Pill shape from photo */
-            display: block; 
-            width: 100%; 
-            box-sizing: border-box; 
-            text-align: center; 
-            border: none; 
-            text-transform: uppercase; 
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-            margin-top: 30px;
-        }
-
-        /* Mockup Styled Cards */
-        .card { 
-            background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 15px; 
-            margin-bottom: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .label-gold {
-            color: var(--text-gold);
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        /* Academy Grid from Phone #3 */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .card { background: var(--card-bg); padding: 25px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .label-gold { color: var(--text-gold); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; }
         
-        .grid-item {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px auto;
-            font-size: 1.5rem;
-            border: 1px solid var(--text-gold);
-        }
-
-        /* Watermark at bottom */
-        .footer-watermark {
-            text-align: center;
-            padding: 40px 0;
-            opacity: 0.4;
-            font-size: 0.6rem;
-            letter-spacing: 1px;
-        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .grid-item { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        
+        input[type="checkbox"] { accent-color: var(--text-gold); transform: scale(1.3); margin-right: 12px; }
     </style>
 </head>
 <body>
@@ -159,48 +79,86 @@
 
 <section id="locker-room" class="tab-content active">
     <div class="hero-section">
-        <img src="heartwork-logo.png" class="main-logo" onerror="this.src='https://via.placeholder.com/200x200?text=LOGO+HERE'">
+        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK" onerror="this.src='https://via.placeholder.com/200?text=LOGO+RELOADING...'">
         <h1 class="brand-text">HEARTWORK</h1>
     </div>
-
     <div class="card">
-        <span class="label-gold">Daily Inspiration</span>
-        <p style="font-size: 1.2rem; font-weight: 600; line-height: 1.4; margin: 5px 0;">"Elite character is non-negotiable."</p>
-        <p style="opacity: 0.6; font-size: 0.8rem;">— Keaton Cole</p>
+        <span class="label-gold">Keaton Cole Philosophy</span>
+        <p style="font-size: 1.2rem; font-weight: 600; line-height: 1.4;">"Elite character is non-negotiable."</p>
     </div>
-
-    <button onclick="showTab('events')" class="btn-action">Secure My Spot</button>
+    <button onclick="showTab('events')" class="btn-gold">Secure My Spot</button>
 </section>
 
 <section id="academy" class="tab-content">
-    <h2 style="font-family: 'Archivo Black'; color: var(--text-gold);">Academy</h2>
+    <h2 style="font-family:'Archivo Black'; color:var(--text-gold);">Academy</h2>
     <div class="grid-2">
-        <div class="grid-item"><div class="icon-box">🥗</div><p style="font-size: 0.6rem; font-weight: 800;">NUTRITION</p></div>
-        <div class="grid-item"><div class="icon-box">💰</div><p style="font-size: 0.6rem; font-weight: 800;">FINANCES</p></div>
-        <div class="grid-item"><div class="icon-box">📱</div><p style="font-size: 0.6rem; font-weight: 800;">ETIQUETTE</p></div>
-        <div class="grid-item"><div class="icon-box">🧠</div><p style="font-size: 0.6rem; font-weight: 800;">MENTAL GRIT</p></div>
+        <div class="grid-item"><div>🥗</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">NUTRITION</p></div>
+        <div class="grid-item"><div>💰</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">FINANCES</p></div>
+        <div class="grid-item"><div>📱</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">ETIQUETTE</p></div>
+        <div class="grid-item"><div>🧠</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">MENTAL GRIT</p></div>
+    </div>
+</section>
+
+<section id="events" class="tab-content">
+    <h2 style="font-family:'Archivo Black';">Events</h2>
+    <div class="card">
+        <img src="flyer.png" style="width:100%; border-radius:12px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
+        <h3 style="color:var(--text-gold); margin-top:15px;">Elite Workshop</h3>
+        <p style="font-size:0.9rem;">September 27th | Brampton, ON</p>
+        <button class="btn-gold" style="padding:12px; font-size:0.7rem;">Register Now</button>
+    </div>
+</section>
+
+<section id="planner" class="tab-content">
+    <h2 style="font-family:'Archivo Black';">Planner</h2>
+    <div class="card">
+        <span class="label-gold">Daily Checklist</span>
+        <div style="line-height:2.5;">
+            <label><input type="checkbox"> 1% Mindset Reading</label><br>
+            <label><input type="checkbox"> Recovery Protocols</label><br>
+            <label><input type="checkbox"> Financial Tracking</label><br>
+            <label><input type="checkbox"> Film Study</label>
+        </div>
     </div>
 </section>
 
 <section id="store" class="tab-content">
-    <h2 style="font-family: 'Archivo Black';">Store</h2>
+    <h2 style="font-family:'Archivo Black';">Store</h2>
     <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" style="width: 130px; border-radius: 8px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/130x180?text=Book'">
+        <img src="book-cover.jpg" style="width: 140px; border-radius: 8px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/130x180?text=Book'">
         <p class="label-gold">Point Guard: A Diary</p>
         <p style="font-size: 0.8rem; margin-bottom: 20px;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-action" style="font-size: 0.7rem; padding: 12px;">Get on Amazon</a>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold" style="font-size: 0.7rem; padding: 12px;">Get on Amazon</a>
     </div>
 </section>
 
-<div class="footer-watermark">
-    POWERED BY HEARTWORK | BRAMPTON
-</div>
+<section id="payment" class="tab-content">
+    <h2 style="font-family:'Archivo Black';">Coach Office</h2>
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 2.2rem; margin: 0; color: var(--text-gold);">$650</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 10px; font-weight: bold;">Team Workshop Package</p>
+        <a href="YOUR_STRIPE_LINK_650" class="btn-gold">Secure Checkout</a>
+    </div>
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 2.2rem; margin: 0; color: var(--text-gold);">$40</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 10px; font-weight: bold;">Per Athlete Rate</p>
+        <a href="YOUR_STRIPE_LINK_40" class="btn-gold">Secure Checkout</a>
+    </div>
+</section>
 
 <script>
     function showTab(tabId) {
-        const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        // Find all sections that are tabs
+        const sections = document.querySelectorAll('.tab-content');
+        // Hide every one of them
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+        // Show the one we clicked
+        const activeSection = document.getElementById(tabId);
+        if(activeSection) {
+            activeSection.classList.add('active');
+        }
         window.scrollTo(0,0);
     }
 </script>
