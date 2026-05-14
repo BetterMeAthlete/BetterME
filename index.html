@@ -5,55 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Elite Performance & Academy</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
-        :root {
-            --primary: #1a1a1a;
-            --accent: #E65100; 
-            --text: #ffffff;
-            --bg: #121212;
-            --card: #1e1e1e;
-        }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 100px; }
-        
-        nav { background: var(--primary); padding: 1rem; display: flex; justify-content: space-around; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); overflow-x: auto; }
-        nav a { color: var(--text); text-decoration: none; font-weight: bold; cursor: pointer; font-size: 0.75rem; text-transform: uppercase; white-space: nowrap; padding: 0 10px; }
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
+    
+    :root {
+        --primary: #0f0f0f;      /* Deep Onyx */
+        --accent: #d4af37;       /* Metallic Gold */
+        --accent-bright: #f9d976; /* Vibrant Energy Gold */
+        --card: #1a1a1a;         /* Charcoal Card */
+        --text: #ffffff;
+        --text-dim: #a0a0a0;
+    }
 
-        .tab-content { display: none; padding: 1.5rem; max-width: 900px; margin: auto; animation: fadeIn 0.3s; }
-        .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    body { 
+        font-family: 'Inter', sans-serif; 
+        background-color: var(--primary); 
+        color: var(--text); 
+        margin: 0; 
+        padding-bottom: 100px;
+        background-image: radial-gradient(circle at top right, #1a1a1a, #0f0f0f);
+    }
+    
+    /* Vibrant Navigation */
+    nav { 
+        background: rgba(15, 15, 15, 0.95); 
+        padding: 1.2rem 0.5rem; 
+        display: flex; 
+        justify-content: space-around; 
+        position: sticky; 
+        top: 0; 
+        z-index: 100; 
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        backdrop-filter: blur(10px);
+    }
 
-        /* General Card Styling */
-        .card { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; box-sizing: border-box; width: 100%; }
-        h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; }
+    nav a { 
+        color: var(--text-dim); 
+        text-decoration: none; 
+        font-weight: 700; 
+        font-size: 0.7rem; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+        transition: 0.3s;
+    }
 
-        /* Form Inputs */
-        .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; color: #888; margin-bottom: 5px; }
-        input, select, textarea { width: 100%; background: #2a2a2a; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; box-sizing: border-box; font-size: 0.9rem; }
-        
-        /* Button Styling - Forced Containment */
-        .btn-action { 
-            background: var(--accent); 
-            color: #fff; 
-            padding: 15px 10px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-radius: 8px; 
-            display: block; 
-            width: 100%; 
-            box-sizing: border-box; 
-            transition: 0.3s; 
-            text-align: center; 
-            border: none; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
+    nav a:hover, nav a.active-link { 
+        color: var(--accent); 
+    }
 
-        .event-flyer { width: 100%; border-radius: 10px; border: 1px solid #444; margin-bottom: 20px; display: block; height: auto; }
-        .book-cover { width: 100%; max-width: 180px; border-radius: 5px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-    </style>
+    /* High-Energy Cards */
+    .card { 
+        background: var(--card); 
+        padding: 24px; 
+        border-radius: 20px; 
+        margin-bottom: 20px; 
+        border: 1px solid rgba(255, 255, 255, 0.05); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h2 { 
+        font-family: 'Archivo Black', sans-serif; 
+        font-size: 1.4rem; 
+        text-transform: uppercase; 
+        background: linear-gradient(to right, var(--accent), var(--accent-bright));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+    }
+
+    /* Vibrant Gradient Button */
+    .btn-action { 
+        background: linear-gradient(135deg, var(--accent) 0%, #b8860b 100%); 
+        color: #000; /* Black text on gold is very high-end */
+        padding: 16px; 
+        text-decoration: none; 
+        font-weight: 800; 
+        border-radius: 12px; 
+        display: block; 
+        width: 100%; 
+        box-sizing: border-box; 
+        text-align: center; 
+        border: none; 
+        text-transform: uppercase; 
+        letter-spacing: 1.5px;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        transition: transform 0.2s;
+    }
+
+    .btn-action:active { transform: scale(0.98); }
+
+    /* Academy Grid Adjustments */
+    .module-icon {
+        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+</style>
+
 </head>
 <body>
 
