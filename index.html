@@ -37,33 +37,65 @@
             backdrop-filter: blur(15px);
         }
 
-        nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.65rem; text-transform: uppercase; opacity: 0.6; padding: 5px; }
+        nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; opacity: 0.6; cursor: pointer; }
 
-        /* TAB LOGIC - FIXED */
-        .tab-content { display: none; padding: 20px; max-width: 450px; margin: auto; animation: fadeIn 0.4s ease; }
+        .tab-content { display: none; padding: 20px; max-width: 600px; margin: auto; animation: fadeIn 0.4s ease; }
         .active { display: block !important; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
-        /* LOGO & HERO */
         .hero-section { text-align: center; padding: 40px 20px; }
-        .main-logo { width: 100%; max-width: 220px; height: auto; margin-bottom: 10px; display: inline-block; }
-        .brand-text { font-family: 'Archivo Black', sans-serif; font-size: 2.2rem; letter-spacing: 2px; margin: 0; }
+        .main-logo { width: 100%; max-width: 250px; height: auto; margin-bottom: 10px; display: inline-block; }
+        .brand-text { font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; letter-spacing: 2px; margin: 0; }
 
-        /* BUTTONS */
+        /* FIXED BUTTONS - Centered & Contained */
         .btn-gold { 
-            background: var(--gold-gradient); color: #000; padding: 18px; text-decoration: none; font-weight: 800; border-radius: 50px; 
-            display: block; width: 100%; text-align: center; border: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); margin-top: 15px; cursor: pointer;
+            background: var(--gold-gradient); 
+            color: #000; 
+            padding: 18px 25px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            border-radius: 50px; 
+            display: block; 
+            width: 90%;            /* Prevents leaking */
+            margin: 20px auto;     /* Centers horizontally */
+            text-align: center; 
+            border: none; 
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); 
+            cursor: pointer;
+            box-sizing: border-box; /* Ensures padding doesn't push width out */
         }
 
-        .card { background: var(--card-bg); padding: 25px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .label-gold { color: var(--text-gold); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .card { 
+            background: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            text-align: center;    /* Keeps everything aligned */
+        }
+
+        .label-gold { color: var(--text-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; }
         
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .grid-item { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        /* ACADEMY GRID - Larger for Tablet */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-item { 
+            background: rgba(255,255,255,0.05); 
+            border-radius: 18px; 
+            padding: 30px 15px; 
+            text-align: center; 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+        .grid-item div { font-size: 2.5rem; margin-bottom: 10px; } /* Larger Icons */
+        .grid-item p { font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; margin: 0; } /* Larger Font */
         
-        input[type="checkbox"] { accent-color: var(--text-gold); transform: scale(1.3); margin-right: 12px; }
+        input[type="checkbox"] { accent-color: var(--text-gold); transform: scale(1.5); margin-right: 15px; }
+        
+        .planner-row { text-align: left; padding: 10px 0; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -79,86 +111,79 @@
 
 <section id="locker-room" class="tab-content active">
     <div class="hero-section">
-        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK" onerror="this.src='https://via.placeholder.com/200?text=LOGO+RELOADING...'">
+        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK" onerror="this.src='https://via.placeholder.com/250?text=LOGO+RELOADING...'">
         <h1 class="brand-text">HEARTWORK</h1>
     </div>
     <div class="card">
         <span class="label-gold">Keaton Cole Philosophy</span>
-        <p style="font-size: 1.2rem; font-weight: 600; line-height: 1.4;">"Elite character is non-negotiable."</p>
+        <p style="font-size: 1.4rem; font-weight: 600; line-height: 1.4;">"Elite character is non-negotiable."</p>
     </div>
     <button onclick="showTab('events')" class="btn-gold">Secure My Spot</button>
 </section>
 
 <section id="academy" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; color:var(--text-gold);">Academy</h2>
+    <h2 style="font-family:'Archivo Black'; color:var(--text-gold); text-align:center;">Academy</h2>
     <div class="grid-2">
-        <div class="grid-item"><div>🥗</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">NUTRITION</p></div>
-        <div class="grid-item"><div>💰</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">FINANCES</p></div>
-        <div class="grid-item"><div>📱</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">ETIQUETTE</p></div>
-        <div class="grid-item"><div>🧠</div><p style="font-size:0.6rem; font-weight:800; margin-top:10px;">MENTAL GRIT</p></div>
+        <div class="grid-item"><div>🥗</div><p>NUTRITION</p></div>
+        <div class="grid-item"><div>💰</div><p>FINANCES</p></div>
+        <div class="grid-item"><div>📱</div><p>ETIQUETTE</p></div>
+        <div class="grid-item"><div>🧠</div><p>MENTAL GRIT</p></div>
     </div>
 </section>
 
 <section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black';">Events</h2>
+    <h2 style="font-family:'Archivo Black'; text-align:center;">Events</h2>
     <div class="card">
-        <img src="flyer.png" style="width:100%; border-radius:12px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
-        <h3 style="color:var(--text-gold); margin-top:15px;">Elite Workshop</h3>
-        <p style="font-size:0.9rem;">September 27th | Brampton, ON</p>
-        <button class="btn-gold" style="padding:12px; font-size:0.7rem;">Register Now</button>
+        <img src="flyer.png" style="width:100%; border-radius:15px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
+        <h3 style="color:var(--text-gold); margin-top:20px; font-size: 1.5rem;">Elite Workshop</h3>
+        <p style="font-size:1.1rem; margin-bottom: 10px;">September 27th | Brampton, ON</p>
+        <button class="btn-gold">Register Now</button>
     </div>
 </section>
 
 <section id="planner" class="tab-content">
-    <h2 style="font-family:'Archivo Black';">Planner</h2>
+    <h2 style="font-family:'Archivo Black'; text-align:center;">Planner</h2>
     <div class="card">
         <span class="label-gold">Daily Checklist</span>
-        <div style="line-height:2.5;">
-            <label><input type="checkbox"> 1% Mindset Reading</label><br>
-            <label><input type="checkbox"> Recovery Protocols</label><br>
-            <label><input type="checkbox"> Financial Tracking</label><br>
-            <label><input type="checkbox"> Film Study</label>
+        <div style="margin-top: 10px;">
+            <div class="planner-row"><label><input type="checkbox"> 1% Mindset Reading</label></div>
+            <div class="planner-row"><label><input type="checkbox"> Recovery Protocols</label></div>
+            <div class="planner-row"><label><input type="checkbox"> Financial Tracking</label></div>
+            <div class="planner-row"><label><input type="checkbox"> Film Study</label></div>
         </div>
     </div>
 </section>
 
 <section id="store" class="tab-content">
-    <h2 style="font-family:'Archivo Black';">Store</h2>
-    <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" style="width: 140px; border-radius: 8px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/130x180?text=Book'">
-        <p class="label-gold">Point Guard: A Diary</p>
-        <p style="font-size: 0.8rem; margin-bottom: 20px;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold" style="font-size: 0.7rem; padding: 12px;">Get on Amazon</a>
+    <h2 style="font-family:'Archivo Black'; text-align:center;">Store</h2>
+    <div class="card">
+        <img src="book-cover.jpg" style="width: 160px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/150x220?text=Book'">
+        <p class="label-gold" style="font-size: 1.1rem;">Point Guard: A Diary</p>
+        <p style="font-size: 0.9rem; opacity: 0.7;">By Keaton Cole</p>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
     </div>
 </section>
 
 <section id="payment" class="tab-content">
-    <h2 style="font-family:'Archivo Black';">Coach Office</h2>
-    <div class="card" style="text-align: center;">
-        <h3 style="font-size: 2.2rem; margin: 0; color: var(--text-gold);">$650</h3>
-        <p style="font-size: 0.8rem; margin-bottom: 10px; font-weight: bold;">Team Workshop Package</p>
+    <h2 style="font-family:'Archivo Black'; text-align:center;">Coach Office</h2>
+    <div class="card">
+        <h3 style="font-size: 3rem; margin: 0; color: var(--text-gold);">$650</h3>
+        <p style="font-size: 1rem; margin-bottom: 10px; font-weight: bold;">Team Workshop Package</p>
         <a href="YOUR_STRIPE_LINK_650" class="btn-gold">Secure Checkout</a>
     </div>
-    <div class="card" style="text-align: center;">
-        <h3 style="font-size: 2.2rem; margin: 0; color: var(--text-gold);">$40</h3>
-        <p style="font-size: 0.8rem; margin-bottom: 10px; font-weight: bold;">Per Athlete Rate</p>
+    <div class="card">
+        <h3 style="font-size: 3rem; margin: 0; color: var(--text-gold);">$40</h3>
+        <p style="font-size: 1rem; margin-bottom: 10px; font-weight: bold;">Per Athlete Rate</p>
         <a href="YOUR_STRIPE_LINK_40" class="btn-gold">Secure Checkout</a>
     </div>
 </section>
 
 <script>
     function showTab(tabId) {
-        // Find all sections that are tabs
         const sections = document.querySelectorAll('.tab-content');
-        // Hide every one of them
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
-        // Show the one we clicked
+        sections.forEach(section => section.classList.remove('active'));
         const activeSection = document.getElementById(tabId);
-        if(activeSection) {
-            activeSection.classList.add('active');
-        }
+        if(activeSection) activeSection.classList.add('active');
         window.scrollTo(0,0);
     }
 </script>
