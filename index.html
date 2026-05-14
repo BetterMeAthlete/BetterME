@@ -8,16 +8,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
         
         :root {
-            --primary: #064e3b;      /* Deep Emerald Gemstone */
-            --bg: #042f2e;           /* Darker Emerald Base */
+            --primary: #003087;      /* Deep Sapphire Blue */
+            --bg: #001d54;           /* Dark Navy Base */
             --accent: #d4af37;       /* Heartwork Gold */
-            --card: rgba(255, 255, 255, 0.08); 
+            --card: rgba(255, 255, 255, 0.12); 
             --text: #ffffff;
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background: linear-gradient(135deg, var(--bg) 0%, #064e3b 100%);
+            background: linear-gradient(160deg, var(--bg) 0%, #0047ab 100%);
             color: var(--text); 
             margin: 0; 
             padding-bottom: 100px;
@@ -25,48 +25,50 @@
         }
         
         nav { 
-            background: rgba(4, 47, 46, 0.9); 
+            background: rgba(0, 29, 84, 0.9); 
             padding: 1.2rem 0.5rem; 
             display: flex; 
             justify-content: space-around; 
             position: sticky; 
             top: 0; 
             z-index: 100; 
-            border-bottom: 1px solid var(--accent);
-            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent);
+            backdrop-filter: blur(15px);
             overflow-x: auto;
         }
 
         nav a { 
-            color: #ccc; 
+            color: #ffffff; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 0.7rem; 
+            font-size: 0.75rem; 
             text-transform: uppercase; 
             white-space: nowrap;
             padding: 0 15px;
+            opacity: 0.7;
         }
 
-        .tab-content { display: none; padding: 20px; max-width: 500px; margin: auto; animation: fadeIn 0.3s; }
+        .tab-content { display: none; padding: 20px; max-width: 500px; margin: auto; animation: slideIn 0.4s ease-out; }
         .active { display: block !important; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         .card { 
             background: var(--card); 
-            padding: 20px; 
-            border-radius: 15px; 
+            padding: 22px; 
+            border-radius: 18px; 
             margin-bottom: 20px; 
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         h2 { 
             font-family: 'Archivo Black', sans-serif; 
-            color: var(--accent);
+            color: var(--text);
             text-transform: uppercase;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
+            letter-spacing: 1px;
             border-left: 4px solid var(--accent);
             padding-left: 10px;
         }
@@ -74,22 +76,26 @@
         .btn-action { 
             background: var(--accent); 
             color: #000; 
-            padding: 14px; 
+            padding: 16px; 
             text-decoration: none; 
-            font-weight: 800; 
-            border-radius: 8px; 
+            font-weight: 900; 
+            border-radius: 10px; 
             display: block; 
             width: 100%; 
             box-sizing: border-box; 
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
             cursor: pointer;
         }
 
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .logo-img { width: 100%; max-width: 250px; margin: 20px 0; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .logo-img { width: 100%; max-width: 260px; margin: 30px 0; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+        
+        input[type="checkbox"] { accent-color: var(--accent); transform: scale(1.2); margin-right: 10px; }
     </style>
 </head>
 <body>
@@ -105,75 +111,82 @@
 
 <section id="locker-room" class="tab-content active">
     <center><img src="logo.png" class="logo-img" onerror="this.src='https://via.placeholder.com/250x100?text=HEARTWORK'"></center>
-    <div class="card">
-        <p style="font-style: italic; font-size: 1.1rem; line-height: 1.5;">"The grind is the Heartwork. Elite character is the result."</p>
-        <p style="color: var(--accent); font-weight: bold; margin-top: 10px;">- Keaton Cole</p>
+    <div class="card" style="border-top: 5px solid var(--accent);">
+        <p style="font-weight: 700; font-size: 1.2rem; line-height: 1.4;">"The grind is the Heartwork. Elite character is the result."</p>
+        <p style="color: var(--accent); font-weight: bold; margin-top: 10px; text-transform: uppercase; font-size: 0.8rem;">- Keaton Cole</p>
     </div>
 </section>
 
 <section id="academy" class="tab-content">
-    <h2>Micro-Modules</h2>
+    <h2>Micro-Learning</h2>
     <div class="grid-2">
-        <div class="card" style="text-align: center;"><div>🥗</div><p style="font-size: 0.65rem; font-weight: bold;">NUTRITION</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center;"><div>💰</div><p style="font-size: 0.65rem; font-weight: bold;">FINANCES</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center;"><div>📱</div><p style="font-size: 0.65rem; font-weight: bold;">ETIQUETTE</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center;"><div>💼</div><p style="font-size: 0.65rem; font-weight: bold;">BUSINESS IQ</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center;"><div>🎯</div><p style="font-size: 0.65rem; font-weight: bold;">GOALS</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
-        <div class="card" style="text-align: center;"><div>🧠</div><p style="font-size: 0.65rem; font-weight: bold;">MENTAL GRIT</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center; padding: 15px;"><div>🥗</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">NUTRITION</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center; padding: 15px;"><div>💰</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">FINANCES</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center; padding: 15px;"><div>📱</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">ETIQUETTE</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center; padding: 15px;"><div>💼</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">BUSINESS IQ</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center; padding: 15px;"><div>🎯</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">GOALS</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center; padding: 15px;"><div>🧠</div><p style="font-size: 0.65rem; font-weight: bold; margin: 8px 0;">MENTAL GRIT</p><button class="btn-action" style="padding: 6px; font-size: 0.55rem;">LAUNCH</button></div>
     </div>
 </section>
 
 <section id="events" class="tab-content">
     <h2>Master The Craft</h2>
     <div class="card">
-        <img src="flyer.png" style="width:100%; border-radius: 8px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
-        <p style="margin-top: 15px; font-size: 0.9rem;">September 27th | Elite Character Workshop</p>
-        <a href="#" class="btn-action">Secure Spot</a>
+        <img src="flyer.png" style="width:100%; border-radius: 10px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
+        <p style="margin-top: 15px; font-weight: bold;">Sept 27th | Elite Character Workshop</p>
+        <a href="#" class="btn-action" style="margin-top: 10px;">Secure Spot</a>
     </div>
 </section>
 
 <section id="planner" class="tab-content">
     <h2>Growth Planner</h2>
     <div class="card">
-        <h3>Daily Non-Negotiables</h3>
-        <ul style="list-style: none; padding: 0; line-height: 2;">
-            <li><input type="checkbox"> 1% Mindset Reading</li>
-            <li><input type="checkbox"> Recovery Protocols</li>
-            <li><input type="checkbox"> Financial Tracking</li>
-            <li><input type="checkbox"> Film Study (30 mins)</li>
-        </ul>
+        <h3 style="margin-top: 0; color: var(--accent);">Daily Non-Negotiables</h3>
+        <div style="line-height: 2.5;">
+            <label><input type="checkbox"> 1% Mindset Reading</label><br>
+            <label><input type="checkbox"> Recovery Protocols</label><br>
+            <label><input type="checkbox"> Financial Tracking</label><br>
+            <label><input type="checkbox"> Film Study (30 mins)</label>
+        </div>
     </div>
 </section>
 
 <section id="store" class="tab-content">
     <h2>The Vault</h2>
     <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" style="width: 140px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);" onerror="this.src='https://via.placeholder.com/150x200?text=Point+Guard+Diary'">
-        <h3 style="margin: 15px 0 5px 0;">Point Guard: A Diary</h3>
-        <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 20px;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-action">View on Amazon</a>
+        <img src="book-cover.jpg" style="width: 150px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);" onerror="this.src='https://via.placeholder.com/150x200?text=Book+Cover'">
+        <h3 style="margin: 20px 0 5px 0;">Point Guard: A Diary</h3>
+        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 20px;">By Keaton Cole</p>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-action">Get on Amazon</a>
     </div>
 </section>
 
 <section id="payment" class="tab-content">
     <h2>Coach Office</h2>
     <div class="card" style="text-align: center;">
-        <h3 style="margin: 0; color: var(--accent); font-size: 2rem;">$650</h3>
-        <p style="font-size: 0.8rem; margin-bottom: 15px;">Full Team Workshop Package</p>
-        <a href="PASTE_TEAM_LINK_HERE" class="btn-action">Pay Securely</a>
+        <h3 style="margin: 0; color: var(--accent); font-size: 2.2rem;">$650</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;">Full Team Workshop Package</p>
+        <a href="YOUR_STRIPE_LINK_650" class="btn-action">Secure Checkout</a>
     </div>
     <div class="card" style="text-align: center;">
-        <h3 style="margin: 0; color: var(--accent); font-size: 2rem;">$40</h3>
-        <p style="font-size: 0.8rem; margin-bottom: 15px;">Per Athlete Rate</p>
-        <a href="PASTE_PER_PERSON_LINK_HERE" class="btn-action">Pay Securely</a>
+        <h3 style="margin: 0; color: var(--accent); font-size: 2.2rem;">$40</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;">Per Athlete / Individual Rate</p>
+        <a href="YOUR_STRIPE_LINK_40" class="btn-action">Secure Checkout</a>
     </div>
 </section>
 
 <script>
     function showTab(tabId) {
         const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            tab.style.display = 'none';
+        });
+        const activeTab = document.getElementById(tabId);
+        if(activeTab) {
+            activeTab.classList.add('active');
+            activeTab.style.display = 'block';
+        }
         window.scrollTo(0,0);
     }
 </script>
