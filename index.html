@@ -8,82 +8,73 @@
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
         
         :root {
-            --bg: #f8f9fa;           /* Clean Steel Grey */
-            --card: #ffffff;         /* Action White */
+            --primary: #064e3b;      /* Deep Emerald Gemstone */
+            --bg: #042f2e;           /* Darker Emerald Base */
             --accent: #d4af37;       /* Heartwork Gold */
-            --text-main: #1a1a1a;    /* High Contrast Charcoal */
-            --text-muted: #666666;
+            --card: rgba(255, 255, 255, 0.08); 
+            --text: #ffffff;
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: var(--bg); 
-            color: var(--text-main); 
+            background: linear-gradient(135deg, var(--bg) 0%, #064e3b 100%);
+            color: var(--text); 
             margin: 0; 
             padding-bottom: 100px;
+            min-height: 100vh;
         }
         
-        /* Fixed Navigation */
         nav { 
-            background: #ffffff; 
-            padding: 1rem 0.5rem; 
+            background: rgba(4, 47, 46, 0.9); 
+            padding: 1.2rem 0.5rem; 
             display: flex; 
             justify-content: space-around; 
             position: sticky; 
             top: 0; 
             z-index: 100; 
-            border-bottom: 2px solid var(--accent);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--accent);
+            backdrop-filter: blur(10px);
             overflow-x: auto;
         }
 
         nav a { 
-            color: var(--text-muted); 
+            color: #ccc; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 0.75rem; 
+            font-size: 0.7rem; 
             text-transform: uppercase; 
-            letter-spacing: 0.5px;
             white-space: nowrap;
-            padding: 0 10px;
+            padding: 0 15px;
         }
 
-        /* Logic to hide tabs - THIS FIXES YOUR ISSUE */
-        .tab-content { 
-            display: none; 
-            padding: 20px; 
-            max-width: 600px; 
-            margin: auto; 
-            animation: fadeIn 0.4s ease;
-        }
+        .tab-content { display: none; padding: 20px; max-width: 500px; margin: auto; animation: fadeIn 0.3s; }
         .active { display: block !important; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Card Styling - Empowered Look */
         .card { 
             background: var(--card); 
-            padding: 25px; 
-            border-radius: 12px; 
+            padding: 20px; 
+            border-radius: 15px; 
             margin-bottom: 20px; 
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         h2 { 
             font-family: 'Archivo Black', sans-serif; 
-            font-size: 1.5rem; 
-            color: var(--text-main);
-            border-left: 5px solid var(--accent);
-            padding-left: 15px;
-            margin-bottom: 25px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
         }
 
-        /* Action Button */
         .btn-action { 
-            background: var(--text-main); 
-            color: var(--accent); 
-            padding: 18px; 
+            background: var(--accent); 
+            color: #000; 
+            padding: 14px; 
             text-decoration: none; 
             font-weight: 800; 
             border-radius: 8px; 
@@ -93,101 +84,97 @@
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
-            letter-spacing: 2px;
-            transition: 0.3s;
+            font-size: 0.8rem;
             cursor: pointer;
         }
 
-        .btn-action:hover { background: #333; }
-
-        .logo-container { text-align: center; padding: 40px 20px; }
-        .logo-img { width: 100%; max-width: 280px; height: auto; }
-        
-        /* Academy Grid */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .logo-img { width: 100%; max-width: 250px; margin: 20px 0; }
     </style>
 </head>
 <body>
 
 <nav>
-    <a onclick="showTab('locker-room')">Locker Room</a>
+    <a onclick="showTab('locker-room')">Locker</a>
     <a onclick="showTab('academy')">Academy</a>
     <a onclick="showTab('events')">Events</a>
     <a onclick="showTab('planner')">Planner</a>
     <a onclick="showTab('store')">Store</a>
-    <a onclick="showTab('payment')">Coach Office</a>
+    <a onclick="showTab('payment')">Coach</a>
 </nav>
 
 <section id="locker-room" class="tab-content active">
-    <div class="logo-container">
-        <img src="logo.png" alt="Heartwork" class="logo-img" onerror="this.src='https://via.placeholder.com/300x150?text=HEARTWORK'">
-    </div>
-
-    <div class="card" style="border-top: 4px solid var(--accent);">
-        <p id="daily-quote" style="font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: #333;">"The standard is the standard. Elite character is non-negotiable."</p>
-        <p style="color: var(--accent); font-weight: bold; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase;">— Heartwork Philosophy</p>
+    <center><img src="logo.png" class="logo-img" onerror="this.src='https://via.placeholder.com/250x100?text=HEARTWORK'"></center>
+    <div class="card">
+        <p style="font-style: italic; font-size: 1.1rem; line-height: 1.5;">"The grind is the Heartwork. Elite character is the result."</p>
+        <p style="color: var(--accent); font-weight: bold; margin-top: 10px;">- Keaton Cole</p>
     </div>
 </section>
 
 <section id="academy" class="tab-content">
-    <h2>Heartwork Academy</h2>
+    <h2>Micro-Modules</h2>
     <div class="grid-2">
-        <div class="card" style="padding: 15px; text-align: center;">
-            <div style="font-size: 1.5rem;">🥗</div>
-            <p style="font-weight: 800; font-size: 0.7rem; margin: 10px 0;">NUTRITION</p>
-            <button class="btn-action" style="padding: 10px; font-size: 0.6rem;">Launch</button>
-        </div>
-        <div class="card" style="padding: 15px; text-align: center;">
-            <div style="font-size: 1.5rem;">💰</div>
-            <p style="font-weight: 800; font-size: 0.7rem; margin: 10px 0;">FINANCE</p>
-            <button class="btn-action" style="padding: 10px; font-size: 0.6rem;">Launch</button>
-        </div>
+        <div class="card" style="text-align: center;"><div>🥗</div><p style="font-size: 0.65rem; font-weight: bold;">NUTRITION</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center;"><div>💰</div><p style="font-size: 0.65rem; font-weight: bold;">FINANCES</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center;"><div>📱</div><p style="font-size: 0.65rem; font-weight: bold;">ETIQUETTE</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center;"><div>💼</div><p style="font-size: 0.65rem; font-weight: bold;">BUSINESS IQ</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center;"><div>🎯</div><p style="font-size: 0.65rem; font-weight: bold;">GOALS</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
+        <div class="card" style="text-align: center;"><div>🧠</div><p style="font-size: 0.65rem; font-weight: bold;">MENTAL GRIT</p><button class="btn-action" style="padding: 5px; font-size: 0.5rem;">LAUNCH</button></div>
     </div>
 </section>
 
 <section id="events" class="tab-content">
     <h2>Master The Craft</h2>
     <div class="card">
-        <img src="flyer.png" alt="Flyer" style="width:100%; border-radius: 8px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
-        <p style="font-size: 0.9rem; margin-top: 15px;">September 27th | Elite Workshop</p>
-        <a href="#" class="btn-action">Secure My Spot</a>
+        <img src="flyer.png" style="width:100%; border-radius: 8px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
+        <p style="margin-top: 15px; font-size: 0.9rem;">September 27th | Elite Character Workshop</p>
+        <a href="#" class="btn-action">Secure Spot</a>
+    </div>
+</section>
+
+<section id="planner" class="tab-content">
+    <h2>Growth Planner</h2>
+    <div class="card">
+        <h3>Daily Non-Negotiables</h3>
+        <ul style="list-style: none; padding: 0; line-height: 2;">
+            <li><input type="checkbox"> 1% Mindset Reading</li>
+            <li><input type="checkbox"> Recovery Protocols</li>
+            <li><input type="checkbox"> Financial Tracking</li>
+            <li><input type="checkbox"> Film Study (30 mins)</li>
+        </ul>
     </div>
 </section>
 
 <section id="store" class="tab-content">
-    <h2>Elite Store</h2>
+    <h2>The Vault</h2>
     <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" style="width: 150px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/150x200?text=Book'">
-        <h3>Point Guard: A Diary</h3>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-action">Buy on Amazon</a>
+        <img src="book-cover.jpg" style="width: 140px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);" onerror="this.src='https://via.placeholder.com/150x200?text=Point+Guard+Diary'">
+        <h3 style="margin: 15px 0 5px 0;">Point Guard: A Diary</h3>
+        <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 20px;">By Keeton Cole</p>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="btn-action">View on Amazon</a>
     </div>
 </section>
 
 <section id="payment" class="tab-content">
     <h2>Coach Office</h2>
     <div class="card" style="text-align: center;">
-        <h1 style="font-size: 3rem; margin: 0;">$650</h1>
-        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px;">Team Development Package</p>
-        <button class="btn-action">Pay Securely</button>
+        <h3 style="margin: 0; color: var(--accent); font-size: 2rem;">$650</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 15px;">Full Team Workshop Package</p>
+        <a href="PASTE_TEAM_LINK_HERE" class="btn-action">Pay Securely</a>
+    </div>
+    <div class="card" style="text-align: center;">
+        <h3 style="margin: 0; color: var(--accent); font-size: 2rem;">$40</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 15px;">Per Athlete Rate</p>
+        <a href="PASTE_PER_PERSON_LINK_HERE" class="btn-action">Pay Securely</a>
     </div>
 </section>
 
 <script>
     function showTab(tabId) {
-        // Hide all tabs
         const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Show the selected tab
-        const activeTab = document.getElementById(tabId);
-        if (activeTab) {
-            activeTab.classList.add('active');
-        }
-        
-        // Scroll to top
-        window.scrollTo(0, 0);
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        window.scrollTo(0,0);
     }
 </script>
 
