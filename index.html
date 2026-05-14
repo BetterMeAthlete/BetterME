@@ -3,110 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Elite Performance & Academy</title>
+    <title>Heartwork Academy</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
-    
-    :root {
-        --primary: #0f0f0f;      /* Deep Onyx */
-        --accent: #d4af37;       /* Metallic Gold */
-        --accent-bright: #f9d976; /* Vibrant Energy Gold */
-        --card: #1a1a1a;         /* Charcoal Card */
-        --text: #ffffff;
-        --text-dim: #a0a0a0;
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
+        
+        :root {
+            --bg: #f8f9fa;           /* Clean Steel Grey */
+            --card: #ffffff;         /* Action White */
+            --accent: #d4af37;       /* Heartwork Gold */
+            --text-main: #1a1a1a;    /* High Contrast Charcoal */
+            --text-muted: #666666;
+        }
 
-    body { 
-        font-family: 'Inter', sans-serif; 
-        background-color: var(--primary); 
-        color: var(--text); 
-        margin: 0; 
-        padding-bottom: 100px;
-        background-image: radial-gradient(circle at top right, #1a1a1a, #0f0f0f);
-    }
-    
-    /* Vibrant Navigation */
-    nav { 
-        background: rgba(15, 15, 15, 0.95); 
-        padding: 1.2rem 0.5rem; 
-        display: flex; 
-        justify-content: space-around; 
-        position: sticky; 
-        top: 0; 
-        z-index: 100; 
-        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-        backdrop-filter: blur(10px);
-    }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding-bottom: 100px;
+        }
+        
+        /* Fixed Navigation */
+        nav { 
+            background: #ffffff; 
+            padding: 1rem 0.5rem; 
+            display: flex; 
+            justify-content: space-around; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
 
-    nav a { 
-        color: var(--text-dim); 
-        text-decoration: none; 
-        font-weight: 700; 
-        font-size: 0.7rem; 
-        text-transform: uppercase; 
-        letter-spacing: 1px;
-        transition: 0.3s;
-    }
+        nav a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 0 10px;
+        }
 
-    nav a:hover, nav a.active-link { 
-        color: var(--accent); 
-    }
+        /* Logic to hide tabs - THIS FIXES YOUR ISSUE */
+        .tab-content { 
+            display: none; 
+            padding: 20px; 
+            max-width: 600px; 
+            margin: auto; 
+            animation: fadeIn 0.4s ease;
+        }
+        .active { display: block !important; }
 
-    /* High-Energy Cards */
-    .card { 
-        background: var(--card); 
-        padding: 24px; 
-        border-radius: 20px; 
-        margin-bottom: 20px; 
-        border: 1px solid rgba(255, 255, 255, 0.05); 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    h2 { 
-        font-family: 'Archivo Black', sans-serif; 
-        font-size: 1.4rem; 
-        text-transform: uppercase; 
-        background: linear-gradient(to right, var(--accent), var(--accent-bright));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 20px;
-    }
+        /* Card Styling - Empowered Look */
+        .card { 
+            background: var(--card); 
+            padding: 25px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
 
-    /* Vibrant Gradient Button */
-    .btn-action { 
-        background: linear-gradient(135deg, var(--accent) 0%, #b8860b 100%); 
-        color: #000; /* Black text on gold is very high-end */
-        padding: 16px; 
-        text-decoration: none; 
-        font-weight: 800; 
-        border-radius: 12px; 
-        display: block; 
-        width: 100%; 
-        box-sizing: border-box; 
-        text-align: center; 
-        border: none; 
-        text-transform: uppercase; 
-        letter-spacing: 1.5px;
-        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        transition: transform 0.2s;
-    }
+        h2 { 
+            font-family: 'Archivo Black', sans-serif; 
+            font-size: 1.5rem; 
+            color: var(--text-main);
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
 
-    .btn-action:active { transform: scale(0.98); }
+        /* Action Button */
+        .btn-action { 
+            background: var(--text-main); 
+            color: var(--accent); 
+            padding: 18px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            border-radius: 8px; 
+            display: block; 
+            width: 100%; 
+            box-sizing: border-box; 
+            text-align: center; 
+            border: none; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
 
-    /* Academy Grid Adjustments */
-    .module-icon {
-        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 15px;
-        border: 1px solid rgba(212, 175, 55, 0.2);
-    }
-</style>
+        .btn-action:hover { background: #333; }
 
+        .logo-container { text-align: center; padding: 40px 20px; }
+        .logo-img { width: 100%; max-width: 280px; height: auto; }
+        
+        /* Academy Grid */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    </style>
 </head>
 <body>
 
@@ -120,183 +119,77 @@
 </nav>
 
 <section id="locker-room" class="tab-content active">
-    <div style="text-align: center; padding: 25px 10px;">
-        <img src="logo.png" alt="Heartwork" style="width: 100%; max-width: 280px; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));">
+    <div class="logo-container">
+        <img src="logo.png" alt="Heartwork" class="logo-img" onerror="this.src='https://via.placeholder.com/300x150?text=HEARTWORK'">
     </div>
 
-    <div style="background: var(--card); padding: 30px; border-radius: 15px; border-left: 8px solid var(--accent); text-align: center; margin-top: 10px;">
-        <p id="daily-quote" style="font-size: 1.3rem; font-style: italic; line-height: 1.4;">"Elite character is built in the dark."</p>
-        <p id="quote-author" style="color: var(--accent); font-weight: bold; margin-top: 10px;">- Heartwork Philosophy</p>
-    </div>
-</section>
-
-<section id="events" class="tab-content">
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="logo.png" alt="Heartwork" style="width: 60px; opacity: 0.6; margin-bottom: 10px;">
-        <h2 style="border: none;">Workshop & Events</h2>
-    </div>
-    
-    <div class="card">
-        <img src="flyer.png" alt="Event Flyer" class="event-flyer" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
-        
-        <h3 style="color:var(--accent); margin-top: 20px;">Master The Craft Rundown</h3>
-        <ul style="font-size: 0.85rem; list-style: none; padding: 0; line-height: 2.2;">
-            <li>🍽️ 3:00 PM - 3:45 PM: Dine In & Set Tone</li>
-            <li>🎙️ 3:50 PM - 4:40 PM: Panel Discussion</li>
-            <li>📹 4:45 PM - 5:45 PM: Media Training</li>
-            <li>💰 5:50 PM - 6:50 PM: Money Matters</li>
-        </ul>
-
-        <a href="INSERT_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="btn-action" style="margin-top: 25px;">Secure My Spot</a>
+    <div class="card" style="border-top: 4px solid var(--accent);">
+        <p id="daily-quote" style="font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: #333;">"The standard is the standard. Elite character is non-negotiable."</p>
+        <p style="color: var(--accent); font-weight: bold; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase;">— Heartwork Philosophy</p>
     </div>
 </section>
-
 
 <section id="academy" class="tab-content">
-    <h2>Academy</h2>
-    <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 20px;">Micro-learning modules for the modern athlete.</p>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-        
-        <div class="card" style="margin-bottom: 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">🥗</div>
-                <h3 style="font-size: 0.9rem; margin: 0; color: var(--accent);">Elite Nutrition</h3>
-                <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.8;">Fueling for the 4th quarter.</p>
-            </div>
-            <button class="btn-action" style="padding: 8px; font-size: 0.7rem; margin-top: 10px;" onclick="alert('Module loading...')">Start</button>
+    <h2>Heartwork Academy</h2>
+    <div class="grid-2">
+        <div class="card" style="padding: 15px; text-align: center;">
+            <div style="font-size: 1.5rem;">🥗</div>
+            <p style="font-weight: 800; font-size: 0.7rem; margin: 10px 0;">NUTRITION</p>
+            <button class="btn-action" style="padding: 10px; font-size: 0.6rem;">Launch</button>
         </div>
-
-        <div class="card" style="margin-bottom: 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">💰</div>
-                <h3 style="font-size: 0.9rem; margin: 0; color: var(--accent);">Financial Literacy</h3>
-                <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.8;">Protecting your earnings.</p>
-            </div>
-            <button class="btn-action" style="padding: 8px; font-size: 0.7rem; margin-top: 10px;" onclick="alert('Module loading...')">Start</button>
+        <div class="card" style="padding: 15px; text-align: center;">
+            <div style="font-size: 1.5rem;">💰</div>
+            <p style="font-weight: 800; font-size: 0.7rem; margin: 10px 0;">FINANCE</p>
+            <button class="btn-action" style="padding: 10px; font-size: 0.6rem;">Launch</button>
         </div>
-
-        <div class="card" style="margin-bottom: 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">📱</div>
-                <h3 style="font-size: 0.9rem; margin: 0; color: var(--accent);">Digital Brand</h3>
-                <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.8;">Etiquette & Brand deals.</p>
-            </div>
-            <button class="btn-action" style="padding: 8px; font-size: 0.7rem; margin-top: 10px;" onclick="alert('Module loading...')">Start</button>
-        </div>
-
-        <div class="card" style="margin-bottom: 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">💼</div>
-                <h3 style="font-size: 0.9rem; margin: 0; color: var(--accent);">The Pro Biz</h3>
-                <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.8;">Contracts & networking.</p>
-            </div>
-            <button class="btn-action" style="padding: 8px; font-size: 0.7rem; margin-top: 10px;" onclick="alert('Module loading...')">Start</button>
-        </div>
-
-        <div class="card" style="margin-bottom: 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">🎯</div>
-                <h3 style="font-size: 0.9rem; margin: 0; color: var(--accent);">Target Setting</h3>
-                <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.8;">Mapping your 5-year plan.</p>
-            </div>
-            <button class="btn-action" style="padding: 8px; font-size: 0.7rem; margin-top: 10px;" onclick="alert('Module loading...')">Start</button>
-        </div>
-
-        <div class="card" style="margin-bottom: 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">🧠</div>
-                <h3 style="font-size: 0.9rem; margin: 0; color: var(--accent);">Mental Game</h3>
-                <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.8;">IQ and decision making.</p>
-            </div>
-            <button class="btn-action" style="padding: 8px; font-size: 0.7rem; margin-top: 10px;" onclick="alert('Module loading...')">Start</button>
-        </div>
-
     </div>
 </section>
-
 
 <section id="events" class="tab-content">
-    <h2>Workshop & Events</h2>
+    <h2>Master The Craft</h2>
     <div class="card">
-       <img src="./flyer.png" alt="Event Flyer" class="event-flyer" style="display: block; width: 100%; height: auto;" onerror="this.src='https://via.placeholder.com/400x500?text=Check+GitHub+Filename'">
-
-        
-        <h3 style="color:var(--accent)">Master The Craft Rundown</h3>
-        <ul style="font-size: 0.85rem; list-style: none; padding: 0; line-height: 2; margin-bottom: 20px;">
-            <li>🍽️ 3:00 PM - 3:45 PM: Dine In & Set Tone</li>
-            <li>🎙️ 3:50 PM - 4:40 PM: Panel Discussion</li>
-            <li>📹 4:45 PM - 5:45 PM: Media Training</li>
-            <li>💰 5:50 PM - 6:50 PM: Money Matters</li>
-        </ul>
-
-        <div style="border-top: 1px solid #444; padding-top: 20px;">
-            <h3>Register for Workshop</h3>
-            <div class="input-group">
-                <label>Athlete Name</label>
-                <input type="text" placeholder="Full Name">
-            </div>
-            <div class="input-group">
-                <label>Prep School / Academy</label>
-                <input type="text" placeholder="Current School Name">
-            </div>
-            <div class="input-group">
-                <label>Meal Preference</label>
-                <select>
-                    <option>Protein Bowl (Chicken)</option>
-                    <option>Energy Wrap (Turkey)</option>
-                    <option>Power Salad (Vegetarian)</option>
-                </select>
-            </div>
-            <div style="background: #2a2a2a; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                <label style="display: flex; align-items: center; gap: 10px; color: #fff; cursor: pointer; text-transform: none; font-size: 0.8rem;">
-                    <input type="checkbox" style="width: 20px;"> <span>I consent to Media/Photo Release</span>
-                </label>
-            </div>
-            <button class="btn-action" onclick="alert('Registration Sent!')">Secure My Spot</button>
-        </div>
-    </div>
-</section>
-
-<section id="planner" class="tab-content">
-    <h2>Athlete Planner</h2>
-    <div class="card">
-        <h3 style="color:var(--accent)">Goal Setting</h3>
-        <label>Daily Focus:</label>
-        <textarea rows="2" placeholder="What is the one thing you must win today?"></textarea>
+        <img src="flyer.png" alt="Flyer" style="width:100%; border-radius: 8px;" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
+        <p style="font-size: 0.9rem; margin-top: 15px;">September 27th | Elite Workshop</p>
+        <a href="#" class="btn-action">Secure My Spot</a>
     </div>
 </section>
 
 <section id="store" class="tab-content">
     <h2>Elite Store</h2>
-    <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="book-cover.jpg" alt="Point Guard Diary" class="book-cover" onerror="this.src='https://via.placeholder.com/180x250?text=Book+Cover'">
-        <h3 style="margin: 0;">Point Guard: A Diary</h3>
-        <p style="font-size: 0.8rem; color: var(--accent); font-weight: bold; margin: 5px 0 10px 0;">By Keeton Cole</p>
-        <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 10px; max-width: 250px;">Step into the mindset of a leader. Chronicles the discipline required to command the floor.</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="btn-action">BUY ON AMAZON</a>
+    <div class="card" style="text-align: center;">
+        <img src="book-cover.jpg" style="width: 150px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/150x200?text=Book'">
+        <h3>Point Guard: A Diary</h3>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keeton+Cole" target="_blank" class="btn-action">Buy on Amazon</a>
     </div>
 </section>
 
 <section id="payment" class="tab-content">
     <h2>Coach Office</h2>
-    <div class="card" style="text-align: center; padding: 40px 20px;">
-        <div style="font-size: 3rem; font-weight: 900; margin-bottom: 10px;">$650</div>
-        <p style="text-transform: uppercase; font-size: 0.7rem; color: var(--accent); margin-bottom: 30px;">Team Workshop Package</p>
-        <button class="btn-action" style="background: #000;" onclick="alert('Connecting to Stripe...')">Pay Securely</button>
+    <div class="card" style="text-align: center;">
+        <h1 style="font-size: 3rem; margin: 0;">$650</h1>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px;">Team Development Package</p>
+        <button class="btn-action">Pay Securely</button>
     </div>
 </section>
 
 <script>
     function showTab(tabId) {
+        // Hide all tabs
         const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        window.scrollTo(0,0);
-    }
-    window.onload = function() {
-        // Daily quote logic
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Show the selected tab
+        const activeTab = document.getElementById(tabId);
+        if (activeTab) {
+            activeTab.classList.add('active');
+        }
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
     }
 </script>
+
 </body>
 </html>
