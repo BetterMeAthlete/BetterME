@@ -44,7 +44,6 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
-        /* HERO LOGO CONTAINER */
         .hero-section { 
             text-align: center; 
             padding: 40px 20px; 
@@ -53,17 +52,15 @@
             align-items: center;
         }
 
-        /* EMBEDDED PURE LOGO (No Background Grid) */
-        .embedded-logo {
-            width: 100%;
-            max-width: 260px;
-            height: auto;
-            margin: 0 auto;
+        /* Your Real Logo Style */
+        .main-logo { 
+            width: 90%; 
+            max-width: 280px; 
+            height: auto; 
+            margin: 0 auto; 
             display: block;
-            filter: drop-shadow(0 12px 25px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 12px 25px rgba(0,0,0,0.5));
         }
-
-        .brand-text { font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; letter-spacing: 2px; margin: 15px 0 0 0; text-transform: uppercase; }
 
         .btn-gold { 
             background: var(--gold-gradient); 
@@ -122,23 +119,7 @@
 
 <section id="locker-room" class="tab-content active">
     <div class="hero-section">
-        <svg class="embedded-logo" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#d4af37" />
-                    <stop offset="50%" stop-color="#f9d976" />
-                    <stop offset="100%" stop-color="#b8860b" />
-                </linearGradient>
-                <linearGradient id="dark-sapphire" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#05183a" />
-                    <stop offset="100%" stop-color="#000714" />
-                </linearGradient>
-            </defs>
-            <path d="M160,240 C140,210 145,170 162,145 C142,165 140,195 150,220 C130,180 145,120 185,90 C175,115 178,145 190,162 C195,120 220,70 260,40 C245,85 240,135 212,172 C228,150 255,135 272,152 C295,175 285,225 255,248 C285,215 290,175 268,152 C245,185 220,195 200,195 C180,195 168,220 160,240 Z" fill="url(#gold)" />
-            <path d="M175,215 C165,195 170,165 185,145 C190,165 182,185 188,202 C195,175 210,140 235,120 C225,150 220,180 205,205 C215,190 230,185 240,195 C252,208 248,235 230,250 C210,232 190,232 175,215 Z" fill="url(#dark-sapphire)" />
-            <path d="M200,190 C190,175 175,175 175,190 C175,210 200,225 200,225 C200,225 225,210 225,190 C225,175 210,175 200,190 Z" fill="url(#dark-sapphire)" />
-        </svg>
-        <h1 class="brand-text">HEARTWORK</h1>
+        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
     
     <div class="card">
