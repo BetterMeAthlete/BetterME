@@ -6,19 +6,12 @@
     <title>Heartwork Academy | Keaton Cole</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;800&display=swap');
-        
-        :root {
-            --sapphire-top: #0a2e6b;
-            --sapphire-bottom: #000a1a;
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --text-gold: #d4af37;
-        }
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background: linear-gradient(to bottom, var(--sapphire-top), var(--sapphire-bottom));
-            color: white; 
+            background: #0a2e6b; /* Solid fallback */
+            background: linear-gradient(to bottom, #0a2e6b 0%, #000a1a 100%);
+            color: #ffffff; 
             margin: 0; 
             padding-bottom: 100px;
             min-height: 100vh;
@@ -26,57 +19,67 @@
         }
         
         nav { 
+            background: #000a1a;
             background: rgba(0, 10, 26, 0.95); 
-            padding: 1.2rem 0; 
+            padding: 20px 0; 
             display: flex; 
             justify-content: space-around; 
+            position: -webkit-sticky;
             position: sticky; 
             top: 0; 
             z-index: 1000; 
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            backdrop-filter: blur(15px);
         }
 
         nav a { 
-            color: #fff; 
+            color: #ffffff; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 0.8rem; 
+            font-size: 13px; 
             text-transform: uppercase; 
             opacity: 0.6; 
             cursor: pointer; 
         }
         nav a:hover { 
             opacity: 1; 
-            color: var(--text-gold); 
+            color: #d4af37; 
         }
 
-        /* CORE TAB MASTER RULES */
-        .tab-content { display: none; padding: 20px; max-width: 600px; margin: auto; }
-        .tab-content.active { display: block !important; }
+        /* HARD FALLBACK TAB MANAGEMENT */
+        .tab-content { 
+            display: none; 
+            visibility: hidden;
+            padding: 20px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        
+        /* Strict override rule */
+        section#locker-room.active,
+        section#academy.active,
+        section#events.active,
+        section#store.active { 
+            display: block !important; 
+            visibility: visible !important;
+        }
 
-        /* HERO LOGO CONTAINER */
         .hero-section { 
             text-align: center; 
-            padding: 50px 20px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 40px 20px; 
         }
 
-        /* HERO LOGO */
         .main-logo { 
             width: 100%; 
             max-width: 360px; 
             height: auto; 
             margin: 0 auto; 
             display: block;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
         }
 
         .btn-gold { 
-            background: var(--gold-gradient); 
-            color: #000; 
+            background: #d4af37;
+            background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
+            color: #000000; 
             padding: 18px 25px; 
             text-decoration: none !important; 
             font-weight: 800; 
@@ -87,26 +90,24 @@
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
-            font-size: 0.9rem; 
+            font-size: 14px; 
             letter-spacing: 1.5px;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); 
-            cursor: pointer;
             box-sizing: border-box; 
+            cursor: pointer;
         }
 
         .card { 
-            background: var(--card-bg); 
+            background: rgba(255, 255, 255, 0.08); 
             padding: 30px; 
             border-radius: 20px; 
             margin-bottom: 25px; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(10px);
             text-align: center; 
         }
 
         .label-gold { 
-            color: var(--text-gold); 
-            font-size: 0.8rem; 
+            color: #d4af37; 
+            font-size: 12px; 
             font-weight: 800; 
             text-transform: uppercase; 
             margin-bottom: 12px; 
@@ -114,13 +115,13 @@
             letter-spacing: 1.5px;
         }
         
-        /* ACADEMY DASHBOARD GRID */
         .academy-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 15px; 
             margin-top: 20px;
         }
+        
         .academy-panel { 
             background: rgba(255, 255, 255, 0.05); 
             border-radius: 16px; 
@@ -128,16 +129,12 @@
             text-align: center; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
             text-decoration: none;
-            color: #fff;
+            color: #ffffff;
             display: block;
         }
         
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
-        /* INTERACTIVE DROPDOWN STYLING */
-        .interactive-card {
-            cursor: pointer;
-        }
         .workshop-details {
             display: none;
             text-align: left;
@@ -146,10 +143,9 @@
             padding-top: 25px;
         }
         .workshop-details.open {
-            display: block;
+            display: block !important;
         }
         
-        /* Speaker Headshot Styling */
         .speaker-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -171,13 +167,9 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            border: 3px solid var(--text-gold);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+            border: 3px solid #d4af37;
         }
-        .speaker-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
-        .speaker-title { font-size: 0.75rem; opacity: 0.6; }
 
-        /* Timeline View */
         .rundown-item {
             display: flex;
             align-items: center;
@@ -190,14 +182,92 @@
         .rundown-time {
             padding: 10px;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 13px;
             min-width: 115px;
             color: #ff8033;
             text-align: center;
         }
         .rundown-block {
             flex-grow: 1;
-            background: var(--gold-gradient);
-            color: #000;
+            background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
+            color: #000000;
             padding: 12px 15px;
-            border-radius: 1
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 480px) {
+            .rundown-item { flex-direction: column; align-items: flex-start; padding: 12px; }
+            .rundown-time { padding: 0 0 8px 4px; text-align: left; min-width: auto; }
+            .rundown-block { width: 100%; box-sizing: border-box; text-align: left; }
+            .speaker-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a onclick="showTab('locker-room')">Locker</a>
+    <a onclick="showTab('academy')">Academy</a>
+    <a onclick="showTab('events')">Events</a>
+    <a onclick="showTab('store')">The Vault</a>
+</nav>
+
+<section id="locker-room" class="tab-content active">
+    <div class="hero-section">
+        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
+    </div>
+    
+    <div class="card" style="border-left: 4px solid #d4af37;">
+        <span class="label-gold">Keaton Cole Philosophy</span>
+        <p style="font-size: 22px; font-weight: 600; line-height: 1.4; margin: 5px 0;">"Elite character is non-negotiable."</p>
+    </div>
+
+    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
+        <span class="label-gold">⚡ WEEKLY FOCUS AUDIO</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 20px; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
+        <p style="font-size: 14px; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
+        
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div id="audioPlayBtn" onclick="toggleAudio()" style="width: 45px; height: 45px; background: #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 20px; cursor: pointer;">▶</div>
+                <div style="flex-grow: 1;">
+                    <div style="font-size: 13px; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px;">
+                        <div id="audioProgress" style="width: 0%; height: 100%; background: #d4af37; border-radius: 2px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px; opacity: 0.5; font-family: monospace;">
+                <span id="audioCurrentTime">0:00</span>
+                <span>4:12</span>
+            </div>
+        </div>
+        <audio id="lockerAudio" src="weekly-focus.mp3" preload="none"></audio>
+    </div>
+
+    <div class="card" style="text-align: left;">
+        <span class="label-gold">Pre-Game Calibration</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 18px; margin: 0 0 15px 0; text-transform: uppercase;">Tap to lock in your focus:</h3>
+        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer;">
+            <input type="checkbox" style="width: 18px; height: 18px;"> Next-Play Speed (Zero dwelling on mistakes)
+        </label>
+        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer;">
+            <input type="checkbox" style="width: 18px; height: 18px;"> Vocal Leadership (Be the loudest on the floor)
+        </label>
+        <label style="display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer;">
+            <input type="checkbox" style="width: 18px; height: 18px;"> Details & Discipline (Execute the small things)
+        </label>
+    </div>
+</section>
+
+<section id="academy" class="tab-content">
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h2 style="font-family:'Archivo Black'; color:#d4af37; margin-bottom: 5px; text-transform: uppercase;">Development Hub</h2>
+        <p style="font-size: 14px; opacity: 0.6; margin: 0;">Select a development pillar framework below</p>
+    </div>
+    
+    <div class="academy-grid">
+        <a href="YOUR_PLANNER_LINK_HERE" target="_blank" class="academy
