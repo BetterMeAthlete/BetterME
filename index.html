@@ -236,11 +236,56 @@
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
     
-    <div class="card">
+    <div class="card" style="border-left: 4px solid var(--text-gold);">
         <span class="label-gold">Keaton Cole Philosophy</span>
-        <p style="font-size: 1.4rem; font-weight: 600; line-height: 1.4;">"Elite character is non-negotiable."</p>
+        <p style="font-size: 1.4rem; font-weight: 600; line-height: 1.4; margin: 5px 0;">"Elite character is non-negotiable."</p>
+    </div>
+
+    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
+        <span class="label-gold" style="letter-spacing: 2px;">⚡ WEEKLY FOCUS AUDIO</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 1.2rem; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
+        <p style="font-size: 0.85rem; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
+        
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div id="audioPlayBtn" onclick="toggleAudio()" style="width: 45px; height: 45px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 10px rgba(212,175,55,0.3);">
+                    ▶
+                </div>
+                <div style="flex-grow: 1;">
+                    <div style="font-size: 0.85rem; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; position: relative;">
+                        <div id="audioProgress" style="width: 0%; height: 100%; background: var(--text-gold); border-radius: 2px; transition: width 0.5s linear;"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; opacity: 0.5; font-family: monospace;">
+                <span id="audioCurrentTime">0:00</span>
+                <span>4:12</span>
+            </div>
+        </div>
+        
+        <audio id="lockerAudio" src="weekly-focus.mp3" preload="none"></audio>
+    </div>
+
+    <div class="card" style="text-align: left;">
+        <span class="label-gold">Pre-Game Calibration</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 1.1rem; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.5px;">Tap to lock in your focus:</h3>
+        
+        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
+            <input type="checkbox" style="width: 18px; height: 18px; accent-color: #d4af37;">
+            Next-Play Speed (Zero dwelling on mistakes)
+        </label>
+        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
+            <input type="checkbox" style="width: 18px; height: 18px; accent-color: #d4af37;">
+            Vocal Leadership (Be the loudest on the floor)
+        </label>
+        <label style="display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
+            <input type="checkbox" style="width: 18px; height: 18px; accent-color: #d4af37;">
+            Details & Discipline (Execute the small things)
+        </label>
     </div>
 </section>
+
 
 <section id="academy" class="tab-content">
     <h2 style="font-family:'Archivo Black'; color:var(--text-gold); text-align:center;">Academy</h2>
