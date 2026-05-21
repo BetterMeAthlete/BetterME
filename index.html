@@ -11,6 +11,7 @@
             --sapphire-top: #0a2e6b;
             --sapphire-bottom: #000a1a;
             --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
+            --orange-gradient: linear-gradient(135deg, #e65c00 0%, #f9d976 100%);
             --card-bg: rgba(255, 255, 255, 0.08);
             --text-gold: #d4af37;
         }
@@ -44,7 +45,6 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
-        /* HERO LOGO CONTAINER */
         .hero-section { 
             text-align: center; 
             padding: 50px 20px; 
@@ -53,10 +53,9 @@
             align-items: center;
         }
 
-        /* SCALED UP HERO LOGO */
         .main-logo { 
             width: 100%; 
-            max-width: 360px; /* Scaled up for strong tablet presence */
+            max-width: 360px; 
             height: auto; 
             margin: 0 auto; 
             display: block;
@@ -80,7 +79,7 @@
             letter-spacing: 1.5px;
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); 
             cursor: pointer;
-            box-sizing: border-box; /* Fixes checkbox layout/leaking boxes */
+            box-sizing: border-box; 
         }
 
         .card { 
@@ -93,9 +92,8 @@
             text-align: center; 
         }
 
-        .label-gold { color: var(--text-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; }
+        .label-gold { color: var(--text-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;}
         
-        /* ACADEMY GRID - ENHANCED READABILITY */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .grid-item { 
             background: rgba(255,255,255,0.05); 
@@ -108,6 +106,98 @@
         .grid-item p { font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; margin: 0; }
         
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
+
+        /* UPGRADED INTERACTIVE EVENT DESIGN */
+        .interactive-card {
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .workshop-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            text-align: left;
+        }
+        .workshop-details.open {
+            max-height: 2500px;
+            transition: max-height 0.8s ease-in-out;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 25px;
+        }
+        
+        /* Speaker Visual Styling */
+        .speaker-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .speaker-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .speaker-avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #333 0%, #111 100%);
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 2px solid var(--text-gold);
+        }
+        .speaker-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
+        .speaker-title { font-size: 0.75rem; opacity: 0.6; }
+
+        /* Schedule Block Styling */
+        .rundown-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 6px;
+            border-left: 4px solid #e65c00;
+        }
+        .rundown-time {
+            padding: 10px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            min-width: 115px;
+            color: #ff8033;
+            text-align: center;
+        }
+        .rundown-arrow {
+            color: #ff8033;
+            font-weight: bold;
+            margin: 0 10px;
+            letter-spacing: -2px;
+        }
+        .rundown-block {
+            flex-grow: 1;
+            background: var(--gold-gradient);
+            color: #000;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .event-meta-info {
+            font-size: 0.9rem;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -145,22 +235,83 @@
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--text-gold);">Events & Focus</h2>
     
-    <div class="card" style="padding: 20px;">
-        <img src="flyer.png?v=3" style="width:100%; max-width: 450px; height:auto; border-radius:15px; display: block; margin: 0 auto 15px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" alt="Elite Workshop Flyer" onerror="this.src='https://via.placeholder.com/400x500?text=Flyer+Loading...'">
+    <div class="card interactive-card" onclick="toggleWorkshopDetails()">
+        <span class="label-gold" style="font-size: 0.75rem; color:#ff8033;">Tap to Expand Schedule & Speakers</span>
+        <h2 style="font-family:'Archivo Black'; font-size: 1.8rem; text-transform: uppercase; margin: 5px 0; letter-spacing: 0.5px; color:#fff;">Better Me Better Athlete</h2>
+        <p style="font-size:1.15rem; margin: 0 0 15px 0; font-weight: 700; color: var(--text-gold);">A Pro's Guide To The Sports Industry, Money & Media</p>
         
-        <h3 style="color:var(--text-gold); margin-top:20px; font-family:'Archivo Black'; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Elite Workshop</h3>
-        <p style="font-size:1.1rem; margin: 0 0 5px 0; font-weight: 600;">September 27th</p>
-        <p style="font-size:0.9rem; opacity: 0.7; margin-bottom: 20px;">Brampton, ON</p>
-        <button class="btn-gold" style="margin: 0 auto; width: 100%;">Register Now</button>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 20px; font-size: 0.95rem; opacity: 0.9;">
+            <div>📅 Sunday, Sept 27th, 2026</div>
+            <div>🕒 3:00 PM - 7:00 PM</div>
+            <div>📍 6 Westwyn Court, Brampton</div>
+        </div>
+
+        <button class="btn-gold" style="margin: 0 auto; width: 100%; pointer-events: none;">View Event Details</button>
+
+        <div id="workshopDropdown" class="workshop-details">
+            
+            <span class="label-gold">Featured Speakers</span>
+            <div class="speaker-container">
+                <div class="speaker-box">
+                    <div class="speaker-avatar">🎙️</div>
+                    <div class="speaker-name">Akil Augustine</div>
+                    <div class="speaker-title">Founder of MediaLit</div>
+                </div>
+                <div class="speaker-box">
+                    <div class="speaker-avatar">💼</div>
+                    <div class="speaker-name">Christopher Duff</div>
+                    <div class="speaker-title">Entrepreneur</div>
+                </div>
+            </div>
+
+            <p style="font-size:0.85rem; text-align:center; opacity:0.8; margin-bottom: 25px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
+                Panelists: Alex Johnson • Tyler Murray • Junior Cadougan
+            </p>
+
+            <span class="label-gold">Event Rundown</span>
+            
+            <div class="rundown-item">
+                <div class="rundown-time">3:00PM - 3:45PM</div>
+                <div class="rundown-arrow">>>>></div>
+                <div class="rundown-block">Dine In & Set The Tone</div>
+            </div>
+            
+            <div class="rundown-item">
+                <div class="rundown-time">3:50PM - 4:40PM</div>
+                <div class="rundown-arrow">>>>></div>
+                <div class="rundown-block">Panel Discussion</div>
+            </div>
+            
+            <div class="rundown-item">
+                <div class="rundown-time">4:45PM - 5:45PM</div>
+                <div class="rundown-arrow">>>>></div>
+                <div class="rundown-block">Media Training</div>
+            </div>
+            
+            <div class="rundown-item">
+                <div class="rundown-time">5:50PM - 6:50PM</div>
+                <div class="rundown-arrow">>>>></div>
+                <div class="rundown-block">Money Matters</div>
+            </div>
+
+            <p style="text-align: center; font-size: 0.9rem; font-weight: 800; margin: 20px 0; color: var(--text-gold);">
+                ⚡ CLOSING REMARKS • FOOD & SWAG INCLUDED ⚡
+            </p>
+
+            <a href="YOUR_REGISTRATION_LINK_HERE" target="_blank" class="btn-gold" style="margin: 20px auto 10px auto; width: 100%; text-decoration: none; display: block;" onclick="event.stopPropagation();">Secure My Seat</a>
+            
+            <div style="text-align: center; font-size: 0.75rem; opacity: 0.5; margin-top: 15px; line-height: 1.4;">
+                Contact: Keaton Cole | (647) 712-2144 | kreativekc89@gmail.com
+            </div>
+        </div>
     </div>
 
     <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2);">
         <span class="label-gold" style="letter-spacing: 2px; font-size: 0.75rem;">Feedback</span>
         <h3 style="font-family:'Archivo Black'; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; margin: 10px 0 15px 0; line-height: 1.3;">Workshop Survey</h3>
-        
         <p style="font-size: 1rem; opacity: 0.85; line-height: 1.5; max-width: 450px; margin: 0 auto 25px auto;">
+            Complete the development form to align your personal growth, character, and competitive mindset goals.
         </p>
-        
         <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold" style="margin: 0 auto; width: 100%; text-decoration: none;">Complete Form</a>
     </div>
 </section>
@@ -199,6 +350,11 @@
         const activeSection = document.getElementById(tabId);
         if(activeSection) activeSection.classList.add('active');
         window.scrollTo(0,0);
+    }
+
+    function toggleWorkshopDetails() {
+        const dropdown = document.getElementById('workshopDropdown');
+        dropdown.classList.toggle('open');
     }
 </script>
 
