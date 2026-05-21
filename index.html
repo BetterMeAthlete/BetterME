@@ -40,9 +40,8 @@
         nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; cursor: pointer; }
         nav a:hover { opacity: 1; color: var(--text-gold); }
 
-        /* TAB HANDLING */
+        /* TAB CONTAINER INITIAL HIDDEN STATES */
         .tab-content { display: none; padding: 20px; max-width: 600px; margin: auto; animation: fadeIn 0.4s ease; }
-        .active { display: block !important; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
@@ -233,7 +232,7 @@
     <a onclick="showTab('store')">The Vault</a>
 </nav>
 
-<section id="locker-room" class="tab-content active" style="display: block !important;">
+<section id="locker-room" class="tab-content">
     <div class="hero-section">
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
@@ -244,154 +243,4 @@
     </div>
 
     <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
-        <span class="label-gold" style="letter-spacing: 2px;">⚡ WEEKLY FOCUS AUDIO</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 1.2rem; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
-        <p style="font-size: 0.85rem; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
-        
-        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 10px;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div id="audioPlayBtn" onclick="toggleAudio()" style="width: 45px; height: 45px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 10px rgba(212,175,55,0.3);">
-                    ▶
-                </div>
-                <div style="flex-grow: 1;">
-                    <div style="font-size: 0.85rem; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
-                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; position: relative;">
-                        <div id="audioProgress" style="width: 0%; height: 100%; background: var(--text-gold); border-radius: 2px; transition: width 0.5s linear;"></div>
-                    </div>
-                </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; opacity: 0.5; font-family: monospace;">
-                <span id="audioCurrentTime">0:00</span>
-                <span>4:12</span>
-            </div>
-        </div>
-        
-        <audio id="lockerAudio" src="weekly-focus.mp3" preload="none"></audio>
-    </div>
-
-    <div class="card" style="text-align: left;">
-        <span class="label-gold">Pre-Game Calibration</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 1.1rem; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.5px;">Tap to lock in your focus:</h3>
-        
-        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
-            <input type="checkbox" style="width: 18px; height: 18px; accent-color: #d4af37;">
-            Next-Play Speed (Zero dwelling on mistakes)
-        </label>
-        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
-            <input type="checkbox" style="width: 18px; height: 18px; accent-color: #d4af37;">
-            Vocal Leadership (Be the loudest on the floor)
-        </label>
-        <label style="display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
-            <input type="checkbox" style="width: 18px; height: 18px; accent-color: #d4af37;">
-            Details & Discipline (Execute the small things)
-        </label>
-    </div>
-</section>
-
-<section id="academy" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; color:var(--text-gold); text-align:center;">Academy</h2>
-    <div class="grid-2">
-        <div class="grid-item"><div>🗓️</div><p>PLANNER</p></div>
-        <div class="grid-item"><div>🥗</div><p>NUTRITION</p></div>
-        <div class="grid-item"><div>💰</div><p>FINANCES</p></div>
-        <div class="grid-item"><div>📱</div><p>ETIQUETTE</p></div>
-        <div class="grid-item"><div>💼</div><p>BUSINESS IQ</p></div>
-        <div class="grid-item"><div>🧠</div><p>MENTAL GRIT</p></div>
-    </div>
-</section>
-
-<section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--text-gold);">Events & Focus</h2>
-    
-    <div class="card interactive-card" onclick="toggleWorkshopDetails()">
-        <span class="label-gold" style="font-size: 0.75rem; color:#ff8033;">Tap to Expand Schedule & Speakers</span>
-        <h2 style="font-family:'Archivo Black'; font-size: 1.8rem; text-transform: uppercase; margin: 5px 0; letter-spacing: 0.5px; color:#fff;">Better Me Better Athlete</h2>
-        <p style="font-size:1.15rem; margin: 0 0 15px 0; font-weight: 700; color: var(--text-gold);">A Pro's Guide To The Sports Industry, Money & Media</p>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 20px; font-size: 0.95rem; opacity: 0.9;">
-            <div>📅 Sunday, Sept 27th</div>
-            <div>🕒 3:00 PM - 7:00 PM</div>
-            <div>📍 6 Westwyn Court, Brampton</div>
-        </div>
-
-        <button class="btn-gold" style="margin: 0 auto; width: 100%; pointer-events: none;">View Event Details</button>
-
-        <div id="workshopDropdown" class="workshop-details">
-            
-            <span class="label-gold">Featured Speakers</span>
-            <div class="speaker-container">
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
-                    <div class="speaker-name">Akil Augustine</div>
-                    <div class="speaker-title">Founder of MediaLit</div>
-                </div>
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
-                    <div class="speaker-name">Christopher Duff</div>
-                    <div class="speaker-title">Entrepreneur</div>
-                </div>
-            </div>
-
-            <p style="font-size:0.85rem; text-align:center; opacity:0.8; margin-bottom: 25px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
-                Panelists: Alex Johnson • Tyler Murray • Junior Cadougan
-            </p>
-
-            <span class="label-gold">Event Rundown</span>
-            
-            <div class="rundown-item">
-                <div class="rundown-time">3:00PM - 3:45PM</div>
-                <div class="rundown-arrow">>>>></div>
-                <div class="rundown-block">Dine In & Set The Tone</div>
-            </div>
-            
-            <div class="rundown-item">
-                <div class="rundown-time">3:50PM - 4:40PM</div>
-                <div class="rundown-arrow">>>>></div>
-                <div class="rundown-block">Panel Discussion</div>
-            </div>
-            
-            <div class="rundown-item">
-                <div class="rundown-time">4:45PM - 5:45PM</div>
-                <div class="rundown-arrow">>>>></div>
-                <div class="rundown-block">Media Training</div>
-            </div>
-            
-            <div class="rundown-item">
-                <div class="rundown-time">5:50PM - 6:50PM</div>
-                <div class="rundown-arrow">>>>></div>
-                <div class="rundown-block">Money Matters</div>
-            </div>
-
-            <p style="text-align: center; font-size: 0.9rem; font-weight: 800; margin: 20px 0; color: var(--text-gold);">
-                ⚡ CLOSING REMARKS • FOOD & SWAG INCLUDED ⚡
-            </p>
-
-            <a href="YOUR_REGISTRATION_LINK_HERE" target="_blank" class="btn-gold" style="margin: 20px auto 10px auto; width: 100%; text-decoration: none; display: block;" onclick="event.stopPropagation();">Secure My Seat</a>
-            
-            <div style="text-align: center; font-size: 0.75rem; opacity: 0.5; margin-top: 15px; line-height: 1.4;">
-                Contact: Keaton Cole | (647) 712-2144 | kreativekc89@gmail.com
-            </div>
-        </div>
-    </div>
-
-    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2);">
-        <span class="label-gold" style="letter-spacing: 2px; font-size: 0.75rem;">Feedback</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; margin: 10px 0 15px 0; line-height: 1.3;">Workshop Survey</h3>
-        <p style="font-size: 1rem; opacity: 0.85; line-height: 1.5; max-width: 450px; margin: 0 auto 25px auto;">
-            Complete the development form to align your personal growth, character, and competitive mindset goals.
-        </p>
-        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold" style="margin: 0 auto; width: 100%; text-decoration: none;">Complete Form</a>
-    </div>
-</section>
-
-<section id="store" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center;">The Vault</h2>
-    
-    <div class="card">
-        <img src="book-cover.jpg" style="width: 160px; border-radius: 10px; margin-bottom: 15px;" alt="Book Cover" onerror="this.src='https://via.placeholder.com/150x220?text=Book+Cover'">
-        <p class="label-gold" style="font-size: 1.1rem;">Point Guard: A Diary</p>
-        <p style="font-size: 0.9rem; opacity: 0.7;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
-    </div>
-
-    
+        <span class="label-gold" style="letter-spacing: 2px;">⚡ WEEK
