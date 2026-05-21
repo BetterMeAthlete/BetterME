@@ -3,132 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heartwork Academy</title>
+    <title>Heartwork Academy | Keaton Cole</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;800&display=swap');
+        
+        :root {
+            --sapphire-top: #0a2e6b;
+            --sapphire-bottom: #000a1a;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --text-gold: #d4af37;
+        }
+
         body { 
-            font-family: Arial, sans-serif; 
-            background: #000a1a;
-            color: #ffffff; 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(to bottom, var(--sapphire-top), var(--sapphire-bottom));
+            color: white; 
             margin: 0; 
-            padding-bottom: 80px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+            background-attachment: fixed;
         }
         
         nav { 
-            background: #000000; 
-            padding: 20px 0; 
+            background: rgba(0, 10, 26, 0.95); 
+            padding: 1.2rem 0; 
             display: flex; 
             justify-content: space-around; 
             position: sticky; 
             top: 0; 
             z-index: 1000; 
-            border-bottom: 1px solid #d4af37;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(15px);
         }
 
         nav a { 
-            color: #ffffff; 
+            color: #fff; 
             text-decoration: none; 
-            font-weight: bold; 
-            font-size: 14px; 
+            font-weight: 700; 
+            font-size: 0.8rem; 
             text-transform: uppercase; 
-            cursor: pointer;
+            opacity: 0.6; 
+            cursor: pointer; 
+        }
+        nav a:hover { 
+            opacity: 1; 
+            color: var(--text-gold); 
         }
 
-        .tab-content { 
-            display: none; 
-            padding: 20px; 
-            max-width: 600px; 
-            margin: auto; 
-        }
-        
-        .tab-content.active { 
-            display: block !important; 
-        }
+        /* CORE TAB MASTER RULES */
+        .tab-content { display: none; padding: 20px; max-width: 600px; margin: auto; }
+        .tab-content.active { display: block !important; }
 
+        /* HERO LOGO CONTAINER */
         .hero-section { 
             text-align: center; 
-            padding: 40px 20px; 
+            padding: 50px 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* HERO LOGO */
         .main-logo { 
             width: 100%; 
-            max-width: 320px; 
+            max-width: 360px; 
             height: auto; 
-        }
-
-        .card { 
-            background: rgba(255, 255, 255, 0.1); 
-            padding: 25px; 
-            border-radius: 15px; 
-            margin-bottom: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center; 
+            margin: 0 auto; 
+            display: block;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
         }
 
         .btn-gold { 
-            background: #d4af37; 
-            color: #000000; 
-            padding: 15px 20px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-radius: 30px; 
+            background: var(--gold-gradient); 
+            color: #000; 
+            padding: 18px 25px; 
+            text-decoration: none !important; 
+            font-weight: 800; 
+            border-radius: 50px; 
             display: block; 
             width: 100%; 
-            margin: 15px auto; 
+            margin: 20px auto; 
             text-align: center; 
             border: none; 
-            text-transform: uppercase;
-            box-sizing: border-box;
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); 
+            cursor: pointer;
+            box-sizing: border-box; 
         }
 
+        .card { 
+            background: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            text-align: center; 
+        }
+
+        .label-gold { 
+            color: var(--text-gold); 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            margin-bottom: 12px; 
+            display: block; 
+            letter-spacing: 1.5px;
+        }
+        
+        /* ACADEMY DASHBOARD GRID */
         .academy-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 15px; 
             margin-top: 20px;
         }
-        
         .academy-panel { 
             background: rgba(255, 255, 255, 0.05); 
-            border-radius: 12px; 
+            border-radius: 16px; 
             padding: 20px 10px; 
             text-align: center; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
             text-decoration: none;
-            color: #ffffff;
+            color: #fff;
             display: block;
         }
+        
+        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
+        /* INTERACTIVE DROPDOWN STYLING */
+        .interactive-card {
+            cursor: pointer;
+        }
         .workshop-details {
             display: none;
             text-align: left;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 20px;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 25px;
         }
-        
         .workshop-details.open {
             display: block;
         }
-
+        
+        /* Speaker Headshot Styling */
         .speaker-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin: 15px 0;
+            margin: 20px 0;
         }
-
         .speaker-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 15px 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .speaker-headshot {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 3px solid var(--text-gold);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        }
+        .speaker-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
+        .speaker-title { font-size: 0.75rem; opacity: 0.6; }
+
+        /* Timeline View */
+        .rundown-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 8px;
+            border-left: 4px solid #e65c00;
+        }
+        .rundown-time {
             padding: 10px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            min-width: 115px;
+            color: #ff8033;
             text-align: center;
         }
+        .rundown-block {
+            flex-grow: 1;
+            background: var(--gold-gradient);
+            color: #000;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-        .rundown-item {
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
+        /* MOBILE RESPONSIVE TWEAKS */
+        @media (max-width: 480px) {
+            .rundown-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
+            }
+            .rundown-time {
+                padding: 0 0 8px 4px;
+                text-align: left;
+                min-width: auto;
+                font-size: 0.9rem;
+            }
+            .rundown-block {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px 12px;
+                font-size: 0.8rem;
+                text-align: left;
+            }
+            .speaker-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
         }
     </style>
 </head>
@@ -146,215 +248,27 @@
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
     
-    <div class="card" style="border-left: 4px solid #d4af37;">
-        <p style="font-size: 1.2rem; font-weight: bold; margin: 0;">"Elite character is non-negotiable."</p>
+    <div class="card" style="border-left: 4px solid var(--text-gold);">
+        <span class="label-gold">Keaton Cole Philosophy</span>
+        <p style="font-size: 1.4rem; font-weight: 600; line-height: 1.4; margin: 5px 0;">"Elite character is non-negotiable."</p>
     </div>
 
-    <div class="card" style="text-align: left;">
-        <h3 style="margin: 0 0 10px 0; color: #d4af37;">⚡ WEEKLY FOCUS AUDIO</h3>
-        <p style="margin: 0 0 15px 0; font-size: 0.9rem; opacity: 0.7;">Next-Play Speed — Coach Keaton Cole</p>
+    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
+        <span class="label-gold" style="letter-spacing: 2px;">⚡ WEEKLY FOCUS AUDIO</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 1.2rem; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
+        <p style="font-size: 0.85rem; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
         
-        <div style="background: #000; border-radius: 8px; padding: 15px;">
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; align-items: center; gap: 15px;">
-                <div id="audioPlayBtn" onclick="toggleAudio()" style="width: 40px; height: 40px; background: #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.2rem; cursor: pointer;">
+                <div id="audioPlayBtn" onclick="toggleAudio()" style="width: 45px; height: 45px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 10px rgba(212,175,55,0.3);">
                     ▶
                 </div>
                 <div style="flex-grow: 1;">
-                    <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
-                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px;">
-                        <div id="audioProgress" style="width: 0%; height: 100%; background: #d4af37; border-radius: 2px;"></div>
+                    <div style="font-size: 0.85rem; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; position: relative;">
+                        <div id="audioProgress" style="width: 0%; height: 100%; background: var(--text-gold); border-radius: 2px;"></div>
                     </div>
                 </div>
             </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; opacity: 0.5; margin-top: 5px;">
-                <span id="audioCurrentTime">0:00</span>
-                <span>4:12</span>
-            </div>
-        </div>
-        <audio id="lockerAudio" src="weekly-focus.mp3" preload="none"></audio>
-    </div>
-
-    <div class="card" style="text-align: left;">
-        <h3 style="margin: 0 0 15px 0; color: #d4af37;">Pre-Game Calibration</h3>
-        <label style="display: block; margin-bottom: 10px; cursor: pointer;">
-            <input type="checkbox" style="margin-right: 10px;"> Next-Play Speed
-        </label>
-        <label style="display: block; margin-bottom: 10px; cursor: pointer;">
-            <input type="checkbox" style="margin-right: 10px;"> Vocal Leadership
-        </label>
-        <label style="display: block; cursor: pointer;">
-            <input type="checkbox" style="margin-right: 10px;"> Details & Discipline
-        </label>
-    </div>
-</section>
-
-<section id="academy" class="tab-content">
-    <h2 style="color: #d4af37; text-align: center; text-transform: uppercase;">Development Hub</h2>
-    
-    <div class="academy-grid">
-        <a href="YOUR_PLANNER_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 1.5rem; margin-bottom: 5px;">🗓️</div>
-            <div style="font-weight: bold; font-size: 0.9rem;">Planner</div>
-            <div style="font-size: 0.75rem; opacity: 0.5;">Time Mastery</div>
-        </a>
-        
-        <a href="YOUR_NUTRITION_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 1.5rem; margin-bottom: 5px;">🥗</div>
-            <div style="font-weight: bold; font-size: 0.9rem;">Nutrition</div>
-            <div style="font-size: 0.75rem; opacity: 0.5;">Fuel & Recovery</div>
-        </a>
-        
-        <a href="YOUR_FINANCES_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 1.5rem; margin-bottom: 5px;">💰</div>
-            <div style="font-weight: bold; font-size: 0.9rem;">Finances</div>
-            <div style="font-size: 0.75rem; opacity: 0.5;">Wealth Building</div>
-        </a>
-        
-        <a href="YOUR_ETIQUETTE_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 1.5rem; margin-bottom: 5px;">📱</div>
-            <div style="font-weight: bold; font-size: 0.9rem;">Etiquette</div>
-            <div style="font-size: 0.75rem; opacity: 0.5;">Brand & Media</div>
-        </a>
-        
-        <a href="YOUR_BUSINESS_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 1.5rem; margin-bottom: 5px;">💼</div>
-            <div style="font-weight: bold; font-size: 0.9rem;">Business IQ</div>
-            <div style="font-size: 0.75rem; opacity: 0.5;">Pro Sports</div>
-        </a>
-        
-        <a href="YOUR_MENTAL_GRIT_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 1.5rem; margin-bottom: 5px;">🧠</div>
-            <div style="font-weight: bold; font-size: 0.9rem;">Mental Grit</div>
-            <div style="font-size: 0.75rem; opacity: 0.5;">Mindset</div>
-        </a>
-    </div>
-</section>
-
-<section id="events" class="tab-content">
-    <h2 style="text-align: center; color: #d4af37;">Events & Focus</h2>
-    
-    <div class="card" onclick="toggleWorkshopDetails()" style="cursor: pointer;">
-        <span style="font-size: 0.75rem; color: #d4af37;">Tap to Expand Details</span>
-        <h2 style="margin: 5px 0; text-transform: uppercase;">Better Me Better Athlete</h2>
-        <p style="margin: 0 0 15px 0; font-weight: bold; color: #d4af37;">Industry, Money & Media</p>
-        
-        <div style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">
-            <div>📅 Sunday, Sept 27th</div>
-            <div>🕒 3:00 PM - 7:00 PM</div>
-            <div>📍 Brampton, ON</div>
-        </div>
-
-        <div class="btn-gold">View Event Details</div>
-
-        <div id="workshopDropdown" class="workshop-details">
-            <p style="font-weight: bold; color: #d4af37; margin-bottom: 5px;">Featured Speakers:</p>
-            <div class="speaker-container">
-                <div class="speaker-box">
-                    <div style="font-weight: bold; font-size: 0.9rem;">Akil Augustine</div>
-                    <div style="font-size: 0.75rem; opacity: 0.6;">MediaLit</div>
-                </div>
-                <div class="speaker-box">
-                    <div style="font-weight: bold; font-size: 0.9rem;">Christopher Duff</div>
-                    <div style="font-size: 0.75rem; opacity: 0.6;">Entrepreneur</div>
-                </div>
-            </div>
-
-            <p style="font-weight: bold; color: #d4af37; margin: 15px 0 5px 0;">Event Rundown:</p>
-            <div class="rundown-item"><strong>3:00PM</strong> - Dine In & Set Tone</div>
-            <div class="rundown-item"><strong>3:50PM</strong> - Panel Discussion</div>
-            <div class="rundown-item"><strong>4:45PM</strong> - Media Training</div>
-            <div class="rundown-item"><strong>5:50PM</strong> - Money Matters</div>
-
-            <a href="YOUR_REGISTRATION_LINK_HERE" target="_blank" class="btn-gold" onclick="event.stopPropagation();">Secure My Seat</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3 style="margin: 0 0 10px 0; text-transform: uppercase;">Workshop Survey</h3>
-        <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px;">Complete the form to map out your competitive growth goals.</p>
-        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
-    </div>
-</section>
-
-<section id="store" class="tab-content">
-    <h2 style="text-align: center; color: #d4af37;">The Vault</h2>
-    
-    <div class="card">
-        <p style="font-weight: bold; color: #d4af37; margin: 0;">Point Guard: A Diary</p>
-        <p style="font-size: 0.85rem; opacity: 0.7; margin: 5px 0 15px 0;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
-    </div>
-
-    <div class="card">
-        <h3 style="font-size: 2rem; margin: 0; color: #d4af37;">$650</h3>
-        <p style="font-size: 0.9rem; margin: 5px 0 15px 0; font-weight: bold;">Team Workshop Package</p>
-        <a href="YOUR_STRIPE_LINK_650" class="btn-gold">Secure Checkout</a>
-    </div>
-
-    <div class="card">
-        <h3 style="font-size: 2rem; margin: 0; color: #d4af37;">$40</h3>
-        <p style="font-size: 0.9rem; margin: 5px 0 15px 0; font-weight: bold;">Per Athlete Rate</p>
-        <a href="YOUR_STRIPE_LINK_40" class="btn-gold">Secure Checkout</a>
-    </div>
-</section>
-
-<script>
-    function showTab(tabId) {
-        var sections = document.querySelectorAll('.tab-content');
-        for (var i = 0; i < sections.length; i++) {
-            sections[i].classList.remove('active');
-        }
-        var activeSection = document.getElementById(tabId);
-        if (activeSection) {
-            activeSection.classList.add('active');
-        }
-        window.scrollTo(0, 0);
-    }
-
-    function toggleWorkshopDetails() {
-        var dropdown = document.getElementById('workshopDropdown');
-        if (dropdown) {
-            dropdown.classList.toggle('open');
-        }
-    }
-
-    var audioPlaying = false;
-    var fakeInterval;
-
-    function toggleAudio() {
-        var playBtn = document.getElementById('audioPlayBtn');
-        var progress = document.getElementById('audioProgress');
-        var timeDisplay = document.getElementById('audioCurrentTime');
-        
-        audioPlaying = !audioPlaying;
-        
-        if (audioPlaying) {
-            if (playBtn) playBtn.innerText = "⏸";
-            var pct = 0;
-            var secs = 0;
-            fakeInterval = setInterval(function() {
-                if (pct >= 100) {
-                    clearInterval(fakeInterval);
-                    if (playBtn) playBtn.innerText = "▶";
-                    audioPlaying = false;
-                    if (progress) progress.style.width = "0%";
-                    if (timeDisplay) timeDisplay.innerText = "0:00";
-                    return;
-                }
-                pct += 0.4;
-                secs += 1;
-                if (progress) progress.style.width = pct + "%";
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; opacity: 0.5; font-family: monospace;">
                 
-                var m = Math.floor(secs / 60);
-                var s = secs % 60;
-                if (timeDisplay) timeDisplay.innerText = m + ":" + (s < 10 ? "0" : "") + s;
-            }, 1000);
-        } else {
-            if (playBtn) playBtn.innerText = "▶";
-            clearInterval(fakeInterval);
-        }
-    }
-</script>
-
-</body>
-</html>
