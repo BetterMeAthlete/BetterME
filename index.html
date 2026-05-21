@@ -11,7 +11,6 @@
             --sapphire-top: #0a2e6b;
             --sapphire-bottom: #000a1a;
             --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            --orange-gradient: linear-gradient(135deg, #e65c00 0%, #f9d976 100%);
             --card-bg: rgba(255, 255, 255, 0.08);
             --text-gold: #d4af37;
         }
@@ -45,6 +44,7 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
+        /* HERO LOGO CONTAINER */
         .hero-section { 
             text-align: center; 
             padding: 50px 20px; 
@@ -53,6 +53,7 @@
             align-items: center;
         }
 
+        /* SCALED UP HERO LOGO */
         .main-logo { 
             width: 100%; 
             max-width: 360px; 
@@ -94,6 +95,7 @@
 
         .label-gold { color: var(--text-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;}
         
+        /* ACADEMY GRID */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .grid-item { 
             background: rgba(255,255,255,0.05); 
@@ -107,10 +109,10 @@
         
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
-        /* UPGRADED INTERACTIVE EVENT DESIGN */
+        /* INTERACTIVE DROPDOWN STYLING */
         .interactive-card {
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
+            transition: background 0.3s ease;
         }
         .workshop-details {
             max-height: 0;
@@ -126,7 +128,7 @@
             padding-top: 25px;
         }
         
-        /* Speaker Visual Styling */
+        /* Dynamic Headshot Auto-Cropping CSS */
         .speaker-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -134,28 +136,27 @@
             margin: 20px 0;
         }
         .speaker-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
             padding: 15px 10px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
         }
-        .speaker-avatar {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #333 0%, #111 100%);
+        .speaker-headshot {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 12px auto;
             border-radius: 50%;
-            margin: 0 auto 10px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            border: 2px solid var(--text-gold);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 3px solid var(--text-gold);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
         }
         .speaker-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
         .speaker-title { font-size: 0.75rem; opacity: 0.6; }
 
-        /* Schedule Block Styling */
+        /* Schedule Timeline Styling */
         .rundown-item {
             display: flex;
             align-items: center;
@@ -189,14 +190,6 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .event-meta-info {
-            font-size: 0.9rem;
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
     </style>
 </head>
@@ -253,12 +246,12 @@
             <span class="label-gold">Featured Speakers</span>
             <div class="speaker-container">
                 <div class="speaker-box">
-                    <div class="speaker-avatar">🎙️</div>
+                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
                     <div class="speaker-name">Akil Augustine</div>
                     <div class="speaker-title">Founder of MediaLit</div>
                 </div>
                 <div class="speaker-box">
-                    <div class="speaker-avatar">💼</div>
+                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
                     <div class="speaker-name">Christopher Duff</div>
                     <div class="speaker-title">Entrepreneur</div>
                 </div>
