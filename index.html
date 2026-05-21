@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Heartwork Academy | Keaton Cole</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;800&display=swap');
         
         :root {
             --sapphire-top: #0a2e6b;
@@ -128,7 +128,7 @@
             padding-top: 25px;
         }
         
-        /* Dynamic Headshot Auto-Cropping CSS */
+        /* Speaker Headshot Auto-Cropping */
         .speaker-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -156,14 +156,14 @@
         .speaker-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
         .speaker-title { font-size: 0.75rem; opacity: 0.6; }
 
-        /* Schedule Timeline Styling */
+        /* TABLET & DEFAULT RUNDOWN TIMELINE STYLING */
         .rundown-item {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
-            padding: 6px;
+            padding: 8px;
             border-left: 4px solid #e65c00;
         }
         .rundown-time {
@@ -190,6 +190,35 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* 📱 RESPONSIVE MOBILE FIXES FOR SMALLER SCREENS */
+        @media (max-width: 480px) {
+            .rundown-item {
+                flex-direction: column; /* Stack time over detail block */
+                align-items: flex-start;
+                padding: 12px;
+            }
+            .rundown-time {
+                padding: 0 0 8px 4px;
+                text-align: left;
+                min-width: auto;
+                font-size: 0.9rem;
+            }
+            .rundown-arrow {
+                display: none; /* Hide crowded arrows on small screens */
+            }
+            .rundown-block {
+                width: 100%; /* Make block span full text width */
+                box-sizing: border-box;
+                padding: 10px 12px;
+                font-size: 0.8rem;
+                text-align: left;
+            }
+            .speaker-container {
+                grid-template-columns: 1fr; /* Stack speakers vertically on mobile if needed */
+                gap: 12px;
+            }
         }
     </style>
 </head>
@@ -345,6 +374,7 @@
         window.scrollTo(0,0);
     }
 
+    // Interactive expansion toggle
     function toggleWorkshopDetails() {
         const dropdown = document.getElementById('workshopDropdown');
         dropdown.classList.toggle('open');
