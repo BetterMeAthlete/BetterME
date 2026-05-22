@@ -44,7 +44,7 @@
             color: #d4af37; 
         }
 
-        /* Pure CSS Tab Controller (No Javascript Needed) */
+        /* Pure CSS Tab Controller */
         .tab-content { 
             display: none; 
             padding: 20px; 
@@ -52,17 +52,14 @@
             margin: 0 auto; 
         }
 
-        /* Show Locker Room by default when no tab is selected yet */
         #locker-room {
             display: block;
         }
 
-        /* Hide default locker room if another tab becomes the active target */
         body:has(:target) #locker-room {
             display: none;
         }
 
-        /* Rule to display the explicitly targeted section */
         :target {
             display: block !important;
         }
@@ -108,6 +105,21 @@
             text-align: center; 
         }
 
+        /* Interactive Details Styling override */
+        details.card {
+            padding: 0;
+            overflow: hidden;
+        }
+        summary.card-summary-trigger {
+            padding: 30px;
+            list-style: none;
+            outline: none;
+            cursor: pointer;
+        }
+        summary.card-summary-trigger::-webkit-details-marker {
+            display: none;
+        }
+
         .label-gold { 
             color: #d4af37; 
             font-size: 12px; 
@@ -138,12 +150,11 @@
         
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
-        /* Safe alternative to layout toggles */
         .workshop-details {
             text-align: left;
-            margin-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 25px;
+            padding: 25px 30px 30px 30px;
+            background: rgba(0, 0, 0, 0.15);
         }
         
         .speaker-container {
@@ -238,18 +249,18 @@
         </div>
     </div>
 
-    <div class="card" style="text-align: left;">
-        <span class="label-gold">Pre-Game Calibration</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 18px; margin: 0 0 15px 0; text-transform: uppercase;">Lock in your focus:</h3>
-        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer;">
-            <input type="checkbox" style="width: 18px; height: 18px;"> Next-Play Speed (Zero dwelling on mistakes)
-        </label>
-        <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; cursor: pointer;">
-            <input type="checkbox" style="width: 18px; height: 18px;"> Vocal Leadership (Be the loudest on the floor)
-        </label>
-        <label style="display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer;">
-            <input type="checkbox" style="width: 18px; height: 18px;"> Details & Discipline (Execute the small things)
-        </label>
+    <div class="card" style="text-align: left; padding: 30px;">
+        <span class="label-gold">The Vision</span>
+        <p style="font-size: 16px; font-weight: 600; line-height: 1.6; margin: 0 0 25px 0; color: #ffffff;">
+            To build an elite generation of athletes who dominate the floor, master their minds, and lead with unshakeable character.
+        </p>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <span class="label-gold">The Mission</span>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0; color: rgba(255,255,255,0.85);">
+                Empowering players to align their habits with their ambitions through premium athletic development, business execution, and media literacy framework.
+            </p>
+        </div>
     </div>
 </section>
 
@@ -296,15 +307,19 @@
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">Events & Focus</h2>
     
-    <div class="card">
-        <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
-        <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 20px; font-size: 15px;">
-            <div>📅 Sunday, Sept 27th</div>
-            <div>🕒 3:00 PM - 7:00 PM</div>
-            <div>📍 Brampton, ON</div>
-        </div>
+    <details class="card">
+        <summary class="card-summary-trigger">
+            <span class="label-gold" style="color:#ff8033; margin-bottom: 5px;">👇 Tap to Expand Schedule & Speakers</span>
+            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
+            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
+                <div>📅 Sunday, Sept 27th</div>
+                <div>🕒 3:00 PM - 7:00 PM</div>
+                <div>📍 Brampton, ON</div>
+            </div>
+            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
+        </summary>
 
         <div class="workshop-details">
             <span class="label-gold">Featured Speakers</span>
@@ -341,7 +356,7 @@
 
             <a href="YOUR_REGISTRATION_LINK_HERE" target="_blank" class="btn-gold">Secure My Seat</a>
         </div>
-    </div>
+    </details>
 
     <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2);">
         <span class="label-gold">Feedback</span>
