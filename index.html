@@ -38,22 +38,20 @@
             font-size: 13px; 
             text-transform: uppercase; 
             opacity: 0.7; 
+            cursor: pointer;
         }
-        nav a:hover { 
+        nav a:hover, nav a.active-tab { 
             opacity: 1; 
             color: #d4af37; 
         }
 
+        /* JavaScript Controlled Tab Engine */
         .tab-content { 
             display: none; 
             padding: 20px; 
             max-width: 700px; 
             margin: 0 auto; 
         }
-
-        #locker-room { display: block; }
-        body:has(:target) #locker-room { display: none; }
-        :target { display: block !important; }
 
         .hero-section { text-align: center; padding: 40px 20px; }
         .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
@@ -182,10 +180,10 @@
 <body>
 
 <nav>
-    <a href="#locker-room">Locker</a>
-    <a href="#academy">Academy</a>
-    <a href="#events">Events</a>
-    <a href="#store">The Vault</a>
+    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker</a>
+    <a id="tab-link-academy" onclick="switchTab('academy')">Academy</a>
+    <a id="tab-link-events" onclick="switchTab('events')">Events</a>
+    <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
 <section id="locker-room" class="tab-content">
@@ -194,8 +192,8 @@
     </div>
     
     <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Program Philosophy</span>
-        <p style="font-size: 21px; font-weight: 600; line-height: 1.4; margin: 5px 0;">"Building athletes outside the game."</p>
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Program Objective</span>
+        <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
     </div>
 
     <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
@@ -203,4 +201,135 @@
         <h3 style="font-family:'Archivo Black'; font-size: 20px; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
         <p style="font-size: 14px; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
         
-        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding:
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px;">
+            <div style="flex-grow: 1;">
+                <div style="font-size: 13px; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
+                <div style="font-size: 12px; opacity: 0.5; font-family: monospace;">Duration: 4:12</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="text-align: left; padding: 30px;">
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Coaching Challenge & Vision</span>
+        <p style="font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; color: rgba(255,255,255,0.95);">
+            Coaches wear many hats as leaders. They are role models, guardians and mentors. Their priorities include but are not limited to training, scheduling logistics, athletes safety & wellness, academics and of course winning. The amount of time and dedication they assume for themselves and athletes is that which creates true legacy and success, that is carried with pride.
+        </p>
+        <p style="font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; color: rgba(255,255,255,0.95);">
+            What if our athletes were to dedicate time to enrich their lives, for both on and off the court? Kourtside Excellence has been created as a development staple in the complexity of being an athlete, that benefits them in the here and now, and guides them into their respective futures.
+        </p>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Kourtside Mission</span>
+            <p style="font-size: 14px; line-height: 1.65; margin: 0; color: rgba(255,255,255,0.85);">
+                Kourtside Excellence is here to bridge that gap. Through educational, lived experience, and knowledge acquired, and Expert insights Kourtside Excellence will foster an atmosphere to build your athletes outside the game. We aim to develop their ability to adapt and apply the skills learned from sports to various life scenarios.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="academy" class="tab-content" style="max-width: 1050px;">
+    <div style="text-align: center; margin-bottom: 15px;">
+        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px;">ONLINE ACADEMY CHANNEL</span>
+        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: 0.5px;">Beyond The Court</h2>
+        <p style="font-size: 13px; opacity: 0.6; margin: 0; color: #d4af37; font-weight: 600;">Preparing for a Professional Basketball Career and Achievable Life</p>
+    </div>
+
+    <div class="lms-layout">
+        <div class="lms-sidebar">
+            <div class="lms-phase-title">Module 1: Foundations</div>
+            <div class="lms-nav-item" id="nav-l1" onclick="loadLesson(1)">1.1 Athlete Mindset</div>
+            <div class="lms-nav-item" id="nav-l2" onclick="loadLesson(2)">1.2 Craft & Recovery</div>
+            
+            <div class="lms-phase-title">Module 2: BusinessIQ</div>
+            <div class="lms-nav-item" id="nav-l3" onclick="loadLesson(3)">2.1 Sports Agencies</div>
+            <div class="lms-nav-item" id="nav-l4" onclick="loadLesson(4)">2.2 Financial Literacy</div>
+            <div class="lms-nav-item" id="nav-l5" onclick="loadLesson(5)">2.3 Branding & Media</div>
+            
+            <div class="lms-phase-title">Module 3: Life After</div>
+            <div class="lms-nav-item" id="nav-l6" onclick="loadLesson(6)">3.1 Career Exploration</div>
+            <div class="lms-nav-item" id="nav-l7" onclick="loadLesson(7)">3.2 Transitions & Well-Being</div>
+        </div>
+
+        <div class="lms-player-window">
+            <div class="video-placeholder">
+                <div class="video-play-icon">▶</div>
+                <div id="player-banner-tag" style="font-size: 10px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">UNIT 1.1</div>
+                <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 17px; margin: 0; text-transform: uppercase; color: #ffffff;">The Athlete's Mindset</h3>
+            </div>
+
+            <div id="player-body" style="padding: 25px; font-size: 14px; line-height: 1.65; background: rgba(0,0,0,0.25); max-height: 420px; overflow-y: auto; box-sizing: border-box;">
+                </div>
+
+            <div style="background: rgba(0,0,0,0.5); padding: 15px 25px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                    <input type="checkbox" id="lesson-check" style="accent-color: #000; margin: 0; width: 14px; height: 14px;"> Mark Unit Completed
+                </label>
+                <button class="btn-gold" style="padding: 10px 20px; border-radius: 4px;" onclick="nextLesson()">Advance Unit →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="events" class="tab-content">
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">Events & Focus</h2>
+    
+    <details class="card">
+        <summary style="cursor: pointer; outline: none; list-style: none;">
+            <span style="color:#ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1.5px;">👇 Tap to Expand Schedule & Speakers</span>
+            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
+            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
+                <div>📅 Sunday, Sept 27th</div>
+                <div>🕒 3:00 PM - 7:00 PM</div>
+                <div>📍 Brampton, ON</div>
+            </div>
+            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
+        </summary>
+
+        <div class="workshop-details" style="margin-top: 20px;">
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
+            <div class="speaker-container">
+                <div class="speaker-box">
+                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
+                    <div class="speaker-name">Akil Augustine</div>
+                    <div class="speaker-title">MediaLit</div>
+                </div>
+                <div class="speaker-box">
+                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
+                    <div class="speaker-name">Christopher Duff</div>
+                    <div class="speaker-title">Entrepreneur</div>
+                </div>
+            </div>
+
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Event Rundown</span>
+            <div class="rundown-item">
+                <div class="rundown-time">3:00PM - 3:45PM</div>
+                <div class="rundown-block">Dine In & Set Tone</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">3:50PM - 4:40PM</div>
+                <div class="rundown-block">Panel Discussion</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">4:45PM - 5:45PM</div>
+                <div class="rundown-block">Media Training</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">5:50PM - 6:50PM</div>
+                <div class="rundown-block">Money Matters</div>
+            </div>
+
+            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="margin-top: 15px; display: block;">Secure My Seat</a>
+        </div>
+    </details>
+
+    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
+        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
+    </div>
+</section>
+
+<section id="store" class="tab-content">
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">
