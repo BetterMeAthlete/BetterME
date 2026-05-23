@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Heartwork Academy | Keaton Cole</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;700;800&display=swap');
 
         body { 
             font-family: 'Inter', sans-serif; 
@@ -44,7 +44,6 @@
             color: #d4af37; 
         }
 
-        /* Pure CSS Tab Controller */
         .tab-content { 
             display: none; 
             padding: 20px; 
@@ -52,48 +51,28 @@
             margin: 0 auto; 
         }
 
-        #locker-room {
-            display: block;
-        }
+        #locker-room { display: block; }
+        body:has(:target) #locker-room { display: none; }
+        :target { display: block !important; }
 
-        body:has(:target) #locker-room {
-            display: none;
-        }
-
-        :target {
-            display: block !important;
-        }
-
-        .hero-section { 
-            text-align: center; 
-            padding: 40px 20px; 
-        }
-
-        .main-logo { 
-            width: 100%; 
-            max-width: 360px; 
-            height: auto; 
-            margin: 0 auto; 
-            display: block;
-        }
+        .hero-section { text-align: center; padding: 40px 20px; }
+        .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
 
         .btn-gold { 
             background: #d4af37;
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
             color: #000000; 
-            padding: 18px 25px; 
+            padding: 15px 25px; 
             text-decoration: none !important; 
             font-weight: 800; 
             border-radius: 50px; 
-            display: block; 
-            width: 100%; 
-            margin: 20px auto; 
+            display: inline-block;
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
-            font-size: 14px; 
+            font-size: 12px; 
             letter-spacing: 1.5px;
-            box-sizing: border-box; 
+            cursor: pointer;
         }
 
         .card { 
@@ -102,140 +81,119 @@
             border-radius: 20px; 
             margin-bottom: 25px; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            text-align: center; 
         }
 
-        /* Interactive Details Styling override */
-        details.card {
-            padding: 0;
-            overflow: hidden;
-        }
-        summary.card-summary-trigger {
-            padding: 30px;
-            list-style: none;
-            outline: none;
-            cursor: pointer;
-        }
-        summary.card-summary-trigger::-webkit-details-marker {
-            display: none;
-        }
-        
-        .academy-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px; 
-            margin-top: 20px;
-        }
-        
-        .academy-panel { 
-            background: rgba(255, 255, 255, 0.05); 
-            border-radius: 16px; 
-            padding: 20px 10px; 
-            text-align: center; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            text-decoration: none;
-            color: #ffffff;
-            display: block;
-        }
-        
-        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
-
-        .workshop-details {
-            text-align: left;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 25px 30px 30px 30px;
-            background: rgba(0, 0, 0, 0.15);
-        }
-        
-        .speaker-container {
+        /* ONLINE COURSE PLATFORM ARCHITECTURE STYLES */
+        .lms-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .speaker-box {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 15px 10px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .speaker-headshot {
-            width: 85px;
-            height: 85px;
-            margin: 0 auto 12px auto;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border: 3px solid #d4af37;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            text-align: left;
         }
 
-        .rundown-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 14px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 8px;
-            border-left: 4px solid #e65c00;
-        }
-        .rundown-time {
-            padding: 10px;
-            font-weight: 800;
-            font-size: 13px;
-            min-width: 115px;
-            color: #ff8033;
-            text-align: center;
-        }
-        .rundown-block {
-            flex-grow: 1;
-            background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            color: #000000;
-            padding: 12px 15px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 13px;
-            text-transform: uppercase;
-        }
-
-        /* Premium Dashboard Sub-Navigation Styles */
-        .course-nav-details {
+        .lms-sidebar {
+            background: rgba(0, 10, 26, 0.7);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            background: rgba(0, 10, 26, 0.6);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 15px;
+            max-height: 650px;
+            overflow-y: auto;
         }
-        .course-nav-summary {
-            padding: 15px 20px;
+
+        .lms-phase-title {
+            font-size: 11px;
             font-weight: 800;
-            font-size: 13px;
+            color: #ff8033;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #ffffff;
-            cursor: pointer;
-            outline: none;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.03);
+            margin: 15px 0 8px 0;
+            padding-left: 5px;
         }
-        .course-nav-summary::-webkit-details-marker { display: none; }
-        .course-nav-summary::after { content: '►'; font-size: 10px; color: #d4af37; transition: transform 0.2s; }
-        .course-nav-details[open] .course-nav-summary::after { content: '▼'; }
+
+        .lms-phase-title:first-child { margin-top: 0; }
+
+        .lms-nav-item {
+            display: block;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lms-nav-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lms-nav-item.active-lesson {
+            background: #d4af37 !important;
+            color: #000000 !important;
+            font-weight: 800;
+            border-color: #d4af37;
+        }
+
+        .lms-player-window {
+            background: #000a1a;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .video-placeholder {
+            background: linear-gradient(135deg, #001f4d 0%, #0a2e6b 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+        }
+
+        .video-play-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212,175,55,0.2);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            margin: 0 auto 12px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 18px;
+        }
 
         .bullet-list {
-            margin: 0 0 15px 0;
+            margin: 10px 0 15px 0;
             padding-left: 20px;
             color: rgba(255,255,255,0.85);
-            font-size: 13px;
+            font-size: 13.5px;
             line-height: 1.6;
         }
-        .bullet-list li { margin-bottom: 8px; }
+        .bullet-list li { margin-bottom: 6px; }
 
-        @media (max-width: 480px) {
+        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
+        
+        .workshop-details { text-align: left; border-top: 1px solid rgba(255, 255, 255, 0.15); padding: 25px 30px 30px 30px; background: rgba(0, 0, 0, 0.15); }
+        .speaker-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .speaker-box { background: rgba(0, 0, 0, 0.2); border-radius: 15px; padding: 15px 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .speaker-headshot { width: 85px; height: 85px; margin: 0 auto 12px auto; border-radius: 50%; background-size: cover; background-position: center; border: 3px solid #d4af37; }
+        .rundown-item { display: flex; align-items: center; margin-bottom: 14px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 8px; border-left: 4px solid #e65c00; }
+        .rundown-time { padding: 10px; font-weight: 800; font-size: 13px; min-width: 115px; color: #ff8033; text-align: center; }
+        .rundown-block { flex-grow: 1; background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); color: #000000; padding: 12px 15px; border-radius: 10px; font-weight: 800; font-size: 13px; text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            .lms-layout { grid-template-columns: 1fr; }
+            .lms-sidebar { max-height: 220px; }
             .rundown-item { flex-direction: column; align-items: flex-start; padding: 12px; }
             .rundown-time { padding: 0 0 8px 4px; text-align: left; min-width: auto; }
             .rundown-block { width: 100%; box-sizing: border-box; text-align: left; }
@@ -274,313 +232,231 @@
             </div>
         </div>
     </div>
-
-    <div class="card" style="text-align: left; padding: 30px;">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Vision</span>
-        <p style="font-size: 16px; font-weight: 600; line-height: 1.6; margin: 0 0 25px 0; color: #ffffff;">
-            To build an elite generation of athletes who dominate the floor, master their minds, and lead with unshakeable character.
-        </p>
-        
-        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Mission</span>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0; color: rgba(255,255,255,0.85);">
-                Empowering players to align their habits with their ambitions through premium athletic development, business execution, and media literacy framework.
-            </p>
-        </div>
-    </div>
 </section>
 
-<section id="academy" class="tab-content" style="max-width: 800px;">
-    <div style="text-align: center; margin-bottom: 30px;">
-        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px;">PREMIUM LMS DASHBOARD</span>
+<section id="academy" class="tab-content" style="max-width: 1050px;">
+    <div style="text-align: center; margin-bottom: 15px;">
+        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px;">ONLINE TRAINING PORTAL</span>
         <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: 0.5px;">Beyond The Court</h2>
         <p style="font-size: 13px; opacity: 0.6; margin: 0; color: #d4af37; font-weight: 600;">Preparing for a Professional Basketball Career and Achievable Life</p>
     </div>
 
-    <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.3); background: #000a1a; text-align: left; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+    <div class="lms-layout">
         
-        <div style="background: linear-gradient(135deg, #0a2e6b 0%, #001f4d 100%); padding: 25px; border-bottom: 1px solid rgba(212, 175, 55, 0.25);">
-            <div style="font-size: 10px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;">MASTERCLASS CURRICULUM</div>
-            <h3 style="font-family:'Archivo Black'; font-size: 18px; margin: 0; text-transform: uppercase; color: #fff; line-height: 1.3;">Interactive Player Interface</h3>
-            <p style="font-size: 12px; opacity: 0.7; margin: 5px 0 0 0; color: #fff;">Tap any of the modular units below to open the tactical course player transcripts.</p>
+        <div class="lms-sidebar">
+            <div class="lms-phase-title">Phase 1: Foundations</div>
+            <div class="lms-nav-item active-lesson" id="nav-l1" onclick="loadLesson(1)">1.1 Athlete Mindset</div>
+            <div class="lms-nav-item" id="nav-l2" onclick="loadLesson(2)">1.2 Craft & Fuel</div>
+            
+            <div class="lms-phase-title">Phase 2: The Business</div>
+            <div class="lms-nav-item" id="nav-l3" onclick="loadLesson(3)">2.1 Sports Agencies</div>
+            <div class="lms-nav-item" id="nav-l4" onclick="loadLesson(4)">2.2 Financial Literacy</div>
+            <div class="lms-nav-item" id="nav-l5" onclick="loadLesson(5)">2.3 Personal Branding</div>
+            
+            <div class="lms-phase-title">Phase 3: Life After</div>
+            <div class="lms-nav-item" id="nav-l6" onclick="loadLesson(6)">3.1 Career Transition</div>
+            <div class="lms-nav-item" id="nav-l7" onclick="loadLesson(7)">3.2 Well-Being & Legacy</div>
         </div>
 
-        <div style="padding: 20px;">
-
-            <div style="margin-bottom: 25px;">
-                <div style="font-size: 11px; font-weight: 800; color: #ff8033; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; padding-left: 5px;">
-                    Phase 1: Foundations for Success
-                </div>
-
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 1.1: The Athlete's Mindset & Executive Responsibility</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">Cultivating a Growth Mindset:</p>
-                        <p style="opacity: 0.85;">Embrace challenges, persist through setbacks, and analyze your mistakes as raw developmental metrics. Your responsibility extends completely past physical talent.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">The SMART Goal Protocol:</p>
-                        <ul class="bullet-list">
-                            <li><strong>Specific:</strong> Clearly lock down exactly what your vision requires.</li>
-                            <li><strong>Measurable:</strong> Assign clear quantifiable tracking targets to track progress.</li>
-                            <li><strong>Achievable:</strong> Push boundaries with challenging but realistic parameters.</li>
-                            <li><strong>Relevant:</strong> Align every milestone directly with your primary lifelong ambitions.</li>
-                            <li><strong>Time-bound:</strong> Lock deadlines onto schedules to anchor execution.</li>
-                        </ul>
-
-                        <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; border-left: 3px solid #ff8033; margin-top: 15px;">
-                            <strong style="color: #fff; font-size: 12px; display: block; text-transform: uppercase; margin-bottom: 4px;">Locker Room Standard:</strong>
-                            Punctuality demonstrates explicit respect for your team, staff, and career. Arrive early to establish focus, mentally map performance, and verify equipment. Pair this with a clean, well-groomed look and an attitude of respect.
-                        </div>
-                    </div>
-                </details>
-
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 1.2: Craft Mastery, Fuel, & Recovery</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">Mastering the Craft:</p>
-                        <p style="opacity: 0.85;">Put in the hours consistently across core physical disciplines. Talent is useless without execution across your strength, conditioning, and fueling regimens.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">The Performance Fuel Matrix:</p>
-                        <ul class="bullet-list">
-                            <li><strong>Carbohydrates:</strong> Your explicit operational fuel source for explosive, high-intensity intervals.</li>
-                            <li><strong>Protein:</strong> Mandatory structural resource for systemic muscle repair and growth.</li>
-                            <li><strong>Fats:</strong> Sustained energy, vital hormone production, and nutrient absorption.</li>
-                        </ul>
-
-                        <div style="background: rgba(85, 239, 196, 0.1); border-radius: 8px; padding: 12px; border: 1px solid rgba(85, 239, 196, 0.3); color: #55efc4; font-size: 12px; font-weight: 700; text-align: center;">
-                            ⏱️ THE ANABOLIC WINDOW: Consume targeted carbohydrates and proteins within 30-60 minutes post-training to maximize muscle recovery.
-                        </div>
-                    </div>
-                </details>
+        <div class="lms-player-window">
+            
+            <div class="video-placeholder">
+                <div class="video-play-icon">▶</div>
+                <div id="player-banner-tag" style="font-size: 10px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">UNIT 1.1 MODULE</div>
+                <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 18px; margin: 0; text-transform: uppercase; color: #ffffff;">The Athlete's Mindset & Executive Responsibility</h3>
             </div>
 
-            <div style="margin-bottom: 25px;">
-                <div style="font-size: 11px; font-weight: 800; color: #ff8033; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; padding-left: 5px;">
-                    Phase 2: Navigating the Business of Basketball
+            <div id="player-body" style="padding: 25px; font-size: 14.5px; line-height: 1.65; background: rgba(0,0,0,0.2); max-height: 400px; overflow-y: auto; box-sizing: border-box;">
                 </div>
 
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 2.1: The Sports Agency Matrix</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">The Role of Representation:</p>
-                        <p style="opacity: 0.85;">Agencies function as your intermediaries within the broader sports ecosystem to maximize career longevity, scale off-court revenue, and protect operations.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Scope of Agency Services:</p>
-                        <ul class="bullet-list">
-                            <li><strong>Player Contracts:</strong> Strategic negotiation of salaries, roster bonuses, custom incentives, and term length.</li>
-                            <li><strong>Corporate Endorsements:</strong> Securing marketing placement contracts across major corporate brands.</li>
-                            <li><strong>Brand Operations:</strong> Overseeing social media management, appearances, public relations, and media training.</li>
-                            <li><strong>Crisis Intervention:</strong> Protecting public reputation from exposure during negative media cycles.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 2.2: Financial Literacy & Lifestyle Mapping</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">Designing Your Map:</p>
-                        <p style="opacity: 0.85;">Financial literacy isn't restricted to currency metrics—it is the process of funding your lifelong values. Create a strict Life Map/Vision Board to track your exact targets.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Wealth Diversification Strategy:</p>
-                        <ul class="bullet-list">
-                            <li><strong>Professional Income:</strong> Maximizing team salaries and performance compensation.</li>
-                            <li><strong>Alternative Assets:</strong> Allocating capital into venture creation, real estate, stocks, bonds, and mutual funds.</li>
-                            <li><strong>Intellectual Property:</strong> Scaling capital from licensing your Name, Image, and Likeness (NIL) royalties.</li>
-                        </ul>
-
-                        <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); font-size: 12px; font-weight: 700; color: #d4af37; text-align: center;">
-                            ⚠️ CRITICAL RULE: Practice deliberate delayed gratification. Reject lifestyle creep and maintain a frugal, asset-first mindset as income rises.
-                        </div>
-                    </div>
-                </details>
-
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 2.3: Personal Branding & Media Mastery</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">The Public Footprint:</p>
-                        <p style="opacity: 0.85;">Media obligations and digital channels are high-leverage training grounds. They build long-term communication clarity, public confidence, and executive presence under pressure.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Digital Media Risk Allocation:</p>
-                        <ul class="bullet-list">
-                            <li><strong>The Pros:</strong> Direct fan integration, community building, ownership over image narrative, and corporate placement access.</li>
-                            <li><strong>The Cons:</strong> Performance distraction, time management leakage, and exposure to toxic online harassment/cyberbullying.</li>
-                        </ul>
-                    </div>
-                </details>
-            </div>
-
-            <div>
-                <div style="font-size: 11px; font-weight: 800; color: #ff8033; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; padding-left: 5px;">
-                    Phase 3: Life After Basketball
-                </div>
-
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 3.1: Career Transition & Transferable Skills</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">The Professional Launchpad:</p>
-                        <p style="opacity: 0.85;">Your basketball career is a tactical foundation. The underlying leadership, deep cooperation, strict discipline, and spatial problem-solving traits you form convert seamlessly to industry.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Transition Checklist:</p>
-                        <ul class="bullet-list">
-                            <li><strong>Self-Assessment:</strong> Isolate true performance passions past sports (broadcasting, enterprise).</li>
-                            <li><strong>Informational Interviews:</strong> Tap networks to extract operational insights from marketplace directors.</li>
-                            <li><strong>Job Shadowing:</strong> Secure real hands-on corporate infrastructure perspective in off-seasons.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details class="course-nav-details">
-                    <summary class="course-nav-summary">Lesson 3.2: Sustaining Well-Being & Legacy</summary>
-                    <div style="padding: 20px; background: rgba(0,0,0,0.4); font-size: 13.5px; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <p style="margin-top: 0; font-weight: 600; color: #d4af37;">Protecting Mental Capital:</p>
-                        <p style="opacity: 0.85;">Leaving competitive sports requires massive psychological calibration. Never isolate yourself—rely closely on trusted mentors, professional healthcare workers, and authentic networks to anchor your transformation.</p>
-                        
-                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">The True Legacy Metric:</p>
-                        <p style="opacity: 0.85; margin-bottom: 0;">Legacy is defined by your impact. Turn your wisdom outward to fund local development initiatives, optimize community assets, and build an atmosphere to elevate the next generation of young athletes coming up behind you.</p>
-                    </div>
-                </details>
+            <div style="background: rgba(0,0,0,0.5); padding: 15px 25px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                    <input type="checkbox" id="lesson-check" style="accent-color: #000; margin: 0; width: 14px; height: 14px;"> Mark Module Complete
+                </label>
+                <button class="btn-gold" style="padding: 8px 18px; border-radius: 4px;" onclick="nextLesson()">Next Lesson →</button>
             </div>
 
         </div>
-
-        <div style="background: rgba(0,0,0,0.4); padding: 15px 25px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; gap: 15px;">
-            <div style="font-size: 11px; opacity: 0.5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
-                Framework: (K)ourtside Excellence
-            </div>
-            <label style="background: #ffffff; color: #000000; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 16px; border-radius: 4px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
-                <input type="checkbox" style="accent-color: #000; margin: 0; width: 13px; height: 13px;"> Complete Dashboard
-            </label>
-        </div>
-    </div>
-
-    <div class="section-divider" style="margin: 30px 0 20px 0;"></div>
-    <p style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 15px; text-align: center;">External Resource Portals</p>
-    
-    <div class="academy-grid">
-        <a href="YOUR_PLANNER_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 24px; margin-bottom: 4px;">🗓️</div>
-            <p style="font-size: 12px; font-weight: 800; margin: 0 0 2px 0; text-transform: uppercase; color: #fff;">Digital Planner</p>
-            <p style="font-size: 10px; opacity: 0.5; margin: 0;">Time Mastery</p>
-        </a>
-        <a href="YOUR_NUTRITION_LINK_HERE" target="_blank" class="academy-panel">
-            <div style="font-size: 24px; margin-bottom: 4px;">🥗</div>
-            <p style="font-size: 12px; font-weight: 800; margin: 0 0 2px 0; text-transform: uppercase; color: #fff;">Nutrition Tracker</p>
-            <p style="font-size: 10px; opacity: 0.5; margin: 0;">Fuel Formulas</p>
-        </a>
     </div>
 </section>
 
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">Events & Focus</h2>
-    
-    <details class="card">
-        <summary class="card-summary-trigger">
-            <span style="color:#ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1.5px;">👇 Tap to Expand Schedule & Speakers</span>
-            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
-            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
-            
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
-                <div>📅 Sunday, Sept 27th</div>
-                <div>🕒 3:00 PM - 7:00 PM</div>
-                <div>📍 Brampton, ON</div>
-            </div>
-            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
-        </summary>
-
-        <div class="workshop-details">
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
-            <div class="speaker-container">
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
-                    <div class="speaker-name">Akil Augustine</div>
-                    <div class="speaker-title">MediaLit</div>
-                </div>
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
-                    <div class="speaker-name">Christopher Duff</div>
-                    <div class="speaker-title">Entrepreneur</div>
-                </div>
-            </div>
-
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Event Rundown</span>
-            <div class="rundown-item">
-                <div class="rundown-time">3:00PM - 3:45PM</div>
-                <div class="rundown-block">Dine In & Set Tone</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">3:50PM - 4:40PM</div>
-                <div class="rundown-block">Panel Discussion</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">4:45PM - 5:45PM</div>
-                <div class="rundown-block">Media Training</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">5:50PM - 6:50PM</div>
-                <div class="rundown-block">Money Matters</div>
-            </div>
-
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat</a>
-        </div>
-    </details>
-
-    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2);">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
-        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
+    <div class="card" style="text-align: center;">
+        <h2 style="font-family:'Archivo Black'; font-size: 24px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
+        <p style="font-size:16px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
+        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat</a>
     </div>
 </section>
 
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">The Vault</h2>
-    
-    <div class="card">
-        <img src="book-cover.jpg" alt="Point Guard: A Diary Cover" style="width: 100%; max-width: 180px; height: auto; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.4);">
-        <p style="color: #d4af37; font-size: 18px; font-weight: 800; text-transform: uppercase; margin-top: 5px; letter-spacing: 1.5px;">Point Guard: A Diary</p>
-        <p style="font-size: 14px; opacity: 0.7; margin: 0 0 10px 0;">By Keaton Cole</p>
-        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
-    </div>
-
-    <div class="section-divider">
-        <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; font-size: 16px;">Booking & Services</h2>
-    </div>
-
-    <div class="card">
-        <h3 style="font-size: 40px; margin: 0; color: #d4af37;">$600</h3>
-        <p style="font-size: 16px; margin-bottom: 5px; font-weight: bold;">Team Workshop Package</p>
-        <a href="https://buy.stripe.com/00w9ASfV54vi1TI8Ya7kc00" target="_blank" class="btn-gold">Secure Checkout</a>
-    </div>
-
-    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.4); background: rgba(212, 175, 55, 0.03);">
-        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">🔥 MOST POPULAR</span>
+    <div class="card" style="text-align: center;">
         <h3 style="font-size: 40px; margin: 0; color: #d4af37;">$55</h3>
         <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold;">Per Athlete Session Rate</p>
-        
-        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
-            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6;">
-                <li>Full Elite Training Session Access</li>
-                <li style="color: #f9d976; font-weight: 700;">Includes a copy of "POINT GUARD: A Diary" 📚</li>
-                <li>Academy Framework Digital Templates</li>
-            </ul>
-        </div>
         <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold">Secure Checkout</a>
     </div>
-
-    <div class="card">
-        <h3 style="font-size: 40px; margin: 0; color: #ffffff;">$40</h3>
-        <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold; opacity: 0.9;">Per Athlete Rate</p>
-        
-        <div style="background: rgba(0,0,0,0.15); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
-            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">
-                <li>Full Elite Training Session Access</li>
-                <li style="text-decoration: line-through; opacity: 0.5;">POINT GUARD: A Diary book not included</li>
-            </ul>
-        </div>
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.2); color:#fff;">Secure Checkout</a>
-    </div>
 </section>
+
+<script>
+    // Complete structured curriculum database parsed from your document
+    const lessonsDatabase = {
+        1: {
+            tag: "UNIT 1.1 MODULE",
+            title: "The Athlete's Mindset & Executive Responsibility",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">Cultivating a Growth Mindset:</p>
+                <p>Embrace intense challenges, persist deliberately through competitive setbacks, and analyze errors as raw developmental data. Your responsibility extends completely past physical baseline skills.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">The SMART Goal Strategy Blueprint:</p>
+                <ul class="bullet-list">
+                    <li><strong>Specific:</strong> Clearly define what your vision demands on and off the floor.</li>
+                    <li><strong>Measurable:</strong> Assign numeric targets to meticulously track progress parameters.</li>
+                    <li><strong>Achievable:</strong> Map out milestones that stretch limits but remain realistic.</li>
+                    <li><strong>Relevant:</strong> Ensure every singular benchmark aligns with your lifelong targets.</li>
+                    <li><strong>Time-bound:</strong> Anchor specific target deadlines to your calendar to preserve focus.</li>
+                </ul>
+
+                <div style="background:rgba(255,255,255,0.04); border-radius:8px; padding:15px; border-left:4px solid #ff8033; margin-top:20px;">
+                    <strong style="color:#fff; font-size:12px; display:block; text-transform:uppercase; margin-bottom:5px;">Locker Room Standard:</strong>
+                    Punctuality demonstrates explicit professionalism. Arrive early to mentally structure your performance window, map objectives, and inspect preparation assets. Maintain an impeccable presentation and a perpetual attitude of respectfulness toward staff and peers.
+                </div>
+            `
+        },
+        2: {
+            tag: "UNIT 1.2 MODULE",
+            title: "Craft Mastery, Fuel, & Recovery Protocols",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">Mastering Your Craft:</p>
+                <p>Consistent progression across specific physical skill sets requires absolute synergy between on-court court execution, strength programming, and continuous mechanical updates.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">The Performance Fuel Architecture:</p>
+                <ul class="bullet-list">
+                    <li><strong>Carbohydrates:</strong> Your explicit primary energy resource for high-intensity, explosive operational bursts.</li>
+                    <li><strong>Protein:</strong> Non-negotiable structural asset for muscle fiber synthesis and deep tissue repair.</li>
+                    <li><strong>Fats:</strong> Essential for systemic long-term energy stabilization, cell protection, and hormone production.</li>
+                </ul>
+
+                <div style="background:rgba(85, 239, 196, 0.1); border-radius:8px; padding:12px; border:1px solid rgba(85, 239, 196, 0.3); color:#55efc4; font-size:13px; font-weight:700; text-align:center; margin-top:20px;">
+                    ⏱️ THE PERFORMANCE ANABOLIC WINDOW: Consume targeted carbohydrates and clean proteins within 30 to 60 minutes post-exertion to maximize glycogen replenishment.
+                </div>
+            `
+        },
+        3: {
+            tag: "UNIT 2.1 MODULE",
+            title: "The Sports Agency Matrix",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Purpose of Representation:</p>
+                <p>Agencies operate as key professional intermediaries within the multi-billion dollar athletic landscape. Their framework is engineered to optimize your professional career timeline, safeguard physical/brand safety, and scale wealth opportunities.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">Core Operational Capabilities:</p>
+                <ul class="bullet-list">
+                    <li><strong>Contract Negotiation:</strong> Maximizing player salaries, performance-tier bonuses, custom options, and secure lengths.</li>
+                    <li><strong>Corporate Placement:</strong> Identifying and locking corporate endorsement contracts and sponsorship avenues.</li>
+                    <li><strong>Public Relations:</strong> Generating strategic press positioning, managing media exposure, and maintaining digital protection.</li>
+                    <li><strong>Crisis Operations:</strong> Direct mitigation of public relations threats during volatile or sensitive media cycles.</li>
+                </ul>
+            `
+        },
+        4: {
+            tag: "UNIT 2.2 MODULE",
+            title: "Financial Literacy & Lifestyle Mapping",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">Strategic Wealth Mapping:</p>
+                <p>Financial literacy functions as the operational apparatus used to fund your core values. Establish a detailed Life Map / Vision Board to visually synchronize asset metrics with your family, target investments, and educational milestones.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">The Portfolio Diversification Framework:</p>
+                <ul class="bullet-list">
+                    <li><strong>Active Comp:</strong> Direct athletic operational salaries and guaranteed team cash distributions.</li>
+                    <li><strong>Investment Assets:</strong> Equities, liquid securities, venture capitals, and high-yielding commercial real estate.</li>
+                    <li><strong>Intellectual Property:</strong> Scaling systemic wealth through Name, Image, and Likeness (NIL) licensing royalties.</li>
+                </ul>
+
+                <div style="background:rgba(212, 175, 55, 0.1); border-radius:8px; padding:12px; border:1px solid rgba(212, 175, 55, 0.3); font-size:12px; font-weight:700; color:#d4af37; text-align:center; margin-top:20px;">
+                    ⚠️ EXECUTIVE PARAMETER: Commit to intentional delayed gratification. Aggressively combat lifestyle creep as compensation tiers scale upward.
+                </div>
+            `
+        },
+        5: {
+            tag: "UNIT 2.3 MODULE",
+            title: "Personal Branding & Media Mastery",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Media Training Ground:</p>
+                <p>Media obligations are high-leverage business accelerators. They train an athlete's mind to execute clarity, composure, structural listening abilities, and executive public presence under pressure.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">Digital Media Risk Allocation:</p>
+                <ul class="bullet-list">
+                    <li><strong>The Upside:</strong> Immediate direct target consumer access, narrative control over brand identity, and corporate sponsor visibility.</li>
+                    <li><strong>The Downside:</strong> Cognitive distraction, time allocation leakages, and exposure to targeted cyberbullying or toxic web environments.</li>
+                </ul>
+            `
+        },
+        6: {
+            tag: "UNIT 3.1 MODULE",
+            title: "Career Transition & Transferable Skills",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Athletic Foundation:</p>
+                <p>Your competitive basketball timeline is an operational launchpad, not a termination boundary. The leadership traits, high-pressure teamwork dynamics, behavioral self-discipline, and deep spatial problem-solving skills convert cleanly into high-level business spaces.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">Transition Matrix Execution Steps:</p>
+                <ul class="bullet-list">
+                    <li><strong>Self-Assessment:</strong> Pinpoint secondary deep career passions (broadcasting, sports operations, enterprise creation).</li>
+                    <li><strong>Informational Integration:</strong> Conduct exploratory interviews with marketplace directors inside target sectors.</li>
+                    <li><strong>Corporate Shadowing:</strong> Spend off-seasons embedded inside modern corporate structures for experiential data.</li>
+                </ul>
+            `
+        },
+        7: {
+            tag: "UNIT 3.2 MODULE",
+            title: "Sustaining Well-Being & Legacy Infrastructure",
+            content: `
+                <p style="margin-top:0; font-weight:700; color:#d4af37;">Protecting Psychological Capital:</p>
+                <p>Decoupling your identity from competitive performance sports requires profound cognitive recalibration. Never isolate your thoughts during transitional periods. Actively anchor your routine within solid mentor systems and professional medical providers.</p>
+                
+                <p style="font-weight:700; color:#d4af37; margin-top:20px;">The Permanent Legacy Metric:</p>
+                <p>True success scales when it is channeled outward. Use your accumulated athletic capital and wisdom to build community infrastructure assets, establish youth development programs, and directly elevate the next generation of players ascending behind you.</p>
+            `
+        }
+    };
+
+    let currentLessonId = 1;
+
+    function loadLesson(id) {
+        currentLessonId = id;
+        const data = lessonsDatabase[id];
+        
+        // Update Player Screens
+        document.getElementById('player-banner-tag').innerText = data.tag;
+        document.getElementById('player-title').innerText = data.title;
+        document.getElementById('player-body').innerHTML = data.content;
+        
+        // Reset Checkbox state
+        document.getElementById('lesson-check').checked = false;
+
+        // Reset Navigation visual states
+        for (let i = 1; i <= 7; i++) {
+            document.getElementById('nav-l' + i).classList.remove('active-lesson');
+        }
+        document.getElementById('nav-l' + id).classList.add('active-lesson');
+        
+        // Smooth scroll content back to top
+        document.getElementById('player-body').scrollTop = 0;
+    }
+
+    function nextLesson() {
+        if (currentLessonId < 7) {
+            loadLesson(currentLessonId + 1);
+        } else {
+            alert("Congratulations, Coach! You have successfully completed the entire Beyond The Court Masterclass Series!");
+            loadLesson(1); // loop back
+        }
+    }
+
+    // Initialize the Engine with Lesson 1 on start
+    window.onload = function() {
+        loadLesson(1);
+    };
+</script>
 
 </body>
 </html>
