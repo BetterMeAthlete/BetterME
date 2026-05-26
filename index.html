@@ -13,22 +13,29 @@
             background: linear-gradient(to bottom, #0a2e6b 0%, #000a1a 100%);
             color: #ffffff; 
             margin: 0; 
-            padding-bottom: 100px;
+            padding-bottom: 120px; /* Enhanced to prevent bottom navigation overlap */
             min-height: 100vh;
             background-attachment: fixed;
         }
         
+        /* Sticky Bottom Navigation Layout */
         nav { 
             background: #000a1a;
             background: rgba(0, 10, 26, 0.95); 
             padding: 20px 0; 
             display: flex; 
             justify-content: space-around; 
-            position: -webkit-sticky;
-            position: sticky; 
-            top: 0; 
+            position: fixed; 
+            top: auto;
+            bottom: 0; 
+            left: 0;
+            right: 0;
             z-index: 1000; 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: none;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         nav a { 
@@ -229,8 +236,8 @@
             .lms-sidebar { max-height: 220px; }
         }
         @media (max-width: 768px) {
-            nav { padding: 15px 5px; }
-            nav a { font-size: 10px; letter-spacing: 0px; }
+            nav { padding: 15px 2px; }
+            nav a { font-size: 9.5px; letter-spacing: 0px; }
             .rundown-item { flex-direction: column; align-items: flex-start; padding: 12px; }
             .rundown-time { padding: 0 0 8px 4px; text-align: left; min-width: auto; }
             .rundown-block { width: 100%; box-sizing: border-box; text-align: left; }
@@ -239,14 +246,6 @@
     </style>
 </head>
 <body>
-
-<nav>
-    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker Room</a>
-    <a id="tab-link-academy" onclick="switchTab('academy')">Academy</a>
-    <a id="tab-link-knowmyself" onclick="switchTab('know-myself')">Know Myself</a>
-    <a id="tab-link-events" onclick="switchTab('events')">Locker Events</a>
-    <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
-</nav>
 
 <section id="locker-room" class="tab-content">
     <div class="hero-section">
@@ -344,95 +343,4 @@
 <section id="know-myself" class="tab-content" style="max-width: 800px;">
     <div style="text-align: center; margin-bottom: 25px;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px;">ORIENTATION & DEVELOPMENT TOOLKIT</span>
-        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px;">Know Myself Framework</h2>
-        <p style="font-size: 13px; opacity: 0.7; margin: 0;">An 11-Point Alignment Blueprint for Intentional Self-Discovery</p>
-    </div>
-
-    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(0, 10, 26, 0.5);">
-        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1px; margin-bottom: 10px;">📚 REQUIRED READING CURRICULUM</span>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
-                <strong style="color: #f9d976; font-size: 14px; display: block;">For Young Men</strong>
-                <p style="margin: 5px 0 0 0; font-size: 13px; font-weight: 700;">"Battle Cry"</p>
-                <p style="margin: 2px 0 0 0; font-size: 12px; opacity: 0.6;">By Jason Wilson</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
-                <strong style="color: #f9d976; font-size: 14px; display: block;">For Young Women (or Both)</strong>
-                <p style="margin: 5px 0 0 0; font-size: 13px; font-weight: 700;">"Shoot Your Shot"</p>
-                <p style="margin: 2px 0 0 0; font-size: 12px; opacity: 0.6;">By Vernon Brundage Jr.</p>
-            </div>
-        </div>
-        <p style="margin: 12px 0 0 0; font-size: 12px; opacity: 0.5; font-style: italic; text-align: center;">
-            Note: Keep a dedicated physical Notebook alongside these texts for regular goal setting, journaling, and deep insight building.
-        </p>
-    </div>
-
-    <div class="card" style="padding: 20px;">
-        <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px; margin-bottom: 15px; text-align: center;">Interactive Self-Discovery Checklist</span>
-        
-        <div class="orientation-grid">
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 01</div>
-                    <div class="checklist-text">Body Optimization & Management</div>
-                    <div class="checklist-desc">Am I actively prioritizing rest, clean nutrition, recovery mechanics, and functional mechanics before sessions?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 02</div>
-                    <div class="checklist-text">Elite Punctuality & Time Structures</div>
-                    <div class="checklist-desc">Am I consistently holding down the 15-minute early attendance baseline across all sports/life scheduling metrics?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 03</div>
-                    <div class="checklist-text">Game Architecture as a Business</div>
-                    <div class="checklist-desc">Do I look at basketball through an objective commercial lens—recognizing active roles in asset operations?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 04</div>
-                    <div class="checklist-text">Fame and Notoriety Navigation</div>
-                    <div class="checklist-desc">Am I prepared to handle visibility responsibly without breaking down my inner character standard?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 05</div>
-                    <div class="checklist-text">College and University Milestones</div>
-                    <div class="checklist-desc">Are my academic benchmarks and athletic profiles completely built for long-term placement?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 06</div>
-                    <div class="checklist-text">Expectations Alignment Matrix</div>
-                    <div class="checklist-desc">Are mutual accountability requirements clearly established between myself, coaches, and team groups?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 07</div>
-                    <div class="checklist-text">SMART Goal Architectures</div>
-                    <div class="checklist-desc">Are my goals explicitly structured (Specific, Measurable, Achievable, Relevant, Time-Bound)?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 08</div>
-                    <div class="checklist-text">Structural Personal Organization</div>
-                    <div class="checklist-desc">Are my day-to-day logistics, tracking templates, and professional records tidy and managed?</div>
-                </div>
-            </div>
-            
+        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform:
