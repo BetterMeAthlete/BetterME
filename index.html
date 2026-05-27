@@ -13,33 +13,64 @@
             background: linear-gradient(to bottom, #0a2e6b 0%, #000a1a 100%);
             color: #ffffff; 
             margin: 0; 
-            padding-bottom: 80px; 
+            padding-bottom: 120px; 
             min-height: 100vh;
             background-attachment: fixed;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
         
-        .hero-section { text-align: center; padding: 40px 20px; }
+        /* Fixed Bottom Navigation Layout */
+        nav { 
+            background: rgba(0, 10, 26, 0.95); 
+            padding: 20px 0; 
+            display: flex; 
+            justify-content: space-around; 
+            position: fixed; 
+            bottom: 0; 
+            left: 0;
+            right: 0;
+            z-index: 1000; 
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        nav a { 
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            opacity: 0.6; 
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 1px;
+        }
+        nav a:hover, nav a.active-tab { 
+            opacity: 1; 
+            color: #d4af37; 
+        }
+
+        .tab-content { 
+            display: none; 
+            padding: 20px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section { text-align: center; padding: 30px 20px; }
         .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
 
-        .card { 
-            background: rgba(255, 255, 255, 0.08); 
-            padding: 30px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-        }
-
         .btn-gold { 
-            background: #d4af37;
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
             color: #000000; 
-            padding: 14px 25px; 
+            padding: 12px 24px; 
             text-decoration: none !important; 
             font-weight: 800; 
             border-radius: 50px; 
@@ -48,126 +79,601 @@
             border: none; 
             text-transform: uppercase; 
             font-size: 11px; 
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
+            cursor: pointer;
         }
 
-        h2 { font-family: 'Archivo Black', sans-serif; color: #d4af37; text-transform: uppercase; }
-        h3 { font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; }
-        .bullet-list { padding-left: 20px; line-height: 1.6; }
-        .bullet-list li { margin-bottom: 8px; }
+        .card { 
+            background: rgba(255, 255, 255, 0.06); 
+            padding: 25px; 
+            border-radius: 16px; 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+
+        .lms-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .lms-sidebar {
+            background: rgba(0, 10, 26, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            height: fit-content;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .lms-phase-title {
+            font-size: 10px;
+            font-weight: 800;
+            color: #ff8033;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0 8px 0;
+            padding-left: 4px;
+        }
+        .lms-phase-title:first-child { margin-top: 0; }
+
+        .lms-nav-item {
+            display: block;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lms-nav-item:hover { background: rgba(212, 175, 55, 0.1); color: #fff; }
+        .lms-nav-item.active-lesson { background: #d4af37 !important; color: #000000 !important; font-weight: 800; border-color: #d4af37; }
+
+        .lms-player-window {
+            background: #000a1a;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-placeholder {
+            background: linear-gradient(135deg, #001f4d 0%, #0a2e6b 100%);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .bullet-list { margin: 10px 0 15px 0; padding-left: 20px; color: rgba(255,255,255,0.9); font-size: 13.5px; line-height: 1.6; }
+        .bullet-list li { margin-bottom: 6px; }
+        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 35px 0 20px 0; padding-top: 20px; }
         
-        .section-divider { 
-            border-top: 2px solid rgba(212, 175, 55, 0.3); 
-            margin: 40px 0; 
-            padding-top: 20px; 
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .speaker-box { background: rgba(0, 0, 0, 0.2); border-radius: 12px; padding: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .rundown-item { display: flex; align-items: center; margin-bottom: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 6px; border-left: 4px solid #ff8033; }
+        .rundown-time { padding: 10px; font-weight: 800; font-size: 12px; min-width: 110px; color: #ff8033; text-align: center; }
+        .rundown-block { flex-grow: 1; background: rgba(255,255,255,0.05); color: #ffffff; padding: 10px 15px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+
+        /* Checklist style updates */
+        .checklist-row { display: flex; align-items: flex-start; gap: 12px; background: rgba(0, 10, 26, 0.3); padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 8px; }
+        .check-wrapper input[type="checkbox"] { accent-color: #d4af37; width: 16px; height: 16px; cursor: pointer; margin-top: 2px; }
+        .checklist-content { flex-grow: 1; }
+        .checklist-number { font-size: 10px; font-weight: 800; color: #ff8033; text-transform: uppercase; }
+        .checklist-text { font-size: 14px; font-weight: 700; margin: 1px 0; }
+        .checklist-desc { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+
+        @media (max-width: 850px) {
+            .lms-layout { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .rundown-item { flex-direction: column; align-items: flex-start; }
+            .rundown-time { text-align: left; padding: 5px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
     <div class="hero-section">
-        <h1 style="font-family:'Archivo Black'; font-size: 42px; letter-spacing: 2px; margin: 0; color:#fff;">HEARTWORK</h1>
-        <p style="letter-spacing: 4px; color:#d4af37; font-weight:700; font-size:12px; text-transform:uppercase; margin-top:5px;">Academy | Keaton Cole</p>
+        <h1 style="font-family:'Archivo Black'; font-size: 38px; letter-spacing: 2px; margin: 0; color:#ffffff;">HEARTWORK</h1>
+        <p style="letter-spacing: 3px; color:#d4af37; font-weight:700; font-size:11px; text-transform:uppercase; margin-top:4px;">Academy | Beyond The Court</p>
     </div>
 
-    <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 1.5px;">Program Objective</span>
-        <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
-    </div>
-
-    <div class="card">
-        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px; margin-bottom: 5px;">⚡ WEEKLY FOCUS REQUIREMENT</span>
-        <h3>Next-Play Speed & Discipline</h3>
-        <p style="font-size: 14px; opacity: 0.8; line-height: 1.6;">
-            <strong>Mandatory Benchmark - Punctuality:</strong> Arriving exactly on time is considered late. You are expected to arrive <strong>15 minutes early</strong> to every single session. This extra window allows you to settle your mind, execute warm-ups, organize gear, and display elite professionalism.
-        </p>
-    </div>
-
-    <div class="section-divider">
-        <h2>📚 Resources & Development Toolkit</h2>
-    </div>
-
-    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.3);">
-        <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1px; margin-bottom: 12px;">REQUIRED READING CURRICULUM</span>
-        <p style="margin: 5px 0;"><strong>For Young Men:</strong> "Battle Cry" by Jason Wilson</p>
-        <p style="margin: 5px 0;"><strong>For Young Women:</strong> "Shoot Your Shot" by Vernon Brundage Jr.</p>
-        <p style="font-size: 13px; opacity: 0.6; font-style: italic; margin-top: 15px;">Note: Keep a dedicated physical Notebook alongside these texts for regular goal setting, journaling, and deep insight building.</p>
-    </div>
-
-    <div class="card">
-        <h3 style="color: #ff8033; margin-top: 0;">Know Myself Framework</h3>
-        <p style="font-size: 14px; opacity: 0.7; margin-bottom: 20px;">An 11-Point Alignment Blueprint for Intentional Self-Discovery:</p>
-        <ul class="bullet-list">
-            <li><strong>Point 01: Body Optimization & Management</strong> – Actively prioritizing rest, clean nutrition, and recovery mechanics.</li>
-            <li><strong>Point 02: Elite Punctuality & Time Structures</strong> – Holding down the critical 15-minute early attendance baseline.</li>
-            <li><strong>Point 03: Game Architecture as a Business</strong> – Recognizing active roles in financial/asset sports operations.</li>
-            <li><strong>Point 04: Fame & Notoriety Navigation</strong> – Preparing to handle public visibility responsibly without breaking character.</li>
-            <li><strong>Point 05: College & University Milestones</strong> – Organizing structural academic benchmarks for future placements.</li>
-            <li><strong>Point 06: Expectations Alignment Matrix</strong> – Setting clear communication rules with teammates and coaching groups.</li>
-            <li><strong>Point 07: SMART Goal Architectures</strong> – Establishing Specific, Measurable, Achievable, Relevant, and Time-bound plans.</li>
-            <li><strong>Point 08: Structural Personal Organization</strong> – Keeping tracking logs, templates, and schedules managed.</li>
-            <li><strong>Point 09: Alternative Outlets & Passion Spaces</strong> – Cultivating creative professional paths outside of sport fields.</li>
-            <li><strong>Point 10: Conflict Management Protocols</strong> – Utilizing emotional regulation and active composure under high pressure.</li>
-            <li><strong>Point 11: Rookie Contract Simulation</strong> – Strategically budgeting an asset distribution layout for a $6 Million contract.</li>
-        </ul>
-    </div>
-
-    <div class="section-divider">
-        <h2>📆 Events & Focus</h2>
-    </div>
-
-    <div class="card">
-        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px; margin-bottom: 5px;">Upcoming Event</span>
-        <h3 style="margin-top: 5px; font-size: 22px;">Better Me Better Athlete</h3>
-        <p style="color: #d4af37; font-weight: 700; margin: -5px 0 15px 0;">Industry, Money & Media</p>
-        <p style="font-size: 14px; margin: 5px 0;">📅 Sunday, Sept 27th | 🕒 3:00 PM - 7:00 PM | 📍 Brampton, ON</p>
-        
-        <p style="font-weight: 700; margin-top: 20px; color: #d4af37;">Event Schedule:</p>
-        <ul class="bullet-list" style="font-size: 14px;">
-            <li><strong>3:00PM - 3:45PM:</strong> Dine In & Set Tone</li>
-            <li><strong>3:50PM - 4:40PM:</strong> Panel Discussion</li>
-            <li><strong>4:45PM - 5:45PM:</strong> Media Training (with Akil Augustine)</li>
-            <li><strong>5:50PM - 6:50PM:</strong> Money Matters (with Christopher Duff)</li>
-        </ul>
-        <div style="text-align: center; margin-top: 25px;">
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat</a>
+    <section id="locker-room" class="tab-content" style="max-width: 1100px;">
+        <div class="grid-2">
+            <div class="card" style="border-left: 4px solid #d4af37; display: flex; flex-direction: column; justify-content: center;">
+                <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">Program Objective</span>
+                [span_0](start_span)<p style="font-size: 15.5px; font-weight: 600; line-height: 1.6; margin: 0;">"The overarching design is to enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."[span_0](end_span)</p>
+            </div>
+            
+            <div class="card" style="border-left: 4px solid #ff8033;">
+                <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">⚡ MANDATORY BENCHMARK</span>
+                <h4 style="margin: 0 0 4px 0; font-size: 16px;">Elite Punctuality & Attendance</h4>
+                <p style="margin: 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.85);">
+                    [span_1](start_span)If you are 5 minutes early, you are late[span_1](end_span). [span_2](start_span)<strong>15 minutes early</strong> is your standard benchmark for meetings[span_2](end_span)[span_3](start_span), and arriving <strong>1.5 hours early</strong> is expected before games[span_3](end_span). [span_4](start_span)[span_5](start_span)This displays extreme consistency and elite professionalism[span_4](end_span)[span_5](end_span).
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="card" style="text-align: center;">
-        <h3 style="margin-top: 0;">Workshop Feedback Survey</h3>
-        <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">Help us build and adapt future sessions by filling out our alignment questionnaire.</p>
-        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold" style="background: transparent; color: #d4af37; border: 2px solid #d4af37;">Complete Form</a>
-    </div>
+        <div class="section-divider">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">ONLINE TRAINING MANAGEMENT INTERFACE</span>
+                <h2 style="font-family:'Archivo Black'; margin: 5px 0 0 0; font-size: 24px;">Interactive Curriculum Modules</h2>
+            </div>
+        </div>
 
-    <div class="section-divider">
-        <h2>💰 The Vault & Services</h2>
-    </div>
+        <div class="lms-layout">
+            <div class="lms-sidebar">
+                [span_6](start_span)<div class="lms-phase-title">1st Quarter: Transferable Skills[span_6](end_span)</div>
+                <div class="lms-nav-item" id="nav-l1" onclick="loadLesson(1)">1.1 Mindset & Responsibility</div>
+                <div class="lms-nav-item" id="nav-l2" onclick="loadLesson(2)">1.2 Foundation & Recovery</div>
+                
+                [span_7](start_span)<div class="lms-phase-title">2nd Quarter: Let's Talk Basketball[span_7](end_span)</div>
+                <div class="lms-nav-item" id="nav-l3" onclick="loadLesson(3)">2.1 The Role of an Agent</div>
+                <div class="lms-nav-item" id="nav-l4" onclick="loadLesson(4)">2.2 Financial Lifestyle Strategy</div>
+                <div class="lms-nav-item" id="nav-l5" onclick="loadLesson(5)">2.3 Branding & Media Skills</div>
+                
+                [span_8](start_span)<div class="lms-phase-title">3rd Quarter: Off the Court Matters[span_8](end_span)</div>
+                <div class="lms-nav-item" id="nav-l6" onclick="loadLesson(6)">3.1 Post-Sport Career Paths</div>
+                
+                [span_9](start_span)<div class="lms-phase-title">4th Quarter: Life Lessons[span_9](end_span)</div>
+                <div class="lms-nav-item" id="nav-l7" onclick="loadLesson(7)">4.1 Transitions & Well-Being</div>
+            </div>
 
-    <div class="card" style="text-align: center; border: 2px solid #d4af37; background: rgba(212, 175, 55, 0.05);">
-        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">🔥 RECOMMENDED ENTRY RATE</span>
-        <h3 style="font-size: 36px; margin: 10px 0 5px 0; color: #d4af37;">$55 <span style="font-size: 16px; color:#fff; font-weight:normal;">/ Session</span></h3>
-        <p style="font-weight: bold; margin-bottom: 15px;">Per Athlete Session Rate</p>
-        <p style="font-size: 14px; max-width: 500px; margin: 0 auto 20px auto; opacity: 0.9; line-height: 1.5;">
-            Includes full academy elite training session access, framework digital files, plus a physical copy of <strong>"POINT GUARD: A Diary"</strong> by Keaton Cole!
-        </p>
-        <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold">Secure Checkout</a>
-    </div>
+            <div class="lms-player-window">
+                <div class="video-placeholder">
+                    <div id="player-banner-tag" style="font-size: 10px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">MODULE 1.1</div>
+                    <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 18px; margin: 0; color: #ffffff;">The Athlete's Mindset</h3>
+                </div>
 
-    <div class="card" style="text-align: center; opacity: 0.95;">
-        <h3 style="font-size: 28px; margin: 5px 0;">$40 <span style="font-size: 14px; font-weight:normal;">/ Session</span></h3>
-        <p style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">Standard Athlete Registration</p>
-        <p style="font-size: 13px; opacity: 0.7; margin-bottom: 15px;">Full access package to the live training curriculum. (Book not included).</p>
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.2); color:#fff; border: 1px solid rgba(255,255,255,0.4);">Secure Checkout</a>
-    </div>
+                <div id="player-body" style="padding: 25px; font-size: 14px; line-height: 1.6; background: rgba(0,0,0,0.2); max-height: 380px; overflow-y: auto;">
+                    </div>
 
-    <div class="card" style="background: transparent; border: none; padding: 10px 0; font-size: 14px; line-height: 1.65; opacity: 0.85;">
-        <p><em>The Coaching Challenge:</em> Coaches priorities include training, scheduling logistics, safety, wellness, and academics. Kourtside Excellence was created as a developmental staple to support this ecosystem, ensuring athletes balance both on and off-the-court realities efficiently.</p>
-    </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 15px 25px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-size: 12px; opacity: 0.6; font-weight: 600;">System: Interactive Stream</span>
+                    <button class="btn-gold" style="padding: 8px 16px; border-radius: 4px; font-size: 10px;" onclick="nextLesson()">Next Lesson →</button>
+                </div>
+            </div>
+        </div>
 
-</div>
+        <div class="card" style="margin-top: 30px; background: rgba(0,0,0,0.2);">
+            <h4 style="font-family:'Archivo Black'; margin: 0 0 10px 0; color: #d4af37; font-size: 14px; text-transform: uppercase;">The Coaching Challenge</h4>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; opacity: 0.9;">
+                [span_10](start_span)Coaches wear many hats as leaders: role models, guardians, and mentors[span_10](end_span). [span_11](start_span)Their priorities span training, scheduling logistics, athlete safety, wellness, academics, and winning[span_11](end_span). [span_12](start_span)The time they give creates true legacies[span_12](end_span). [span_13](start_span)Heartwork Academy functions alongside coaches as an essential development staple to support athletes both on and off the court[span_13](end_span).
+            </p>
+        </div>
+    </section>
+
+    <section id="resources" class="tab-content" style="max-width: 800px;">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">ORIENTATION CORE PACKS</span>
+            <h2 style="font-family:'Archivo Black'; margin: 5px 0; color:#fff;">Know Myself Blueprint</h2>
+            [span_14](start_span)<p style="font-size: 13px; opacity: 0.7; margin: 0;">The 11-Point Core Self-Discovery Alignment System[span_14](end_span)</p>
+        </div>
+
+        <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(0, 10, 26, 0.4);">
+            [span_15](start_span)<span style="color: #ff8033; font-size: 10px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1px; margin-bottom: 12px;">📚 CORE PROGRAM LITERATURE REQUIREMENTS[span_15](end_span)</span>
+            <div class="grid-2">
+                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    [span_16](start_span)<strong style="color: #f9d976; font-size: 13px; display: block;">For Young Men[span_16](end_span)</strong>
+                    [span_17](start_span)<p style="margin: 4px 0 0 0; font-size: 13px; font-weight: 700;">"Battle Cry"[span_17](end_span)</p>
+                    [span_18](start_span)<p style="margin: 1px 0 0 0; font-size: 12px; opacity: 0.6;">By Jason Wilson[span_18](end_span)</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    [span_19](start_span)<strong style="color: #f9d976; font-size: 13px; display: block;">For Young Women / Both[span_19](end_span)</strong>
+                    [span_20](start_span)<p style="margin: 4px 0 0 0; font-size: 13px; font-weight: 700;">"Shoot Your Shot"[span_20](end_span)</p>
+                    [span_21](start_span)<p style="margin: 1px 0 0 0; font-size: 12px; opacity: 0.6;">By Vernon Brundage Jr.[span_21](end_span)</p>
+                </div>
+            </div>
+            <p style="margin: 12px 0 0 0; font-size: 12px; opacity: 0.5; text-align: center; font-style: italic;">
+                *[span_22](start_span)Maintain a dedicated physical Notebook alongside text modules for active reflection, metrics journal tracking, and strategy mapping[span_22](end_span).
+            </p>
+        </div>
+
+        <div class="card">
+            [span_23](start_span)<span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 15px; text-align: center; letter-spacing: 1px;">Interactive Alignment Tracker[span_23](end_span)</span>
+            
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_24](start_span)<div class="checklist-number">Point 01[span_24](end_span)</div>
+                    [span_25](start_span)<div class="checklist-text">Body Optimization & Management[span_25](end_span)</div>
+                    [span_26](start_span)[span_27](start_span)<div class="checklist-desc">Am I meticulously tracking clean calorie ratios, sleep, functional stretching, and daily body mechanics?[span_26](end_span)[span_27](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_28](start_span)<div class="checklist-number">Point 02[span_28](end_span)</div>
+                    [span_29](start_span)<div class="checklist-text">Elite Punctuality & Time Benchmarks[span_29](end_span)</div>
+                    [span_30](start_span)[span_31](start_span)<div class="checklist-desc">Am I holding down the early arrival requirement (15m meetings, 1.5h game timelines)?[span_30](end_span)[span_31](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_32](start_span)<div class="checklist-number">Point 03[span_32](end_span)</div>
+                    [span_33](start_span)<div class="checklist-text">Game Architecture as a Business[span_33](end_span)</div>
+                    [span_34](start_span)<div class="checklist-desc">Do I understand high-level asset metrics, team valuations, TV network metrics, and contract values?[span_34](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_35](start_span)<div class="checklist-number">Point 04[span_35](end_span)</div>
+                    [span_36](start_span)<div class="checklist-text">Fame & Notoriety Handling[span_36](end_span)</div>
+                    [span_37](start_span)<div class="checklist-desc">Am I built to withstand massive public scrutiny, NIL parameters, and identity pressures without breaking character?[span_37](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_38](start_span)<div class="checklist-number">Point 05[span_38](end_span)</div>
+                    [span_39](start_span)<div class="checklist-text">College & University Landscapes[span_39](end_span)</div>
+                    [span_40](start_span)<div class="checklist-desc">Am I managing values, handling homesickness, and fully maximizing my structural placement network?[span_40](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_41](start_span)<div class="checklist-number">Point 06[span_41](end_span)</div>
+                    [span_42](start_span)<div class="checklist-text">Mutual Expectations Alignment[span_42](end_span)</div>
+                    [span_43](start_span)[span_44](start_span)<div class="checklist-desc">Am I exercising absolute, two-way intentional accountability rules between myself, group members, and coaches?[span_43](end_span)[span_44](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_45](start_span)<div class="checklist-number">Point 07[span_45](end_span)</div>
+                    [span_46](start_span)<div class="checklist-text">SMART Goal Architectural Frameworks[span_46](end_span)</div>
+                    [span_47](start_span)<div class="checklist-desc">Are my timelines explicitly written out across Specific, Measurable, Achievable, Relevant, and Time-bound plans?[span_47](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_48](start_span)<div class="checklist-number">Point 08[span_48](end_span)</div>
+                    [span_49](start_span)<div class="checklist-text">Structural Personal Organization[span_49](end_span)</div>
+                    [span_50](start_span)<div class="checklist-desc">Are my logs, academic records, and asset schedules neat and structurally managed?[span_50](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_51](start_span)<div class="checklist-number">Point 09[span_51](end_span)</div>
+                    [span_52](start_span)<div class="checklist-text">Alternative Outlets & Passions[span_52](end_span)</div>
+                    [span_53](start_span)<div class="checklist-desc">What unique skills (writing, music, drawing, bowling, cooking) do I run to for stress-management?[span_53](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_54](start_span)<div class="checklist-number">Point 10[span_54](end_span)</div>
+                    [span_55](start_span)<div class="checklist-text">Conflict Regulation Protocols[span_55](end_span)</div>
+                    [span_56](start_span)[span_57](start_span)<div class="checklist-desc">Do I apply high emotional regulation and clear composure parameters under high group tension?[span_56](end_span)[span_57](end_span)</div>
+                </div>
+            </div>
+            <div class="checklist-row">
+                <div class="check-wrapper"><input type="checkbox"></div>
+                <div class="checklist-content">
+                    [span_58](start_span)<div class="checklist-number">Point 11[span_58](end_span)</div>
+                    [span_59](start_span)<div class="checklist-text">Rookie Contract Strategy Simulation[span_59](end_span)</div>
+                    [span_60](start_span)<div class="checklist-desc">If handed an average rookie layout of $6 Million, what absolute distribution plan would I form to protect it?[span_60](end_span)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="background: rgba(0,0,0,0.2); border-left: 4px solid #ff8033;">
+            [span_61](start_span)<span style="color:#ff8033; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:8px;">⚖️ INTENTIONAL EXPECTATIONS STANDARD[span_61](end_span)</span>
+            <ul style="margin:0; padding-left:18px; font-size:13px; line-height:1.5; color:rgba(255,255,255,0.9);">
+                [span_62](start_span)<li style="margin-bottom:5px;"><strong>Mutual Respect:</strong> Absolute respect is given and expected unconditionally[span_62](end_span).</li>
+                [span_63](start_span)<li style="margin-bottom:5px;"><strong>Intentional Growth:</strong> Success requires both parties to be completely active and intentional[span_63](end_span).</li>
+                [span_64](start_span)<li style="margin-bottom:5px;"><strong>Open Exploration:</strong> Be ready for open, deep learning queries built to reveal breakthroughs[span_64](end_span). [span_65](start_span)No pressure is enforced[span_65](end_span).</li>
+                [span_66](start_span)<li><strong>Accountability Matrix:</strong> Every participant is held fully responsible for required metrics[span_66](end_span).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="events" class="tab-content" style="max-width: 800px;">
+        <div class="card" style="text-align: center;">
+            [span_67](start_span)<span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px;">LIVE INTERACTIVE WORKSHOP[span_67](end_span)</span>
+            <h2 style="font-family: 'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0 2px 0;">Better Me Better Athlete</h2>
+            <p style="font-size: 16px; font-weight: 700; color: #d4af37; margin: 0 0 15px 0;">Industry, Money & Media</p>
+            
+            <p style="font-size: 14px; opacity: 0.9; margin: 5px 0 20px 0;">
+                📅 <strong>Sunday, Sept 27th</strong> &nbsp;|&nbsp; 🕒 <strong>3:00 PM - 7:00 PM</strong> &nbsp;|&nbsp; 📍 <strong>Brampton, ON</strong>
+            </p>
+
+            <div style="text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                [span_68](start_span)<span style="color:#d4af37; font-size:11px; font-weight:800; text-transform:uppercase; display:block; margin-bottom:12px; letter-spacing:1px;">Featured Expert Panelists[span_68](end_span)</span>
+                <div class="grid-2">
+                    <div class="speaker-box">
+                        <strong style="color:#fff; font-size:14px; display:block;">Akil Augustine</strong>
+                        [span_69](start_span)[span_70](start_span)<span style="font-size:12px; color:#ff8033; font-weight:600; text-transform:uppercase;">Media Literacy Specialist[span_69](end_span)[span_70](end_span)</span>
+                    </div>
+                    <div class="speaker-box">
+                        <strong style="color:#fff; font-size:14px; display:block;">Christopher Duff</strong>
+                        [span_71](start_span)[span_72](start_span)<span style="font-size:12px; color:#ff8033; font-weight:600; text-transform:uppercase;">Business Entrepreneur[span_71](end_span)[span_72](end_span)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: left; margin-bottom: 20px;">
+                [span_73](start_span)<span style="color:#d4af37; font-size:11px; font-weight:800; text-transform:uppercase; display:block; margin-bottom:10px; letter-spacing:1px;">Event Master Timeline[span_73](end_span)</span>
+                <div class="rundown-item"><div class="rundown-time">3:00PM - 3:45PM</div><div class="rundown-block">Dine In & Set Tone</div></div>
+                [span_74](start_span)<div class="rundown-item"><div class="rundown-time">3:50PM - 4:40PM</div><div class="rundown-block">Panel Discussion Forum[span_74](end_span)</div></div>
+                [span_75](start_span)[span_76](start_span)<div class="rundown-item"><div class="rundown-time">4:45PM - 5:45PM</div><div class="rundown-block">Media Skills & Communication Training[span_75](end_span)[span_76](end_span)</div></div>
+                [span_77](start_span)[span_78](start_span)<div class="rundown-item"><div class="rundown-time">5:50PM - 6:50PM</div><div class="rundown-block">Money Matters & Wealth Blueprint[span_77](end_span)[span_78](end_span)</div></div>
+            </div>
+
+            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="width:80%; max-width:300px; margin: 10px auto 0 auto;">Secure My Seat</a>
+        </div>
+
+        <div class="card" style="text-align: center; border: 1px solid rgba(212, 175, 55, 0.2);">
+            <h3 style="font-family:'Archivo Black'; font-size: 18px; margin: 0 0 8px 0; text-transform: uppercase;">Academy Feedback Survey</h3>
+            <p style="font-size: 13.5px; opacity: 0.7; margin: 0 0 15px 0;">Help us adapt future cohorts and metrics configurations by responding to the program questionnaire.</p>
+            <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold" style="background:transparent; border:2px solid #d4af37; color:#d4af37;">Complete Questionnaire</a>
+        </div>
+    </section>
+
+    <section id="store" class="tab-content" style="max-width: 750px;">
+        <div class="card" style="text-align: center; padding: 30px;">
+            <p style="color: #d4af37; font-size: 16px; font-weight: 800; text-transform: uppercase; margin: 0; letter-spacing: 2px;">Point Guard: A Diary</p>
+            [span_79](start_span)[span_80](start_span)<p style="font-size: 14px; opacity: 0.6; margin: 2px 0 15px 0;">By Author Keaton Cole[span_79](end_span)[span_80](end_span)</p>
+            <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Acquire on Amazon</a>
+        </div>
+
+        <div class="section-divider">
+            <h3 style="font-family:'Archivo Black'; text-align:center; color: #ffffff; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Academy Services & Package Rates</h3>
+        </div>
+
+        <div class="card" style="border: 2px solid #d4af37; background: rgba(212, 175, 55, 0.05); text-align: center; padding: 30px;">
+            <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px;">🔥 PREFERRED SELECTION</span>
+            <h3 style="font-size: 44px; margin: 0; font-family:'Archivo Black'; color: #d4af37;">$55 <span style="font-size:15px; font-family:'Inter'; font-weight:normal; color:#fff;">/ session</span></h3>
+            <p style="font-size: 15px; font-weight: 700; margin: 5px 0 15px 0;">Complete Development Package</p>
+            
+            <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 15px; text-align: left; max-width: 500px; margin: 0 auto 20px auto; border: 1px solid rgba(255,255,255,0.04);">
+                <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.9);">
+                    [span_81](start_span)<li>Full Academy Private Live Mentorship Access[span_81](end_span)</li>
+                    [span_82](start_span)<li style="color: #f9d976; font-weight: 700;">Includes a physical copy of <strong>POINT GUARD: A Diary</strong> 📚[span_82](end_span)</li>
+                    [span_83](start_span)<li>Downloadable Matrix Trackers & Interactive Templates[span_83](end_span)</li>
+                </ul>
+            </div>
+            <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold">Secure Checkout</a>
+        </div>
+
+        <div class="card" style="text-align: center; padding: 25px;">
+            <h3 style="font-size: 32px; margin: 0; font-family:'Archivo Black'; color:#fff;">$40 <span style="font-size:14px; font-family:'Inter'; font-weight:normal; opacity:0.6;">/ session</span></h3>
+            <p style="font-size: 14px; font-weight: 700; margin: 4px 0 15px 0; opacity: 0.9;">Standard Registration Tier</p>
+            <p style="font-size: 13px; opacity: 0.7; max-width: 450px; margin: 0 auto 15px auto; line-height: 1.5;">
+                Provides active training matrix access. [span_84](start_span)Please note this baseline level does not include the physical literature text layout[span_84](end_span).
+            </p>
+            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.15); color:#ffffff; border: 1px solid rgba(255,255,255,0.2);">Secure Checkout</a>
+        </div>
+
+        <div class="card" style="text-align: center; padding: 25px; opacity:0.9;">
+            <h3 style="font-size: 32px; margin: 0; font-family:'Archivo Black'; color:#fff;">$600</h3>
+            [span_85](start_span)<p style="font-size: 14px; font-weight: 700; margin: 4px 0 15px 0;">Team Interactive Workshop Bundle[span_85](end_span)</p>
+            <p style="font-size: 13px; opacity: 0.7; max-width: 450px; margin: 0 auto 15px auto; line-height: 1.5;">
+                [span_86](start_span)Full organizational layout delivery designed to establish custom strategy frameworks for your entire program roster simultaneously[span_86](end_span).
+            </p>
+            <a href="https://buy.stripe.com/00w9ASfV54vi1TI8Ya7kc00" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.15); color:#ffffff; border: 1px solid rgba(255,255,255,0.2);">Secure Checkout</a>
+        </div>
+    </section>
+
+    <nav>
+        <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker Room</a>
+        <a id="tab-link-resources" onclick="switchTab('resources')">Resources</a>
+        <a id="tab-link-events" onclick="switchTab('events')">Locker Events</a>
+        <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
+    </nav>
+
+<script>
+    // Safe Dynamic Routing System
+    function switchTab(tabId) {
+        const sections = document.querySelectorAll('.tab-content');
+        sections.forEach(sec => sec.style.display = 'none');
+        
+        const targetSection = document.getElementById(tabId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+        }
+        
+        const anchors = document.querySelectorAll('nav a');
+        anchors.forEach(a => a.classList.remove('active-tab'));
+        
+        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
+        if(tabId === 'resources') document.getElementById('tab-link-resources').classList.add('active-tab');
+        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
+        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
+        
+        window.scrollTo(0,0);
+    }
+
+    let currentModuleId = 1;
+
+    // Comprehensive Dynamic Data Hub for Masterclass Engine
+    function loadLesson(id) {
+        currentModuleId = id;
+        let tag = "";
+        let title = "";
+        let textHtml = "";
+
+        switch(id) {
+            case 1:
+                [span_87](start_span)tag = "1st Quarter • Transferable Skills[span_87](end_span)";
+                [span_88](start_span)title = "1.1 The Athlete's Mindset: Equals Athletes Responsibility[span_88](end_span)";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Cultivating a Growth Mindset:</p>
+                    [span_89](start_span)<p>Embracing challenges, persisting through setbacks, and learning from mistakes[span_89](end_span). [span_90](start_span)This serves as a comprehensive journey of self-discovery and personal growth[span_90](end_span).</p>
+                    
+                    [span_91](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Effective Goal Setting Strategies[span_91](end_span):</p>
+                    <ul class="bullet-list">
+                        [span_92](start_span)<li><strong>Specific:</strong> Clearly define what you want to achieve[span_92](end_span).</li>
+                        [span_93](start_span)<li><strong>Measurable:</strong> Set quantifiable targets to track progress[span_93](end_span).</li>
+                        [span_94](start_span)<li><strong>Achievable:</strong> Set challenging but realistic goals within reach[span_94](end_span).</li>
+                        [span_95](start_span)<li><strong>Relevant:</strong> Align targets with overall values and aspirations[span_95](end_span).</li>
+                        [span_96](start_span)<li><strong>Time-bound:</strong> Set deadlines to maintain strict focus and motivation[span_96](end_span).</li>
+                    </ul>
+                    [span_97](start_span)<p>Utilize short-term benchmarks to break down ambitious long-term targets[span_97](end_span). [span_98](start_span)[span_99](start_span)Monitor results consistently and learn constructively from setbacks[span_98](end_span)[span_99](end_span).</p>
+
+                    [span_100](start_span)[span_101](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Professional Standards & Image[span_100](end_span)[span_101](end_span):</p>
+                    [span_102](start_span)<p>An athlete's responsibility extends beyond raw physical talent[span_102](end_span). [span_103](start_span)[span_104](start_span)Punctuality demonstrates absolute respect for team frameworks, showcasing a strong work ethic[span_103](end_span)[span_104](end_span). [span_105](start_span)[span_106](start_span)Maintain a clean, well-groomed appearance to project structural pride, paired with a perpetual attitude of deep sportsmanship towards officials, coaches, and opponents[span_105](end_span)[span_106](end_span).</p>
+                `;
+                break;
+                
+            case 2:
+                [span_107](start_span)tag = "1st Quarter • Transferable Skills[span_107](end_span)";
+                [span_108](start_span)title = "1.2 Building a Strong Foundation[span_108](end_span)";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Mastering Your Craft:</p>
+                    [span_109](start_span)<p>Commit completely to consistent, intentional training of core functional skills: dribbling, shooting, passing, and defense[span_109](end_span). [span_110](start_span)Put in the required hours by actively finding time to commit[span_110](end_span). [span_111](start_span)Combine this with a customized, structural strength and conditioning training layout to optimize on-court performance metrics[span_111](end_span).</p>
+                    
+                    [span_112](start_span)[span_113](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Nutrition & Fueling Mechanics[span_112](end_span)[span_113](end_span):</p>
+                    [span_114](start_span)<p>Proper fueling is an absolute prerequisite for injury prevention and structural longevity[span_114](end_span). Maintain crisp macronutrient ratios:</p>
+                    <ul class="bullet-list">
+                        [span_115](start_span)<li><strong>Carbohydrates:</strong> Primary source for explosive, high-intensity operations[span_115](end_span).</li>
+                        [span_116](start_span)<li><strong>Protein:</strong> Essential substrate for muscle tissue repair and athletic growth[span_116](end_span).</li>
+                        [span_117](start_span)<li><strong>Healthy Fats:</strong> Key for sustained metabolic fuel and cellular support[span_117](end_span).</li>
+                    </ul>
+                    [span_118](start_span)<p>Prioritize careful hydration and electrolyte replacement during high-intensity stress[span_118](end_span). [span_119](start_span)Consuming clean carbs and protein within 30-60 minutes post-exercise maximizes muscle recovery systems[span_119](end_span).</p>
+
+                    [span_120](start_span)[span_121](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Strategic Rest & Stress Management[span_120](end_span)[span_121](end_span):</p>
+                    [span_122](start_span)<p>Incorporate active recovery protocols alongside 7-9 hours of nightly sleep for complete restoration[span_122](end_span). [span_123](start_span)Allocate deliberate time out to connect with family and friends to balance emotional health away from the game[span_123](end_span).</p>
+                `;
+                break;
+                
+            case 3:
+                [span_124](start_span)tag = "2nd Quarter • Let's Talk Basketball[span_124](end_span)";
+                [span_125](start_span)title = "2.1 The Role of an Agent[span_125](end_span)";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Understanding Sports Agencies:</p>
+                    [span_126](start_span)<p>Agencies function as crucial intermediaries between professional athletes and corporate entities across the sports landscape[span_126](end_span). [span_127](start_span)They offer specialized services designed to fully maximize career performance equity and financial stability[span_127](end_span).</p>
+                    
+                    [span_128](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Core Representation Mechanics[span_128](end_span):</p>
+                    <ul class="bullet-list">
+                        [span_129](start_span)<li><strong>Player Contracts:</strong> Negotiation of baseline salary metrics, performance bonuses, incentives, and lengths[span_129](end_span).</li>
+                        [span_130](start_span)<li><strong>Endorsement Portfolios:</strong> Securing partnership capital with brand footprints[span_130](end_span).</li>
+                        [span_131](start_span)<li><strong>Marketing & Public Relations:</strong> Managing public image assets and digital footprints[span_131](end_span).</li>
+                        [span_132](start_span)<li><strong>Crisis Operations:</strong> Formulating rapid response strategies to handle high-visibility challenges[span_132](end_span).</li>
+                        [span_133](start_span)<li><strong>Lifestyle Concierge:</strong> Tracking travel logistics, schedule management, and personal accounts[span_133](end_span).</li>
+                    </ul>
+
+                    [span_134](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Strict Selection Safeguards[span_134](end_span):</p>
+                    [span_135](start_span)<p>Evaluate potential agencies by researching their industry reputation, auditing their active client roster, verifying communication consistency, and completely mapping out their commission fee architectures before signing[span_135](end_span).</p>
+                `;
+                break;
+                
+            case 4:
+                [span_136](start_span)tag = "2nd Quarter • Let's Talk Basketball[span_136](end_span)";
+                [span_137](start_span)title = "2.2 Financial Literacy Strategy[span_137](end_span)";
+                textHtml = `
+                    [span_138](start_span)<p style="margin-top:0; font-weight:700; color:#d4af37;">Designing Your Vision Board Lifestyle[span_138](end_span):</p>
+                    [span_139](start_span)<p>Financial literacy is about deploying capital to manifest specific life targets[span_139](end_span). [span_140](start_span)[span_141](start_span)Build a clear Life Map aligning monetary assets directly with core values like family, philanthropy, and education[span_140](end_span)[span_141](end_span).</p>
+                    
+                    [span_142](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Income Diversification Architecture[span_142](end_span):</p>
+                    [span_143](start_span)<p>Analyze baseline professional earnings while systematically designing alternative wealth streams[span_143](end_span):</p>
+                    <ul class="bullet-list">
+                        [span_144](start_span)<li><strong>Business Ventures:</strong> Scaling corporate structures, personal brands, and companies[span_144](end_span).</li>
+                        [span_145](start_span)<li><strong>Investments:</strong> Diversified portfolios including stocks, bonds, private equities, and real estate[span_145](end_span).</li>
+                        [span_146](start_span)<li><strong>Intellectual Property:</strong> Licensing rights, name image likeness (NIL) assets, and long-term royalties[span_146](end_span).</li>
+                    </ul>
+
+                    [span_147](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Lifestyle Creep Defense & Professional Teams[span_147](end_span):</p>
+                    [span_148](start_span)<p>Track spending meticulously, leverage delayed gratification, and systematically resist increasing outlays as income rises[span_148](end_span). [span_149](start_span)Assemble a verified advisory group comprising a Financial Advisor for risk allocation[span_149](end_span) [span_150](start_span)and a Tax Professional to minimize systemic liability[span_150](end_span).</p>
+                `;
+                break;
+                
+            case 5:
+                [span_151](start_span)tag = "2nd Quarter • Let's Talk Basketball[span_151](end_span)";
+                [span_152](start_span)title = "2.3 Personal Branding & Media[span_152](end_span)";
+                textHtml = `
+                    [span_153](start_span)[span_154](start_span)<p style="margin-top:0; font-weight:700; color:#d4af37;">Social Media Matrix: Risks vs Rewards[span_153](end_span)[span_154](end_span)</p>
+                    [span_155](start_span)<p>Digital footprints can accelerate career paths if managed responsibly, or present severe liability if abused[span_155](end_span).</p>
+                    <ul class="bullet-list">
+                        [span_156](start_span)<li><strong>The Pros:</strong> Direct fan engagement, image control, and securing brand equity monetization[span_156](end_span).</li>
+                        [span_157](start_span)<li><strong>The Cons:</strong> Performance distraction, privacy vulnerabilities, and exposure to online negativity[span_157](end_span).</li>
+                    </ul>
+                    [span_158](start_span)<p>Set firm boundaries, cultivate positive interactions, and avoid dangerous viral pitfalls[span_158](end_span). [span_159](start_span)Use your platform for social impact and philanthropy[span_159](end_span).</p>
+
+                    [span_160](start_span)[span_161](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Media Interface Mastery[span_160](end_span)[span_161](end_span):</p>
+                    [span_162](start_span)<p>Pre-game and post-game interviews serve as elite training spaces for life[span_162](end_span). [span_163](start_span)[span_164](start_span)They cultivate clarity, conciseness, and active listening under extreme pressure[span_163](end_span)[span_164](end_span). [span_165](start_span)[span_166](start_span)[span_167](start_span)Regular media reps eliminate stage fright, enhance composure, and build emotional intelligence[span_165](end_span)[span_166](end_span)[span_167](end_span).</p>
+                `;
+                break;
+                
+            case 6:
+                [span_168](start_span)tag = "3rd Quarter • Off the Court Matters[span_168](end_span)";
+                [span_169](start_span)title = "3.1 Exploring Post-Sport Career Paths[span_169](end_span)";
+                textHtml = `
+                    [span_170](start_span)<p style="margin-top:0; font-weight:700; color:#d4af37;">Identifying Passions Early[span_170](end_span):</p>
+                    [span_171](start_span)<p>Begin mapping out sustainable career paths long before your athletic career ends[span_171](end_span). [span_172](start_span)Investigate options like high-level coaching, sports broadcasting networks, corporate management, and entrepreneurship[span_172](end_span).</p>
+                    
+                    [span_173](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Leveraging Transferable Skills[span_173](end_span):</p>
+                    [span_174](start_span)<p>The elite habits forged in competitive arenas convert directly into the business world[span_174](end_span):</p>
+                    <ul class="bullet-list">
+                        [span_175](start_span)<li><strong>Executive Leadership:</strong> Directing strategy and guiding teams through volatile environments[span_175](end_span).</li>
+                        [span_176](start_span)<li><strong>Cohesion Architecture:</strong> Collaborating smoothly across complex corporate networks[span_176](end_span).</li>
+                        [span_177](start_span)<li><strong>Uncompromising Discipline:</strong> Applying consistent, objective effort toward performance goals[span_177](end_span).</li>
+                    </ul>
+                    [span_178](start_span)<p>Execute informational interviews and job shadowing to gain firsthand experience inside target industries[span_178](end_span).</p>
+                `;
+                break;
+                
+            case 7:
+                [span_179](start_span)tag = "4th Quarter • Life Lessons[span_179](end_span)";
+                [span_180](start_span)title = "4.1 Transitions & Well-Being[span_180](end_span)";
+                textHtml = `
+                    [span_181](start_span)<p style="margin-top:0; font-weight:700; color:#d4af37;">Managing the Career Transition[span_181](end_span):</p>
+                    [span_182](start_span)<p>Stepping away from professional basketball requires distinct physical, mental, and social calibration[span_182](end_span). [span_183](start_span)Prioritize lifelong education, continuous skill expansion, and a healthy lifestyle[span_183](end_span).</p>
+                    
+                    [span_184](start_span)<p style="font-weight:700; color:#d4af37; margin-top:15px;">Mental and Social Infrastructure[span_184](end_span):</p>
+                    [span_185](start_span)<p>Secure professional mental health support to process psychological shifts during transitions[span_185](end_span). [span_186](start_span)Connect deeply with veteran mentors who have successfully walked this path, and protect your personal relationships to anchor emotional stability[span_186](end_span).</p>
+
+                    <div style="background:rgba(255,255,255,0.03); border-radius:8px; padding:15px; border-left:4px solid #d4af37; margin-top:15px;">
+                        [span_187](start_span)<strong style="color:#d4af37; font-size:12px; display:block; text-transform:uppercase; margin-bottom:4px;">The Ultimate Legacy Play[span_187](end_span):</strong>
+                        [span_188](start_span)True success is measured by outbound impact[span_188](end_span). [span_189](start_span)[span_190](start_span)Pour back into your community, guide the next generation of aspiring young talents, and help them navigate complex athletic and personal milestones with confidence[span_189](end_span)[span_190](end_span).
+                    </div>
+                `;
+                break;
+        }
+
+        document.getElementById('player-banner-tag').innerText = tag;
+        document.getElementById('player-title').innerText = title;
+        document.getElementById('player-body').innerHTML = textHtml;
+
+        for (let i = 1; i <= 7; i++) {
+            const el = document.getElementById('nav-l' + i);
+            if(el) el.classList.remove('active-lesson');
+        }
+        
+        const activeEl = document.getElementById('nav-l' + id);
+        if(activeEl) activeEl.classList.add('active-lesson');
+        
+        document.getElementById('player-body').scrollTop = 0;
+    }
+
+    function nextLesson() {
+        if (currentModuleId < 7) {
+            loadLesson(currentModuleId + 1);
+        } else {
+            alert("All training units completed successfully!");
+            loadLesson(1);
+        }
+    }
+
+    // Initialize safely on load
+    window.onload = function() {
+        switchTab('locker-room');
+        loadLesson(1);
+    };
+</script>
 
 </body>
 </html>
