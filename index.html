@@ -80,7 +80,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- NEW LANDING & LOCKER ROOM POP DESIGN --- */
+        /* --- LOCKER ROOM HERO STYLES --- */
         .locker-hero-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -147,13 +147,14 @@
             letter-spacing: 0.5px;
         }
 
+        /* --- GLOBAL PORTAL & REGISTRATION CARD LAYOUTS --- */
         .portal-split-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            margin-top: 30px;
         }
 
-        /* --- REGISTRATION ELEMENTS --- */
         .card-portal {
             background: rgba(0, 10, 26, 0.4);
             border: 1px solid var(--border-light);
@@ -185,6 +186,7 @@
             margin-bottom: 30px;
             font-size: 13.5px;
             line-height: 1.6;
+            text-align: left;
         }
 
         .form-input {
@@ -220,6 +222,7 @@
             border-radius: 8px;
             border: 1px solid transparent;
             transition: all 0.2s ease;
+            text-align: left;
         }
         .checkbox-label:hover {
             background: rgba(255,255,255,0.04);
@@ -253,7 +256,7 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* --- VAULT / STORE STYLES --- */
+        /* --- THE VAULT / STORE STYLES --- */
         .vault-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -297,7 +300,7 @@
             overflow: hidden;
         }
 
-        /* --- ACADEMY CODE LAYOUTS --- */
+        /* --- ACADEMY PLAYER & SIDEBAR --- */
         .lms-layout {
             display: grid;
             grid-template-columns: 310px 1fr;
@@ -408,10 +411,7 @@
     <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
-<!-- LOCKER ROOM TAB (HIGH POP LANDING CONFIGURATION) -->
 <section id="locker-room" class="tab-content">
-    
-    <!-- Split Elite Hero Grid Layout -->
     <div class="locker-hero-grid">
         <div class="hero-left">
             <h1>Build The Blueprint <span>Beyond The Court</span></h1>
@@ -424,74 +424,14 @@
         </div>
     </div>
 
-    <!-- Playbook Callout Container -->
     <div class="playbook-card">
         <h3>🧠 Academy Mission Mandate</h3>
         <p style="font-size: 15px; font-weight: 500; line-height: 1.6; margin: 0; opacity: 0.9;">
             "To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."
         </p>
     </div>
-
-    <!-- Instructions Banner -->
-    <div class="instruction-box">
-        <span style="color: #ff8033; font-weight: 800; text-transform: uppercase; font-size: 12px; display: block; margin-bottom: 6px;">📬 Action Required For Active Roster Tracking:</span>
-        Complete your custom registration forms right below. Once they are locked in, proceed to <strong>The Academy</strong> tab. When you finish your interactive lesson configurations, jump inside the final framework module (<strong>Module 3.4</strong>) to copy or download your master report file. Email that document directly to <strong style="color: var(--gold-primary);">kreativekc89@gmail.com</strong> with the subject line <em>"Heartwork Event Registration"</em>.
-    </div>
-
-    <!-- Dual Form Entry Systems -->
-    <div class="portal-split-grid">
-        
-        <!-- Grid Asset 1: Dietary Data -->
-        <div class="card-portal">
-            <h3 class="portal-header">🥗 Dietary Alignment Profile</h3>
-            <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">
-                <strong>Standard Event Catering Layout:</strong> Premium Fried Chicken pieces, Homestyle Mac n Cheese, Steamed Garlic Broccoli. Check boxes below if you require alternative variations.
-            </p>
-            
-            <label class="checkbox-label">
-                <input type="checkbox" id="diet-veg" onchange="updateDietaryData()">
-                <span><strong>Vegetarian / Vegan Option</strong> (Requires alternative non-meat/non-dairy options)</span>
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="diet-gluten" onchange="updateDietaryData()">
-                <span><strong>Gluten Sensitivity</strong> (Cannot consume wheat flour coatings or standard pasta components)</span>
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="diet-dairy" onchange="updateDietaryData()">
-                <span># <strong>Lactose / Dairy Intolerance</strong> (Requires alternative sides without milk/cheese elements)</span>
-            </label>
-            
-            <label style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; margin-top: 15px;">List any extra medical or environmental allergies:</label>
-            <input type="text" id="diet-custom" class="form-input" placeholder="e.g., Peanut allergies, seafood restrictions..." oninput="updateDietaryData()">
-        </div>
-
-        <!-- Grid Asset 2: Compliance Legal Waivers -->
-        <div class="card-portal">
-            <h3 class="portal-header">📝 Program Waivers & Authorization</h3>
-            
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; font-size: 12px; max-height: 120px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.85);">
-                <strong>Liability Waiver Agreement:</strong> I explicitly grant permission for my child to participate fully across physical clinic fields and development workshops organized by Heartwork Academy. I certify the participant is medically cleared and release structural managers from injury liabilities.<br><br>
-                <strong>Media Release Framework:</strong> I understand photography and video assets are tracked inside open sessions. I authorize Heartwork Academy to process these public highlights for training reviews, program layouts, and platform promotions.
-            </div>
-
-            <label class="checkbox-label">
-                <input type="checkbox" id="waiver-agree" onchange="updateDietaryData()">
-                <span>I have fully read, acknowledge, and authorize both the <strong>Liability Agreement</strong> and <strong>Media Release</strong> components stated above.</span>
-            </label>
-
-            <div style="margin-top: 15px;">
-                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Participant Athlete Name</label>
-                <input type="text" id="sign-athlete" class="form-input" placeholder="Enter Full Name" oninput="updateDietaryData()">
-                
-                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Parent / Guardian Digital Signature</label>
-                <input type="text" id="sign-parent" class="form-input" style="margin-bottom:0;" placeholder="Enter Parent Signature" oninput="updateDietaryData()">
-            </div>
-        </div>
-        
-    </div>
 </section>
 
-<!-- ACADEMY MODULES TAB -->
 <section id="academy" class="tab-content" style="max-width: 1100px;">
     <div style="text-align: center; margin-bottom: 25px;">
         <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: -0.5px;">Beyond The Court Portal</h2>
@@ -527,8 +467,7 @@
             </div>
 
             <div id="player-body" style="padding: 30px; font-size: 15px; line-height: 1.7; background: rgba(0,0,0,0.4); max-height: 500px; overflow-y: auto; box-sizing: border-box;">
-                <!-- Content Dynamically Generated -->
-            </div>
+                </div>
 
             <div style="background: rgba(0,0,0,0.6); padding: 20px 30px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
                 <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 12px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; cursor: pointer;">
@@ -540,17 +479,70 @@
     </div>
 </section>
 
-<!-- EVENTS TAB -->
 <section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 30px;">Events Schedule</h2>
-    <div class="card-portal" style="text-align: center; max-width: 600px; margin: 0 auto; border: 1px solid rgba(212,175,55,0.3);">
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 30px;">Events Schedule & Registration</h2>
+    
+    <div class="card-portal" style="text-align: center; max-width: 600px; margin: 0 auto 40px auto; border: 1px solid rgba(212,175,55,0.3);">
         <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin-top: 0;">Better Me Better Athlete</h3>
         <p style="font-size: 15px; opacity: 0.8; margin: 10px 0 20px 0;">Sunday, Sept 27th | Brampton, ON</p>
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat</a>
+        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat Via Stripe</a>
+    </div>
+
+    <div class="instruction-box">
+        <span style="color: #ff8033; font-weight: 800; text-transform: uppercase; font-size: 12px; display: block; margin-bottom: 6px;">📬 Action Required For Active Roster Tracking:</span>
+        Complete your custom registration waivers and dietary details right below. Once locked, proceed to <strong>The Academy</strong> tab. When you finish your structural lesson sets, open up the final evaluation block (<strong>Module 3.4</strong>) to copy or download your master workspace text file. Email that report directly to <strong style="color: var(--gold-primary);">kreativekc89@gmail.com</strong> with the message subject line <em>"Heartwork Event Registration"</em>.
+    </div>
+
+    <div class="portal-split-grid">
+        
+        <div class="card-portal">
+            <h3 class="portal-header">🥗 Dietary Alignment Profile</h3>
+            <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">
+                <strong>Standard Event Catering Layout:</strong> Premium Fried Chicken pieces, Homestyle Mac n Cheese, Steamed Garlic Broccoli. Check boxes below if you require alternative variations.
+            </p>
+            
+            <label class="checkbox-label">
+                <input type="checkbox" id="diet-veg" onchange="updateDietaryData()">
+                <span><strong>Vegetarian / Vegan Option</strong> (Requires alternative non-meat/non-dairy options)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="diet-gluten" onchange="updateDietaryData()">
+                <span><strong>Gluten Sensitivity</strong> (Cannot consume wheat flour coatings or standard pasta components)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="diet-dairy" onchange="updateDietaryData()">
+                <span><strong>Lactose / Dairy Intolerance</strong> (Requires alternative sides without milk/cheese elements)</span>
+            </label>
+            
+            <label style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; margin-top: 15px;">List any extra medical or environmental allergies:</label>
+            <input type="text" id="diet-custom" class="form-input" placeholder="e.g., Peanut allergies, seafood restrictions..." oninput="updateDietaryData()">
+        </div>
+
+        <div class="card-portal">
+            <h3 class="portal-header">📝 Program Waivers & Authorization</h3>
+            
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; font-size: 12px; max-height: 120px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.85);">
+                <strong>Liability Waiver Agreement:</strong> I explicitly grant permission for my child to participate fully across physical clinic fields and development workshops organized by Heartwork Academy. I certify the participant is medically cleared and release structural managers from injury liabilities.<br><br>
+                <strong>Media Release Framework:</strong> I understand photography and video assets are tracked inside open sessions. I authorize Heartwork Academy to process these public highlights for training reviews, program layouts, and platform promotions.
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="waiver-agree" onchange="updateDietaryData()">
+                <span>I have fully read, acknowledge, and authorize both the <strong>Liability Agreement</strong> and <strong>Media Release</strong> components stated above.</span>
+            </label>
+
+            <div style="margin-top: 15px;">
+                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Participant Athlete Name</label>
+                <input type="text" id="sign-athlete" class="form-input" placeholder="Enter Full Name" oninput="updateDietaryData()">
+                
+                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Parent / Guardian Digital Signature</label>
+                <input type="text" id="sign-parent" class="form-input" style="margin-bottom:0;" placeholder="Enter Parent Signature" oninput="updateDietaryData()">
+            </div>
+        </div>
+        
     </div>
 </section>
 
-<!-- VAULT TAB -->
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 5px;">The Vault</h2>
     <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Select your live event entry ticket options and premium training assets below.</p>
@@ -654,7 +646,7 @@
 
     const lessonsData = {
         1: { tag: "MODULE 1.1", title: "The Athlete's Mindset", prompt: "What is your main 90-day goal?", quizQ: "What is a growth mindset?", quizOptions: ["Fixed skills", "Skills improve with effort", "Ignoring feedback"], correctIdx: 1, html: `<p>Operate with a growth mindset — setbacks are data points, not failures.</p>` },
-        2: { tag: "MODULE 1.2", title: "Take Care of Your Body", prompt: "Identify one sleep or fuel improvement strategy.", quizQ: "When is recovery window open?", quizOptions: ["Immediately overnight", "30-60 mins post workout", "Next morning"], correctIdx: 1, html: `<p>Your body is your business asset. Protect it with timing.</p>` },
+        2: { tag: "MODULE 1.2", title: "Take Care of Your Body", prompt: "Identify one sleep or fuel improvement strategy.", quizQ: "When is recovery window open?", quizOptions: ["Immediately overnight", "30-60 mins post workout", "Next morning"], correctIdx: 1, html: `<p>Your body is your business asset. Protect it with physical precision.</p>` },
         3: { tag: "MODULE 1.3", title: "Punctuality & Standards", prompt: "Draft your routine blueprint to arrive early.", quizQ: "What is the standard entry baseline?", quizOptions: ["On the exact dot", "15 minutes prior", "Whenever convenient"], correctIdx: 1, html: `<p>If you're 5 minutes early, you are late. Professionalism starts at the door.</p>` },
         4: { tag: "MODULE 1.4", title: "Digital Footprint", prompt: "Run the screenshot test on your channels.", quizQ: "What does NIL stand for?", quizOptions: ["National Integrity", "Name, Image, Likeness", "Net Income Leverage"], correctIdx: 1, html: `<p>Your public portfolio updates daily. Think before you post.</p>` },
         5: { tag: "MODULE 2.1", title: "Game as a Business", prompt: "How does media monetization affect modern sports?", quizQ: "What role does the elite player occupy?", quizOptions: ["Hourly labor", "The core foundational product asset", "Passive contractor"], correctIdx: 1, html: `<p>Understand that entertainment, media reach, and ticket assets move off performance.</p>` },
@@ -669,17 +661,17 @@
             tag: "MODULE 3.4",
             title: "Know Myself Assessment",
             questions: [
-                { q: "1. Who am I?", sub: "If you were to describe yourself, what is there to say about you?[span_0](start_span)[span_0](end_span)" },
-                { q: "2. What am I good at?", sub: "List strengths outside of basketball (cooking, writing, drawing, listening, etc.)[span_1](start_span)[span_1](end_span)." },
-                { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly[span_2](start_span)[span_2](end_span). What shifts must happen to lock this in daily[span_3](start_span)[span_3](end_span)?" },
-                { q: "4. What expectations are you expecting to manifest?", sub: "What specific goals are you tracking across basketball, family, and personal growth[span_4](start_span)[span_4](end_span)?" },
-                { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention (magazines, genres, authors) and why[span_5](start_span)[span_5](end_span)." },
-                { q: "6. What sports outlet do I listen to and why?", sub: "Examples: ESPN, Uninterrupted, First Take, etc[span_6](start_span)[span_6](end_span)." },
-                { q: "7. What do people say about me?", sub: "What do your family, close friends, and teammates say regarding your character footprint[span_7](start_span)[span_7](end_span)?" },
-                { q: "8. Who is my favorite basketball player and why?", sub: "What is it about their style, character mechanics, or behavior that draws you in[span_8](start_span)[span_8](end_span)?" },
-                { q: "9. Post-Ball Career Execution Moves", sub: "What targets do you want to hit? (e.g., brand stakes, media networks)[span_9](start_span)[span_9](end_span)." },
-                { q: "10. Legacy Impact Blueprint", sub: "What lasting principles and values do you want to hand down[span_10](start_span)[span_10](end_span)?" },
-                { q: "11. The Satisfaction Reality Check", sub: "If your ultimate sports milestone doesn't provide validation, how will you pivot[span_11](start_span)[span_11](end_span)?" }
+                { q: "1. Who am I?", sub: "If you were to describe yourself, what is there to say about you?" },
+                { q: "2. What am I good at?", sub: "List strengths outside of basketball (cooking, writing, drawing, listening, etc.)." },
+                { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly. What shifts must happen to lock this in daily?" },
+                { q: "4. What expectations are you expecting to manifest?", sub: "What specific goals are you tracking across basketball, family, and personal growth?" },
+                { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention (magazines, genres, authors) and why?" },
+                { q: "6. What sports outlet do I listen to and why?", sub: "Examples: ESPN, Uninterrupted, First Take, etc." },
+                { q: "7. What do people say about me?", sub: "What do your family, close friends, and teammates say regarding your character footprint?" },
+                { q: "8. Who is my favorite basketball player and why?", sub: "What is it about their style, character mechanics, or behavior that draws you in?" },
+                { q: "9. Post-Ball Career Execution Moves", sub: "What targets do you want to hit? (e.g., brand stakes, media networks)." },
+                { q: "10. Legacy Impact Blueprint", sub: "What lasting principles and values do you want to hand down?" },
+                { q: "11. The Satisfaction Reality Check", sub: "If your ultimate sports milestone doesn't provide validation, how will you pivot?" }
             ]
         }
     };
@@ -698,7 +690,7 @@
                 <div style="background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); padding: 15px; border-radius: 10px; font-size: 13px; margin-bottom: 20px; color: #fff; line-height:1.5;">
                     <strong>📬 Submission Instructions:</strong> Once you copy or download this completed blueprint text document below, email it immediately as an attachment or plain text directly to <strong style="color:var(--gold-primary);">kreativekc89@gmail.com</strong> so Coach Keaton can verify your entry status!
                 </div>
-                <p style="font-size:14px; opacity:0.8;">Complete your final identity guide down below[span_12](start_span)[span_12](end_span).</p>
+                <p style="font-size:14px; opacity:0.8;">Complete your final identity guide down below.</p>
                 <div style="margin-top:15px;">
             `;
             
