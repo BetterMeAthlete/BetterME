@@ -80,6 +80,32 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- QUOTE MARQUEE LAYOUT --- */
+        .daily-quote-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 35px;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.02);
+        }
+        .daily-quote-text {
+            font-size: 16px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #ffffff;
+            margin: 0 0 8px 0;
+        }
+        .daily-quote-author {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
         /* --- LOCKER ROOM HERO STYLES --- */
         .locker-hero-grid {
             display: grid;
@@ -147,14 +173,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- GLOBAL PORTAL & REGISTRATION CARD LAYOUTS --- */
-        .portal-split-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
+        /* --- GLOBAL PORTAL LAYOUTS --- */
         .card-portal {
             background: rgba(0, 10, 26, 0.4);
             border: 1px solid var(--border-light);
@@ -162,76 +181,17 @@
             padding: 30px;
             transition: border-color 0.3s ease;
         }
-        .card-portal:hover {
-            border-color: rgba(212, 175, 55, 0.25);
-        }
 
-        .portal-header {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 18px;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin: 0 0 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 0.5px;
-        }
-
-        .instruction-box {
-            background: rgba(212, 175, 55, 0.08);
-            border: 1px dashed var(--gold-primary);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-            font-size: 13.5px;
-            line-height: 1.6;
-            text-align: left;
-        }
-
-        .form-input {
+        .form-iframe-container {
+            position: relative;
             width: 100%;
-            padding: 14px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            color: white;
-            font-family: inherit;
-            font-size: 14px;
-            box-sizing: border-box;
-            margin-top: 8px;
-            margin-bottom: 20px;
-            transition: all 0.2s ease;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 16px;
-            cursor: pointer;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-            text-align: left;
-        }
-        .checkbox-label:hover {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(255,255,255,0.05);
-        }
-        .checkbox-label input {
-            accent-color: var(--gold-primary);
-            margin-top: 4px;
-            transform: scale(1.1);
+            max-width: 700px;
+            margin: 30px auto 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            background: #ffffff;
         }
 
         .btn-gold { 
@@ -286,18 +246,38 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.08);
         }
 
-        .book-img-container {
-            width: 130px;
-            height: 190px;
-            margin: 0 auto 20px auto;
-            background: #000;
-            border-radius: 8px;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.7);
-            display: flex;
+        .media-showcase-box {
+            background: rgba(0, 10, 26, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
             align-items: center;
-            justify-content: center;
+            text-align: left;
+        }
+
+        .book-img-display {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            display: block;
+            margin: 0 auto;
             border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-player-container {
+            width: 100%;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            background: #000;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            aspect-ratio: 16/9;
         }
 
         /* --- ACADEMY PLAYER & SIDEBAR --- */
@@ -396,9 +376,9 @@
             .locker-hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .hero-left h1 { font-size: 36px; }
             .hero-left p { margin: 0 auto 20px auto; }
-            .portal-split-grid { grid-template-columns: 1fr; }
             .lms-layout { grid-template-columns: 1fr; }
             .vault-grid { grid-template-columns: 1fr; }
+            .media-showcase-box { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
 </head>
@@ -411,7 +391,14 @@
     <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
+<!-- LOCKER ROOM TAB -->
 <section id="locker-room" class="tab-content">
+    <!-- Dynamic Daily Quote Module Container -->
+    <div class="daily-quote-card">
+        <p class="daily-quote-text" id="quote-display-text">"Loading your elite daily directive..."</p>
+        <div class="daily-quote-author" id="quote-display-author">HEARTWORK ACADEMY</div>
+    </div>
+
     <div class="locker-hero-grid">
         <div class="hero-left">
             <h1>Build The Blueprint <span>Beyond The Court</span></h1>
@@ -432,6 +419,7 @@
     </div>
 </section>
 
+<!-- ACADEMY MODULES TAB -->
 <section id="academy" class="tab-content" style="max-width: 1100px;">
     <div style="text-align: center; margin-bottom: 25px;">
         <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: -0.5px;">Beyond The Court Portal</h2>
@@ -467,7 +455,8 @@
             </div>
 
             <div id="player-body" style="padding: 30px; font-size: 15px; line-height: 1.7; background: rgba(0,0,0,0.4); max-height: 500px; overflow-y: auto; box-sizing: border-box;">
-                </div>
+                <!-- Content Dynamically Generated -->
+            </div>
 
             <div style="background: rgba(0,0,0,0.6); padding: 20px 30px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
                 <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 12px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; cursor: pointer;">
@@ -479,74 +468,49 @@
     </div>
 </section>
 
+<!-- LIVE EVENTS TAB (CONSOLIDATED ENTRANCE TICKET & SURVEY FORM INTERACTION) -->
 <section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 30px;">Events Schedule & Registration</h2>
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 10px;">Events & Registration Portal</h2>
+    <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 30px;">Complete your ticket purchase via Stripe and fill out the validation registration form directly below.</p>
     
-    <div class="card-portal" style="text-align: center; max-width: 600px; margin: 0 auto 40px auto; border: 1px solid rgba(212,175,55,0.3);">
+    <div class="card-portal" style="text-align: center; max-width: 600px; margin: 0 auto 30px auto; border: 1px solid rgba(212,175,55,0.3);">
         <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin-top: 0;">Better Me Better Athlete</h3>
         <p style="font-size: 15px; opacity: 0.8; margin: 10px 0 20px 0;">Sunday, Sept 27th | Brampton, ON</p>
         <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat Via Stripe</a>
     </div>
 
-    <div class="instruction-box">
-        <span style="color: #ff8033; font-weight: 800; text-transform: uppercase; font-size: 12px; display: block; margin-bottom: 6px;">📬 Action Required For Active Roster Tracking:</span>
-        Complete your custom registration waivers and dietary details right below. Once locked, proceed to <strong>The Academy</strong> tab. When you finish your structural lesson sets, open up the final evaluation block (<strong>Module 3.4</strong>) to copy or download your master workspace text file. Email that report directly to <strong style="color: var(--gold-primary);">kreativekc89@gmail.com</strong> with the message subject line <em>"Heartwork Event Registration"</em>.
-    </div>
-
-    <div class="portal-split-grid">
-        
-        <div class="card-portal">
-            <h3 class="portal-header">🥗 Dietary Alignment Profile</h3>
-            <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">
-                <strong>Standard Event Catering Layout:</strong> Premium Fried Chicken pieces, Homestyle Mac n Cheese, Steamed Garlic Broccoli. Check boxes below if you require alternative variations.
-            </p>
-            
-            <label class="checkbox-label">
-                <input type="checkbox" id="diet-veg" onchange="updateDietaryData()">
-                <span><strong>Vegetarian / Vegan Option</strong> (Requires alternative non-meat/non-dairy options)</span>
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="diet-gluten" onchange="updateDietaryData()">
-                <span><strong>Gluten Sensitivity</strong> (Cannot consume wheat flour coatings or standard pasta components)</span>
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="diet-dairy" onchange="updateDietaryData()">
-                <span><strong>Lactose / Dairy Intolerance</strong> (Requires alternative sides without milk/cheese elements)</span>
-            </label>
-            
-            <label style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; margin-top: 15px;">List any extra medical or environmental allergies:</label>
-            <input type="text" id="diet-custom" class="form-input" placeholder="e.g., Peanut allergies, seafood restrictions..." oninput="updateDietaryData()">
-        </div>
-
-        <div class="card-portal">
-            <h3 class="portal-header">📝 Program Waivers & Authorization</h3>
-            
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; font-size: 12px; max-height: 120px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.85);">
-                <strong>Liability Waiver Agreement:</strong> I explicitly grant permission for my child to participate fully across physical clinic fields and development workshops organized by Heartwork Academy. I certify the participant is medically cleared and release structural managers from injury liabilities.<br><br>
-                <strong>Media Release Framework:</strong> I understand photography and video assets are tracked inside open sessions. I authorize Heartwork Academy to process these public highlights for training reviews, program layouts, and platform promotions.
-            </div>
-
-            <label class="checkbox-label">
-                <input type="checkbox" id="waiver-agree" onchange="updateDietaryData()">
-                <span>I have fully read, acknowledge, and authorize both the <strong>Liability Agreement</strong> and <strong>Media Release</strong> components stated above.</span>
-            </label>
-
-            <div style="margin-top: 15px;">
-                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Participant Athlete Name</label>
-                <input type="text" id="sign-athlete" class="form-input" placeholder="Enter Full Name" oninput="updateDietaryData()">
-                
-                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Parent / Guardian Digital Signature</label>
-                <input type="text" id="sign-parent" class="form-input" style="margin-bottom:0;" placeholder="Enter Parent Signature" oninput="updateDietaryData()">
-            </div>
-        </div>
-        
+    <!-- Embedded Verification Google Form Survey System -->
+    <div class="form-iframe-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeYNl85cHIkc9ICKb55kSpVoEMWApz4AVxNgsPYwqTGHGgA_A/viewform?embedded=true" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
 </section>
 
+<!-- THE VAULT TAB -->
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 5px;">The Vault</h2>
     <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Select your live event entry ticket options and premium training assets below.</p>
     
+    <!-- Premium Book Showcase Frame featuring Verification Assets & Video Media Launch -->
+    <div class="media-showcase-box">
+        <div>
+            <img src="8A3D1794-1.jpg" alt="Point Guard Cover" class="book-img-display">
+            <h4 style="text-align: center; margin: 15px 0 5px 0; font-family: 'Archivo Black'; font-size: 15px; text-transform: uppercase;">Point Guard: A Diary</h4>
+            <p style="text-align: center; font-size: 12px; margin: 0; color: var(--gold-primary); font-weight: bold;">By Keaton Cole</p>
+        </div>
+        <div>
+            <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">🎥 Book Trailer Launch Presentation</span>
+            <div class="video-player-container">
+                <video controls width="100%" poster="8A3D1794-1.jpg">
+                    <source src="book-launch-promo.mp4" type="video/mp4">
+                    Your web client platform does not natively support HTML5 video loops.
+                </video>
+            </div>
+            <p style="font-size: 13px; opacity: 0.7; line-height: 1.5; margin: 15px 0 0 0;">
+                Watch the official high-energy promotional video asset used during the initial platform launch of Coach Keaton Cole's master journal work.
+            </p>
+        </div>
+    </div>
+
     <div class="vault-grid">
         <div class="vault-card">
             <div>
@@ -573,18 +537,15 @@
     <div class="vault-grid">
         <div class="vault-card">
             <div>
-                <div class="book-img-container">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/71p0g8w9vVL._AC_UL600_SR600,600_.jpg" alt="Point Guard Book Cover" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <h4 style="margin: 0 0 8px 0; text-transform: uppercase; font-size: 14px;">Point Guard: A Diary</h4>
-                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Order a separate copy of the standalone physical paperback book directly through global Amazon distribution.</p>
+                <h4 style="margin: 0 0 8px 0; font-family: 'Archivo Black'; text-transform: uppercase; font-size: 14px;">Purchase Standalone Copy</h4>
+                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Order a separate copy of the standalone physical paperback book directly through global Amazon distribution portals.</p>
             </div>
-            <a href="https://www.amazon.ca/POINT-GUARD-DIARY-KEATON-COLE/dp/1777201519/" target="_blank" class="btn-gold" style="background: #e65c00; color: white; width: 100%; box-sizing: border-box;">Buy on Amazon</a>
+            <a href="https://www.amazon.ca/POINT-GUARD-DIARY-KEATON-COLE/dp/1777201519/" target="_blank" class="btn-gold" style="background: #e65c00; color: white; width: 100%; box-sizing: border-box;">Buy on Amazon Portals</a>
         </div>
 
         <div class="vault-card">
             <div>
-                <h3 style="font-size: 34px; margin: 20px 0 0 0; color: var(--gold-primary); font-family:'Archivo Black';">$600</h3>
+                <h3 style="font-size: 34px; margin: 0; color: var(--gold-primary); font-family:'Archivo Black';">$600</h3>
                 <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px;">Team Workshop Package</h4>
                 <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Book premium custom development instruction and program alignment sessions directly for your entire roster.</p>
             </div>
@@ -594,6 +555,33 @@
 </section>
 
 <script>
+    // AUTOMATED SYSTEM ROTATION DIRECTIVES ENGINE FOR DEC 2027 BOUNDS
+    const motivationalQuotesBase = [
+        { text: "Your digital footprint is either building an asset class or processing an explicit liability. Review every story before it posts.", author: "Keaton Cole" },
+        { text: "If you want to attain sustainable wealth options, configure structural boundaries on overhead spending parallel to asset jumps.", author: "Keaton Cole" },
+        { text: "Skill sets get you through the front gateway entrance. Professional compliance, decorum, and execution keep you in the room.", author: "Keaton Cole" },
+        { text: "I've missed more than 9,000 shots in my career... I've failed over and over again in my life. And that is why I succeed.", author: "Michael Jordan" },
+        { text: "You can't achieve massive elite execution benchmarks without processing a high degree of tedious, mundane everyday framework metrics.", author: "Kobe Bryant" },
+        { text: "The cross-functional business translation profile of an athlete relies on applying team orchestration directly into systems.", author: "LeBron James" },
+        { text: "Greatness is not a fixed genetic baseline assignment. It is an iterative compounding cycle of calculated micro-efforts.", author: "Author Maxim" },
+        { text: "Do not adapt to the surrounding environment frameworks. Disrupt them by executing calculated excellence consistently.", author: "Speaker Core" }
+    ];
+
+    function calculateActiveQuoteCycle() {
+        const epochReferenceDay = new Date(2026, 0, 1); // Ground calendar step calculation 
+        const todaySystemClock = new Date();
+        const timeDeltaSpan = todaySystemClock - epochReferenceDay;
+        const totalDaysElapsed = Math.floor(timeDeltaSpan / (1000 * 60 * 60 * 24));
+        
+        // Safety bounds fallbacks logic
+        const secureDayOffset = totalDaysElapsed >= 0 ? totalDaysElapsed : 0;
+        const selectedIndex = secureDayOffset % motivationalQuotesBase.length;
+        
+        const activeQuote = motivationalQuotesBase[selectedIndex];
+        document.getElementById('quote-display-text').innerText = `"${activeQuote.text}"`;
+        document.getElementById('quote-display-author').innerText = activeQuote.author;
+    }
+
     function switchTab(tabId) {
         const sections = document.querySelectorAll('.tab-content');
         sections.forEach(sec => sec.style.display = 'none');
@@ -611,38 +599,10 @@
 
     let currentModuleId = 1;
     let completeStatus = Array(13).fill(false);
+    let userCourseNotes = { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: "", 11: "", "assessment": ["", "", "", "", "", "", "", "", "", "", ""] };
 
-    let userCourseNotes = {
-        1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: "", 11: "",
-        "assessment": ["", "", "", "", "", "", "", "", "", "", ""],
-        "registration": {
-            isVegetarian: false,
-            isGlutenFree: false,
-            isDairyFree: false,
-            customAllergies: "",
-            waiverAgreed: false,
-            athleteName: "",
-            parentSignature: ""
-        }
-    };
-
-    function updateDietaryData() {
-        userCourseNotes.registration.isVegetarian = document.getElementById('diet-veg').checked;
-        userCourseNotes.registration.isGlutenFree = document.getElementById('diet-gluten').checked;
-        userCourseNotes.registration.isDairyFree = document.getElementById('diet-dairy').checked;
-        userCourseNotes.registration.customAllergies = document.getElementById('diet-custom').value;
-        userCourseNotes.registration.waiverAgreed = document.getElementById('waiver-agree').checked;
-        userCourseNotes.registration.athleteName = document.getElementById('sign-athlete').value;
-        userCourseNotes.registration.parentSignature = document.getElementById('sign-parent').value;
-    }
-
-    function trackNoteChange(moduleId, value) {
-        userCourseNotes[moduleId] = value;
-    }
-
-    function trackAssessmentChange(index, value) {
-        userCourseNotes["assessment"][index] = value;
-    }
+    function trackNoteChange(moduleId, value) { userCourseNotes[moduleId] = value; }
+    function trackAssessmentChange(index, value) { userCourseNotes["assessment"][index] = value; }
 
     const lessonsData = {
         1: { tag: "MODULE 1.1", title: "The Athlete's Mindset", prompt: "What is your main 90-day goal?", quizQ: "What is a growth mindset?", quizOptions: ["Fixed skills", "Skills improve with effort", "Ignoring feedback"], correctIdx: 1, html: `<p>Operate with a growth mindset — setbacks are data points, not failures.</p>` },
@@ -657,18 +617,16 @@
         10: { tag: "MODULE 3.2", title: "Career Exploration", prompt: "Name three off-court professional skill conversions.", quizQ: "Which tracking metric transfers best to a corporate setting?", quizOptions: ["Total run reps", "Team task orchestration and focus", "Vertical jump scores"], correctIdx: 1, html: `<p>Hardwood execution translates to project leadership and strategic operations perfectly.</p>` },
         11: { tag: "MODULE 3.3", title: "Transitions & Well-Being", prompt: "Detail your future legacy standard roadmap.", quizQ: "When should identity structures begin forming?", quizOptions: ["Post-career completion", "Concurrently during active play years", "Only post-injury scenarios"], correctIdx: 1, html: `<p>An athlete is more than a jersey. Build structural foundations early.</p>` },
         12: {
-            isAssessment: true,
-            tag: "MODULE 3.4",
-            title: "Know Myself Assessment",
+            isAssessment: true, tag: "MODULE 3.4", title: "Know Myself Assessment",
             questions: [
                 { q: "1. Who am I?", sub: "If you were to describe yourself, what is there to say about you?" },
                 { q: "2. What am I good at?", sub: "List strengths outside of basketball (cooking, writing, drawing, listening, etc.)." },
-                { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly. What shifts must happen to lock this in daily?" },
+                { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly." },
                 { q: "4. What expectations are you expecting to manifest?", sub: "What specific goals are you tracking across basketball, family, and personal growth?" },
-                { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention (magazines, genres, authors) and why?" },
+                { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention and why?" },
                 { q: "6. What sports outlet do I listen to and why?", sub: "Examples: ESPN, Uninterrupted, First Take, etc." },
                 { q: "7. What do people say about me?", sub: "What do your family, close friends, and teammates say regarding your character footprint?" },
-                { q: "8. Who is my favorite basketball player and why?", sub: "What is it about their style, character mechanics, or behavior that draws you in?" },
+                { q: "8. Who is my favorite basketball player and why?", sub: "What is it about their style or behavior that draws you in?" },
                 { q: "9. Post-Ball Career Execution Moves", sub: "What targets do you want to hit? (e.g., brand stakes, media networks)." },
                 { q: "10. Legacy Impact Blueprint", sub: "What lasting principles and values do you want to hand down?" },
                 { q: "11. The Satisfaction Reality Check", sub: "If your ultimate sports milestone doesn't provide validation, how will you pivot?" }
@@ -679,135 +637,42 @@
     function loadLesson(id) {
         currentModuleId = id;
         const data = lessonsData[id];
-        
         document.getElementById('player-banner-tag').innerText = data.tag;
         document.getElementById('player-title').innerText = data.title;
-        
         let combinedHtml = "";
         
         if (data.isAssessment) {
-            combinedHtml += `
-                <div style="background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); padding: 15px; border-radius: 10px; font-size: 13px; margin-bottom: 20px; color: #fff; line-height:1.5;">
-                    <strong>📬 Submission Instructions:</strong> Once you copy or download this completed blueprint text document below, email it immediately as an attachment or plain text directly to <strong style="color:var(--gold-primary);">kreativekc89@gmail.com</strong> so Coach Keaton can verify your entry status!
-                </div>
-                <p style="font-size:14px; opacity:0.8;">Complete your final identity guide down below.</p>
-                <div style="margin-top:15px;">
-            `;
-            
+            combinedHtml += `<p style="font-size:14px; opacity:0.8;">Complete your final identity guide down below to lock in your internal profile mechanics.</p><div style="margin-top:15px;">`;
             data.questions.forEach((item, index) => {
                 const existingVal = userCourseNotes["assessment"][index];
                 combinedHtml += `
                     <details class="interactive-box" style="margin-top:12px;">
-                        <summary style="cursor:pointer; font-weight:700; color:var(--gold-primary); font-size:13.5px; outline:none;">
-                            ${item.q} <span style="font-size:11px; opacity:0.5; float:right;">▼ Open</span>
-                        </summary>
+                        <summary style="cursor:pointer; font-weight:700; color:var(--gold-primary); font-size:13.5px; outline:none;">${item.q} <span style="font-size:11px; opacity:0.5; float:right;">▼ Open</span></summary>
                         <div style="margin-top:12px; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
                             <p style="font-size:12.5px; color:rgba(255,255,255,0.7); margin:0 0 8px 0;">${item.sub}</p>
-                            <textarea class="reflection-textarea" style="height:80px;" oninput="trackAssessmentChange(${index}, this.value)" placeholder="Write your assessment answers here...">${existingVal}</textarea>
+                            <textarea class="reflection-textarea" style="height:80px;" oninput="trackAssessmentChange(${index}, this.value)" placeholder="Write your internal notes here...">${existingVal}</textarea>
                         </div>
-                    </details>
-                `;
+                    </details>`;
             });
-            
-            combinedHtml += `
-                </div>
-                <div style="margin-top:25px; display:grid; grid-template-columns:1fr 1fr; gap:15px;">
-                    <button class="btn-gold" style="border-radius:8px; font-size:11px; padding:14px;" onclick="copyReportToClipboard()">📋 Copy Blueprint & Forms</button>
-                    <button class="btn-gold" style="border-radius:8px; font-size:11px; padding:14px;" onclick="downloadFullReport()">📥 Download Blueprint & Forms</button>
-                </div>
-            `;
-            
+            combinedHtml += `</div>`;
         } else {
-            combinedHtml = data.html;
-            const existingNote = userCourseNotes[id];
-            combinedHtml += `
+            combinedHtml = data.html + `
                 <div class="interactive-box">
                     <span style="color:var(--gold-primary); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">✍️ Unit Reflection Notebook</span>
                     <p style="font-size:13.5px; margin:5px 0 10px 0;">${data.prompt}</p>
-                    <textarea class="reflection-textarea" oninput="trackNoteChange(${id}, this.value)" placeholder="Enter your strategy response data here...">${existingNote}</textarea>
+                    <textarea class="reflection-textarea" oninput="trackNoteChange(${id}, this.value)" placeholder="Enter your strategy response data here...">${userCourseNotes[id]}</textarea>
                 </div>
                 <div class="interactive-box" style="border-color: rgba(255,128,51,0.25);">
-                    <p style="font-size:14px; margin:0 0 12px 0; font-weight:600;">${data.quizQ}</p>
-                    <div id="quiz-options-container">
-            `;
+                    <p style="font-size:14px; margin:0 0 12px 0; font-weight:600;">${data.quizQ}</p><div id="quiz-options-container">`;
             data.quizOptions.forEach((opt, idx) => {
                 combinedHtml += `<div class="quiz-option" onclick="submitAnswer(this, ${idx}, ${data.correctIdx})">${opt}</div>`;
             });
             combinedHtml += `</div></div>`;
         }
-        
         document.getElementById('player-body').innerHTML = combinedHtml;
         document.getElementById('lesson-check').checked = completeStatus[id];
-        
-        for (let i = 1; i <= 12; i++) {
-            const el = document.getElementById('nav-l' + i);
-            if(el) el.classList.remove('active-lesson');
-        }
+        for (let i = 1; i <= 12; i++) { const el = document.getElementById('nav-l' + i); if(el) el.classList.remove('active-lesson'); }
         document.getElementById('nav-l' + id).classList.add('active-lesson');
-        document.getElementById('player-body').scrollTop = 0;
-    }
-
-    function buildMasterContentText() {
-        let text = "==================================================\n";
-        text += "  HEARTWORK BEYOND THE COURT MASTER REGISTRATION  \n";
-        text += "==================================================\n";
-        text += "SUBMIT TO: kreativekc89@gmail.com\n\n";
-        
-        let reg = userCourseNotes.registration;
-        text += `Athlete Full Name: ${reg.athleteName ? reg.athleteName : "[NOT PROVIDED]"}\n`;
-        text += `Parent/Guardian Consent Signature: ${reg.parentSignature ? reg.parentSignature : "[NOT PROVIDED]"}\n`;
-        text += `Waiver Legal Agreement Status: ${reg.waiverAgreed ? "AGREED & AUTHORIZED" : "NOT SIGNED YET"}\n\n`;
-        
-        text += "--- DIETARY COMPLIANCE PROFILE ---\n";
-        text += `Vegetarian/Vegan Request: ${reg.isVegetarian ? "YES (Needs alternative meal item)" : "No"}\n`;
-        text += `Gluten-Free Request: ${reg.isGlutenFree ? "YES" : "No"}\n`;
-        text += `Dairy-Free Request: ${reg.isDairyFree ? "YES" : "No"}\n`;
-        text += `Custom Medical Allergies Listed: ${reg.customAllergies ? reg.customAllergies : "None/Blank"}\n\n`;
-        
-        text += "==================================================\n";
-        text += "                 COURSE NOTEBOOKS                 \n";
-        text += "==================================================\n\n";
-        
-        for (let i = 1; i <= 11; i++) {
-            text += `MODULE 1.${i}: ${lessonsData[i].title}\n`;
-            text += `Reflection Input: ${userCourseNotes[i] ? userCourseNotes[i] : "[No entry details recorded]"}\n`;
-            text += "--------------------------------------------------\n\n";
-        }
-        
-        text += "==================================================\n";
-        text += "          MODULE 3.4: KNOW MYSELF REPORT          \n";
-        text += "==================================================\n\n";
-        
-        lessonsData[12].questions.forEach((item, index) => {
-            const answer = userCourseNotes["assessment"][index];
-            text += `${item.q}\nPrompt context: ${item.sub}\nAnswer: ${answer ? answer : "[No entry recorded]"}\n\n`;
-        });
-        
-        return text;
-    }
-
-    function copyReportToClipboard() {
-        const textToCopy = buildMasterContentText();
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            alert("Success! Copy completed. Now paste this right into an email and send it to kreativekc89@gmail.com.");
-        }).catch(err => {
-            alert("Error trying to process copy functions.");
-        });
-    }
-
-    function downloadFullReport() {
-        const textData = buildMasterContentText();
-        const blob = new Blob([textData], { type: "text/plain;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "Heartwork_Registration_Master_File.txt";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        
-        alert("File Downloaded! Please check your downloads folder, attach this file, and email it directly to: kreativekc89@gmail.com");
     }
 
     function submitAnswer(element, selectedIdx, correctIdx) {
@@ -815,13 +680,9 @@
         for(let item of siblings) item.classList.remove('correct', 'incorrect');
         if(selectedIdx === correctIdx) {
             element.classList.add('correct');
-            if(!completeStatus[currentModuleId]) {
-                document.getElementById('lesson-check').checked = true;
-                toggleComplete();
-            }
+            if(!completeStatus[currentModuleId]) { document.getElementById('lesson-check').checked = true; toggleComplete(); }
         } else {
-            element.classList.add('incorrect');
-            siblings[correctIdx].classList.add('correct');
+            element.classList.add('incorrect'); siblings[correctIdx].classList.add('correct');
         }
     }
 
@@ -832,12 +693,10 @@
         if(badge) badge.innerText = checked ? "✅" : "🔒";
     }
 
-    function nextLesson() {
-        if (currentModuleId < 12) loadLesson(currentModuleId + 1);
-        else loadLesson(1);
-    }
+    function nextLesson() { if (currentModuleId < 12) loadLesson(currentModuleId + 1); else loadLesson(1); }
 
     window.onload = function() {
+        calculateActiveQuoteCycle();
         switchTab('locker-room');
         loadLesson(1);
     };
