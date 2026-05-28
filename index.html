@@ -407,53 +407,265 @@
 </section>
 
 <!-- ACADEMY MODULES TAB -->
-<section id="academy" class="tab-content" style="max-width: 1100px;">
-    <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: -0.5px;">Beyond The Court Portal</h2>
-        <p style="font-size: 14px; opacity: 0.7; margin: 0; color: var(--gold-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Preparing for a Professional Basketball Career and Achievable Life</p>
+<div id="the-academy-container">
+  <style>
+    #the-academy-container {
+      --academy-gold: #C9A227;
+      --academy-gold-l: #F0C84A;
+      --academy-gold-d: #8B6D10;
+      --academy-orange: #E8630A;
+      --academy-navy: #0B2147;
+      --academy-navy-l: #143272;
+      --academy-deep: #050D1F;
+      --academy-green: #1B4332;
+      --academy-green-l: #22C55E;
+      --academy-purple: #5B21B6;
+      --academy-glass: rgba(255,255,255,0.05);
+      --academy-glass2: rgba(255,255,255,0.09);
+      --academy-gold-glass: rgba(201,162,39,0.12);
+      --academy-gold-border: rgba(201,162,39,0.3);
+      font-family: 'Space Grotesk', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+    #the-academy-container * { box-sizing: border-box; margin: 0; padding: 0; }
+    #the-academy-container .academy-sub-nav {
+      display: flex; gap: 4px; border-bottom: 1px solid var(--academy-gold-border); padding: 8px 16px; background: rgba(5,13,31,0.5);
+    }
+    #the-academy-container .academy-sub-tab {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,0.45);
+      padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all 0.2s; border: none; background: none; font-family: 'Space Grotesk', sans-serif;
+    }
+    #the-academy-container .academy-sub-tab:hover { color: rgba(255,255,255,0.8); background: var(--academy-glass); }
+    #the-academy-container .academy-sub-tab.active { color: var(--academy-gold); background: var(--academy-gold-glass); }
+    #the-academy-container .academy-panel { display: none; padding: 20px 16px; }
+    #the-academy-container .academy-panel.active { display: block; }
+    #the-academy-container .academy-hero { text-align: center; padding: 60px 24px; position: relative; }
+    #the-academy-container .academy-hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 8vw, 80px); line-height: 0.9; margin-bottom: 8px; color: #fff; }
+    #the-academy-container .academy-hero-title span { color: var(--academy-gold); }
+    #the-academy-container .academy-hero-desc { font-size: 14px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 30px; line-height: 1.6; }
+    #the-academy-container .academy-module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+    #the-academy-container .academy-module-card { background: var(--academy-glass); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.3s; }
+    #the-academy-container .academy-module-card:hover { transform: translateY(-3px); border-color: var(--academy-gold-border); }
+    #the-academy-container .academy-course-layout { display: grid; grid-template-columns: 260px 1fr; gap: 20px; margin-top: 16px; }
+    @media (max-width: 768px) { #the-academy-container .academy-course-layout { grid-template-columns: 1fr; } }
+    #the-academy-container .academy-sidebar { background: rgba(0,5,15,0.7); border: 1px solid var(--academy-gold-border); border-radius: 14px; padding: 12px; height: fit-content; }
+    #the-academy-container .academy-sidebar-lesson { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,0.02); margin-bottom: 4px; cursor: pointer; font-size: 12px; color: rgba(255,255,255,0.7); transition: all 0.2s; }
+    #the-academy-container .academy-sidebar-lesson.active { background: linear-gradient(135deg, var(--academy-gold), var(--academy-gold-d)); color: #000; font-weight: 700; }
+    #the-academy-container .academy-player-window { background: rgba(0,3,12,0.9); border: 1px solid var(--academy-gold-border); border-radius: 14px; overflow: hidden; min-height: 450px; display: flex; flex-direction: column; }
+    #the-academy-container .academy-player-hero { background: linear-gradient(135deg, #030d28 0%, var(--academy-navy-l) 100%); padding: 32px 20px; text-align: center; }
+    #the-academy-container .academy-player-body { padding: 24px; flex-grow: 1; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.85); }
+    #the-academy-container .academy-player-footer { background: rgba(0,0,0,0.4); padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    #the-academy-container .academy-check-dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); display: inline-flex; align-items: center; justify-content: center; font-size: 9px; margin-right: 6px; }
+    #the-academy-container .academy-check-dot.done { background: var(--academy-green-l); border-color: var(--academy-green-l); color: #fff; }
+    #the-academy-container .academy-btn { background: var(--academy-gold); color: #000; border: none; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; text-transform: uppercase; }
+    #the-academy-container .academy-reflection-box { background: rgba(91,33,182,0.12); border: 1px solid rgba(91,33,182,0.25); border-radius: 10px; padding: 16px; margin: 16px 0; }
+    #the-academy-container .academy-reflection-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 10px; color: #fff; margin-top: 8px; resize: vertical; }
+    #the-academy-container .academy-quiz-box { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 16px; margin: 16px 0; }
+    #the-academy-container .academy-quiz-option { padding: 8px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; margin-top: 6px; cursor: pointer; font-size: 13px; }
+    #the-academy-container .academy-quiz-option.correct { background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.5); color: #4ade80; }
+    #the-academy-container .academy-quiz-option.wrong { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.35); color: #fca5a5; }
+  </style>
+
+  <div class="academy-sub-nav">
+    <button class="academy-sub-tab active" id="academy-btn-home" onclick="academySwitchPanel('home')">Overview</button>
+    <button class="academy-sub-tab" id="academy-btn-course" onclick="academySwitchPanel('course')">Playbook Course</button>
+    <button class="academy-sub-tab" id="academy-btn-resources" onclick="academySwitchPanel('resources')">Resources</button>
+  </div>
+
+  <div class="academy-panel active" id="academy-panel-home">
+    <div class="academy-hero">
+      <h1 class="academy-hero-title">BEYOND<br><span>THE COURT</span></h1>
+      <p class="academy-hero-desc">Every skill you build in sports — discipline, teamwork, pressure management, goal-setting — is a life skill in disguise. This course helps you see it, own it, and use it.</p>
+      <button class="academy-btn" onclick="academyGoToModule(1)">Start Course →</button>
     </div>
-
-    <div class="lms-layout">
-        <div class="lms-sidebar">
-            <div class="lms-phase-title">Module 1: Foundations</div>
-            <div class="lms-nav-item" id="nav-l1" onclick="loadLesson(1)"><span>1.1 Mindset</span> <span class="badge-status" id="badge-l1">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l2" onclick="loadLesson(2)"><span>1.2 Body & Recovery</span> <span class="badge-status" id="badge-l2">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l3" onclick="loadLesson(3)"><span>1.3 Professionalism</span> <span class="badge-status" id="badge-l3">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l4" onclick="loadLesson(4)"><span>1.4 Digital Footprint</span> <span class="badge-status" id="badge-l4">🔒</span></div>
-            
-            <div class="lms-phase-title">Module 2: Business</div>
-            <div class="lms-nav-item" id="nav-l5" onclick="loadLesson(5)"><span>2.1 Ecosystem</span> <span class="badge-status" id="badge-l5">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l6" onclick="loadLesson(6)"><span>2.2 Agents & Legal</span> <span class="badge-status" id="badge-l6">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l7" onclick="loadLesson(7)"><span>2.3 Finance Basics</span> <span class="badge-status" id="badge-l7">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l8" onclick="loadLesson(8)"><span>2.4 Brand & Media</span> <span class="badge-status" id="badge-l8">🔒</span></div>
-            
-            <div class="lms-phase-title">Module 3: Legacy</div>
-            <div class="lms-nav-item" id="nav-l9" onclick="loadLesson(9)"><span>3.1 College Realities</span> <span class="badge-status" id="badge-l9">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l10" onclick="loadLesson(10)"><span>3.2 Career Options</span> <span class="badge-status" id="badge-l10">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l11" onclick="loadLesson(11)"><span>3.3 Well-Being</span> <span class="badge-status" id="badge-l11">🔒</span></div>
-            <div class="lms-nav-item" id="nav-l12" onclick="loadLesson(12)"><span>3.4 Identity Assessment</span> <span class="badge-status" id="badge-l12">🔒</span></div>
-        </div>
-
-        <div class="lms-player-window">
-            <div class="video-placeholder">
-                <div class="video-play-icon" onclick="alert('Streaming Explainer Audio Media...')">▶</div>
-                <div id="player-banner-tag" style="font-size: 11px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase;">MODULE 1.1</div>
-                <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 18px; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 0.5px;">The Athlete's Mindset</h3>
-            </div>
-
-            <div id="player-body" style="padding: 30px; font-size: 15px; line-height: 1.7; background: rgba(0,0,0,0.4); max-height: 500px; overflow-y: auto; box-sizing: border-box;">
-                <!-- Content Dynamically Generated -->
-            </div>
-
-            <div style="background: rgba(0,0,0,0.6); padding: 20px 30px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
-                <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 12px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                    <input type="checkbox" id="lesson-check" style="accent-color: var(--gold-primary); transform:scale(1.1);" onchange="toggleComplete()"> Mark Unit Completed
-                </label>
-                <button class="btn-gold" style="padding: 12px 24px; border-radius: 6px; font-size:11px;" onclick="nextLesson()">Advance Unit →</button>
-            </div>
-        </div>
+    
+    <div class="academy-module-grid">
+      <div class="academy-module-card" onclick="academyGoToModule(1)">
+        <h3 style="color:var(--academy-orange); margin-bottom:6px;">Module 1 · Foundations</h3>
+        <p style="font-size:13px; color:rgba(255,255,255,0.6);">Athlete mindset, body recovery, punctuality, and management of social media footprints.</p>
+      </div>
+      <div class="academy-module-card" onclick="academyGoToModule(5)">
+        <h3 style="color:var(--academy-gold); margin-bottom:6px;">Module 2 · The Business</h3>
+        <p style="font-size:13px; color:rgba(255,255,255,0.6);">Understanding agents, complex league contracts, professional financial decisions, and personal branding.</p>
+      </div>
+      <div class="academy-module-card" onclick="academyGoToModule(9)">
+        <h3 style="color:var(--academy-green-l); margin-bottom:6px;">Module 3 · Legacy</h3>
+        <p style="font-size:13px; color:rgba(255,255,255,0.6);">College pipelines, career trajectories beyond professional sports systems, and long-term planning tools.</p>
+      </div>
     </div>
-</section>
+  </div>
+
+  <div class="academy-panel" id="academy-panel-course">
+    <div style="font-size:12px; color:var(--academy-gold); font-weight:700;" id="academy-top-progress">Progress: 0/10 Lessons Completed</div>
+    <div class="academy-course-layout">
+      <aside class="academy-sidebar">
+        <div style="font-size:10px; text-transform:uppercase; color:var(--academy-orange); margin-bottom:6px; font-weight:700;">Module 1</div>
+        <div class="academy-sidebar-lesson active" id="academy-sl-1" onclick="academyLoadLesson(1)"><span class="academy-check-dot" id="academy-dot-1"></span>1. Athlete Mindset</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-2" onclick="academyLoadLesson(2)"><span class="academy-check-dot" id="academy-dot-2"></span>2. Your Body Carries You</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-3" onclick="academyLoadLesson(3)"><span class="academy-check-dot" id="academy-dot-3"></span>3. Early is On Time</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-4" onclick="academyLoadLesson(4)"><span class="academy-check-dot" id="academy-dot-4"></span>4. Digital Footprint</div>
+        
+        <div style="font-size:10px; text-transform:uppercase; color:var(--academy-gold); margin:12px 0 6px; font-weight:700;">Module 2</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-5" onclick="academyLoadLesson(5)"><span class="academy-check-dot" id="academy-dot-5"></span>5. Game as a Business</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-6" onclick="academyLoadLesson(6)"><span class="academy-check-dot" id="academy-dot-6"></span>6. Agents & Circles</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-7" onclick="academyLoadLesson(7)"><span class="academy-check-dot" id="academy-dot-7"></span>7. Financial Literacy</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-8" onclick="academyLoadLesson(8)"><span class="academy-check-dot" id="academy-dot-8"></span>8. Brand & Media</div>
+        
+        <div style="font-size:10px; text-transform:uppercase; color:var(--academy-green-l); margin:12px 0 6px; font-weight:700;">Module 3</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-9" onclick="academyLoadLesson(9)"><span class="academy-check-dot" id="academy-dot-9"></span>9. Next Level Paths</div>
+        <div class="academy-sidebar-lesson" id="academy-sl-10" onclick="academyLoadLesson(10)"><span class="academy-check-dot" id="academy-dot-10"></span>10. Career Exploration</div>
+      </aside>
+
+      <div class="academy-player-window">
+        <div class="academy-player-hero">
+          <div style="font-size:11px; text-transform:uppercase; color:var(--academy-orange); font-weight:700;" id="academy-p-subtitle">Lesson 1 Content Overview</div>
+          <h2 style="font-family:'Bebas Neue',sans-serif; font-size:28px;" id="academy-p-title">1. Athlete Mindset</h2>
+        </div>
+        <div class="academy-player-body" id="academy-player-body-content">
+          </div>
+        <div class="academy-player-footer">
+          <label style="display:inline-flex; align-items:center; font-size:12px; cursor:pointer;">
+            <input type="checkbox" id="academy-complete-checkbox" onchange="academyToggleLessonComplete()" style="margin-right:6px;"> Complete Lesson
+          </label>
+          <button class="academy-btn" onclick="academyNextLesson()">Next Lesson →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="academy-panel" id="academy-panel-resources">
+    <h2 style="font-family:'Bebas Neue',sans-serif; margin-bottom:12px;">Academy Strategy Vault</h2>
+    <p style="font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:20px;">Download supplementary checklists, budget templates, and resource assets.</p>
+    <div class="academy-module-grid">
+      <div class="academy-module-card">
+        <h4>Financial Management Sheets</h4>
+        <p style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:4px;">Simple interactive zero-based planners built for collegiate and starter rookie parameters.</p>
+      </div>
+      <div class="academy-module-card">
+        <h4>Brand Matrix & Agency Vetting Checklist</h4>
+        <p style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:4px;">Questions and alignment guidelines intended for choosing financial legal management.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const academyLessonsData = {
+      1: {
+        title: "1. Athlete Mindset", subtitle: "Module 1 · Lesson 1",
+        body: `<p><strong>Core Concept:</strong> Your mind handles high stakes and pressure long before physical skill execution steps onto competitive floors.</p>
+               <div class="academy-reflection-box"><div style="font-weight:700; font-size:11px; color:#a78bfa;">REFLECTION SUBMISSION</div><p style="margin:4px 0;">What triggers performance anxiety during intense periods of competitive evaluation?</p><textarea class="academy-reflection-input" placeholder="Type response..."></textarea></div>
+               <div class="academy-quiz-box"><div style="font-weight:700; font-size:11px; color:#4ade80;">QUIZ CHALLENGE</div><p style="margin:4px 0;">How does a growth configuration process mistakes on court?</p><div class="academy-quiz-option" onclick="academyAnswer(this,true)">By treating execution breakdown as feedback data</div><div class="academy-quiz-option" onclick="academyAnswer(this,false)">By completely ignoring performance review sequences</div></div>`
+      },
+      2: {
+        title: "2. Your Body Carries You", subtitle: "Module 1 · Lesson 2",
+        body: `<p><strong>Core Concept:</strong> Sustainable careers rely heavily upon structured active mobility work, target sleeping windows, and strict nutrition rules.</p>`
+      },
+      3: {
+        title: "3. Early is On Time", subtitle: "Module 1 · Lesson 3",
+        body: `<p><strong>Core Concept:</strong> Punctuality directly communicates professional reliability to training personnel, media partners, and enterprise stakeholders.</p>`
+      },
+      4: {
+        title: "4. Digital Footprint", subtitle: "Module 1 · Lesson 4",
+        body: `<p><strong>Core Concept:</strong> Brand properties and corporate evaluation systems carefully review interactive archives across public messaging platforms.</p>`
+      },
+      5: {
+        title: "5. Game as a Business", subtitle: "Module 1 · Lesson 5",
+        body: `<p><strong>Core Concept:</strong> Professional leagues function primarily as content generation entertainment platforms where players act as foundational businesses.</p>`
+      },
+      6: {
+        title: "6. Agents & Circles", subtitle: "Module 2 · Lesson 6",
+        body: `<p><strong>Core Concept:</strong> Keep your close representation structures restricted to individuals whose core business practices face rigorous external verification audits.</p>`
+      },
+      7: {
+        title: "7. Financial Literacy", subtitle: "Module 2 · Lesson 7",
+        body: `<p><strong>Core Concept:</strong> Maintain simple cash oversight procedures and retain clear distribution boundaries separating principal funds from temporary operations costs.</p>`
+      },
+      8: {
+        title: "8. Brand & Media", subtitle: "Module 2 · Lesson 8",
+        body: `<p><strong>Core Concept:</strong> Cultivate distinct distribution channels for your audience, enabling direct connection options completely independent of specific sports team contracts.</p>`
+      },
+      9: {
+        title: "9. Next Level Paths", subtitle: "Module 3 · Lesson 9",
+        body: `<p><strong>Core Concept:</strong> Explore complex selection pathways spanning options across international clubs, college recruitment frameworks, and developer league layers.</p>`
+      },
+      10: {
+        title: "10. Career Exploration", subtitle: "Module 3 · Lesson 10",
+        body: `<p><strong>Core Concept:</strong> Systematically align alternative commercial operations targets to safely sustain structural standard of living parameters after retirement phases.</p>`
+      }
+    };
+
+    let academyCurrentLesson = 1;
+    let academyCompletedLessons = new Set();
+
+    function academySwitchPanel(panelId) {
+      document.querySelectorAll('#the-academy-container .academy-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('#the-academy-container .academy-sub-tab').forEach(t => t.classList.remove('active'));
+      
+      document.getElementById('academy-panel-' + panelId).classList.add('active');
+      document.getElementById('academy-btn-' + panelId).classList.add('active');
+    }
+
+    function academyGoToModule(lessonId) {
+      academySwitchPanel('course');
+      academyLoadLesson(lessonId);
+    }
+
+    function academyLoadLesson(id) {
+      academyCurrentLesson = id;
+      const lesson = academyLessonsData[id];
+      if (!lesson) return;
+
+      document.getElementById('academy-p-title').textContent = lesson.title;
+      document.getElementById('academy-p-subtitle').textContent = lesson.subtitle;
+      document.getElementById('academy-player-body-content').innerHTML = lesson.body;
+
+      document.querySelectorAll('#the-academy-container .academy-sidebar-lesson').forEach(el => el.classList.remove('active'));
+      const activeItem = document.getElementById('academy-sl-' + id);
+      if (activeItem) activeItem.classList.add('active');
+
+      document.getElementById('academy-complete-checkbox').checked = academyCompletedLessons.has(id);
+    }
+
+    function academyToggleLessonComplete() {
+      const isChecked = document.getElementById('academy-complete-checkbox').checked;
+      const dot = document.getElementById('academy-dot-' + academyCurrentLesson);
+      
+      if (isChecked) {
+        academyCompletedLessons.add(academyCurrentLesson);
+        if (dot) dot.classList.add('done');
+      } else {
+        academyCompletedLessons.delete(academyCurrentLesson);
+        if (dot) dot.classList.remove('done');
+      }
+      
+      document.getElementById('academy-top-progress').textContent = `Progress: ${academyCompletedLessons.size}/10 Lessons Completed`;
+    }
+
+    function academyNextLesson() {
+      if (academyCurrentLesson < 10) {
+        academyLoadLesson(academyCurrentLesson + 1);
+      } else {
+        alert("Great job! You have reached the final track inside the Academy playbook syllabus module matrix.");
+      }
+    }
+
+    function academyAnswer(element, isCorrect) {
+      if (isCorrect) {
+        element.classList.add('correct');
+        element.style.pointerEvents = 'none';
+      } else {
+        element.classList.add('wrong');
+      }
+    }
+
+    // Set up the default lesson on startup inside the Academy view block
+    document.addEventListener("DOMContentLoaded", function() {
+      academyLoadLesson(1);
+    });
+  </script>
+</div>
+
 
 <!-- LIVE EVENTS TAB (CONSOLIDATED ENTRANCE TICKET & SURVEY CARD INTERACTION) -->
 <section id="events" class="tab-content">
