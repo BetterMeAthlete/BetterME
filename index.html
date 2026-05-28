@@ -5,61 +5,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Heartwork Academy | Keaton Cole</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;500;600;700;800&display=swap');
+
+        :root {
+            --gold-primary: #d4af37;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
+            --blue-dark: #000a1a;
+            --blue-mid: #0a2e6b;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --border-light: rgba(255, 255, 255, 0.08);
+        }
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background: #0a2e6b;
-            background: linear-gradient(to bottom, #0a2e6b 0%, #000a1a 100%);
+            background: var(--blue-dark);
+            background: linear-gradient(to bottom, #0d1b3e 0%, var(--blue-dark) 100%);
             color: #ffffff; 
             margin: 0; 
             padding-bottom: 100px;
             min-height: 100vh;
             background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
         }
         
         nav { 
-            background: #000a1a;
             background: rgba(0, 10, 26, 0.95); 
+            backdrop-filter: blur(10px);
             padding: 20px 0; 
             display: flex; 
             justify-content: space-around; 
             position: sticky; 
             top: 0; 
             z-index: 1000; 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         nav a { 
             color: #ffffff; 
             text-decoration: none; 
-            font-weight: 700; 
-            font-size: 13px; 
+            font-weight: 800; 
+            font-size: 12px; 
             text-transform: uppercase; 
-            opacity: 0.7; 
+            letter-spacing: 1px;
+            opacity: 0.6; 
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
         nav a:hover, nav a.active-tab { 
             opacity: 1; 
-            color: #d4af37; 
+            color: var(--gold-primary); 
+        }
+        nav a.active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold-gradient);
+            border-radius: 2px;
         }
 
         .tab-content { 
             display: none; 
-            padding: 20px; 
-            max-width: 700px; 
+            padding: 40px 20px; 
+            max-width: 1100px; 
             margin: 0 auto; 
+            animation: fadeIn 0.4s ease-out;
         }
 
-        .hero-section { text-align: center; padding: 40px 20px; }
-        .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- NEW LANDING & LOCKER ROOM POP DESIGN --- */
+        .locker-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 40px;
+        }
+
+        .hero-left h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 48px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 0 0 20px 0;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #ffffff 0%, #a3b8cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-left h1 span {
+            display: block;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-left p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            margin: 0 0 25px 0;
+            max-width: 520px;
+        }
+
+        .hero-right {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .main-logo { width: 100%; max-width: 240px; height: auto; margin-bottom: 15px; }
+
+        .playbook-card {
+            background: rgba(10, 46, 107, 0.3);
+            border-left: 4px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .playbook-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .portal-split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* --- REGISTRATION ELEMENTS --- */
+        .card-portal {
+            background: rgba(0, 10, 26, 0.4);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px;
+            transition: border-color 0.3s ease;
+        }
+        .card-portal:hover {
+            border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .portal-header {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .instruction-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px dashed var(--gold-primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            cursor: pointer;
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .checkbox-label:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.05);
+        }
+        .checkbox-label input {
+            accent-color: var(--gold-primary);
+            margin-top: 4px;
+            transform: scale(1.1);
+        }
 
         .btn-gold { 
-            background: #d4af37;
-            background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
+            background: var(--gold-gradient); 
             color: #000000; 
-            padding: 14px 25px; 
+            padding: 16px 30px; 
             text-decoration: none !important; 
             font-weight: 800; 
             border-radius: 50px; 
@@ -67,93 +242,54 @@
             text-align: center; 
             border: none; 
             text-transform: uppercase; 
-            font-size: 11px; 
+            font-size: 12px; 
             letter-spacing: 1.5px;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
         }
 
-        .card { 
-            background: rgba(255, 255, 255, 0.06); 
-            padding: 30px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-        }
-
-        .instruction-box {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px dashed #d4af37;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            color: white;
-            font-family: inherit;
-            font-size: 14px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 15px;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 13.5px;
-            line-height: 1.4;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-        .checkbox-label input {
-            accent-color: #d4af37;
-            margin-top: 3px;
-        }
-
-        /* Vault Grid Layout */
+        /* --- VAULT / STORE STYLES --- */
         .vault-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 25px;
             margin-top: 20px;
         }
 
         .vault-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            transition: all 0.3s ease;
         }
         .vault-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
             border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
         }
         .vault-card.featured {
             border: 1px solid rgba(212, 175, 55, 0.4);
-            background: rgba(212, 175, 55, 0.02);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
+            background: rgba(212, 175, 55, 0.03);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.08);
         }
 
         .book-img-container {
-            width: 125px;
-            height: 185px;
-            margin: 0 auto 15px auto;
+            width: 130px;
+            height: 190px;
+            margin: 0 auto 20px auto;
             background: #000;
-            border-radius: 6px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border-radius: 8px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -161,11 +297,11 @@
             overflow: hidden;
         }
 
-        /* Academy Interactive Layout Grid */
+        /* --- ACADEMY CODE LAYOUTS --- */
         .lms-layout {
             display: grid;
             grid-template-columns: 310px 1fr;
-            gap: 20px;
+            gap: 25px;
             margin-top: 25px;
             text-align: left;
         }
@@ -173,21 +309,20 @@
         .lms-sidebar {
             background: rgba(0, 10, 26, 0.8);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 20px;
             height: fit-content;
             max-height: 80vh;
             overflow-y: auto;
         }
 
         .lms-phase-title {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
             color: #ff8033;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 18px 0 8px 0;
-            padding-left: 4px;
+            margin: 20px 0 10px 0;
         }
         .lms-phase-title:first-child { margin-top: 0; }
 
@@ -195,61 +330,70 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.05);
-            padding: 11px 14px;
-            border-radius: 8px;
-            font-size: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 600;
             color: rgba(255,255,255,0.8);
             text-decoration: none;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .lms-nav-item:hover { background: rgba(212, 175, 55, 0.15); color: #fff; }
-        .lms-nav-item.active-lesson { background: #d4af37 !important; color: #000000 !important; font-weight: 800; border-color: #d4af37; }
-        .badge-status { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.1); }
+        .lms-nav-item:hover { background: rgba(212, 175, 55, 0.12); color: #fff; }
+        .lms-nav-item.active-lesson { background: var(--gold-gradient) !important; color: #000000 !important; font-weight: 800; border-color: var(--gold-primary); }
+        .badge-status { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.1); }
 
         .lms-player-window {
             background: #000a1a;
             border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .video-placeholder {
             background: linear-gradient(135deg, #001f4d 0%, #0a2e6b 100%);
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .video-play-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: rgba(212,175,55,0.15);
-            border: 2px solid #d4af37;
+            border: 2px solid var(--gold-primary);
             border-radius: 50%;
-            margin: 0 auto 12px auto;
+            margin: 0 auto 15px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #d4af37;
-            font-size: 18px;
+            color: var(--gold-primary);
+            font-size: 22px;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
+        .video-play-icon:hover { transform: scale(1.1); background: rgba(212,175,55,0.25); }
 
-        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 35px 0 20px 0; padding-top: 20px; }
+        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 30px 0; padding-top: 30px; }
         
-        .interactive-box { background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 20px; margin-top: 25px; border: 1px solid rgba(212,175,55,0.15); }
-        .quiz-option { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin-top: 8px; cursor: pointer; font-size: 13px; }
-        .quiz-option.correct { background: rgba(46, 204, 113, 0.2) !important; border-color: #2ecc71 !important; color: #2ecc71; font-weight: 700; }
-        .quiz-option.incorrect { background: rgba(231, 76, 60, 0.2) !important; border-color: #e74c3c !important; color: #e74c3c; }
-        .reflection-textarea { width: 100%; height: 100px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px; color: white; font-family: inherit; font-size: 13.5px; box-sizing: border-box; resize: vertical; margin-top: 10px; }
+        .interactive-box { background: rgba(255, 255, 255, 0.02); border-radius: 14px; padding: 24px; margin-top: 25px; border: 1px solid rgba(212,175,55,0.15); }
+        .quiz-option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px; margin-top: 10px; cursor: pointer; font-size: 14px; transition: all 0.2s ease; }
+        .quiz-option:hover { background: rgba(255,255,255,0.08); }
+        .quiz-option.correct { background: rgba(46, 204, 113, 0.15) !important; border-color: #2ecc71 !important; color: #2ecc71; font-weight: 700; }
+        .quiz-option.incorrect { background: rgba(231, 76, 60, 0.15) !important; border-color: #e74c3c !important; color: #e74c3c; }
+        .reflection-textarea { width: 100%; height: 110px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 14px; color: white; font-family: inherit; font-size: 14px; box-sizing: border-box; resize: vertical; margin-top: 12px; transition: border-color 0.2s; }
+        .reflection-textarea:focus { outline: none; border-color: var(--gold-primary); }
 
         @media (max-width: 900px) {
+            .locker-hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .hero-left h1 { font-size: 36px; }
+            .hero-left p { margin: 0 auto 20px auto; }
+            .portal-split-grid { grid-template-columns: 1fr; }
             .lms-layout { grid-template-columns: 1fr; }
             .vault-grid { grid-template-columns: 1fr; }
         }
@@ -258,88 +402,100 @@
 <body>
 
 <nav>
-    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker</a>
-    <a id="tab-link-academy" onclick="switchTab('academy')">Academy</a>
-    <a id="tab-link-events" onclick="switchTab('events')">Events</a>
+    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker Room</a>
+    <a id="tab-link-academy" onclick="switchTab('academy')">The Academy</a>
+    <a id="tab-link-events" onclick="switchTab('events')">Live Events</a>
     <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
-<!-- LOCKER ROOM TAB & REGISTRATION FORMS -->
+<!-- LOCKER ROOM TAB (HIGH POP LANDING CONFIGURATION) -->
 <section id="locker-room" class="tab-content">
-    <div class="hero-section">
-        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK ACADEMY">
-    </div>
     
-    <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
-        <p style="font-size: 17px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
+    <!-- Split Elite Hero Grid Layout -->
+    <div class="locker-hero-grid">
+        <div class="hero-left">
+            <h1>Build The Blueprint <span>Beyond The Court</span></h1>
+            <p>You have the skill vectors down on the hardwood. Now, develop the business minds, financial compliance strategies, and branding assets needed to thrive as an elite, generational athlete.</p>
+            <button class="btn-gold" onclick="switchTab('academy')">Enter The Academy Portal →</button>
+        </div>
+        <div class="hero-right">
+            <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK ACADEMY">
+            <div style="font-size: 13px; font-weight: bold; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 1px;">Directed by Coach Keaton Cole</div>
+        </div>
     </div>
 
-    <!-- MANDATORY COMPLIANCE & DIETARY PORTAL -->
-    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(212, 175, 55, 0.02);">
-        <h3 style="font-family: 'Archivo Black'; color: #d4af37; margin-top: 0; text-transform: uppercase; font-size: 18px; letter-spacing: 0.5px;">📋 Athlete Event Registration</h3>
+    <!-- Playbook Callout Container -->
+    <div class="playbook-card">
+        <h3>🧠 Academy Mission Mandate</h3>
+        <p style="font-size: 15px; font-weight: 500; line-height: 1.6; margin: 0; opacity: 0.9;">
+            "To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."
+        </p>
+    </div>
+
+    <!-- Instructions Banner -->
+    <div class="instruction-box">
+        <span style="color: #ff8033; font-weight: 800; text-transform: uppercase; font-size: 12px; display: block; margin-bottom: 6px;">📬 Action Required For Active Roster Tracking:</span>
+        Complete your custom registration forms right below. Once they are locked in, proceed to <strong>The Academy</strong> tab. When you finish your interactive lesson configurations, jump inside the final framework module (<strong>Module 3.4</strong>) to copy or download your master report file. Email that document directly to <strong style="color: var(--gold-primary);">kreativekc89@gmail.com</strong> with the subject line <em>"Heartwork Event Registration"</em>.
+    </div>
+
+    <!-- Dual Form Entry Systems -->
+    <div class="portal-split-grid">
         
-        <!-- Action Instructions Banner -->
-        <div class="instruction-box">
-            <span style="color: #ff8033; font-weight: 800; text-transform: uppercase; font-size: 11px; display: block; margin-bottom: 5px;">👋 Action Required:</span>
-            Once you fill out this section and complete your lessons in the <strong>Academy</strong> tab, navigate to the final lesson (<strong>Module 3.4</strong>) to download or copy your completed workbook. 
-            Please email the downloaded file directly to <strong style="color: #d4af37;">kreativekc89@gmail.com</strong> with the email subject line: <em>"Heartwork Event Registration"</em>.
-        </div>
-        
-        <!-- Part 1: Dietary Configuration -->
-        <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08);">
-            <h4 style="margin: 0 0 5px 0; font-size: 14px; text-transform: uppercase; color: #ff8033;">1. Dietary Profile & Allergy Tracking</h4>
-            <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 12px 0;"><strong>Standard Event Menu:</strong> Fried Chicken, Mac n Cheese, Steamed Broccoli.</p>
+        <!-- Grid Asset 1: Dietary Data -->
+        <div class="card-portal">
+            <h3 class="portal-header">🥗 Dietary Alignment Profile</h3>
+            <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">
+                <strong>Standard Event Catering Layout:</strong> Premium Fried Chicken pieces, Homestyle Mac n Cheese, Steamed Garlic Broccoli. Check boxes below if you require alternative variations.
+            </p>
             
             <label class="checkbox-label">
                 <input type="checkbox" id="diet-veg" onchange="updateDietaryData()">
-                <span><strong>Vegetarian / Vegan Option Required</strong> (Cannot consume meat/dairy products)</span>
+                <span><strong>Vegetarian / Vegan Option</strong> (Requires alternative non-meat/non-dairy options)</span>
             </label>
             <label class="checkbox-label">
                 <input type="checkbox" id="diet-gluten" onchange="updateDietaryData()">
-                <span><strong>Gluten Allergy</strong> (Severe sensitivity to fried chicken batter coatings/pasta wheat)</span>
+                <span><strong>Gluten Sensitivity</strong> (Cannot consume wheat flour coatings or standard pasta components)</span>
             </label>
             <label class="checkbox-label">
                 <input type="checkbox" id="diet-dairy" onchange="updateDietaryData()">
-                <span><strong>Lactose / Dairy Intolerance</strong> (Sensitivity to Mac n Cheese components)</span>
+                <span># <strong>Lactose / Dairy Intolerance</strong> (Requires alternative sides without milk/cheese elements)</span>
             </label>
             
-            <label style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; margin-top: 10px;">Other Specific Medical Allergies / Critical Accommodations:</label>
-            <input type="text" id="diet-custom" class="form-input" placeholder="e.g., Peanut allergy, sesame allergy, or none..." oninput="updateDietaryData()">
+            <label style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; margin-top: 15px;">List any extra medical or environmental allergies:</label>
+            <input type="text" id="diet-custom" class="form-input" placeholder="e.g., Peanut allergies, seafood restrictions..." oninput="updateDietaryData()">
         </div>
 
-        <!-- Part 2: Parent Consent & Media Compliance Documents -->
-        <div>
-            <h4 style="margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; color: #ff8033;">2. Parental Release & Media Content Waivers</h4>
+        <!-- Grid Asset 2: Compliance Legal Waivers -->
+        <div class="card-portal">
+            <h3 class="portal-header">📝 Program Waivers & Authorization</h3>
             
-            <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; font-size: 12px; max-height: 100px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px; line-height: 1.5; color: rgba(255,255,255,0.8);">
-                <strong>Parental Consent & Liability Statement:</strong> I hereby give complete permission for my child to participate fully in all training clinics, theoretical discussions, and sports workshop activities organized under Heartwork Academy. I certify that the participant is medically cleared for activity and release coordination staff from event physical liabilities.<br><br>
-                <strong>Media Promotion Release:</strong> I recognize that photography, audio components, and video tracking methods are recorded during active training fields. I hereby authorize Heartwork Academy to utilize these captured public assets for program documentation, digital instruction resources, and future platform marketing broadcasts.
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; font-size: 12px; max-height: 120px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; line-height: 1.6; color: rgba(255,255,255,0.85);">
+                <strong>Liability Waiver Agreement:</strong> I explicitly grant permission for my child to participate fully across physical clinic fields and development workshops organized by Heartwork Academy. I certify the participant is medically cleared and release structural managers from injury liabilities.<br><br>
+                <strong>Media Release Framework:</strong> I understand photography and video assets are tracked inside open sessions. I authorize Heartwork Academy to process these public highlights for training reviews, program layouts, and platform promotions.
             </div>
 
             <label class="checkbox-label">
                 <input type="checkbox" id="waiver-agree" onchange="updateDietaryData()">
-                <span>I explicitly read, understand, and authorize both the <strong>Parental Consent Liability Release</strong> and the <strong>Media Promotion Release</strong> text frameworks above.</span>
+                <span>I have fully read, acknowledge, and authorize both the <strong>Liability Agreement</strong> and <strong>Media Release</strong> components stated above.</span>
             </label>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
-                <div>
-                    <label style="font-size: 11px; opacity: 0.7;">Participant Athlete Full Name</label>
-                    <input type="text" id="sign-athlete" class="form-input" style="margin-bottom:0;" placeholder="Athlete Name" oninput="updateDietaryData()">
-                </div>
-                <div>
-                    <label style="font-size: 11px; opacity: 0.7;">Authorizing Parent/Guardian Electronic Signature</label>
-                    <input type="text" id="sign-parent" class="form-input" style="margin-bottom:0;" placeholder="Parent/Guardian Signature" oninput="updateDietaryData()">
-                </div>
+            <div style="margin-top: 15px;">
+                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Participant Athlete Name</label>
+                <input type="text" id="sign-athlete" class="form-input" placeholder="Enter Full Name" oninput="updateDietaryData()">
+                
+                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.6;">Parent / Guardian Digital Signature</label>
+                <input type="text" id="sign-parent" class="form-input" style="margin-bottom:0;" placeholder="Enter Parent Signature" oninput="updateDietaryData()">
             </div>
         </div>
+        
     </div>
 </section>
 
 <!-- ACADEMY MODULES TAB -->
 <section id="academy" class="tab-content" style="max-width: 1100px;">
-    <div style="text-align: center; margin-bottom: 15px;">
-        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 24px;">Beyond The Court</h2>
-        <p style="font-size: 13px; opacity: 0.6; margin: 0; color: #d4af37; font-weight: 600;">Preparing for a Professional Basketball Career and Achievable Life</p>
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: -0.5px;">Beyond The Court Portal</h2>
+        <p style="font-size: 14px; opacity: 0.7; margin: 0; color: var(--gold-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Preparing for a Professional Basketball Career and Achievable Life</p>
     </div>
 
     <div class="lms-layout">
@@ -366,19 +522,19 @@
         <div class="lms-player-window">
             <div class="video-placeholder">
                 <div class="video-play-icon" onclick="alert('Streaming Explainer Audio Media...')">▶</div>
-                <div id="player-banner-tag" style="font-size: 10px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase;">MODULE 1.1</div>
-                <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 16px; margin: 5px 0 0 0; text-transform: uppercase;">The Athlete's Mindset</h3>
+                <div id="player-banner-tag" style="font-size: 11px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase;">MODULE 1.1</div>
+                <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 18px; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 0.5px;">The Athlete's Mindset</h3>
             </div>
 
-            <div id="player-body" style="padding: 25px; font-size: 14.5px; line-height: 1.65; background: rgba(0,0,0,0.3); max-height: 500px; overflow-y: auto; box-sizing: border-box;">
+            <div id="player-body" style="padding: 30px; font-size: 15px; line-height: 1.7; background: rgba(0,0,0,0.4); max-height: 500px; overflow-y: auto; box-sizing: border-box;">
                 <!-- Content Dynamically Generated -->
             </div>
 
-            <div style="background: rgba(0,0,0,0.5); padding: 15px 25px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
-                <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 11px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" id="lesson-check" style="accent-color: #d4af37;" onchange="toggleComplete()"> Mark Unit Completed
+            <div style="background: rgba(0,0,0,0.6); padding: 20px 30px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
+                <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 12px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" id="lesson-check" style="accent-color: var(--gold-primary); transform:scale(1.1);" onchange="toggleComplete()"> Mark Unit Completed
                 </label>
-                <button class="btn-gold" style="padding: 10px 20px; border-radius: 4px;" onclick="nextLesson()">Advance Unit →</button>
+                <button class="btn-gold" style="padding: 12px 24px; border-radius: 6px; font-size:11px;" onclick="nextLesson()">Advance Unit →</button>
             </div>
         </div>
     </div>
@@ -386,37 +542,35 @@
 
 <!-- EVENTS TAB -->
 <section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">Events Schedule</h2>
-    <div class="card" style="text-align: center;">
-        <h3>Better Me Better Athlete</h3>
-        <p>Sunday, Sept 27th | Brampton, ON</p>
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 30px;">Events Schedule</h2>
+    <div class="card-portal" style="text-align: center; max-width: 600px; margin: 0 auto; border: 1px solid rgba(212,175,55,0.3);">
+        <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin-top: 0;">Better Me Better Athlete</h3>
+        <p style="font-size: 15px; opacity: 0.8; margin: 10px 0 20px 0;">Sunday, Sept 27th | Brampton, ON</p>
         <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat</a>
     </div>
 </section>
 
 <!-- VAULT TAB -->
 <section id="store" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 5px;">The Vault</h2>
-    <p style="text-align: center; font-size: 14px; opacity: 0.7; margin-top: 0; margin-bottom: 30px;">Select your live event entry ticket options and premium training assets below.</p>
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 5px;">The Vault</h2>
+    <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Select your live event entry ticket options and premium training assets below.</p>
     
     <div class="vault-grid">
-        <!-- Ticket Tier 1: $40 Entry & Food -->
         <div class="vault-card">
             <div>
-                <h3 style="font-size: 36px; margin: 0; color: #d4af37;">$40</h3>
-                <h4 style="margin: 10px 0 5px 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">Individual Entry Ticket</h4>
-                <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.4;">Provides standard live event seat access to the venue along with your included food/catering setup.</p>
+                <h3 style="font-size: 38px; margin: 0; color: var(--gold-primary); font-family:'Archivo Black';">$40</h3>
+                <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">Individual Entry Ticket</h4>
+                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 25px 0; line-height: 1.5;">Provides standard live event seat access to the venue along with your included food/catering setup.</p>
             </div>
             <a href="https://buy.stripe.com/5kA7sK9wHe958i69AC" target="_blank" class="btn-gold" style="width: 100%; box-sizing: border-box;">Get Ticket Only</a>
         </div>
 
-        <!-- Ticket Tier 2: $55 Full Bundle Experience -->
         <div class="vault-card featured">
             <div>
-                <span style="color: #ff8033; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">🔥 Best Value Experience</span>
-                <h3 style="font-size: 36px; margin: 0; color: #d4af37;">$55</h3>
-                <h4 style="margin: 10px 0 5px 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">Premium Athlete Bundle</h4>
-                <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.4;">Full live event admission, complete venue catering, academy access, and a physical copy of <strong>POINT GUARD: A Diary</strong>.</p>
+                <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">🔥 Best Value Experience</span>
+                <h3 style="font-size: 38px; margin: 0; color: var(--gold-primary); font-family:'Archivo Black';">$55</h3>
+                <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">Premium Athlete Bundle</h4>
+                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 25px 0; line-height: 1.5;">Full live event admission, complete venue catering, academy access, and a physical copy of <strong>POINT GUARD: A Diary</strong>.</p>
             </div>
             <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold" style="width: 100%; box-sizing: border-box;">Get Full Bundle</a>
         </div>
@@ -424,24 +578,23 @@
 
     <div class="section-divider"></div>
 
-    <!-- Standalone Assets Grid -->
     <div class="vault-grid">
         <div class="vault-card">
             <div>
                 <div class="book-img-container">
                     <img src="https://images-na.ssl-images-amazon.com/images/I/71p0g8w9vVL._AC_UL600_SR600,600_.jpg" alt="Point Guard Book Cover" style="width:100%; height:100%; object-fit:cover;">
                 </div>
-                <h4 style="margin: 0 0 5px 0; text-transform: uppercase; font-size: 14px;">Point Guard: A Diary</h4>
-                <p style="font-size: 12px; opacity: 0.7; margin: 0 0 15px 0; line-height: 1.4;">Order a separate copy of the standalone physical paperback book directly through global Amazon distribution.</p>
+                <h4 style="margin: 0 0 8px 0; text-transform: uppercase; font-size: 14px;">Point Guard: A Diary</h4>
+                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Order a separate copy of the standalone physical paperback book directly through global Amazon distribution.</p>
             </div>
             <a href="https://www.amazon.ca/POINT-GUARD-DIARY-KEATON-COLE/dp/1777201519/" target="_blank" class="btn-gold" style="background: #e65c00; color: white; width: 100%; box-sizing: border-box;">Buy on Amazon</a>
         </div>
 
         <div class="vault-card">
             <div>
-                <h3 style="font-size: 32px; margin: 15px 0 0 0; color: #d4af37;">$600</h3>
-                <h4 style="margin: 10px 0 5px 0; text-transform: uppercase; font-size: 14px;">Team Workshop Package</h4>
-                <p style="font-size: 12px; opacity: 0.7; margin: 0 0 15px 0; line-height: 1.4;">Book premium custom development instruction and program alignment sessions directly for your entire roster.</p>
+                <h3 style="font-size: 34px; margin: 20px 0 0 0; color: var(--gold-primary); font-family:'Archivo Black';">$600</h3>
+                <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px;">Team Workshop Package</h4>
+                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Book premium custom development instruction and program alignment sessions directly for your entire roster.</p>
             </div>
             <a href="https://buy.stripe.com/00w9ASfV54vi1TI8Ya7kc00" target="_blank" class="btn-gold" style="width: 100%; box-sizing: border-box;">Book Workshop</a>
         </div>
@@ -520,7 +673,7 @@
                 { q: "2. What am I good at?", sub: "List strengths outside of basketball (cooking, writing, drawing, listening, etc.)[span_1](start_span)[span_1](end_span)." },
                 { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly[span_2](start_span)[span_2](end_span). What shifts must happen to lock this in daily[span_3](start_span)[span_3](end_span)?" },
                 { q: "4. What expectations are you expecting to manifest?", sub: "What specific goals are you tracking across basketball, family, and personal growth[span_4](start_span)[span_4](end_span)?" },
-                { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention (magazines, genres, authors) and why[span_5](start_span)[span_5](end_span)?" },
+                { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention (magazines, genres, authors) and why[span_5](start_span)[span_5](end_span)." },
                 { q: "6. What sports outlet do I listen to and why?", sub: "Examples: ESPN, Uninterrupted, First Take, etc[span_6](start_span)[span_6](end_span)." },
                 { q: "7. What do people say about me?", sub: "What do your family, close friends, and teammates say regarding your character footprint[span_7](start_span)[span_7](end_span)?" },
                 { q: "8. Who is my favorite basketball player and why?", sub: "What is it about their style, character mechanics, or behavior that draws you in[span_8](start_span)[span_8](end_span)?" },
@@ -542,23 +695,23 @@
         
         if (data.isAssessment) {
             combinedHtml += `
-                <div style="background: rgba(212,175,55,0.15); border: 1px solid #d4af37; padding: 12px; border-radius: 8px; font-size: 12.5px; margin-bottom: 15px; color: #fff;">
-                    <strong>📬 Submission Instructions:</strong> Once you copy or download this completed blueprint text document below, email it immediately as an attachment or plain text directly to <strong style="color:#d4af37;">kreativekc89@gmail.com</strong> so Coach Keaton can verify your entry status!
+                <div style="background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); padding: 15px; border-radius: 10px; font-size: 13px; margin-bottom: 20px; color: #fff; line-height:1.5;">
+                    <strong>📬 Submission Instructions:</strong> Once you copy or download this completed blueprint text document below, email it immediately as an attachment or plain text directly to <strong style="color:var(--gold-primary);">kreativekc89@gmail.com</strong> so Coach Keaton can verify your entry status!
                 </div>
-                <p style="font-size:13.5px; opacity:0.8;">Complete your final identity guide down below[span_12](start_span)[span_12](end_span).</p>
+                <p style="font-size:14px; opacity:0.8;">Complete your final identity guide down below[span_12](start_span)[span_12](end_span).</p>
                 <div style="margin-top:15px;">
             `;
             
             data.questions.forEach((item, index) => {
                 const existingVal = userCourseNotes["assessment"][index];
                 combinedHtml += `
-                    <details class="interactive-box" style="margin-top:10px;">
-                        <summary style="cursor:pointer; font-weight:700; color:#d4af37; font-size:13px; outline:none;">
-                            ${item.q} <span style="font-size:10px; opacity:0.5; float:right;">▼ Open</span>
+                    <details class="interactive-box" style="margin-top:12px;">
+                        <summary style="cursor:pointer; font-weight:700; color:var(--gold-primary); font-size:13.5px; outline:none;">
+                            ${item.q} <span style="font-size:11px; opacity:0.5; float:right;">▼ Open</span>
                         </summary>
-                        <div style="margin-top:10px; border-top:1px solid rgba(255,255,255,0.05); padding-top:8px;">
-                            <p style="font-size:12px; color:rgba(255,255,255,0.7); margin:0 0 8px 0;">${item.sub}</p>
-                            <textarea class="reflection-textarea" style="height:70px;" oninput="trackAssessmentChange(${index}, this.value)" placeholder="Write your assessment answers here...">${existingVal}</textarea>
+                        <div style="margin-top:12px; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+                            <p style="font-size:12.5px; color:rgba(255,255,255,0.7); margin:0 0 8px 0;">${item.sub}</p>
+                            <textarea class="reflection-textarea" style="height:80px;" oninput="trackAssessmentChange(${index}, this.value)" placeholder="Write your assessment answers here...">${existingVal}</textarea>
                         </div>
                     </details>
                 `;
@@ -566,9 +719,9 @@
             
             combinedHtml += `
                 </div>
-                <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                    <button class="btn-gold" style="border-radius:6px; font-size:10px; padding:12px;" onclick="copyReportToClipboard()">📋 Copy Blueprint & Forms</button>
-                    <button class="btn-gold" style="border-radius:6px; font-size:10px; padding:12px;" onclick="downloadFullReport()">📥 Download Blueprint & Forms</button>
+                <div style="margin-top:25px; display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                    <button class="btn-gold" style="border-radius:8px; font-size:11px; padding:14px;" onclick="copyReportToClipboard()">📋 Copy Blueprint & Forms</button>
+                    <button class="btn-gold" style="border-radius:8px; font-size:11px; padding:14px;" onclick="downloadFullReport()">📥 Download Blueprint & Forms</button>
                 </div>
             `;
             
@@ -577,12 +730,12 @@
             const existingNote = userCourseNotes[id];
             combinedHtml += `
                 <div class="interactive-box">
-                    <span style="color:#d4af37; font-size:11px; font-weight:800; text-transform:uppercase;">✍️ Unit Reflection Notebook</span>
-                    <p style="font-size:13px; margin:5px 0 8px 0;">${data.prompt}</p>
+                    <span style="color:var(--gold-primary); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">✍️ Unit Reflection Notebook</span>
+                    <p style="font-size:13.5px; margin:5px 0 10px 0;">${data.prompt}</p>
                     <textarea class="reflection-textarea" oninput="trackNoteChange(${id}, this.value)" placeholder="Enter your strategy response data here...">${existingNote}</textarea>
                 </div>
                 <div class="interactive-box" style="border-color: rgba(255,128,51,0.25);">
-                    <p style="font-size:13.5px; margin:0 0 10px 0; font-weight:600;">${data.quizQ}</p>
+                    <p style="font-size:14px; margin:0 0 12px 0; font-weight:600;">${data.quizQ}</p>
                     <div id="quiz-options-container">
             `;
             data.quizOptions.forEach((opt, idx) => {
