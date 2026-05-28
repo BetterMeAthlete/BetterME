@@ -406,199 +406,234 @@
 
 <script>
     // Tab Display Logic Router
-    function switchTab(tabId) {
-        const sections = document.querySelectorAll('.tab-content');
-        sections.forEach(sec => sec.style.display = 'none');
-        document.getElementById(tabId).style.display = 'block';
-        
-        const anchors = document.querySelectorAll('nav a');
-        anchors.forEach(a => a.classList.remove('active-tab'));
-        
-        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
-        if(tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
-        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
-        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
-        window.scrollTo(0,0);
+function switchTab(tabId) {
+    const sections = document.querySelectorAll('.tab-content');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById(tabId).style.display = 'block';
+    
+    const anchors = document.querySelectorAll('nav a');
+    anchors.forEach(a => a.classList.remove('active-tab'));
+    
+    if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
+    if(tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
+    if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
+    if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
+    window.scrollTo(0,0);
+}
+
+let currentModuleId = 1;
+let completeStatus = Array(13).fill(false);
+
+const lessonsData = {
+    1: {
+        tag: "MODULE 1.1 • BRAIN TRAINING",
+        title: "The Athlete's Mindset",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Growth Mindset vs. Fixed Mindset</p>
+            <p>A fixed mindset says: 'I either have it or I don't.' A growth mindset says: 'I can get better with effort.' Every elite athlete operates with a growth mindset — they see setbacks as data, not failure.</p>
+            <p style="font-weight:700; color:#d4af37; margin-top:22px;">SMART Goals Framework</p>
+            <ul class="bullet-list">
+                <li><strong>Specific:</strong> Clearly define what you want to achieve.</li>
+                <li><strong>Measurable:</strong> Set quantifiable targets to track progress.</li>
+                <li><strong>Achievable:</strong> Set challenging but realistic goals.</li>
+                <li><strong>Relevant:</strong> Ensure goals align with your vision.</li>
+                <li><strong>Time-bound:</strong> Set clear deadlines to stay focused.</li>
+            </ul>
+        `,
+        prompt: "Write down ONE goal you want to achieve in the next 90 days. Break it into SMART format below. What is your first step this week?",
+        quizQ: "Which of the following best describes a growth mindset?",
+        quizOptions: ["Believing that talent is fixed and unchangeable", "Believing that effort and learning can develop your abilities over time", "Focusing only on wins and ignoring adjustments", "Waiting for coaches to push you rather than self-correcting"],
+        correctIdx: 1
+    },
+    2: {
+        tag: "MODULE 1.2 • PHYSICAL WORKLOAD",
+        title: "Take Care of Your Body",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Fuel = Performance</p>
+            <p>Your body is your career. Nutrition and recovery form the foundation for peak performance and injury prevention.</p>
+            <ul class="bullet-list">
+                <li><strong>Carbohydrates:</strong> Primary high-intensity energy fuel.</li>
+                <li><strong>Protein:</strong> Essential muscle reconstruction bricks.</li>
+                <li><strong>Fats:</strong> Vital structural protection and hormone balance.</li>
+            </ul>
+            <div style="background:rgba(85, 239, 196, 0.1); border-radius:8px; padding:12px; border:1px solid rgba(85, 239, 196, 0.3); color:#55efc4; font-size:13px; font-weight:700; text-align:center; margin:15px 0;">
+                ⏱️ NUTRIENT TIMING: Consuming carbs and protein within 30-60 minutes after exercise maximizes synthesis window.
+            </div>
+        `,
+        prompt: "What's ONE recovery habit you do well? What's ONE thing you need to fix — sleep, nutrition, or mental load? Write a 3-day adjustment plan.",
+        quizQ: "What is the best time to consume carbohydrates and protein for muscle recovery?",
+        quizOptions: ["Before bed, so your body can process it overnight", "Within 30–60 minutes after exercise", "Only when you feel sore the next day", "It doesn't matter — timing is irrelevant"],
+        correctIdx: 1
+    },
+    3: {
+        tag: "MODULE 1.3 • ELITE STANDARDS",
+        title: "Punctuality & Professionalism",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">The 15-Minute Rule</p>
+            <p>'If you're 5 minutes early, you're already late.' The standard isn't the start time — it's being READY at the start time. Late means you are signaling that your time matters more than theirs.</p>
+        `,
+        prompt: "Think of a time you were late to something important. What did it cost you or the team? Write your new arrival protocol blueprint.",
+        quizQ: "According to the program's standard, how early should you arrive before a meeting or game?",
+        quizOptions: ["Right on the dot when it starts", "5 minutes before", "15 minutes before as a baseline minimum", "Whenever you get there"],
+        correctIdx: 2
+    },
+    4: {
+        tag: "MODULE 1.4 • DIGITAL FOOTPRINT",
+        title: "Social Media Etiquette",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">The Screenshot Test</p>
+            <p>Before you post ANYTHING, ask: 'Would I be okay if my coach, my mom, and a future employer all saw this right now?' If the answer is no — don't post it. One reckless clip can wipe out a contract.</p>
+        `,
+        prompt: "Review your profile or last 5 posts. Run the Screenshot Test on each. Would they all pass? If any are risky, write down what you will delete.",
+        quizQ: "What does NIL stand for in the context of athlete brand-building?",
+        quizOptions: ["National Integrity League", "Name, Image, Likeness", "Network, Influence, Legacy", "Negotiation, Income, Leverage"],
+        correctIdx: 1
+    },
+    5: {
+        tag: "MODULE 2.1 • ECONOMICS",
+        title: "Game as a Business",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">The Business Ecosystem</p>
+            <p>Basketball is entertainment, media, and billions of dollars. TV contracts, team sales metrics, and shoe deals move off consumer interaction. You are the structural engine that drives revenue across this entire system.</p>
+        `,
+        prompt: "Name one thing about the business of basketball you didn't know before this. How does knowing it shift how you view your future?",
+        quizQ: "In the business of basketball, what role does the athlete primarily play?",
+        quizOptions: ["An employee who just follows team instructions", "The core product that drives revenue for the entire ecosystem", "A passive worker earning a flat base salary", "An outside manager of arena assets"],
+        correctIdx: 1
+    },
+    6: {
+        tag: "MODULE 2.2 • LEGAL & REPRESENTATION",
+        title: "Agents & Representation",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Evaluating Representation parameters</p>
+            <p>Agents handle contract allocations, endorsements, PR, and lifestyle parameters. Never sign quickly under high-pressure tactics. Verbal promises mean nothing—everything must exist in written parameters.</p>
+        `,
+        prompt: "If you met an agent tomorrow, write down the 3 most important metrics you would question them on.",
+        quizQ: "When choosing an agent, what is the most critical thing to lock down?",
+        quizOptions: ["Their personal car model", "A written sheet of the exact scope of services and fee percentages", "Their text response speed after midnight", "Which sports video games they play"],
+        correctIdx: 1
+    },
+    7: {
+        tag: "MODULE 2.3 • ASSET PROTECTION",
+        title: "Financial Literacy",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Defeating Lifestyle Creep</p>
+            <p>Lifestyle creep is spending MORE just because you make MORE, resulting in net zero reserves when play stops. Balance active checks with passive assets (real estate, portfolios, allocations).</p>
+        `,
+        prompt: "If you received a contract for $6 million tomorrow, calculate your allocation. How much goes to taxes, savings, lifestyle, and investment?",
+        quizQ: "What is 'lifestyle creep' in financial mechanics?",
+        quizOptions: ["Gradually shifting from sport interest to music", "The tendency to expand spending at the exact velocity income expands, leaving zero long-term capital", "The fee pattern of elite wealth advisors", "Investing into apparel companies instead of bonds"],
+        correctIdx: 1
+    },
+    8: {
+        tag: "MODULE 2.4 • MEDIA SCRUTINY",
+        title: "Personal Branding & Media",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Leveraging the Microphone</p>
+            <p>Interviews are training grounds for real life. Clear communication under intense pressure, active response control, and composure transfer directly to corporate boardrooms or executive paths.</p>
+        `,
+        prompt: "You just dropped 25 points in a massive win. A live mic hits your face. Draft a confident, intentional 3-sentence reaction that protects your brand.",
+        quizQ: "Which life skill transfers directly from post-game media scrums into corporate executive functions?",
+        quizOptions: ["Sprinting stamina", "Composure and highly effective communication under immediate public pressure", "Vertical leap execution", "Zone defense recognition patterns"],
+        correctIdx: 1
+    },
+    9: {
+        tag: "MODULE 3.1 • TRANSITIONS",
+        title: "College & University Realities",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">The Adjustments Engine</p>
+            <p>University brings intense environment adjustments, logistics weights, and values checks. Build deep campus networks with instructors, mentors, and alumni—do not run isolated loops.</p>
+        `,
+        prompt: "If you could visit any university tomorrow, which one and why? What questions would you demand answers to regarding academic support systems?",
+        quizQ: "What is the most critical metric when verifying a scholarship offer package?",
+        quizOptions: ["The color palette of the warm-up uniforms", "Total alignment across program values, academic flexibility, and structural injury insurance terms", "The arena seat configuration size", "The campus proximity to local malls"],
+        correctIdx: 1
+    },
+    10: {
+        tag: "MODULE 3.2 • OUTSIDE ALTERNATIVES",
+        title: "Career Exploration",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Transferable Skills Extraction</p>
+            <p>The leadership, relentless execution discipline, collaborative teamwork, and situational problem-solving skills forged on hardwood convert beautifully into corporate or entrepreneurial success blueprints.</p>
+        `,
+        prompt: "Identify 3 things you are naturally outstanding at doing outside of athletics. Map them to real professional career paths.",
+        quizQ: "Which asset forged through athletic mastery does NOT transfer cleanly to alternative corporate ecosystems?",
+        quizOptions: ["High-stakes group leadership coordination", "Dynamic situational strategic problem-solving abilities", "The exact count of specific drills run per individual training session", "Deep performance habits and structural discipline standards"],
+        correctIdx: 2
+    },
+    11: {
+        tag: "MODULE 3.3 • SUSTAINING POWER",
+        title: "Transitions & Well-Being",
+        html: `
+            <p style="margin-top:0; font-weight:700; color:#d4af37;">Managing the Identity Shift</p>
+            <p>Moving away from competitive sports creates severe identity weight. Establish infrastructure: secure guidance early, keep deep personal roots intact, and establish your legacy play by giving back to the community.</p>
+        `,
+        prompt: "Describe the legacy score you want to leave behind. What do you want people to say you stood for 20 years from today?",
+        quizQ: "When should an active elite athlete begin configuring their post-athletic identity structures?",
+        quizOptions: ["Five years after completely retiring from pro systems", "During the final month of active professional league scheduling", "As early as possible while actively training and executing performance systems", "Only if an immediate season-ending structural injury forces it"],
+        correctIdx: 2
+    },
+    12: {
+        isAssessment: true,
+        tag: "MODULE 3.4 • IDENTITY REPORT",
+        title: "Know Myself Assessment",
+        questions: [
+            { q: "1. Who am I?", sub: "If you were to describe yourself right now, what is there to say about you?" },
+            { q: "2. What am I good at?", sub: "List your strengths outside of basketball (e.g., cooking, writing, communicating, drawing, listening, etc.)." },
+            { q: "3. Who do I want to become?", sub: "Think about 6 months from now, 5 years from now, and your long-term life identity (e.g., Father, Professional Baller, Teacher, Entrepreneur, Author). If you aren't that person today, what needs to change, stay, or be let go of?" },
+            { q: "4. What expectations are you expecting to manifest?", sub: "What clear goals do you want to achieve? Think about basketball, life as a sibling, or as a mature leader." },
+            { q: "5. What kind of books or content do I enjoy reading?", sub: "Think of genres, authors, sports magazines, or case studies. Why do those catch your eye?" },
+            { q: "6. What sports outlets do I listen to and watch?", sub: "Examples: ESPN, Uninterrupted, First Take, etc. What draws you to their breakdown style?" },
+            { q: "7. What do people say about me?", sub: "Think honestly about what your family, friends, trainers, and teammates say about your character." },
+            { q: "8. Who is my favorite basketball player and why?", sub: "Look at their style of play, their character footprint, and whether you recognize your own talent traits in them." },
+            { q: "9. When I finish my ball career, what do I want to do?", sub: "What moves do you want to make during or after your playing days? (e.g., D-Wade & LeBron owning stakes in shoe brands/sports teams, LeBron launching media networks like Uninterrupted, lifetime Nike contracts, film production, etc.)" },
+            { q: "10. Legacy Impact", sub: "What profound impact do you want to leave behind for the upcoming generation? What is the core standard you want to pass down?" },
+            { q: "11. The Satisfaction Reality Check", sub: "If you scale the mountain and reach your ultimate basketball goal, how will you handle it if it doesn't provide the ultimate internal satisfaction you originally thought it would give you?" }
+        ]
     }
+};
 
-    let currentModuleId = 1;
-    // In-memory student tracker object structure
-    let completeStatus = Array(13).fill(false);
-
-    const lessonsData = {
-        1: {
-            tag: "MODULE 1.1 • BRAIN TRAINING",
-            title: "The Athlete's Mindset",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Growth Mindset vs. Fixed Mindset</p>
-                <p>A fixed mindset says: 'I either have it or I don't.' A growth mindset says: 'I can get better with effort.' Every elite athlete operates with a growth mindset — they see setbacks as data, not failure.</p>
-                <p style="font-weight:700; color:#d4af37; margin-top:22px;">SMART Goals Framework</p>
-                <ul class="bullet-list">
-                    <li><strong>Specific:</strong> Clearly define what you want to achieve.</li>
-                    <li><strong>Measurable:</strong> Set quantifiable targets to track progress.</li>
-                    <li><strong>Achievable:</strong> Set challenging but realistic goals.</li>
-                    <li><strong>Relevant:</strong> Ensure goals align with your vision.</li>
-                    <li><strong>Time-bound:</strong> Set clear deadlines to stay focused.</li>
-                </ul>
-            `,
-            prompt: "Write down ONE goal you want to achieve in the next 90 days. Break it into SMART format below. What is your first step this week?",
-            quizQ: "Which of the following best describes a growth mindset?",
-            quizOptions: ["Believing that talent is fixed and unchangeable", "Believing that effort and learning can develop your abilities over time", "Focusing only on wins and ignoring adjustments", "Waiting for coaches to push you rather than self-correcting"],
-            correctIdx: 1
-        },
-        2: {
-            tag: "MODULE 1.2 • PHYSICAL WORKLOAD",
-            title: "Take Care of Your Body",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Fuel = Performance</p>
-                <p>Your body is your career. Nutrition and recovery form the foundation for peak performance and injury prevention.</p>
-                <ul class="bullet-list">
-                    <li><strong>Carbohydrates:</strong> Primary high-intensity energy fuel.</li>
-                    <li><strong>Protein:</strong> Essential muscle reconstruction bricks.</li>
-                    <li><strong>Fats:</strong> Vital structural protection and hormone balance.</li>
-                </ul>
-                <div style="background:rgba(85, 239, 196, 0.1); border-radius:8px; padding:12px; border:1px solid rgba(85, 239, 196, 0.3); color:#55efc4; font-size:13px; font-weight:700; text-align:center; margin:15px 0;">
-                    ⏱️ NUTRIENT TIMING: Consuming carbs and protein within 30-60 minutes after exercise maximizes synthesis window.
-                </div>
-            `,
-            prompt: "What's ONE recovery habit you do well? What's ONE thing you need to fix — sleep, nutrition, or mental load? Write a 3-day adjustment plan.",
-            quizQ: "What is the best time to consume carbohydrates and protein for muscle recovery?",
-            quizOptions: ["Before bed, so your body can process it overnight", "Within 30–60 minutes after exercise", "Only when you feel sore the next day", "It doesn't matter — timing is irrelevant"],
-            correctIdx: 1
-        },
-        3: {
-            tag: "MODULE 1.3 • ELITE STANDARDS",
-            title: "Punctuality & Professionalism",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">The 15-Minute Rule</p>
-                <p>'If you're 5 minutes early, you're already late.' The standard isn't the start time — it's being READY at the start time. Late means you are signaling that your time matters more than theirs.</p>
-            `,
-            prompt: "Think of a time you were late to something important. What did it cost you or the team? Write your new arrival protocol blueprint.",
-            quizQ: "According to the program's standard, how early should you arrive before a meeting or game?",
-            quizOptions: ["Right on the dot when it starts", "5 minutes before", "15 minutes before as a baseline minimum", "Whenever you get there"],
-            correctIdx: 2
-        },
-        4: {
-            tag: "MODULE 1.4 • DIGITAL FOOTPRINT",
-            title: "Social Media Etiquette",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Screenshot Test</p>
-                <p>Before you post ANYTHING, ask: 'Would I be okay if my coach, my mom, and a future employer all saw this right now?' If the answer is no — don't post it. One reckless clip can wipe out a contract.</p>
-            `,
-            prompt: "Review your profile or last 5 posts. Run the Screenshot Test on each. Would they all pass? If any are risky, write down what you will delete.",
-            quizQ: "What does NIL stand for in the context of athlete brand-building?",
-            quizOptions: ["National Integrity League", "Name, Image, Likeness", "Network, Influence, Legacy", "Negotiation, Income, Leverage"],
-            correctIdx: 1
-        },
-        5: {
-            tag: "MODULE 2.1 • ECONOMICS",
-            title: "Game as a Business",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Business Ecosystem</p>
-                <p>Basketball is entertainment, media, and billions of dollars. TV contracts, team sales metrics, and shoe deals move off consumer interaction. You are the structural engine that drives revenue across this entire system.</p>
-            `,
-            prompt: "Name one thing about the business of basketball you didn't know before this. How does knowing it shift how you view your future?",
-            quizQ: "In the business of basketball, what role does the athlete primarily play?",
-            quizOptions: ["An employee who just follows team instructions", "The core product that drives revenue for the entire ecosystem", "A passive worker earning a flat base salary", "An outside manager of arena assets"],
-            correctIdx: 1
-        },
-        6: {
-            tag: "MODULE 2.2 • LEGAL & REPRESENTATION",
-            title: "Agents & Representation",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Evaluating Representation parameters</p>
-                <p>Agents handle contract allocations, endorsements, PR, and lifestyle parameters. Never sign quickly under high-pressure tactics. Verbal promises mean nothing—everything must exist in written parameters.</p>
-            `,
-            prompt: "If you met an agent tomorrow, write down the 3 most important metrics you would question them on.",
-            quizQ: "When choosing an agent, what is the most critical thing to lock down?",
-            quizOptions: ["Their personal car model", "A written sheet of the exact scope of services and fee percentages", "Their text response speed after midnight", "Which sports video games they play"],
-            correctIdx: 1
-        },
-        7: {
-            tag: "MODULE 2.3 • ASSET PROTECTION",
-            title: "Financial Literacy",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Defeating Lifestyle Creep</p>
-                <p>Lifestyle creep is spending MORE just because you make MORE, resulting in net zero reserves when play stops. Balance active checks with passive assets (real estate, portfolios, allocations).</p>
-            `,
-            prompt: "If you received a contract for $6 million tomorrow, calculate your allocation. How much goes to taxes, savings, lifestyle, and investment?",
-            quizQ: "What is 'lifestyle creep' in financial mechanics?",
-            quizOptions: ["Gradually shifting from sport interest to music", "The tendency to expand spending at the exact velocity income expands, leaving zero long-term capital", "The fee pattern of elite wealth advisors", "Investing into apparel companies instead of bonds"],
-            correctIdx: 1
-        },
-        8: {
-            tag: "MODULE 2.4 • MEDIA SCRUTINY",
-            title: "Personal Branding & Media",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Leveraging the Microphone</p>
-                <p>Interviews are training grounds for real life. Clear communication under intense pressure, active response control, and composure transfer directly to corporate boardrooms or executive paths.</p>
-            `,
-            prompt: "You just dropped 25 points in a massive win. A live mic hits your face. Draft a confident, intentional 3-sentence reaction that protects your brand.",
-            quizQ: "Which life skill transfers directly from post-game media scrums into corporate executive functions?",
-            quizOptions: ["Sprinting stamina", "Composure and highly effective communication under immediate public pressure", "Vertical leap execution", "Zone defense recognition patterns"],
-            correctIdx: 1
-        },
-        9: {
-            tag: "MODULE 3.1 • TRANSITIONS",
-            title: "College & University Realities",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Adjustments Engine</p>
-                <p>University brings intense environment adjustments, logistics weights, and values checks. Build deep campus networks with instructors, mentors, and alumni—do not run isolated loops.</p>
-            `,
-            prompt: "If you could visit any university tomorrow, which one and why? What questions would you demand answers to regarding academic support systems?",
-            quizQ: "What is the most critical metric when verifying a scholarship offer package?",
-            quizOptions: ["The color palette of the warm-up uniforms", "Total alignment across program values, academic flexibility, and structural injury insurance terms", "The arena seat configuration size", "The campus proximity to local malls"],
-            correctIdx: 1
-        },
-        10: {
-            tag: "MODULE 3.2 • OUTSIDE ALTERNATIVES",
-            title: "Career Exploration",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Transferable Skills Extraction</p>
-                <p>The leadership, relentless execution discipline, collaborative teamwork, and situational problem-solving skills forged on hardwood convert beautifully into corporate or entrepreneurial success blueprints.</p>
-            `,
-            prompt: "Identify 3 things you are naturally outstanding at doing outside of athletics. Map them to real professional career paths.",
-            quizQ: "Which asset forged through athletic mastery does NOT transfer cleanly to alternative corporate ecosystems?",
-            quizOptions: ["High-stakes group leadership coordination", "Dynamic situational strategic problem-solving abilities", "The exact count of specific drills run per individual training session", "Deep performance habits and structural discipline standards"],
-            correctIdx: 2
-        },
-        11: {
-            tag: "MODULE 3.3 • SUSTAINING POWER",
-            title: "Transitions & Well-Being",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">Managing the Identity Shift</p>
-                <p>Moving away from competitive sports creates severe identity weight. Establish infrastructure: secure guidance early, keep deep personal roots intact, and establish your legacy play by giving back to the community.</p>
-            `,
-            prompt: "Describe the legacy score you want to leave behind. What do you want people to say you stood for 20 years from today?",
-            quizQ: "When should an active elite athlete begin configuring their post-athletic identity structures?",
-            quizOptions: ["Five years after completely retiring from pro systems", "During the final month of active professional league scheduling", "As early as possible while actively training and executing performance systems", "Only if an immediate season-ending structural injury forces it"],
-            correctIdx: 2
-        },
-        12: {
-            tag: "MODULE 3.4 • SELF MAP SYSTEM",
-            title: "Know Myself Assessment",
-            html: `
-                <p style="margin-top:0; font-weight:700; color:#d4af37;">The Ultimate 1:1 Workbook Module</p>
-                <p>This space belongs to you completely. No videos, no checklists. Just pure, targeted, internal verification metrics designed to anchor your identity framework.</p>
-            `,
-            prompt: "Who are you outside of your jersey? What are your ultimate core values, who do you want to become over the next 5 years, and what must you change today to align with that person?",
-            quizQ: "What is the most effective approach to mastering your personal development lifecycle?",
-            quizOptions: ["Letting other individuals control your trajectory", "Regular, radical, structured internal verification self-assessment habits", "Ignoring weaknesses until they break tracking lines", "Assuming pure athletic talent overrides life design requirements"],
-            correctIdx: 1
-        }
-    };
-
-    function loadLesson(id) {
-        currentModuleId = id;
-        const data = lessonsData[id];
+function loadLesson(id) {
+    currentModuleId = id;
+    const data = lessonsData[id];
+    
+    document.getElementById('player-banner-tag').innerText = data.tag;
+    document.getElementById('player-title').innerText = data.title;
+    
+    let combinedHtml = "";
+    
+    // Check if it's the custom 11-question workbook layout
+    if (data.isAssessment) {
+        combinedHtml += `
+            <p style="margin-top:0; font-size:14px; opacity:0.85; line-height:1.5;">
+                Welcome to your final structural blueprint. This assessment requires radical internal honesty. Tap into each category below to construct your off-court identity roadmap.
+            </p>
+            <div style="margin-top:20px;">
+        `;
         
-        document.getElementById('player-banner-tag').innerText = data.tag;
-        document.getElementById('player-title').innerText = data.title;
+        data.questions.forEach((item, index) => {
+            combinedHtml += `
+                <details class="interactive-box" style="margin-top:12px; background:rgba(212,175,55,0.02); border-color:rgba(212,175,55,0.15);">
+                    <summary style="cursor:pointer; font-weight:700; color:#d4af37; font-size:13.5px; outline:none; user-select:none;">
+                        ${item.q} <span style="font-size:10px; opacity:0.5; font-weight:normal; float:right;">▼ Tap to open</span>
+                    </summary>
+                    <div style="margin-top:12px; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+                        <p style="font-size:12.5px; color:rgba(255,255,255,0.7); margin:0 0 10px 0; line-height:1.4;">${item.sub}</p>
+                        <textarea id="assessment-box-${index}" class="reflection-textarea" style="height:80px;" placeholder="Document your internal answer here..."></textarea>
+                    </div>
+                </details>
+            `;
+        });
         
-        // Assemble dynamic body with standard text HTML + Reflection Module + Interactive Quiz Engine
-        let combinedHtml = data.html;
+        combinedHtml += `
+            </div>
+            <button class="btn-gold" style="width:100%; margin-top:20px; border-radius:8px;" onclick="alert('Identity Audit Log Securely Saved and Locked Into The Vault!')">Lock Strategy Log</button>
+        `;
         
-        // Append Digital Reflection Notebook Framework
+    } else {
+        // Standard Lesson HTML Builder Block
+        combinedHtml = data.html;
+        
         combinedHtml += `
             <div class="interactive-box">
                 <span style="color:#d4af37; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; display:block;">✍️ Digital Notebook | Reflection Prompt</span>
@@ -608,7 +643,6 @@
             </div>
         `;
         
-        // Append Gamified Quiz Engine 
         combinedHtml += `
             <div class="interactive-box" style="border-color: rgba(255,128,51,0.25);">
                 <span style="color:#ff8033; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; display:block;">🧠 Interactive Scouting Report | Quiz</span>
@@ -621,64 +655,61 @@
         });
         
         combinedHtml += `</div></div>`;
-        
-        document.getElementById('player-body').innerHTML = combinedHtml;
-        
-        // Sync checklist visual status parameters
-        document.getElementById('lesson-check').checked = completeStatus[id];
-        
-        // Manage navigation layout active item focus tracking 
-        for (let i = 1; i <= 12; i++) {
-            const el = document.getElementById('nav-l' + i);
-            if(el) el.classList.remove('active-lesson');
-        }
-        document.getElementById('nav-l' + id).classList.add('active-lesson');
-        document.getElementById('player-body').scrollTop = 0;
     }
-
-    function submitAnswer(element, selectedIdx, correctIdx) {
-        // Clear previous selection states in parent container viewport bounds
-        const siblings = element.parentNode.children;
-        for(let item of siblings) {
-            item.classList.remove('correct', 'incorrect');
-        }
-        
-        if(selectedIdx === correctIdx) {
-            element.classList.add('correct');
-            // Auto mark completion toggle assistance
-            if(!completeStatus[currentModuleId]) {
-                document.getElementById('lesson-check').checked = true;
-                toggleComplete();
-            }
-        } else {
-            element.classList.add('incorrect');
-            siblings[correctIdx].classList.add('correct');
-        }
+    
+    document.getElementById('player-body').innerHTML = combinedHtml;
+    document.getElementById('lesson-check').checked = completeStatus[id];
+    
+    for (let i = 1; i <= 12; i++) {
+        const el = document.getElementById('nav-l' + i);
+        if(el) el.classList.remove('active-lesson');
     }
+    document.getElementById('nav-l' + id).classList.add('active-lesson');
+    document.getElementById('player-body').scrollTop = 0;
+}
 
-    function toggleComplete() {
-        const checked = document.getElementById('lesson-check').checked;
-        completeStatus[currentModuleId] = checked;
-        const badge = document.getElementById('badge-l' + currentModuleId);
-        if(badge) {
-            badge.innerText = checked ? "✅" : "🔒";
-            badge.style.background = checked ? "rgba(46,204,113,0.2)" : "rgba(255,255,255,0.1)";
-        }
+function submitAnswer(element, selectedIdx, correctIdx) {
+    const siblings = element.parentNode.children;
+    for(let item of siblings) {
+        item.classList.remove('correct', 'incorrect');
     }
-
-    function nextLesson() {
-        if (currentModuleId < 12) {
-            loadLesson(currentModuleId + 1);
-        } else {
-            alert("Masterclass Complete! You have processed all modules of the Beyond The Court Series!");
-            loadLesson(1);
+    
+    if(selectedIdx === correctIdx) {
+        element.classList.add('correct');
+        if(!completeStatus[currentModuleId]) {
+            document.getElementById('lesson-check').checked = true;
+            toggleComplete();
         }
+    } else {
+        element.classList.add('incorrect');
+        siblings[correctIdx].classList.add('correct');
     }
+}
 
-    window.onload = function() {
-        switchTab('locker-room');
+function toggleComplete() {
+    const checked = document.getElementById('lesson-check').checked;
+    completeStatus[currentModuleId] = checked;
+    const badge = document.getElementById('badge-l' + currentModuleId);
+    if(badge) {
+        badge.innerText = checked ? "✅" : "🔒";
+        badge.style.background = checked ? "rgba(46,204,113,0.2)" : "rgba(255,255,255,0.1)";
+    }
+}
+
+function nextLesson() {
+    if (currentModuleId < 12) {
+        loadLesson(currentModuleId + 1);
+    } else {
+        alert("Masterclass Complete! You have processed all modules of the Beyond The Court Series!");
         loadLesson(1);
-    };
+    }
+}
+
+window.onload = function() {
+    switchTab('locker-room');
+    loadLesson(1);
+};
+
 </script>
 
 </body>
