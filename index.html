@@ -182,18 +182,6 @@
             transition: border-color 0.3s ease;
         }
 
-        .form-iframe-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin: 30px auto 0 auto;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-            background: #ffffff;
-        }
-
         .btn-gold { 
             background: var(--gold-gradient); 
             color: #000000; 
@@ -393,7 +381,6 @@
 
 <!-- LOCKER ROOM TAB -->
 <section id="locker-room" class="tab-content">
-    <!-- Dynamic Daily Quote Module Container -->
     <div class="daily-quote-card">
         <p class="daily-quote-text" id="quote-display-text">"Loading your elite daily directive..."</p>
         <div class="daily-quote-author" id="quote-display-author">HEARTWORK ACADEMY</div>
@@ -468,20 +455,31 @@
     </div>
 </section>
 
-<!-- LIVE EVENTS TAB (CONSOLIDATED ENTRANCE TICKET & SURVEY FORM INTERACTION) -->
+<!-- LIVE EVENTS TAB (CONSOLIDATED ENTRANCE TICKET & SURVEY CARD INTERACTION) -->
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 10px;">Events & Registration Portal</h2>
-    <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 30px;">Complete your ticket purchase via Stripe and fill out the validation registration form directly below.</p>
+    <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Secure your ticket purchase via Stripe, then submit your event registration details via Google Forms.</p>
     
-    <div class="card-portal" style="text-align: center; max-width: 600px; margin: 0 auto 30px auto; border: 1px solid rgba(212,175,55,0.3);">
-        <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin-top: 0;">Better Me Better Athlete</h3>
-        <p style="font-size: 15px; opacity: 0.8; margin: 10px 0 20px 0;">Sunday, Sept 27th | Brampton, ON</p>
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat Via Stripe</a>
-    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto;">
+        <!-- Step 1: Payment Portal -->
+        <div class="card-portal" style="text-align: center; border: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="color: var(--gold-primary); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px;">Step 1: Payment</span>
+                <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin: 0 0 10px 0;">Better Me Better Athlete</h3>
+                <p style="font-size: 14px; opacity: 0.8; margin: 0 0 20px 0;">Sunday, Sept 27th | Brampton, ON</p>
+            </div>
+            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat Via Stripe</a>
+        </div>
 
-    <!-- Embedded Verification Google Form Survey System -->
-    <div class="form-iframe-container">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeYNl85cHIkc9ICKb55kSpVoEMWApz4AVxNgsPYwqTGHGgA_A/viewform?embedded=true" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <!-- Step 2: Form Link Out -->
+        <div class="card-portal" style="text-align: center; border: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px;">Step 2: Documentation</span>
+                <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin: 0 0 10px 0;">Athlete Event Survey</h3>
+                <p style="font-size: 14px; opacity: 0.8; margin: 0 0 20px 0;">Submit dietary requirements, media releases, and standard waivers.</p>
+            </div>
+            <a href="https://forms.gle/Mz6pEXbkWJ3zPDLZA" target="_blank" class="btn-gold" style="background: linear-gradient(135deg, #673ab7 0%, #512da8 100%); color: white; box-shadow: 0 4px 15px rgba(103, 58, 183, 0.3);">Fill Out Registration Form</a>
+        </div>
     </div>
 </section>
 
@@ -490,7 +488,6 @@
     <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 5px;">The Vault</h2>
     <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Select your live event entry ticket options and premium training assets below.</p>
     
-    <!-- Premium Book Showcase Frame featuring Verification Assets & Video Media Launch -->
     <div class="media-showcase-box">
         <div>
             <img src="8A3D1794-1.jpg" alt="Point Guard Cover" class="book-img-display">
@@ -555,7 +552,6 @@
 </section>
 
 <script>
-    // AUTOMATED SYSTEM ROTATION DIRECTIVES ENGINE FOR DEC 2027 BOUNDS
     const motivationalQuotesBase = [
         { text: "Your digital footprint is either building an asset class or processing an explicit liability. Review every story before it posts.", author: "Keaton Cole" },
         { text: "If you want to attain sustainable wealth options, configure structural boundaries on overhead spending parallel to asset jumps.", author: "Keaton Cole" },
@@ -568,12 +564,11 @@
     ];
 
     function calculateActiveQuoteCycle() {
-        const epochReferenceDay = new Date(2026, 0, 1); // Ground calendar step calculation 
+        const epochReferenceDay = new Date(2026, 0, 1); 
         const todaySystemClock = new Date();
         const timeDeltaSpan = todaySystemClock - epochReferenceDay;
         const totalDaysElapsed = Math.floor(timeDeltaSpan / (1000 * 60 * 60 * 24));
         
-        // Safety bounds fallbacks logic
         const secureDayOffset = totalDaysElapsed >= 0 ? totalDaysElapsed : 0;
         const selectedIndex = secureDayOffset % motivationalQuotesBase.length;
         
