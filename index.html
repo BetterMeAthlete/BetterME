@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heartwork Academy | Beyond The Court</title>
+    <title>Heartwork Academy | Keaton Cole</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;700;800&display=swap');
 
@@ -13,25 +13,54 @@
             background: linear-gradient(to bottom, #0a2e6b 0%, #000a1a 100%);
             color: #ffffff; 
             margin: 0; 
-            padding-bottom: 60px; 
+            padding-bottom: 100px;
             min-height: 100vh;
             background-attachment: fixed;
         }
-
-        /* Hero Header styling */
-        .hero-section { text-align: center; padding: 40px 20px; }
-        .main-logo { width: 100%; max-width: 220px; height: auto; margin: 0 auto; display: block; }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        
+        nav { 
+            background: #000a1a;
+            background: rgba(0, 10, 26, 0.95); 
+            padding: 20px 0; 
+            display: flex; 
+            justify-content: space-around; 
+            position: -webkit-sticky;
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
+        nav a { 
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            opacity: 0.7; 
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        nav a:hover, nav a.active-tab { 
+            opacity: 1; 
+            color: #d4af37; 
+        }
+
+        .tab-content { 
+            display: none; 
+            padding: 20px; 
+            max-width: 700px; 
+            margin: 0 auto; 
+        }
+
+        .hero-section { text-align: center; padding: 40px 20px; }
+        .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
+
         .btn-gold { 
+            background: #d4af37;
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
             color: #000000; 
-            padding: 14px 28px; 
+            padding: 14px 25px; 
             text-decoration: none !important; 
             font-weight: 800; 
             border-radius: 50px; 
@@ -40,100 +69,554 @@
             border: none; 
             text-transform: uppercase; 
             font-size: 11px; 
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(212,175,55,0.3);
-            transition: transform 0.2s ease;
-            margin-top: 15px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
         }
-        .btn-gold:hover { transform: scale(1.03); }
 
         .card { 
-            background: rgba(255, 255, 255, 0.06); 
+            background: rgba(255, 255, 255, 0.08); 
             padding: 30px; 
-            border-radius: 16px; 
-            margin-bottom: 30px; 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
         }
 
-        .section-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 24px;
+        /* LMS Interactive Interface Grid */
+        .lms-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .lms-sidebar {
+            background: rgba(0, 10, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 15px;
+            height: fit-content;
+            max-height: 700px;
+            overflow-y: auto;
+        }
+
+        .lms-phase-title {
+            font-size: 10px;
+            font-weight: 800;
+            color: #ff8033;
             text-transform: uppercase;
-            margin-top: 0;
-            margin-bottom: 20px;
             letter-spacing: 1px;
+            margin: 18px 0 8px 0;
+            padding-left: 4px;
+        }
+        .lms-phase-title:first-child { margin-top: 0; }
+
+        .lms-nav-item {
+            display: block;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 11px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lms-nav-item:hover { background: rgba(212, 175, 55, 0.15); color: #fff; }
+        .lms-nav-item.active-lesson { background: #d4af37 !important; color: #000000 !important; font-weight: 800; border-color: #d4af37; }
+
+        .lms-player-window {
+            background: #000a1a;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
 
-        /* Original Gold Highlight Event Timeline */
-        .rundown-item { 
-            display: flex; 
-            align-items: center; 
-            margin-bottom: 12px; 
-            background: rgba(255,255,255,0.03); 
-            border-radius: 8px; 
-            overflow: hidden; 
-            border: 1px solid rgba(212, 175, 55, 0.25); 
+        .video-placeholder {
+            background: linear-gradient(135deg, #001f4d 0%, #0a2e6b 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .rundown-time { 
-            padding: 15px; 
-            font-weight: 800; 
-            font-size: 12px; 
-            min-width: 125px; 
-            color: #000a1a; 
-            background: linear-gradient(135deg, #d4af37, #f9d976); 
-            text-align: center; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
-        }
-        .rundown-block { 
-            flex-grow: 1; 
-            color: #ffffff; 
-            padding: 15px; 
-            font-size: 14px; 
-            font-weight: 600; 
+        .video-play-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(212,175,55,0.15);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            margin: 0 auto 12px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 16px;
         }
 
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
-        .speaker-box { text-align: center; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-        .display-img { width: 100%; max-width: 140px; height: auto; border-radius: 8px; margin-bottom: 10px; border: 1px solid rgba(212,175,55,0.3); }
-        .book-img { max-width: 160px; height: auto; border-radius: 6px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .bullet-list { margin: 10px 0 15px 0; padding-left: 20px; color: rgba(255,255,255,0.9); font-size: 13.5px; line-height: 1.65; }
+        .bullet-list li { margin-bottom: 8px; }
+        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
+        .workshop-details { text-align: left; border-top: 1px solid rgba(255, 255, 255, 0.15); padding: 25px 30px 30px 30px; background: rgba(0, 0, 0, 0.15); }
+        .speaker-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .speaker-box { background: rgba(0, 0, 0, 0.2); border-radius: 15px; padding: 15px 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .speaker-headshot { width: 85px; height: 85px; margin: 0 auto 12px auto; border-radius: 50%; background-size: cover; background-position: center; border: 3px solid #d4af37; }
+        .rundown-item { display: flex; align-items: center; margin-bottom: 14px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 8px; border-left: 4px solid #e65c00; }
+        .rundown-time { padding: 10px; font-weight: 800; font-size: 13px; min-width: 115px; color: #ff8033; text-align: center; }
+        .rundown-block { flex-grow: 1; background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); color: #000000; padding: 12px 15px; border-radius: 10px; font-weight: 800; font-size: 13px; text-transform: uppercase; }
 
-        .quote-box {
-            font-style: italic;
-            border-left: 4px solid #d4af37;
-            padding: 15px 20px;
-            background: rgba(212, 175, 55, 0.05);
-            margin: 20px 0;
-            border-radius: 0 12px 12px 0;
-            line-height: 1.6;
-            font-size: 14.5px;
+        @media (max-width: 900px) {
+            .lms-layout { grid-template-columns: 1fr; }
+            .lms-sidebar { max-height: 220px; }
         }
-
-        @media (max-width: 750px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            .rundown-item { flex-direction: column; align-items: stroke; }
-            .rundown-time { text-align: center; min-width: auto; padding: 10px; }
+        @media (max-width: 768px) {
+            .rundown-item { flex-direction: column; align-items: flex-start; padding: 12px; }
+            .rundown-time { padding: 0 0 8px 4px; text-align: left; min-width: auto; }
+            .rundown-block { width: 100%; box-sizing: border-box; text-align: left; }
+            .speaker-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+<nav>
+    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker</a>
+    <a id="tab-link-academy" onclick="switchTab('academy')">Academy</a>
+    <a id="tab-link-events" onclick="switchTab('events')">Events</a>
+    <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
+</nav>
+
+<section id="locker-room" class="tab-content">
     <div class="hero-section">
-        <img src="logo.png" alt="Heartwork Academy Logo" class="main-logo">
-        <p style="letter-spacing: 3px; color:#d4af37; font-weight:700; font-size:11px; text-transform:uppercase; margin-top:15px; margin-bottom:0;">Academy | Beyond The Court</p>
+        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
+    </div>
+    
+    <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Program Objective</span>
+        <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
     </div>
 
-    <div class="container">
+    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">⚡ WEEKLY FOCUS AUDIO</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 20px; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
+        <p style="font-size: 14px; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
+        
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px;">
+            <div style="flex-grow: 1;">
+                <div style="font-size: 13px; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
+                <div style="font-size: 12px; opacity: 0.5; font-family: monospace;">Duration: 4:12</div>
+            </div>
+        </div>
+    </div>
 
-        <div class="card">
-            <h2 class="section-title" style="color: #ff8033;">The Locker Room</h2>
-            
-            <p style="font-size: 14.5px; line-height: 1.6; opacity: 0.95;">
-                <strong>Program Objective [Kourtside Excellence]:</strong> The overarching design of this environment is to enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic careers and personal lives. We aim to develop their ability to adapt and apply the skills learned from sports directly to various real-world life scenarios. This program is far more than just standard mentoring; it serves as a comprehensive journey of self-discovery and structured personal growth, functioning as an invaluable guide to life skills that cleanly mirror the exact discipline required on the court.
+    <div class="card" style="text-align: left; padding: 30px;">
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Coaching Challenge & Vision</span>
+        <p style="font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; color: rgba(255,255,255,0.95);">
+            Coaches wear many hats as leaders. They are role models, guardians and mentors. Their priorities include but are not limited to training, scheduling logistics, athletes safety & wellness, academics and of course winning. The amount of time and dedication they assume for themselves and athletes is that which creates true legacy and success, that is carried with pride.
+        </p>
+        <p style="font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; color: rgba(255,255,255,0.95);">
+            What if our athletes were to dedicate time to enrich their lives, for both on and off the court? Kourtside Excellence has been created as a development staple in the complexity of being an athlete, that benefits them in the here and now, and guides them into their respective futures.
+        </p>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Kourtside Mission</span>
+            <p style="font-size: 14px; line-height: 1.65; margin: 0; color: rgba(255,255,255,0.85);">
+                Kourtside Excellence is here to bridge that gap. Through educational, lived experience, and knowledge acquired, and Expert insights Kourtside Excellence will foster an atmosphere to build your athletes outside the game. We aim to develop their ability to adapt and apply the skills learned from sports to various life scenarios.
             </p>
+        </div>
+    </div>
+</section>
 
-            <div class="quote-box">
-                "What if our athletes were to dedicate time to enrich their lives, for both on and off the court? Through educational, lived experience, and expert insights, we foster an atmosphere to confidently excel both inside and outside the lines."
+<section id="academy" class="tab-content" style="max-width: 1050px;">
+    <div style="text-align: center; margin-bottom: 15px;">
+        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1.5px;">ONLINE ACADEMY CHANNEL</span>
+        <h2 style="font-family:'Archivo Black'; color:#ffffff; margin: 5px 0; text-transform: uppercase; font-size: 26px; letter-spacing: 0.5px;">Beyond The Court</h2>
+        <p style="font-size: 13px; opacity: 0.6; margin: 0; color: #d4af37; font-weight: 600;">Preparing for a Professional Basketball Career and Achievable Life</p>
+    </div>
+
+    <div class="lms-layout">
+        <div class="lms-sidebar">
+            <div class="lms-phase-title">Module 1: Foundations for Success</div>
+            <div class="lms-nav-item" id="nav-l1" onclick="loadLesson(1)">1.1 Athlete Mindset & Responsibility</div>
+            <div class="lms-nav-item" id="nav-l2" onclick="loadLesson(2)">1.2 Foundation, Nutrition & Recovery</div>
+            
+            <div class="lms-phase-title">Module 2: Business of Basketball</div>
+            <div class="lms-nav-item" id="nav-l3" onclick="loadLesson(3)">2.1 The Role of an Agent</div>
+            <div class="lms-nav-item" id="nav-l4" onclick="loadLesson(4)">2.2 Financial Literacy Strategy</div>
+            <div class="lms-nav-item" id="nav-l5" onclick="loadLesson(5)">2.3 Personal Branding & Media</div>
+            
+            <div class="lms-phase-title">Module 3: Life After Basketball</div>
+            <div class="lms-nav-item" id="nav-l6" onclick="loadLesson(6)">3.1 Exploring Post-Sport Paths</div>
+            <div class="lms-nav-item" id="nav-l7" onclick="loadLesson(7)">3.2 Transitions & Well-Being</div>
+        </div>
+
+        <div class="lms-player-window">
+            <div class="video-placeholder">
+                <div class="video-play-icon">▶</div>
+                <div id="player-banner-tag" style="font-size: 10px; font-weight: 800; color: #ff8033; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">MODULE 1.1</div>
+                <h3 id="player-title" style="font-family:'Archivo Black'; font-size: 16px; margin: 0; text-transform: uppercase; color: #ffffff; padding: 0 10px;">The Athlete's Mindset</h3>
             </div>
 
-            <p style="font-size: 14.5px; line-height: 1.
+            <div id="player-body" style="padding: 25px; font-size: 14.5px; line-height: 1.65; background: rgba(0,0,0,0.3); max-height: 450px; overflow-y: auto; box-sizing: border-box;">
+                </div>
+
+            <div style="background: rgba(0,0,0,0.5); padding: 15px 25px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                <label style="color: rgba(255,255,255,0.8); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                    <input type="checkbox" id="lesson-check" style="accent-color: #000; margin: 0; width: 14px; height: 14px;"> Mark Unit Completed
+                </label>
+                <button class="btn-gold" style="padding: 10px 20px; border-radius: 4px;" onclick="nextLesson()">Advance Unit →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="events" class="tab-content">
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">Events & Focus</h2>
+    
+    <details class="card">
+        <summary style="cursor: pointer; outline: none; list-style: none;">
+            <span style="color:#ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1.5px;">👇 Tap to Expand Schedule & Speakers</span>
+            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
+            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
+                <div>📅 Sunday, Sept 27th</div>
+                <div>🕒 3:00 PM - 7:00 PM</div>
+                <div>📍 Brampton, ON</div>
+            </div>
+            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
+        </summary>
+
+        <div class="workshop-details" style="margin-top: 20px;">
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
+            <div class="speaker-container">
+                <div class="speaker-box">
+                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
+                    <div class="speaker-name">Akil Augustine</div>
+                    <div class="speaker-title">MediaLit</div>
+                </div>
+                <div class="speaker-box">
+                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
+                    <div class="speaker-name">Christopher Duff</div>
+                    <div class="speaker-title">Entrepreneur</div>
+                </div>
+            </div>
+
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Event Rundown</span>
+            <div class="rundown-item">
+                <div class="rundown-time">3:00PM - 3:45PM</div>
+                <div class="rundown-block">Dine In & Set Tone</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">3:50PM - 4:40PM</div>
+                <div class="rundown-block">Panel Discussion</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">4:45PM - 5:45PM</div>
+                <div class="rundown-block">Media Training</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">5:50PM - 6:50PM</div>
+                <div class="rundown-block">Money Matters</div>
+            </div>
+
+            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="margin-top: 15px; display: block;">Secure My Seat</a>
+        </div>
+    </details>
+
+    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
+        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
+    </div>
+</section>
+
+<section id="store" class="tab-content">
+    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">The Vault</h2>
+    
+    <div class="card" style="text-align: center;">
+        <img src="book-cover.jpg" alt="Point Guard Cover" style="width: 100%; max-width: 180px; height: auto; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.4);">
+        <p style="color: #d4af37; font-size: 18px; font-weight: 800; text-transform: uppercase; margin-top: 5px; letter-spacing: 1.5px;">Point Guard: A Diary</p>
+        <p style="font-size: 14px; opacity: 0.7; margin: 0 0 10px 0;">By Keaton Cole</p>
+        <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
+    </div>
+
+    <div class="section-divider">
+        <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; font-size: 16px;">Booking & Services</h2>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 40px; margin: 0; color: #d4af37;">$600</h3>
+        <p style="font-size: 16px; margin-bottom: 5px; font-weight: bold;">Team Workshop Package</p>
+        <a href="https://buy.stripe.com/00w9ASfV54vi1TI8Ya7kc00" target="_blank" class="btn-gold">Secure Checkout</a>
+    </div>
+
+    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.4); background: rgba(212, 175, 55, 0.03); text-align: center;">
+        <span style="color: #ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">🔥 MOST POPULAR</span>
+        <h3 style="font-size: 40px; margin: 0; color: #d4af37;">$55</h3>
+        <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold;">Per Athlete Session Rate</p>
+        
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
+            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6;">
+                <li>Full Elite Training Session Access</li>
+                <li style="color: #f9d976; font-weight: 700;">Includes a copy of POINT GUARD: A Diary 📚</li>
+                <li>Academy Framework Digital Templates</li>
+            </ul>
+        </div>
+        <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold">Secure Checkout</a>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 40px; margin: 0; color: #ffffff;">$40</h3>
+        <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold; opacity: 0.9;">Per Athlete Rate</p>
+        
+        <div style="background: rgba(0,0,0,0.15); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
+            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">
+                <li>Full Elite Training Session Access</li>
+                <li style="text-decoration: line-through; opacity: 0.5;">POINT GUARD: A Diary book not included</li>
+            </ul>
+        </div>
+        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.2); color:#fff;">Secure Checkout</a>
+    </div>
+</section>
+
+<script>
+    // Tab Display Controller Logic
+    function switchTab(tabId) {
+        const sections = document.querySelectorAll('.tab-content');
+        sections.forEach(sec => sec.style.display = 'none');
+        
+        document.getElementById(tabId).style.display = 'block';
+        
+        const anchors = document.querySelectorAll('nav a');
+        anchors.forEach(a => a.classList.remove('active-tab'));
+        
+        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
+        if(tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
+        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
+        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
+        
+        window.scrollTo(0,0);
+    }
+
+    let currentModuleId = 1;
+
+    // Failsafe Switch Router to handle dynamic string loading safely without rendering breaks
+    function loadLesson(id) {
+        currentModuleId = id;
+        let tag = "";
+        let title = "";
+        let textHtml = "";
+
+        switch(id) {
+            case 1:
+                tag = "MODULE 1.1 • RESTRUCTURING LESSON";
+                title = "The Athlete's Mindset Equals Responsibility";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Cultivating a Growth Mindset:</p>
+                    <p>Embracing challenges, persisting through setbacks, learning from mistakes. We aim to develop an ability to adapt and apply the skills learned from sports to various life scenarios. It serves as a comprehensive journey of self-discovery and personal growth, functioning as an invaluable guide to life skills that often mirror the discipline required in sports.</p>
+                    
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">SMART Goal Setting Strategies:</p>
+                    <p>Goal setting is a powerful tool for athletes to enhance performance, build confidence, and achieve their full potential. Utilize this framework:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Specific:</strong> Clearly define what you want to achieve.</li>
+                        <li><strong>Measurable:</strong> Set quantifiable targets to track progress.</li>
+                        <li><strong>Achievable:</strong> Set challenging but realistic goals that are within your reach.</li>
+                        <li><strong>Relevant:</strong> Ensure goals align with your overall values and aspirations.</li>
+                        <li><strong>Time-bound:</strong> Set deadlines for achieving your goals to maintain focus and motivation.</li>
+                    </ul>
+                    <p>Incorporate short-term goals to break down long-term goals into smaller, more manageable steps, review progress regularly, celebrate successes, and learn from setbacks by adjusting your approach accordingly.</p>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Key Performance Benefits:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Enhanced Performance & Focus:</strong> Clear goals provide athletes with a sense of purpose and direction, driving them to train harder and push their limits. Goals act as a roadmap ensuring consistent progress.</li>
+                        <li><strong>Overcoming Challenges:</strong> When faced with setbacks, well-defined goals provide a sense of perspective and motivation to persevere.</li>
+                        <li><strong>Increased Confidence:</strong> Achieving goals, both big and small, boosts self-confidence, reinforces a belief in one's abilities, and encourages continuous personal and professional growth.</li>
+                    </ul>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Benefits for Life After Sport:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Career Development:</strong> Translates seamlessly into post-sport career planning, helping athletes identify post-sport aspirations and build a clear roadmap for fulfillment.</li>
+                        <li><strong>Personal Fulfillment:</strong> Fosters a proactive, results-oriented mindset that provides purpose beyond sports, contributing significantly to overall well-being and happiness.</li>
+                    </ul>
+
+                    <div style="background:rgba(255,255,255,0.04); border-radius:8px; padding:15px; border-left:4px solid #ff8033; margin-top:22px;">
+                        <strong style="color:#fff; font-size:12px; display:block; text-transform:uppercase; margin-bottom:5px;">Professional Standards & Punctuality:</strong>
+                        An athlete's responsibility extends far beyond physical talent and skill. Punctuality demonstrates professionalism, reliability, a strong work ethic, and deep respect for teammates, coaches, and schedules. Arriving early allows athletes to mentally prepare, warm up properly, and organize equipment. Maintain a well-groomed, neat, and tidy appearance to project a professional image and foster team unity, paired with a perpetual attitude of respectfulness toward opponents, officials, and coaches as the cornerstone of good sportsmanship.
+                    </div>
+                `;
+                break;
+                
+            case 2:
+                tag = "MODULE 1.2 • PHYSICAL WORKLOAD";
+                title = "Building a Strong Foundation, Nutrition & Recovery";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Mastering Your Craft:</p>
+                    <p>Commit to consistent practice of core basketball skills: dribbling, shooting, passing, and defense. Put in the hours, find time, and fully commit. Combine this with a personalized strength and conditioning training regimen for optimal athletic performance.</p>
+                    
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Nutrition and Fueling Performance:</p>
+                    <p>Nutrition and recovery are intricately linked for athletes, forming the foundation for peak performance, injury prevention, and long-term health. Optimize your macronutrient balance:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Carbohydrates:</strong> Provide the primary energy source for high-intensity exercise.</li>
+                        <li><strong>Protein:</strong> Essential for muscle repair and growth, especially important for strength training and muscle recovery.</li>
+                        <li><strong>Fats:</strong> Provide sustained energy, support hormone production, and aid in vital nutrient absorption.</li>
+                        <li><strong>Hydration & Electrolytes:</strong> Proper hydration is critical to prevent dehydration, regulate body temperature, and maintain optimal performance. Electrolyte replacement is crucial during and after intense exercise.</li>
+                    </ul>
+
+                    <div style="background:rgba(85, 239, 196, 0.1); border-radius:8px; padding:12px; border:1px solid rgba(85, 239, 196, 0.3); color:#55efc4; font-size:13px; font-weight:700; text-align:center; margin-top:15px; margin-bottom:15px;">
+                        ⏱️ NUTRIENT TIMING: Consuming carbohydrates and protein within 30-60 minutes after exercise maximizes muscle protein synthesis and glycogen replenishment.
+                    </div>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Strategic Recovery Protocols:</p>
+                    <p>Prioritize active recovery (light exercise like walking or cycling) to promote blood flow. Secure adequate sleep (7-9 hours per night) for comprehensive physical and mental restoration. Manage stress effectively by taking time out to hang out with friends, family, or teammates—doing things you like outside of basketball is incredibly useful to take your mind off being so serious about your profession.</p>
+                    <p>Nutritional needs vary significantly based on individual factors like age, sex, body composition, training intensity, dietary restrictions, and responsible supplement use under professional guidance.</p>
+                `;
+                break;
+                
+            case 3:
+                tag = "MODULE 2.1 • LEGAL & CONTEXT";
+                title = "The Role of an Agent & Representation Services";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">What are Sports Agencies?</p>
+                    <p>Agencies act as intermediaries between professional athletes and various entities within the sports industry. They offer a wide range of services designed to maximize an athlete's career potential and financial well-being.</p>
+                    
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Core Representation Roles:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Player Contracts:</strong> This is the bread and butter. Agents negotiate contracts with teams involving active parameters like salaries, bonuses, incentives, and contract lengths.</li>
+                        <li><strong>Endorsement Deals:</strong> Securing lucrative endorsement deals with brands spanning apparel, equipment, lifestyle, or food.</li>
+                        <li><strong>Marketing & Public Relations:</strong> Brand building, developing personal image, social media presence, public appearances, media training, and executing crisis management to handle media challenges like scandals or negative publicity.</li>
+                        <li><strong>Personal & Lifestyle Management:</strong> Handling travel arrangements and managing lifestyle concierge services like personal shopping, event planning, and home management.</li>
+                    </ul>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">How to Choose the Right Agent:</p>
+                    <p>Evaluate alternatives using strict metrics: research reputation and experience, inspect their current client roster, verify communication consistency, build genuine trust, and fully understand the agency's fee structure to ensure it aligns with your long-term financial goals. Always clearly define the scope of services and responsibilities before signing.</p>
+                `;
+                break;
+                
+            case 4:
+                tag = "MODULE 2.2 • ASSET MANAGEMENT";
+                title = "Financial Literacy: Designing Your Ideal Lifestyle";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Define Your Ideal Lifestyle:</p>
+                    <p>Financial literacy is not just about money; it is about achieving your life goals. Create a visual Vision Board or Life Map representing your desired lifestyle, identifying your core values (family, travel, philanthropy, education) and translating them into clear financial goals.</p>
+                    
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Understanding and Diversifying Income Streams:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Professional Earnings:</strong> Active salaries, endorsements, performance bonuses, and active cash flows.</li>
+                        <li><strong>Diversification Alternatives:</strong> Explore alternative sources including business ventures (starting a company, real estate investing, personal brand scaling), investments (stocks, bonds, mutual funds, private equity), and intellectual property licensing or royalties.</li>
+                    </ul>
+
+                    <div style="background:rgba(212, 175, 55, 0.1); border-radius:8px; padding:12px; border:1px solid rgba(212, 175, 55, 0.3); font-size:12px; font-weight:700; color:#d4af37; text-align:center; margin-top:15px; margin-bottom:15px;">
+                        ⚠️ SPENDING AWARENESS: Track your spending, practice delayed gratification, and avoid lifestyle creep by resisting the temptation to increase spending as income increases. Maintain a frugal mindset.
+                    </div>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Building Your Financial Protection Team:</p>
+                    <p>Enlist a Financial Advisor to build comprehensive financial plans, asset allocation, portfolio diversification, and manage risk. Work with Tax Professionals or Accountants to minimize tax liability, prepare returns, and provide guidance on tax implications of business ventures and investments. Protect wealth via insurance, estate planning, and strict risk management protocols.</p>
+                `;
+                break;
+                
+            case 5:
+                tag = "MODULE 2.3 • DIGITAL FOOTPRINT";
+                title = "Personal Branding, Public Image & Media Skills";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Social Media Strategy: Risk vs Reward</p>
+                    <p>Social media can enhance careers, connect with fans, and make a positive impact, but it must be used mindfully and responsibly.</p>
+                    <ul class="bullet-list">
+                        <li><strong>The Pros:</strong> Direct fan engagement, image control, community building, endorsement opportunities, and advocacy/philanthropy platforms to raise awareness for important social issues or connect with charitable organizations.</li>
+                        <li><strong>The Cons:</strong> Performance distraction, time consumption, privacy concerns, performance anxiety over maintaining online personas, and exposure to cyberbullying or online negativity impacting mental health.</li>
+                    </ul>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Pre-Game and Post-Game Media Training:</p>
+                    <p>Interviews are more than just media obligations; they are valuable training grounds for life. Key benefits include:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Communication Skills:</strong> Learning to articulate thoughts clearly and concisely under pressure—invaluable for communicating with coaches, teammates, and sponsors.</li>
+                        <li><strong>Active Listening:</strong> Effectively answering questions requires careful listening and understanding the interviewer's intent, sharpening interpersonal communication.</li>
+                        <li><strong>Confidence and Composure:</strong> Mastering public speaking situations, overcoming stage fright, and handling high-pressure scrutiny with composure and grace.</li>
+                    </ul>
+                    <p>Post-athletic career benefits include highly transferable communication skills for coaching, broadcasting, business, and public relations, alongside strong networking opportunities and enhanced emotional intelligence.</p>
+                `;
+                break;
+                
+            case 6:
+                tag = "MODULE 3.1 • EXPANSION STRATEGY";
+                title = "Exploring Post-Sport Career Pathways";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Identifying Passions Beyond Basketball:</p>
+                    <p>Begin exploring corporate, vocational, and creative professional paths early. Options include coaching, sports broadcasting, entrepreneurship, public relations, and more.</p>
+                    
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Deploying Your Transferable Skills:</p>
+                    <p>The core traits you forge on the court translate seamlessly into post-sport career success. Isolate and map these values:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Executive Leadership:</strong> Directing strategy and group management under high-pressure scenarios.</li>
+                        <li><strong>Teamwork & Cohesion:</strong> High-level group collaboration, structural alignment, and clear execution.</li>
+                        <li><strong>Discipline & Problem-Solving:</strong> Deep situational agility and resilience to navigate complex corporate structures cleanly.</li>
+                    </ul>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Practical Steps for Career Exploration:</p>
+                    <p>Pursue formal degrees or continuous education options. Run regular self-assessments to identify interests, strengths, and weaknesses. Engage in informational interviews by tapping into your network in their respective industries to learn and gain insight. Utilize job shadowing to gain firsthand experience in potential fields during off-seasons, while actively connecting with professionals.</p>
+                `;
+                break;
+                
+            case 7:
+                tag = "MODULE 3.2 • VALUE SYSTEM";
+                title = "Transition Management and Sustaining Well-Being";
+                textHtml = `
+                    <p style="margin-top:0; font-weight:700; color:#d4af37;">Adapting to Life After Professional Sports:</p>
+                    <p>Moving away from competitive professional basketball requires physical and mental adjustments. Focus on maintaining a healthy lifestyle, finding your new sense of purpose, and pursuing continuous personal growth.</p>
+                    
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">Personal and Social Well-Being Infrastructure:</p>
+                    <ul class="bullet-list">
+                        <li><strong>Mental Health Support:</strong> Seek professional support to address any emotional or psychological challenges encountered during the transition phase.</li>
+                        <li><strong>Building Support Networks:</strong> Connect with mentors who have successfully transitioned to gain guidance, strategic advice, and reassurance.</li>
+                        <li><strong>Maintaining Relationships:</strong> Keep close, healthy personal relationships intact for emotional support and regular social connection.</li>
+                    </ul>
+
+                    <p style="font-weight:700; color:#d4af37; margin-top:22px;">The Ultimate Legacy Play:</p>
+                    <p>True success is measured by outward impact. Give back to your community and inspire the next generation of athletes, helping them address holistic developmental needs and navigate complex life situations with confidence.</p>
+                `;
+                break;
+        }
+
+        // Target and replace values securely
+        document.getElementById('player-banner-tag').innerText = tag;
+        document.getElementById('player-title').innerText = title;
+        document.getElementById('player-body').innerHTML = textHtml;
+        
+        document.getElementById('lesson-check').checked = false;
+
+        // Reset active sidebar styling layouts
+        for (let i = 1; i <= 7; i++) {
+            const el = document.getElementById('nav-l' + i);
+            if(el) el.classList.remove('active-lesson');
+        }
+        
+        const activeEl = document.getElementById('nav-l' + id);
+        if(activeEl) activeEl.classList.add('active-lesson');
+        
+        document.getElementById('player-body').scrollTop = 0;
+    }
+
+    function nextLesson() {
+        if (currentModuleId < 7) {
+            loadLesson(currentModuleId + 1);
+        } else {
+            alert("Masterclass Complete! You have processed all modules of the Beyond The Court Series!");
+            loadLesson(1);
+        }
+    }
+
+    // Default initialization script parameters executed on window compilation
+    window.onload = function() {
+        switchTab('locker-room');
+        loadLesson(1);
+    };
+</script>
+
+</body>
+</html>
