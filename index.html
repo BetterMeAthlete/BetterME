@@ -13,63 +13,20 @@
             background: linear-gradient(to bottom, #0a2e6b 0%, #000a1a 100%);
             color: #ffffff; 
             margin: 0; 
-            padding-bottom: 120px; 
+            padding-bottom: 60px; 
             min-height: 100vh;
             background-attachment: fixed;
         }
-        
-        /* Fixed Bottom Navigation Layout */
-        nav { 
-            background: rgba(0, 10, 26, 0.95); 
-            padding: 15px 0; 
-            display: flex; 
-            justify-content: space-around; 
-            position: fixed; 
-            bottom: 0; 
-            left: 0;
-            right: 0;
-            z-index: 1000; 
-            border-top: 2px solid #d4af37;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
 
-        nav a { 
-            color: #ffffff; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 11px; 
-            text-transform: uppercase; 
-            opacity: 0.6; 
-            cursor: pointer;
-            transition: all 0.2s ease;
-            letter-spacing: 1px;
-            padding: 8px 12px;
-            border-radius: 20px;
-        }
-        
-        nav a:hover, nav a.active-tab { 
-            opacity: 1; 
-            color: #000a1a; 
-            background: #d4af37;
-        }
+        /* Hero Header styling */
+        .hero-section { text-align: center; padding: 40px 20px; }
+        .main-logo { width: 100%; max-width: 220px; height: auto; margin: 0 auto; display: block; }
 
-        .tab-content { 
-            display: none; 
-            padding: 20px; 
-            max-width: 850px; 
-            margin: 0 auto; 
-            animation: fadeIn 0.3s ease-in-out;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Logo & Hero Header styling */
-        .hero-section { text-align: center; padding: 30px 20px; }
-        .main-logo { width: 100%; max-width: 180px; height: auto; margin: 0 auto 10px auto; display: block; }
 
         .btn-gold { 
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
@@ -86,64 +43,61 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(212,175,55,0.3);
             transition: transform 0.2s ease;
+            margin-top: 15px;
         }
         .btn-gold:hover { transform: scale(1.03); }
 
         .card { 
             background: rgba(255, 255, 255, 0.06); 
-            padding: 25px; 
+            padding: 30px; 
             border-radius: 16px; 
-            margin-bottom: 20px; 
+            margin-bottom: 30px; 
             border: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
-        /* Image Display Placeholders */
-        .image-placeholder {
-            background: rgba(255,255,255,0.1);
-            border: 2px dashed rgba(212, 175, 55, 0.4);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #d4af37;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 15px;
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        /* Curriculum Styles */
-        .module-header {
-            background: rgba(0, 10, 26, 0.5);
-            border-left: 4px solid #ff8033;
-            padding: 12px 18px;
-            border-radius: 0 8px 8px 0;
-            margin: 30px 0 15px 0;
+        /* Original Gold Highlight Event Timeline */
+        .rundown-item { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 12px; 
+            background: rgba(255,255,255,0.03); 
+            border-radius: 8px; 
+            overflow: hidden; 
+            border: 1px solid rgba(212, 175, 55, 0.25); 
         }
-        .module-quarter-tag { font-size: 10px; font-weight: 800; color: #ff8033; text-transform: uppercase; letter-spacing: 1.5px; }
-        .module-title-text { font-family: 'Archivo Black', sans-serif; font-size: 18px; margin: 4px 0 0 0; color: #ffffff; }
-        .sub-section-title { color: #d4af37; font-weight: 700; font-size: 14px; margin-top: 15px; margin-bottom: 8px; text-transform: uppercase; }
-        .bullet-list { margin: 8px 0 15px 0; padding-left: 20px; color: rgba(255,255,255,0.9); font-size: 13.5px; line-height: 1.6; }
-        .bullet-list li { margin-bottom: 6px; }
-        
-        /* Event Highlights & Schedule */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .speaker-box { background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 15px; text-align: center; border: 1px solid rgba(212,175,55,0.2); }
-        .rundown-item { display: flex; align-items: center; margin-bottom: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; overflow: hidden; border: 1px solid rgba(212,175,55,0.15); }
-        .rundown-time { padding: 15px; font-weight: 800; font-size: 12px; min-width: 120px; color: #000a1a; background: linear-gradient(135deg, #d4af37, #f9d976); text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
-        .rundown-block { flex-grow: 1; color: #ffffff; padding: 15px; font-size: 13.5px; font-weight: 600; }
+        .rundown-time { 
+            padding: 15px; 
+            font-weight: 800; 
+            font-size: 12px; 
+            min-width: 125px; 
+            color: #000a1a; 
+            background: linear-gradient(135deg, #d4af37, #f9d976); 
+            text-align: center; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+        }
+        .rundown-block { 
+            flex-grow: 1; 
+            color: #ffffff; 
+            padding: 15px; 
+            font-size: 14px; 
+            font-weight: 600; 
+        }
 
-        /* Checklist Styles */
-        .checklist-row { display: flex; align-items: flex-start; gap: 12px; background: rgba(0, 10, 26, 0.3); padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 8px; }
-        .check-wrapper input[type="checkbox"] { accent-color: #d4af37; width: 16px; height: 16px; cursor: pointer; margin-top: 2px; }
-        .checklist-content { flex-grow: 1; }
-        .checklist-number { font-size: 10px; font-weight: 800; color: #ff8033; text-transform: uppercase; }
-        .checklist-text { font-size: 14px; font-weight: 700; margin: 1px 0; }
-        .checklist-desc { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+        .speaker-box { text-align: center; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .display-img { width: 100%; max-width: 140px; height: auto; border-radius: 8px; margin-bottom: 10px; border: 1px solid rgba(212,175,55,0.3); }
+        .book-img { max-width: 160px; height: auto; border-radius: 6px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 
-        /* Quote / Inspiration Styling */
         .quote-box {
             font-style: italic;
             border-left: 4px solid #d4af37;
@@ -152,340 +106,34 @@
             margin: 20px 0;
             border-radius: 0 12px 12px 0;
             line-height: 1.6;
+            font-size: 14.5px;
         }
 
         @media (max-width: 750px) {
             .grid-2 { grid-template-columns: 1fr; }
             .rundown-item { flex-direction: column; align-items: stroke; }
-            .rundown-time { text-align: center; min-width: auto; padding: 8px; }
+            .rundown-time { text-align: center; min-width: auto; padding: 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="hero-section">
-        <img src="logo.png" alt="Heartwork Academy Logo" class="main-logo" onerror="this.style.display='none'; document.getElementById('logo-backup').style.display='block';">
-        <div id="logo-backup" style="display:none; font-family:'Archivo Black'; font-size:24px; color:#d4af37; margin-bottom:10px;">HEARTWORK ACADEMY</div>
-        <p style="letter-spacing: 3px; color:#d4af37; font-weight:700; font-size:11px; text-transform:uppercase; margin-top:5px; margin-bottom:0;">Academy | Beyond The Court</p>
+        <img src="logo.png" alt="Heartwork Academy Logo" class="main-logo">
+        <p style="letter-spacing: 3px; color:#d4af37; font-weight:700; font-size:11px; text-transform:uppercase; margin-top:15px; margin-bottom:0;">Academy | Beyond The Court</p>
     </div>
 
-    <section id="locker-room" class="tab-content">
-        <div style="text-align: center; margin-bottom: 25px;">
-            <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">TEAM HUB</span>
-            <h2 style="font-family:'Archivo Black'; margin: 5px 0; color:#fff; text-transform: uppercase;">The Locker Room</h2>
-            <p style="font-size: 13px; opacity: 0.7; margin: 0;">Our Objective, Mission, and Daily Inspiration Platforms</p>
-        </div>
-
-        <div class="card" style="border-top: 4px solid #d4af37;">
-            <h3 style="font-family:'Archivo Black'; font-size: 16px; margin: 0 0 10px 0; color:#d4af37; text-transform:uppercase;">Program Objective [Kourtside Excellence]</h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.95;">
-                [span_0](start_span)The overarching design of this environment is to enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic careers and personal lives[span_0](end_span). [span_1](start_span)We aim to develop their ability to adapt and apply the skills learned from sports directly to various real-world life scenarios[span_1](end_span). [span_2](start_span)This program is far more than just standard mentoring; it serves as a comprehensive journey of self-discovery and structured personal growth, functioning as an invaluable guide to life skills that cleanly mirror the exact discipline required on the court[span_2](end_span).
-            </p>
-        </div>
-
-        <div class="card" style="border-left: 4px solid #ff8033;">
-            <h3 style="font-family:'Archivo Black'; font-size: 16px; margin: 0 0 10px 0; color:#ff8033; text-transform:uppercase;">The Leadership Challenge</h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.95;">
-                [span_3](start_span)Coaches wear many complex hats as leaders: they are role models, guardians, and dedicated mentors[span_3](end_span). [span_4](start_span)Their priorities include training, scheduling logistics, athlete safety & wellness, academics, and, of course, winning[span_4](end_span). [span_5](start_span)The amount of time and dedication they assume for themselves and their athletes is what creates a true legacy and success carried with pride[span_5](end_span). [span_6](start_span)But this massive architecture cannot be built alone[span_6](end_span). [span_7](start_span)[span_8](start_span)This space has been engineered as a development staple to bridge the gap and build athletes completely outside the game[span_7](end_span)[span_8](end_span).
-            </p>
-        </div>
+    <div class="container">
 
         <div class="card">
-            <h3 style="font-family:'Archivo Black'; font-size: 16px; margin: 0 0 15px 0; text-transform:uppercase; text-align:center;">Locker Room Motivation</h3>
+            <h2 class="section-title" style="color: #ff8033;">The Locker Room</h2>
             
+            <p style="font-size: 14.5px; line-height: 1.6; opacity: 0.95;">
+                <strong>Program Objective [Kourtside Excellence]:</strong> The overarching design of this environment is to enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic careers and personal lives. We aim to develop their ability to adapt and apply the skills learned from sports directly to various real-world life scenarios. This program is far more than just standard mentoring; it serves as a comprehensive journey of self-discovery and structured personal growth, functioning as an invaluable guide to life skills that cleanly mirror the exact discipline required on the court.
+            </p>
+
             <div class="quote-box">
-                [span_9](start_span)[span_10](start_span)"What if our athletes were to dedicate time to enrich their lives, for both on and off the court? Through educational, lived experience, and expert insights, we foster an atmosphere to confidently excel both inside and outside the lines."[span_9](end_span)[span_10](end_span)
+                "What if our athletes were to dedicate time to enrich their lives, for both on and off the court? Through educational, lived experience, and expert insights, we foster an atmosphere to confidently excel both inside and outside the lines."
             </div>
 
-            <div class="quote-box" style="border-color: #ff8033; background: rgba(255,128,51,0.05);">
-                [span_11](start_span)[span_12](start_span)"An athlete's true responsibility extends far beyond physical talent and skill. Punctuality, a crisp professional image, and a perpetual attitude of respectfulness are fundamental cornerstones to long-term character development."[span_11](end_span)[span_12](end_span)
-            </div>
-        </div>
-    </section>
-
-    <section id="academy-course" class="tab-content">
-        <div class="card" style="border-left: 4px solid #d4af37;">
-            <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">Course Architecture</span>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.95;">
-                [span_13](start_span)<strong>Beyond the Court: Preparing for a Professional Basketball Career and Achievable Life</strong>[span_13](end_span). [span_14](start_span)This curriculum goes directly beyond the physical fundamentals of basketball, equipping aspiring athletes with the exact operational structures across financial literacy, personal branding, mental stability, and navigating complex corporate sports business markets[span_14](end_span).
-            </p>
-        </div>
-
-        <div class="module-header">
-            [span_15](start_span)<span class="module-quarter-tag">1st Quarter • Transferable Skills[span_15](end_span)</span>
-            [span_16](start_span)<h3 class="module-title-text">1.1 The Athlete's Mindset & Responsibility[span_16](end_span)</h3>
-        </div>
-        <div class="card">
-            <div class="sub-section-title">🧠 Cultivating a Growth Mindset</div>
-            <p style="font-size: 13.5px; line-height: 1.6; margin: 0 0 12px 0;">
-                [span_17](start_span)Embrace intense challenges, persist seamlessly through sudden performance setbacks, and treat execution mistakes purely as data for refinement[span_17](end_span). [span_18](start_span)[span_19](start_span)Goal setting serves as your master roadmap to drive internal focus, build consistent confidence, and maximize your full potential[span_18](end_span)[span_19](end_span).
-            </p>
-            [span_20](start_span)[span_21](start_span)<div class="sub-section-title">🎯 SMART Goal Guidelines[span_20](end_span)[span_21](end_span)</div>
-            <ul class="bullet-list">
-                [span_22](start_span)<li><strong>Specific:</strong> Clearly define exactly what mark you intend to hit[span_22](end_span).</li>
-                [span_23](start_span)<li><strong>Measurable:</strong> Set objective, quantifiable metrics to log performance progress[span_23](end_span).</li>
-                [span_24](start_span)<li><strong>Achievable:</strong> Lock in challenging but fully realistic growth benchmarks[span_24](end_span).</li>
-                [span_25](start_span)<li><strong>Relevant:</strong> Align daily operational targets cleanly with core career values[span_25](end_span).</li>
-                [span_26](start_span)<li><strong>Time-bound:</strong> Anchor strict completion deadlines to maintain extreme motivation[span_26](end_span).</li>
-            </ul>
-            [span_27](start_span)[span_28](start_span)<div class="sub-section-title">👔 Professional Responsibility Standard[span_27](end_span)[span_28](end_span)</div>
-            <p style="font-size: 13.5px; line-height: 1.6; margin: 0;">
-                [span_29](start_span)Talent alone is never enough[span_29](end_span). [span_30](start_span)True professionalism requires absolute punctuality to show deep respect for coaches, teammates, and staff schedules[span_30](end_span). [span_31](start_span)[span_32](start_span)Maintain a clean, well-groomed appearance to project structural pride, and always display a deep, perpetual attitude of sportsmanship toward officials and opponents[span_31](end_span)[span_32](end_span).
-            </p>
-        </div>
-
-        <div class="module-header">
-            [span_33](start_span)<span class="module-quarter-tag">1st Quarter • Transferable Skills[span_33](end_span)</span>
-            [span_34](start_span)<h3 class="module-title-text">1.2 Building a Strong Foundation[span_34](end_span)</h3>
-        </div>
-        <div class="card">
-            [span_35](start_span)<div class="sub-section-title">🏀 Mastering Your Craft[span_35](end_span)</div>
-            <p style="font-size: 13.5px; line-height: 1.6; margin: 0 0 12px 0;">
-                [span_36](start_span)Commit completely to consistent, intentional training of core functional skills: dribbling, shooting, passing, and defense[span_36](end_span). [span_37](start_span)Put in the required hours by actively managing your time schedules and showing up[span_37](end_span).
-            </p>
-            [span_38](start_span)<div class="sub-section-title">🍎 Nutrition & Recovery Mechanics[span_38](end_span)</div>
-            <p style="font-size: 13.5px; line-height: 1.6; margin: 0 0 12px 0;">
-                [span_39](start_span)Proper fueling is an absolute requirement for peak performance and structural health[span_39](end_span). [span_40](start_span)Maintain optimized clean macro balances[span_40](end_span)[span_41](start_span): <strong>Carbohydrates</strong> fuel explosive high-intensity stress[span_41](end_span); [span_42](start_span)<strong>Proteins</strong> handle muscle tissue synthesis and repair[span_42](end_span); [span_43](start_span)<strong>Healthy Fats</strong> sustain hormone health and long-term energy[span_43](end_span).
-            </p>
-            <p style="font-size: 13.5px; line-height: 1.6; margin: 0;">
-                [span_44](start_span)Consume key protein and carbs within 30-60 minutes post-exercise to maximize recovery systems[span_44](end_span). [span_45](start_span)Prioritize 7-9 hours of nightly sleep, implement regular active recovery parameters, and use deliberate offline outlets to balance stress[span_45](end_span).
-            </p>
-        </div>
-
-        <div class="module-header">
-            [span_46](start_span)<span class="module-quarter-tag">2nd Quarter • Let's Talk Basketball[span_46](end_span)</span>
-            [span_47](start_span)<h3 class="module-title-text">2.1 The Role of an Agent[span_47](end_span)</h3>
-        </div>
-        <div class="card">
-            <p style="font-size: 13.5px; line-height: 1.6; margin: 0 0 12px 0;">
-                [span_48](start_span)Sports agencies serve as critical intermediaries between professional players and complex corporate sports markets[span_48](end_span). [span_49](start_span)They function to fully protect and maximize your career equity and financial stability[span_49](end_span).
-            </p>
-            <div class="sub-section-title">💼 Core Representation Spheres</div>
-            <ul class="bullet-list">
-                [span_50](start_span)<li><strong>Player Contracts:</strong> Negotiating salaries, performance incentives, and contract lengths[span_50](end_span).</li>
-                [span_51](start_span)<li><strong>Endorsement Portfolios:</strong> Securing partnership deals with apparel, equipment, and brand footprints[span_51](end_span).</li>
-                [span_52](start_span)<li><strong>Marketing & Public Relations:</strong> Scaling personal brand recognition and crisis public management[span_52](end_span).</li>
-                [span_53](start_span)<li><strong>Lifestyle Logistics:</strong> Handling travel, schedule coordination, and lifestyle concierge options[span_53](end_span).</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="resources" class="tab-content">
-        <div style="text-align: center; margin-bottom: 25px;">
-            [span_54](start_span)<span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">ORIENTATION CORE PACKS[span_54](end_span)</span>
-            [span_55](start_span)<h2 style="font-family:'Archivo Black'; margin: 5px 0; color:#fff;">Know Myself Blueprint[span_55](end_span)</h2>
-            [span_56](start_span)<p style="font-size: 13px; opacity: 0.7; margin: 0;">The 11-Point Core Self-Discovery Alignment System[span_56](end_span)</p>
-        </div>
-
-        <div class="card" style="border: 2px solid #d4af37; background: rgba(0, 10, 26, 0.4);">
-            [span_57](start_span)<span style="color: #ff8033; font-size: 10px; font-weight: 800; text-transform: uppercase; display: block; letter-spacing: 1px; margin-bottom: 15px; text-align: center;">📚 REQUIRED CORE LITERATURE[span_57](end_span)</span>
-            
-            <div class="image-placeholder" style="height: 140px;">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:8px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                <span>[IMAGE: Required Program Course Literature Book Covers]</span>
-            </div>
-
-            <div class="grid-2">
-                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                    [span_58](start_span)<strong style="color: #f9d976; font-size: 13px; display: block;">For Young Men[span_58](end_span)</strong>
-                    [span_59](start_span)<p style="margin: 4px 0 0 0; font-size: 13px; font-weight: 700;">"Battle Cry"[span_59](end_span)</p>
-                    [span_60](start_span)<p style="margin: 1px 0 0 0; font-size: 12px; opacity: 0.6;">By Jason Wilson[span_60](end_span)</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                    [span_61](start_span)<strong style="color: #f9d976; font-size: 13px; display: block;">For Young Women / Both[span_61](end_span)</strong>
-                    [span_62](start_span)<p style="margin: 4px 0 0 0; font-size: 13px; font-weight: 700;">"Shoot Your Shot"[span_62](end_span)</p>
-                    [span_63](start_span)<p style="margin: 1px 0 0 0; font-size: 12px; opacity: 0.6;">By Vernon Brundage Jr.[span_63](end_span)</p>
-                </div>
-            </div>
-            <p style="margin: 12px 0 0 0; font-size: 12px; opacity: 0.5; text-align: center; font-style: italic;">
-                *[span_64](start_span)Maintain a dedicated physical Notebook alongside text modules for active reflection, metrics journal tracking, and strategy mapping[span_64](end_span).
-            </p>
-        </div>
-
-        <div class="card">
-            <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 15px; text-align: center; letter-spacing: 1px;">Interactive Alignment Tracker</span>
-            
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 01</div>
-                    [span_65](start_span)<div class="checklist-text">Body Optimization & Management[span_65](end_span)</div>
-                    [span_66](start_span)<div class="checklist-desc">Am I tracking nutrition, stretching, sleep targets, and functional mechanics?[span_66](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 02</div>
-                    [span_67](start_span)<div class="checklist-text">Elite Punctuality & Time Benchmarks[span_67](end_span)</div>
-                    [span_68](start_span)[span_69](start_span)<div class="checklist-desc">Am I holding the baseline arrival rule (15m meetings, 1.5h game timelines)?[span_68](end_span)[span_69](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 03</div>
-                    [span_70](start_span)<div class="checklist-text">Game Architecture as a Business[span_70](end_span)</div>
-                    [span_71](start_span)<div class="checklist-desc">Do I understand network rights, team valuations, sponsorships, and contract values?[span_71](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 04</div>
-                    [span_72](start_span)<div class="checklist-text">Fame & Notoriety Handling[span_72](end_span)</div>
-                    [span_73](start_span)<div class="checklist-desc">Am I built to navigate public scrutiny, image pressures, and NIL parameters?[span_73](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 05</div>
-                    [span_74](start_span)<div class="checklist-text">College & University Landscapes[span_74](end_span)</div>
-                    [span_75](start_span)<div class="checklist-desc">Am I managing home adjustments, values, and maximizing placement networks?[span_75](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 06</div>
-                    [span_76](start_span)<div class="checklist-text">Mutual Expectations Alignment[span_76](end_span)</div>
-                    [span_77](start_span)[span_78](start_span)<div class="checklist-desc">Am I exercising two-way accountability metrics with coaches and staff?[span_77](end_span)[span_78](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 07</div>
-                    [span_79](start_span)<div class="checklist-text">SMART Goal Architectural Frameworks[span_79](end_span)</div>
-                    [span_80](start_span)[span_81](start_span)<div class="checklist-desc">Are my targets written across Specific, Measurable, and Time-bound plans?[span_80](end_span)[span_81](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 08</div>
-                    [span_82](start_span)<div class="checklist-text">Structural Personal Organization[span_82](end_span)</div>
-                    <div class="checklist-desc">Are my logs, academic schedules, and records structurally organized?</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 09</div>
-                    [span_83](start_span)<div class="checklist-text">Alternative Outlets & Passions[span_83](end_span)</div>
-                    [span_84](start_span)<div class="checklist-desc">What hobbies (writing, creative music, bowling, drawing) do I use for stress relief?[span_84](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 10</div>
-                    [span_85](start_span)<div class="checklist-text">Conflict Regulation Protocols[span_85](end_span)</div>
-                    [span_86](start_span)<div class="checklist-desc">Do I use high emotional regulation parameters under tough team tension?[span_86](end_span)</div>
-                </div>
-            </div>
-            <div class="checklist-row">
-                <div class="check-wrapper"><input type="checkbox"></div>
-                <div class="checklist-content">
-                    <div class="checklist-number">Point 11</div>
-                    [span_87](start_span)<div class="checklist-text">Rookie Contract Strategy Simulation[span_87](end_span)</div>
-                    [span_88](start_span)<div class="checklist-desc">If handed a $6 Million rookie contract, what distribution blueprint will protect it?[span_88](end_span)</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="events" class="tab-content">
-        <div class="card" style="text-align: center;">
-            [span_89](start_span)<span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px;">LIVE INTERACTIVE WORKSHOP[span_89](end_span)</span>
-            <h2 style="font-family: 'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0 2px 0;">Better Me Better Athlete</h2>
-            <p style="font-size: 16px; font-weight: 700; color: #d4af37; margin: 0 0 15px 0;">Industry, Money & Media</p>
-            
-            <p style="font-size: 14px; opacity: 0.9; margin: 5px 0 20px 0;">
-                📅 <strong>Sunday, Sept 27th</strong> &nbsp;|&nbsp; 🕒 <strong>3:00 PM - 7:00 PM</strong> &nbsp;|&nbsp; 📍 <strong>Brampton, ON</strong>
-            </p>
-
-            [span_90](start_span)<span style="color:#d4af37; font-size:11px; font-weight:800; text-transform:uppercase; display:block; margin-bottom:8px; text-align:left; letter-spacing:1px;">Featured Expert Panelists[span_90](end_span)</span>
-            <div class="image-placeholder" style="height: 110px;">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:6px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                <span>[IMAGES: Headshots of Event Speakers Akil Augustine & Christopher Duff]</span>
-            </div>
-
-            <div style="text-align: left; background: rgba(0,0,0,0.25); padding: 15px; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.05);">
-                <div class="grid-2">
-                    <div class="speaker-box">
-                        <strong style="color:#fff; font-size:14px; display:block;">Akil Augustine</strong>
-                        [span_91](start_span)<span style="font-size:11px; color:#ff8033; font-weight:600; text-transform:uppercase;">Media Literacy Specialist[span_91](end_span)</span>
-                    </div>
-                    <div class="speaker-box">
-                        <strong style="color:#fff; font-size:14px; display:block;">Christopher Duff</strong>
-                        [span_92](start_span)<span style="font-size:11px; color:#ff8033; font-weight:600; text-transform:uppercase;">Business Entrepreneur[span_92](end_span)</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: left; margin-bottom: 25px;">
-                <span style="color:#d4af37; font-size:11px; font-weight:800; text-transform:uppercase; display:block; margin-bottom:12px; letter-spacing:1px;">Event Master Timeline</span>
-                <div class="rundown-item"><div class="rundown-time">3:00PM - 3:45PM</div><div class="rundown-block">Dine In & Set Tone</div></div>
-                <div class="rundown-item"><div class="rundown-time">3:50PM - 4:40PM</div><div class="rundown-block">Panel Discussion Forum</div></div>
-                [span_93](start_span)<div class="rundown-item"><div class="rundown-time">4:45PM - 5:45PM</div><div class="rundown-block">Media Skills & Communication Training[span_93](end_span)</div></div>
-                [span_94](start_span)<div class="rundown-item"><div class="rundown-time">5:50PM - 6:50PM</div><div class="rundown-block">Money Matters & Wealth Blueprint[span_94](end_span)</div></div>
-            </div>
-
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="width:80%; max-width:300px; margin: 10px auto 0 auto;">Secure My Seat</a>
-        </div>
-    </section>
-
-    <section id="store" class="tab-content">
-        <div class="card" style="text-align: center; padding: 30px;">
-            <p style="color: #d4af37; font-size: 16px; font-weight: 800; text-transform: uppercase; margin: 0; letter-spacing: 2px;">Point Guard: A Diary</p>
-            <p style="font-size: 14px; opacity: 0.6; margin: 2px 0 15px 0;">By Author Keaton Cole</p>
-            <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Acquire on Amazon</a>
-        </div>
-
-        <div class="card" style="border: 2px solid #d4af37; background: rgba(212, 175, 55, 0.05); text-align: center; padding: 30px;">
-            <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px;">🔥 PREFERRED SELECTION</span>
-            <h3 style="font-size: 44px; margin: 0; font-family:'Archivo Black'; color: #d4af37;">$55 <span style="font-size:15px; font-family:'Inter'; font-weight:normal; color:#fff;">/ session</span></h3>
-            <p style="font-size: 15px; font-weight: 700; margin: 5px 0 15px 0;">Complete Development Package</p>
-            <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold">Secure Checkout</a>
-        </div>
-    </section>
-
-    <nav>
-        <a id="tab-link-locker" onclick="switchTab('locker-room')">The Locker</a>
-        <a id="tab-link-academy" onclick="switchTab('academy-course')">Academy</a>
-        <a id="tab-link-resources" onclick="switchTab('resources')">Blueprint</a>
-        <a id="tab-link-events" onclick="switchTab('events')">Events</a>
-        <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
-    </nav>
-
-<script>
-    function switchTab(tabId) {
-        const sections = document.querySelectorAll('.tab-content');
-        sections.forEach(sec => sec.style.display = 'none');
-        
-        const targetSection = document.getElementById(tabId);
-        if (targetSection) {
-            targetSection.style.display = 'block';
-        }
-        
-        const anchors = document.querySelectorAll('nav a');
-        anchors.forEach(a => a.classList.remove('active-tab'));
-        
-        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
-        if(tabId === 'academy-course') document.getElementById('tab-link-academy').classList.add('active-tab');
-        if(tabId === 'resources') document.getElementById('tab-link-resources').classList.add('active-tab');
-        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
-        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
-        
-        window.scrollTo(0,0);
-    }
-
-    window.onload = function() {
-        switchTab('locker-room');
-    };
-</script>
-
-</body>
-</html>
+            <p style="font-size: 14.5px; line-height: 1.
