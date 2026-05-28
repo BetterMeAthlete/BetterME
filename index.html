@@ -80,7 +80,45 @@
             border: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
-        /* Cleaned Vault Grid Layout */
+        .instruction-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed #d4af37;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13.5px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        .checkbox-label input {
+            accent-color: #d4af37;
+            margin-top: 3px;
+        }
+
+        /* Vault Grid Layout */
         .vault-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -203,10 +241,9 @@
             cursor: pointer;
         }
 
-        .bullet-list { margin: 10px 0 15px 0; padding-left: 20px; color: rgba(255,255,255,0.9); font-size: 13.5px; line-height: 1.65; }
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 35px 0 20px 0; padding-top: 20px; }
         
-        .interactive-box { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px; margin-top: 25px; border: 1px solid rgba(212,175,55,0.15); }
+        .interactive-box { background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 20px; margin-top: 25px; border: 1px solid rgba(212,175,55,0.15); }
         .quiz-option { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin-top: 8px; cursor: pointer; font-size: 13px; }
         .quiz-option.correct { background: rgba(46, 204, 113, 0.2) !important; border-color: #2ecc71 !important; color: #2ecc71; font-weight: 700; }
         .quiz-option.incorrect { background: rgba(231, 76, 60, 0.2) !important; border-color: #e74c3c !important; color: #e74c3c; }
@@ -227,13 +264,74 @@
     <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
-<!-- LOCKER ROOM TAB -->
+<!-- LOCKER ROOM TAB & REGISTRATION FORMS -->
 <section id="locker-room" class="tab-content">
     <div class="hero-section">
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK ACADEMY">
     </div>
+    
     <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
-        <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
+        <p style="font-size: 17px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
+    </div>
+
+    <!-- MANDATORY COMPLIANCE & DIETARY PORTAL -->
+    <div class="card" style="border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(212, 175, 55, 0.02);">
+        <h3 style="font-family: 'Archivo Black'; color: #d4af37; margin-top: 0; text-transform: uppercase; font-size: 18px; letter-spacing: 0.5px;">📋 Athlete Event Registration</h3>
+        
+        <!-- Action Instructions Banner -->
+        <div class="instruction-box">
+            <span style="color: #ff8033; font-weight: 800; text-transform: uppercase; font-size: 11px; display: block; margin-bottom: 5px;">👋 Action Required:</span>
+            Once you fill out this section and complete your lessons in the <strong>Academy</strong> tab, navigate to the final lesson (<strong>Module 3.4</strong>) to download or copy your completed workbook. 
+            Please email the downloaded file directly to <strong style="color: #d4af37;">kreativekc89@gmail.com</strong> with the email subject line: <em>"Heartwork Event Registration"</em>.
+        </div>
+        
+        <!-- Part 1: Dietary Configuration -->
+        <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <h4 style="margin: 0 0 5px 0; font-size: 14px; text-transform: uppercase; color: #ff8033;">1. Dietary Profile & Allergy Tracking</h4>
+            <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 12px 0;"><strong>Standard Event Menu:</strong> Fried Chicken, Mac n Cheese, Steamed Broccoli.</p>
+            
+            <label class="checkbox-label">
+                <input type="checkbox" id="diet-veg" onchange="updateDietaryData()">
+                <span><strong>Vegetarian / Vegan Option Required</strong> (Cannot consume meat/dairy products)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="diet-gluten" onchange="updateDietaryData()">
+                <span><strong>Gluten Allergy</strong> (Severe sensitivity to fried chicken batter coatings/pasta wheat)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="diet-dairy" onchange="updateDietaryData()">
+                <span><strong>Lactose / Dairy Intolerance</strong> (Sensitivity to Mac n Cheese components)</span>
+            </label>
+            
+            <label style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; margin-top: 10px;">Other Specific Medical Allergies / Critical Accommodations:</label>
+            <input type="text" id="diet-custom" class="form-input" placeholder="e.g., Peanut allergy, sesame allergy, or none..." oninput="updateDietaryData()">
+        </div>
+
+        <!-- Part 2: Parent Consent & Media Compliance Documents -->
+        <div>
+            <h4 style="margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; color: #ff8033;">2. Parental Release & Media Content Waivers</h4>
+            
+            <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; font-size: 12px; max-height: 100px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px; line-height: 1.5; color: rgba(255,255,255,0.8);">
+                <strong>Parental Consent & Liability Statement:</strong> I hereby give complete permission for my child to participate fully in all training clinics, theoretical discussions, and sports workshop activities organized under Heartwork Academy. I certify that the participant is medically cleared for activity and release coordination staff from event physical liabilities.<br><br>
+                <strong>Media Promotion Release:</strong> I recognize that photography, audio components, and video tracking methods are recorded during active training fields. I hereby authorize Heartwork Academy to utilize these captured public assets for program documentation, digital instruction resources, and future platform marketing broadcasts.
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="waiver-agree" onchange="updateDietaryData()">
+                <span>I explicitly read, understand, and authorize both the <strong>Parental Consent Liability Release</strong> and the <strong>Media Promotion Release</strong> text frameworks above.</span>
+            </label>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+                <div>
+                    <label style="font-size: 11px; opacity: 0.7;">Participant Athlete Full Name</label>
+                    <input type="text" id="sign-athlete" class="form-input" style="margin-bottom:0;" placeholder="Athlete Name" oninput="updateDietaryData()">
+                </div>
+                <div>
+                    <label style="font-size: 11px; opacity: 0.7;">Authorizing Parent/Guardian Electronic Signature</label>
+                    <input type="text" id="sign-parent" class="form-input" style="margin-bottom:0;" placeholder="Parent/Guardian Signature" oninput="updateDietaryData()">
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -296,7 +394,7 @@
     </div>
 </section>
 
-<!-- CLEANED & STRUCTURAL VAULT TAB -->
+<!-- VAULT TAB -->
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 5px;">The Vault</h2>
     <p style="text-align: center; font-size: 14px; opacity: 0.7; margin-top: 0; margin-bottom: 30px;">Select your live event entry ticket options and premium training assets below.</p>
@@ -328,11 +426,9 @@
 
     <!-- Standalone Assets Grid -->
     <div class="vault-grid">
-        <!-- Physical Book with Verified Live CDN Link -->
         <div class="vault-card">
             <div>
                 <div class="book-img-container">
-                    <!-- Securely routed Amazon Live Media Link -->
                     <img src="https://images-na.ssl-images-amazon.com/images/I/71p0g8w9vVL._AC_UL600_SR600,600_.jpg" alt="Point Guard Book Cover" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <h4 style="margin: 0 0 5px 0; text-transform: uppercase; font-size: 14px;">Point Guard: A Diary</h4>
@@ -341,7 +437,6 @@
             <a href="https://www.amazon.ca/POINT-GUARD-DIARY-KEATON-COLE/dp/1777201519/" target="_blank" class="btn-gold" style="background: #e65c00; color: white; width: 100%; box-sizing: border-box;">Buy on Amazon</a>
         </div>
 
-        <!-- Corporate Package -->
         <div class="vault-card">
             <div>
                 <h3 style="font-size: 32px; margin: 15px 0 0 0; color: #d4af37;">$600</h3>
@@ -372,11 +467,29 @@
     let currentModuleId = 1;
     let completeStatus = Array(13).fill(false);
 
-    // Global unified session container tracking ALL course inputs
     let userCourseNotes = {
         1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: "", 11: "",
-        "assessment": ["", "", "", "", "", "", "", "", "", "", ""]
+        "assessment": ["", "", "", "", "", "", "", "", "", "", ""],
+        "registration": {
+            isVegetarian: false,
+            isGlutenFree: false,
+            isDairyFree: false,
+            customAllergies: "",
+            waiverAgreed: false,
+            athleteName: "",
+            parentSignature: ""
+        }
     };
+
+    function updateDietaryData() {
+        userCourseNotes.registration.isVegetarian = document.getElementById('diet-veg').checked;
+        userCourseNotes.registration.isGlutenFree = document.getElementById('diet-gluten').checked;
+        userCourseNotes.registration.isDairyFree = document.getElementById('diet-dairy').checked;
+        userCourseNotes.registration.customAllergies = document.getElementById('diet-custom').value;
+        userCourseNotes.registration.waiverAgreed = document.getElementById('waiver-agree').checked;
+        userCourseNotes.registration.athleteName = document.getElementById('sign-athlete').value;
+        userCourseNotes.registration.parentSignature = document.getElementById('sign-parent').value;
+    }
 
     function trackNoteChange(moduleId, value) {
         userCourseNotes[moduleId] = value;
@@ -405,15 +518,15 @@
             questions: [
                 { q: "1. Who am I?", sub: "If you were to describe yourself, what is there to say about you?[span_0](start_span)[span_0](end_span)" },
                 { q: "2. What am I good at?", sub: "List strengths outside of basketball (cooking, writing, drawing, listening, etc.)[span_1](start_span)[span_1](end_span)." },
-                { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly (e.g., Father, Pro Baller, Teacher)[span_2](start_span)[span_2](end_span). What shifts must happen to lock this in daily[span_3](start_span)[span_3](end_span)?" },
+                { q: "3. Who do I want to become?", sub: "Where do you see yourself in 6 months? 5 years? Think broadly[span_2](start_span)[span_2](end_span). What shifts must happen to lock this in daily[span_3](start_span)[span_3](end_span)?" },
                 { q: "4. What expectations are you expecting to manifest?", sub: "What specific goals are you tracking across basketball, family, and personal growth[span_4](start_span)[span_4](end_span)?" },
                 { q: "5. What kind of books do I enjoy reading?", sub: "What materials catch your attention (magazines, genres, authors) and why[span_5](start_span)[span_5](end_span)?" },
                 { q: "6. What sports outlet do I listen to and why?", sub: "Examples: ESPN, Uninterrupted, First Take, etc[span_6](start_span)[span_6](end_span)." },
                 { q: "7. What do people say about me?", sub: "What do your family, close friends, and teammates say regarding your character footprint[span_7](start_span)[span_7](end_span)?" },
                 { q: "8. Who is my favorite basketball player and why?", sub: "What is it about their style, character mechanics, or behavior that draws you in[span_8](start_span)[span_8](end_span)?" },
-                { q: "9. Post-Ball Career Execution Moves", sub: "What targets do you want to hit? (e.g., LeBron/Wade brand stakes, media network creation, film production channels)[span_9](start_span)[span_9](end_span)." },
-                { q: "10. Legacy Impact Blueprint", sub: "What lasting principles and values do you want to hand down to the next generation behind you[span_10](start_span)[span_10](end_span)?" },
-                { q: "11. The Satisfaction Reality Check", sub: "If your ultimate sports milestone doesn't provide the absolute validation you expected, how will you pivot[span_11](start_span)[span_11](end_span)?" }
+                { q: "9. Post-Ball Career Execution Moves", sub: "What targets do you want to hit? (e.g., brand stakes, media networks)[span_9](start_span)[span_9](end_span)." },
+                { q: "10. Legacy Impact Blueprint", sub: "What lasting principles and values do you want to hand down[span_10](start_span)[span_10](end_span)?" },
+                { q: "11. The Satisfaction Reality Check", sub: "If your ultimate sports milestone doesn't provide validation, how will you pivot[span_11](start_span)[span_11](end_span)?" }
             ]
         }
     };
@@ -428,7 +541,13 @@
         let combinedHtml = "";
         
         if (data.isAssessment) {
-            combinedHtml += `<p style="font-size:13.5px; opacity:0.8;">Complete your final identity guide down below[span_12](start_span)[span_12](end_span).</p><div style="margin-top:15px;">`;
+            combinedHtml += `
+                <div style="background: rgba(212,175,55,0.15); border: 1px solid #d4af37; padding: 12px; border-radius: 8px; font-size: 12.5px; margin-bottom: 15px; color: #fff;">
+                    <strong>📬 Submission Instructions:</strong> Once you copy or download this completed blueprint text document below, email it immediately as an attachment or plain text directly to <strong style="color:#d4af37;">kreativekc89@gmail.com</strong> so Coach Keaton can verify your entry status!
+                </div>
+                <p style="font-size:13.5px; opacity:0.8;">Complete your final identity guide down below[span_12](start_span)[span_12](end_span).</p>
+                <div style="margin-top:15px;">
+            `;
             
             data.questions.forEach((item, index) => {
                 const existingVal = userCourseNotes["assessment"][index];
@@ -448,8 +567,8 @@
             combinedHtml += `
                 </div>
                 <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                    <button class="btn-gold" style="border-radius:6px; font-size:10px; padding:12px;" onclick="copyReportToClipboard()">📋 Copy Entire Course Blueprint</button>
-                    <button class="btn-gold" style="border-radius:6px; font-size:10px; padding:12px;" onclick="downloadFullReport()">📥 Download Entire Blueprint</button>
+                    <button class="btn-gold" style="border-radius:6px; font-size:10px; padding:12px;" onclick="copyReportToClipboard()">📋 Copy Blueprint & Forms</button>
+                    <button class="btn-gold" style="border-radius:6px; font-size:10px; padding:12px;" onclick="downloadFullReport()">📥 Download Blueprint & Forms</button>
                 </div>
             `;
             
@@ -483,10 +602,25 @@
         document.getElementById('player-body').scrollTop = 0;
     }
 
-    // Engine function compiling every single piece of user data recorded
     function buildMasterContentText() {
         let text = "==================================================\n";
-        text += "       HEARTWORK BEYOND THE COURT MASTER DATA     \n";
+        text += "  HEARTWORK BEYOND THE COURT MASTER REGISTRATION  \n";
+        text += "==================================================\n";
+        text += "SUBMIT TO: kreativekc89@gmail.com\n\n";
+        
+        let reg = userCourseNotes.registration;
+        text += `Athlete Full Name: ${reg.athleteName ? reg.athleteName : "[NOT PROVIDED]"}\n`;
+        text += `Parent/Guardian Consent Signature: ${reg.parentSignature ? reg.parentSignature : "[NOT PROVIDED]"}\n`;
+        text += `Waiver Legal Agreement Status: ${reg.waiverAgreed ? "AGREED & AUTHORIZED" : "NOT SIGNED YET"}\n\n`;
+        
+        text += "--- DIETARY COMPLIANCE PROFILE ---\n";
+        text += `Vegetarian/Vegan Request: ${reg.isVegetarian ? "YES (Needs alternative meal item)" : "No"}\n`;
+        text += `Gluten-Free Request: ${reg.isGlutenFree ? "YES" : "No"}\n`;
+        text += `Dairy-Free Request: ${reg.isDairyFree ? "YES" : "No"}\n`;
+        text += `Custom Medical Allergies Listed: ${reg.customAllergies ? reg.customAllergies : "None/Blank"}\n\n`;
+        
+        text += "==================================================\n";
+        text += "                 COURSE NOTEBOOKS                 \n";
         text += "==================================================\n\n";
         
         for (let i = 1; i <= 11; i++) {
@@ -510,7 +644,7 @@
     function copyReportToClipboard() {
         const textToCopy = buildMasterContentText();
         navigator.clipboard.writeText(textToCopy).then(() => {
-            alert("Success! Your full 12-Module blueprint answers are copied. Open Apple Notes, Android Keep, or Google Docs and paste them right in.");
+            alert("Success! Copy completed. Now paste this right into an email and send it to kreativekc89@gmail.com.");
         }).catch(err => {
             alert("Error trying to process copy functions.");
         });
@@ -522,11 +656,13 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "My_Beyond_The_Court_Master_Blueprint.txt";
+        a.download = "Heartwork_Registration_Master_File.txt";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+        
+        alert("File Downloaded! Please check your downloads folder, attach this file, and email it directly to: kreativekc89@gmail.com");
     }
 
     function submitAnswer(element, selectedIdx, correctIdx) {
