@@ -3,295 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heartwork Academy - Beyond The Court Platform</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <title>Heartwork Academy</title>
     <style>
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #1f2937; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #f97316; border-radius: 3px; }
-        .reflection-textarea:focus { border-color: #f97316; box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2); }
+        /* Built-in fallback styles - Works offline on any mobile device */
+        body {
+            background-color: #111827;
+            color: #f3f4f6;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #030712;
+            border-bottom: 1px solid #1f2937;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            color: #f97316;
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        .header-sub {
+            color: #9ca3af;
+            margin: 0;
+            font-size: 11px;
+        }
+        .main-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            background-color: #030712;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+            margin-bottom: 20px;
+        }
+        .nav-title {
+            color: #9ca3af;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .nav-btn {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-btn.active {
+            background-color: #ea580c;
+            color: white;
+            font-weight: bold;
+        }
+        .content-box {
+            background-color: #030712;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+            margin-bottom: 20px;
+        }
+        h2 { color: #ffffff; margin-top: 0; font-size: 20px; }
+        h3 { color: #f97316; margin-top: 0; font-size: 16px; }
+        p { color: #d1d5db; font-size: 14px; line-height: 1.5; }
+        .textarea-label {
+            display: block;
+            color: #9ca3af;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            margin-top: 15px;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            font-size: 14px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        textarea:focus {
+            border-color: #f97316;
+            outline: none;
+        }
+        .btn-save {
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            float: right;
+        }
+        .btn-save:hover { background-color: #c2410c; }
+        .clear-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        .hidden { display: none; }
+        .clearfix::after { content: ""; clear: both; display: table; }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+<body>
 
-    <header class="bg-gray-950 border-b border-gray-800 sticky top-0 z-50 px-6 py-4 flex flex-wrap justify-between items-center">
-        <div class="flex items-center space-x-3">
-            <span class="text-2xl">🏀</span>
-            <div>
-                <h1 class="text-lg font-bold tracking-wider text-orange-500">HEARTWORK ACADEMY</h1>
-                <p class="text-xs text-gray-400 font-medium">BEYOND THE COURT &middot; FACILITATOR SUITE</p>
-            </div>
-        </div>
-        <div class="text-right mt-2 sm:mt-0">
-            <span class="text-xs uppercase bg-orange-600 bg-opacity-20 text-orange-400 px-3 py-1 rounded-full font-semibold border border-orange-500 border-opacity-30">Ages 15–19 Curriculum</span>
+    <header>
+        <div>
+            <h1 class="header-title">🏀 HEARTWORK ACADEMY</h1>
+            <p class="header-sub">BEYOND THE COURT &middot; PLATFORM WORKSPACE</p>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="main-container">
         
-        <nav class="lg:col-span-4 bg-gray-950 p-6 rounded-2xl border border-gray-800 h-fit space-y-6">
-            <div>
-                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Module 1: Foundations</h3>
-                <div class="space-y-2">
-                    <button onclick="switchTab('unit-1-1')" id="btn-unit-1-1" class="w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between bg-orange-600 text-white">
-                        <span>1.1 The Athlete's Mindset</span>
-                        <span class="text-xs bg-black bg-opacity-30 px-2 py-0.5 rounded">Active</span>
-                    </button>
-                    <button onclick="switchTab('unit-1-2')" id="btn-unit-1-2" class="w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between text-gray-400 hover:bg-gray-900 hover:text-white">
-                        <span>1.2 Take Care of Your Body</span>
-                    </button>
-                    <button onclick="switchTab('unit-1-3')" id="btn-unit-1-3" class="w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between text-gray-400 hover:bg-gray-900 hover:text-white">
-                        <span>1.3 Punctuality & Professionalism</span>
-                    </button>
-                    <button onclick="switchTab('unit-1-4')" id="btn-unit-1-4" class="w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between text-gray-400 hover:bg-gray-900 hover:text-white">
-                        <span>1.4 Social Media Etiquette</span>
-                    </button>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Self-Discovery Capstone</h3>
-                <div class="space-y-2">
-                    <button onclick="switchTab('know-myself')" id="btn-know-myself" class="w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between text-gray-400 hover:bg-gray-900 hover:text-white border border-dashed border-gray-800 hover:border-orange-500">
-                        <span class="flex items-center"><span class="mr-2">🪞</span> Know Myself Assessment</span>
-                        <span class="text-xs bg-orange-950 text-orange-400 px-2 py-0.5 rounded border border-orange-800">11 Steps</span>
-                    </button>
-                </div>
-            </div>
+        <nav>
+            <div class="nav-title">Module 1 Units</div>
+            <button onclick="switchTab('unit-1-1')" id="btn-unit-1-1" class="nav-btn active"><span>1.1 Athlete's Mindset</span></button>
+            <button onclick="switchTab('unit-1-2')" id="btn-unit-1-2" class="nav-btn"><span>1.2 Body & Recovery</span></button>
+            <button onclick="switchTab('unit-1-3')" id="btn-unit-1-3" class="nav-btn"><span>1.3 Professionalism</span></button>
+            <button onclick="switchTab('unit-1-4')" id="btn-unit-1-4" class="nav-btn"><span>1.4 Social Media</span></button>
+            
+            <div class="nav-title">Capstone Portfolio</div>
+            <button onclick="switchTab('know-myself')" id="btn-know-myself" class="nav-btn" style="border: 1px dashed #ea580c;"><span>🪞 11-Step Assessment</span></button>
         </nav>
 
-        <section class="lg:col-span-8 space-y-8">
+        <section>
             
-            <div id="unit-1-1" class="tab-content space-y-8">
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800">
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="text-2xl">🧠</span>
-                        <h2 class="text-xl font-bold">Unit 1.1: The Athlete's Mindset</h2>
-                    </div>
-                    <p class="text-gray-400 text-sm">Growth mindset, SMART goals, responsibility, and what it actually means to be a pro.</p>
+            <div id="unit-1-1" class="tab-content clearfix">
+                <div class="content-box">
+                    <h2>Unit 1.1: The Athlete's Mindset</h2>
+                    <p>Growth mindset, SMART goals, and responsibility.</p>
                 </div>
-
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-4">
-                    <div class="flex items-center space-x-2 border-b border-gray-800 pb-3">
-                        <span class="text-xl">✍️</span>
-                        <h3 class="text-base font-bold text-orange-400">Your Turn &mdash; Reflection Workspace</h3>
-                    </div>
-                    <p class="text-sm text-gray-300">Write down ONE goal you want to achieve in the next 90 days. Break it into SMART format below: What's your specific goal? How will you measure it? What's the first step you can take THIS WEEK?</p>
+                <div class="content-box">
+                    <h3>✍️ Reflection Workspace</h3>
+                    <p>Write down ONE goal you want to achieve in the next 90 days. Break it into SMART format below.</p>
                     
-                    <div class="space-y-3 pt-2">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">My Specific & Measurable Goal:</label>
-                            <textarea id="reflect-1-1-goal" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="e.g., Increase my vertical leap by 2 inches by August 1st by training plyometrics 3x a week..."></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">My First Action Step For This Week:</label>
-                            <textarea id="reflect-1-1-step" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="e.g., Schedule my baseline jump test tomorrow afternoon before practice..."></textarea>
-                        </div>
-                    </div>
-                    <div class="flex justify-end pt-2">
-                        <button onclick="saveReflection('1-1')" class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Lock Response In Platform</button>
-                    </div>
+                    <label class="textarea-label">My Specific & Measurable Goal:</label>
+                    <textarea id="reflect-1-1-goal" placeholder="e.g., Increase my vertical leap by 2 inches..."></textarea>
+                    
+                    <label class="textarea-label">My First Action Step For This Week:</label>
+                    <textarea id="reflect-1-1-step" placeholder="e.g., Schedule my baseline jump test..."></textarea>
+                    
+                    <button onclick="saveReflection('1-1')" class="btn-save">Lock Response</button>
                 </div>
             </div>
 
-            <div id="unit-1-2" class="tab-content hidden space-y-8">
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800">
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="text-2xl">💪</span>
-                        <h2 class="text-xl font-bold">Unit 1.2: Take Care of Your Body</h2>
-                    </div>
-                    <p class="text-gray-400 text-sm">Nutrition, sleep, strength, mental health, and why recovery is just as important as practice.</p>
+            <div id="unit-1-2" class="tab-content hidden clearfix">
+                <div class="content-box">
+                    <h2>Unit 1.2: Take Care of Your Body</h2>
+                    <p>Nutrition, sleep, strength, and emotional regulation.</p>
                 </div>
-
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-4">
-                    <div class="flex items-center space-x-2 border-b border-gray-800 pb-3">
-                        <span class="text-xl">✍️</span>
-                        <h3 class="text-base font-bold text-orange-400">Your Turn &mdash; Reflection Workspace</h3>
-                    </div>
-                    <p class="text-sm text-gray-300">What's ONE recovery habit you're already doing well? What's ONE thing you need to fix &mdash; sleep, nutrition, or mental load? Write a 3-day plan to close that gap.</p>
+                <div class="content-box">
+                    <h3>✍️ Reflection Workspace</h3>
+                    <p>What's ONE recovery habit you're doing well? What's ONE thing you need to fix?</p>
                     
-                    <div class="space-y-3 pt-2">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">What I'm Currently Doing Well:</label>
-                            <textarea id="reflect-1-2-well" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-16" placeholder="e.g., Getting my protein meal within the 30-60 minute window post-workout..."></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">My 3-Day Plan to Close the Gap:</label>
-                            <textarea id="reflect-1-2-plan" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-24" placeholder="Day 1: Turn off phone at 9:30 PM, sleep by 10 PM.&#10;Day 2: Track water intake to ensure full hydration before tip-off.&#10;Day 3: Practice breathing techniques during halftime to regulate emotion."></textarea>
-                        </div>
-                    </div>
-                    <div class="flex justify-end pt-2">
-                        <button onclick="saveReflection('1-2')" class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Lock Response In Platform</button>
-                    </div>
+                    <label class="textarea-label">What I'm Doing Well:</label>
+                    <textarea id="reflect-1-2-well" placeholder="e.g., Getting post-workout protein..."></textarea>
+                    
+                    <label class="textarea-label">My 3-Day Plan to Close the Gap:</label>
+                    <textarea id="reflect-1-2-plan" placeholder="Day 1: sleep by 10 PM..."></textarea>
+                    
+                    <button onclick="saveReflection('1-2')" class="btn-save">Lock Response</button>
                 </div>
             </div>
 
-            <div id="unit-1-3" class="tab-content hidden space-y-8">
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800">
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="text-2xl">⏰</span>
-                        <h2 class="text-xl font-bold">Unit 1.3: Punctuality & Professionalism</h2>
-                    </div>
-                    <p class="text-gray-400 text-sm">Why showing up on time &mdash; and showing up right &mdash; says everything about who you are.</p>
+            <div id="unit-1-3" class="tab-content hidden clearfix">
+                <div class="content-box">
+                    <h2>Unit 1.3: Punctuality & Professionalism</h2>
+                    <p>Why arriving 15 minutes early sets the standard for your reputation.</p>
                 </div>
-
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-4">
-                    <div class="flex items-center space-x-2 border-b border-gray-800 pb-3">
-                        <span class="text-xl">✍️</span>
-                        <h3 class="text-base font-bold text-orange-400">Your Turn &mdash; Reflection Workspace</h3>
-                    </div>
-                    <p class="text-sm text-gray-300">Think of a time you were late to something important. What happened? What did it cost you or the people around you? What would your new arrival protocol look like going forward?</p>
-                    
-                    <div class="space-y-3 pt-2">
-                        <textarea id="reflect-1-3-cost" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-32" placeholder="Describe what happened, what it cost you/the team, and layout your strict 15-minute minimum pre-arrival rule for the future..."></textarea>
-                    </div>
-                    <div class="flex justify-end pt-2">
-                        <button onclick="saveReflection('1-3')" class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Lock Response In Platform</button>
-                    </div>
+                <div class="content-box">
+                    <h3>✍️ Reflection Workspace</h3>
+                    <p>Think of a time you were late. What did it cost you or the team? What is your new arrival protocol?</p>
+                    <textarea id="reflect-1-3-cost" style="height: 120px;" placeholder="Describe what happened and lay out your strict rules for the future..."></textarea>
+                    <button onclick="saveReflection('1-3')" class="btn-save">Lock Response</button>
                 </div>
             </div>
 
-            <div id="unit-1-4" class="tab-content hidden space-y-8">
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800">
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="text-2xl">📱</span>
-                        <h2 class="text-xl font-bold">Unit 1.4: Social Media Etiquette</h2>
-                    </div>
-                    <p class="text-gray-400 text-sm">How to build your brand online without burning your career before it starts.</p>
+            <div id="unit-1-4" class="tab-content hidden clearfix">
+                <div class="content-box">
+                    <h2>Unit 1.4: Social Media Etiquette</h2>
+                    <p>Protecting your brand under the Screenshot Test framework.</p>
                 </div>
-
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-4">
-                    <div class="flex items-center space-x-2 border-b border-gray-800 pb-3">
-                        <span class="text-xl">✍️</span>
-                        <h3 class="text-base font-bold text-orange-400">Your Turn &mdash; Reflection Workspace</h3>
-                    </div>
-                    <p class="text-sm text-gray-300">Go to your social media profile right now (or think about your last 5 posts). Run the **Screenshot Test** on each one: <em>Would my coach, my mom, and a future employer be okay seeing this right now?</em> Which ones might be a risk? What would you change?</p>
-                    
-                    <div class="space-y-3 pt-2">
-                        <textarea id="reflect-1-4-test" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-32" placeholder="Analyze your digital footprint. Note any posts you need to remove or how you intend to filter future content using the platform filter rule..."></textarea>
-                    </div>
-                    <div class="flex justify-end pt-2">
-                        <button onclick="saveReflection('1-4')" class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Lock Response In Platform</button>
-                    </div>
+                <div class="content-box">
+                    <h3>✍️ Reflection Workspace</h3>
+                    <p>Run the Screenshot Test on your last 5 posts: Would a future employer or head coach be okay with it?</p>
+                    <textarea id="reflect-1-4-test" style="height: 120px;" placeholder="Analyze your digital footprint here..."></textarea>
+                    <button onclick="saveReflection('1-4')" class="btn-save">Lock Response</button>
                 </div>
             </div>
 
-            <div id="know-myself" class="tab-content hidden space-y-8">
-                <div class="bg-gradient-to-r from-orange-950 to-gray-950 p-6 rounded-2xl border border-orange-500 border-opacity-30">
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="text-2xl">🪞</span>
-                        <h2 class="text-xl font-bold text-orange-400">Unit 3.4: Know Myself Self-Discovery Package</h2>
-                    </div>
-                    <p class="text-gray-300 text-sm">This unit is different. There's no video script&mdash;it's a 1:1 session between you and the page. Answer every question honestly. No one else needs to see this. It's for you.</p>
+            <div id="know-myself" class="tab-content hidden clearfix">
+                <div class="content-box" style="border-color: #ea580c;">
+                    <h2>Unit 3.4: Know Myself Portfolio</h2>
+                    <p>Complete these 11 crucial steps for your personal development profile.</p>
                 </div>
+                
+                <div class="content-box">
+                    <label class="textarea-label" style="color:white; font-size:14px;">1. Who am I?</label>
+                    <textarea id="km-1" placeholder="Describe yourself in 3 sentences..."></textarea>
 
-                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-6">
-                    <div class="text-sm font-bold text-gray-400 uppercase tracking-widest border-b border-gray-800 pb-2">Complete 11-Step Portfolio Workbook</div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">2. What am I good at (Outside of basketball)?</label>
+                    <textarea id="km-2" placeholder="List your natural strengths..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">1. Who am I?</label>
-                        <p class="text-xs text-gray-400">If you had to describe yourself in 3 sentences to someone who has never met you&mdash;what is there to say about you?</p>
-                        <textarea id="km-1" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">3. Who do I want to become?</label>
+                    <textarea id="km-3" placeholder="Think 6 months and 5 years down the line..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">2. What am I good at (Something other than basketball)?</label>
-                        <p class="text-xs text-gray-400">List your natural strengths (could be cooking, writing, communicating, drawing, listening, organizing, etc.).</p>
-                        <textarea id="km-2" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">4. What absolute goals do I expect to manifest?</label>
+                    <textarea id="km-4" placeholder="Type goals..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">3. Who do I want to become?</label>
-                        <p class="text-xs text-gray-400">Think about 6 months from now, 5 years from now, and entirely (e.g., Father, Professional Baller, Teacher, Author). If you aren't that person today, what needs to change, let go of, or keep?</p>
-                        <textarea id="km-3" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-24" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">5. What kind of books or genres do I enjoy reading?</label>
+                    <textarea id="km-5" placeholder="Type response..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">4. What expectations are you expecting to manifest?</label>
-                        <p class="text-xs text-gray-400">What are the absolute goals you want to achieve? Think about basketball, in life as a brother or sister, as a more mature adult, etc.</p>
-                        <textarea id="km-4" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">6. What sports outlets/podcasts do I listen to and why?</label>
+                    <textarea id="km-6" placeholder="Type response..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">5. What kind of books do I enjoy reading?</label>
-                        <p class="text-xs text-gray-400">Think about sports magazines, authors, or genres. Why do you like these books?</p>
-                        <textarea id="km-5" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">7. What do family, teammates, and coaches say about me?</label>
+                    <textarea id="km-7" placeholder="Type words they use..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">6. What sports outlet do I listen to and why?</label>
-                        <p class="text-xs text-gray-400">For example: ESPN, Uninterrupted, First Take, podcasts, etc.</p>
-                        <textarea id="km-6" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">8. Who is my favorite hoops player and why?</label>
+                    <textarea id="km-8" placeholder="Type response..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">7. What do people say about me?</label>
-                        <p class="text-xs text-gray-400">Think about your family, friends, teammates, and coaches. What words do they use? Do you agree with them?</p>
-                        <textarea id="km-7" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">9. When my ball career is over, what do I want to do?</label>
+                    <textarea id="km-9" placeholder="What businesses or industries do you want to build?"></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">8. Who is my favorite basketball player and why?</label>
-                        <p class="text-xs text-gray-400">Think about their style of play, their character from what they show, and whether you see your own talent level in them.</p>
-                        <textarea id="km-8" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:white; font-size:14px;">10. Legacy: What impact do I want to leave for the youth?</label>
+                    <textarea id="km-10" placeholder="Type response..."></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">9. When I finish my ball career, what is it that I want to do?</label>
-                        <p class="text-xs text-gray-400">What are you building toward during or after your playing days? (e.g., D-Wade co-owning a shoe brand/Jazz, LeBron running Uninterrupted media and movie production platforms).</p>
-                        <textarea id="km-9" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-24" placeholder="Type response..."></textarea>
-                    </div>
+                    <label class="textarea-label" style="color:#ea580c; font-size:14px;">11. Real Satisfaction Reality Check</label>
+                    <textarea id="km-11" placeholder="If your ultimate goal doesn't provide the inner satisfaction you thought it would, how will you feel?"></textarea>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-semibold text-gray-200">10. Legacy: What impact do I want to leave behind for the next generation?</label>
-                        <p class="text-xs text-gray-400">What do you want to pass down? What are you doing today that builds that legacy up?</p>
-                        <textarea id="km-10" class="reflection-textarea w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-20" placeholder="Type response..."></textarea>
-                    </div>
-
-                    <div class="space-y-2 border-t border-gray-800 pt-4">
-                        <label class="block text-sm font-semibold text-orange-400">11. Real Satisfaction Reality Check</label>
-                        <p class="text-xs text-gray-400">If you were to reach your ultimate goal, how will you feel if it doesn't provide the feeling or real satisfaction that you once thought it would give you?</p>
-                        <textarea id="km-11" class="reflection-textarea w-full bg-gray-900 border border-orange-950 rounded-xl p-3 text-sm text-white focus:outline-none custom-scrollbar h-24" placeholder="Type response..."></textarea>
-                    </div>
-
-                    <div class="flex justify-between items-center pt-4 border-t border-gray-800">
-                        <button onclick="clearWorkbook()" class="text-xs font-semibold text-gray-500 hover:text-red-400 transition">Clear Workbook Data</button>
-                        <button onclick="saveWorkbook()" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg transition">Save Complete Assessment</button>
-                    </div>
+                    <button onclick="saveWorkbook()" class="btn-save" style="width:100%; margin-top:20px;">Save Complete Portfolio</button>
+                    <button onclick="clearWorkbook()" class="clear-btn">Clear All Answers</button>
                 </div>
             </div>
 
         </section>
-    </main>
+    </div>
 
     <script>
-        // Tab switching logic
         function switchTab(tabId) {
-            // Hide all tab views
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
-            
-            // Show current active tab view
             document.getElementById(tabId).classList.remove('hidden');
-
-            // Reset navigation styles
-            document.querySelectorAll('nav button').forEach(btn => {
-                btn.className = "w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between text-gray-400 hover:bg-gray-900 hover:text-white";
-                // Remove specific sub-badges
-                const activeBadge = btn.querySelector('.bg-black');
-                if (activeBadge) activeBadge.remove();
-            });
-
-            // Highlight chosen navigation option
-            const activeBtn = document.getElementById('btn-' + tabId);
-            if (tabId === 'know-myself') {
-                activeBtn.className = "w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between bg-gradient-to-r from-orange-600 to-orange-700 text-white border border-orange-500";
-            } else {
-                activeBtn.className = "w-full text-left px-4 py-3 rounded-xl transition font-medium text-sm flex items-center justify-between bg-orange-600 text-white";
-                activeBtn.insertAdjacentHTML('beforeend', '<span class="text-xs bg-black bg-opacity-30 px-2 py-0.5 rounded">Active</span>');
-            }
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + tabId).classList.add('active');
         }
 
-        // Platform storage logic for direct text responses
         function saveReflection(unitId) {
             let data = {};
             if (unitId === '1-1') {
@@ -305,9 +287,8 @@
             } else if (unitId === '1-4') {
                 data.test = document.getElementById('reflect-1-4-test').value;
             }
-
-            localStorage.setItem('btc_reflection_' + unitId, JSON.stringify(data));
-            alert('Progress secured! Reflection data successfully logged to platform profile.');
+            localStorage.setItem('btc_ref_' + unitId, JSON.stringify(data));
+            alert('Saved to tablet storage!');
         }
 
         function saveWorkbook() {
@@ -315,25 +296,21 @@
             for (let i = 1; i <= 11; i++) {
                 workbook['step_' + i] = document.getElementById('km-' + i).value;
             }
-            localStorage.setItem('btc_know_myself_workbook', JSON.stringify(workbook));
-            alert('Success! Your 11-step Know Myself portfolio has been completely archived.');
+            localStorage.setItem('btc_workbook', JSON.stringify(workbook));
+            alert('11-Step Portfolio securely saved!');
         }
 
         function clearWorkbook() {
-            if (confirm('Are you sure you want to wipe all answers from your self-discovery portfolio?')) {
-                for (let i = 1; i <= 11; i++) {
-                    document.getElementById('km-' + i).value = '';
-                }
-                localStorage.removeItem('btc_know_myself_workbook');
+            if (confirm('Clear everything?')) {
+                for (let i = 1; i <= 11; i++) { document.getElementById('km-' + i).value = ''; }
+                localStorage.removeItem('btc_workbook');
             }
         }
 
-        // Auto-load data on initialization
         window.onload = function() {
-            // Restore unit reflections
             const units = ['1-1', '1-2', '1-3', '1-4'];
             units.forEach(u => {
-                const saved = localStorage.getItem('btc_reflection_' + u);
+                const saved = localStorage.getItem('btc_ref_' + u);
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     if (u === '1-1') {
@@ -350,8 +327,7 @@
                 }
             });
 
-            // Restore capstone workbook
-            const savedWorkbook = localStorage.getItem('btc_know_myself_workbook');
+            const savedWorkbook = localStorage.getItem('btc_workbook');
             if (savedWorkbook) {
                 const parsedWB = JSON.parse(savedWorkbook);
                 for (let i = 1; i <= 11; i++) {
