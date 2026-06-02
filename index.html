@@ -490,64 +490,71 @@
     </div>
 </section>
 
-<!-- SEPTEMBER EVENTS ACCORDION SECTION -->
-<div class="event-accordion">
-  <button class="accordion-header" onclick="toggleAccordion('sept-event')">
-    🏀 September Feature Event: Elite Prep & Professional Realities 
-    <span class="icon">▼</span>
-  </button>
+<!-- LIVE EVENTS SECTION -->
+<section id="live-events-section">
   
-  <div id="sept-event" class="accordion-content" style="display:none;">
-    <!-- Featured Speakers Grid -->
-    <div class="speakers-section">
-      <h3>Featured Guest Speakers</h3>
-      <div class="speakers-grid">
-        <div class="speaker-card">
-          <img src="images/speaker1.jpg" alt="Featured Speaker" class="speaker-thumb">
-          <h4>Keaton Cole</h4>
-          <p>Founder, Heartwork Academy</p>
-        </div>
-        <!-- Add your additional guest speaker cards here -->
-      </div>
-    </div>
-
-    <!-- Event Day Timeline -->
-    <div class="timeline-section">
-      <h3>Event Schedule & Itinerary</h3>
-      <ul class="event-timeline">
-        <li><strong>09:00 AM</strong> - Welcome & Academy Introduction (The Big Idea)</li>
-        <li><strong>10:15 AM</strong> - Session 1: Navigating the Business & Media Training</li>
-        <li><strong>12:00 PM</strong> - Lunch Break / Networking Block</li>
-        <li><strong>01:15 PM</strong> - Session 2: The Transition Blueprint & Wealth Habits</li>
-        <li><strong>03:00 PM</strong> - Open Q&A Panel & Closing Remarks</li>
-      </ul>
-    </div>
+  <!-- SEPTEMBER EVENT HUB -->
+  <div class="event-container-block">
+    <h2 class="event-month-title">🏀 September Feature Event: Elite Prep & Professional Realities</h2>
     
-    <!-- RESTORED: Survey Tab/Square Area -->
-    <div class="survey-square-hub">
-      <div class="survey-card">
-        <div class="survey-icon">📋</div>
-        <h4>Post-Event Athlete Survey</h4>
-        <p>Your feedback shapes the academy. Drop your thoughts, takeaways, and review of today's sessions.</p>
-        <a href="YOUR_GOOGLE_FORMS_SURVEY_LINK" target="_blank" class="survey-btn">Complete Event Survey</a>
+    <!-- 1. FEATURED SPEAKERS (WITH PICTURES) -->
+    <div class="speakers-showcase-grid">
+      <div class="speaker-profile-card">
+        <div class="speaker-photo-wrapper">
+          <img src="images/keaton-cole.jpg" alt="Keaton Cole" class="speaker-image">
+        </div>
+        <h3>Keaton Cole</h3>
+        <p class="speaker-title">Founder, Heartwork Academy</p>
+      </div>
+
+      <div class="speaker-profile-card">
+        <div class="speaker-photo-wrapper">
+          <img src="images/speaker-two.jpg" alt="Guest Speaker" class="speaker-image">
+        </div>
+        <h3>Featured Guest Speaker</h3>
+        <p class="speaker-title">Industry Professional</p>
       </div>
     </div>
-  </div>
-</div>
 
-<script>
-function toggleAccordion(id) {
-  var x = document.getElementById(id);
-  var header = x.previousElementSibling;
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    header.classList.add("active");
-  } else {
-    x.style.display = "none";
-    header.classList.remove("active");
-  }
-}
-</script>
+    <!-- 2. OUTLINE OF THE DAY'S EVENT -->
+    <div class="event-itinerary-box">
+      <h3>Event Schedule & Outline</h3>
+      <div class="timeline-row">
+        <span class="time-stamp">09:00 AM</span>
+        <span class="event-details">Welcome & Academy Introduction (The Big Idea)</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">10:15 AM</span>
+        <span class="event-details">Session 1: Navigating the Business & Media Training</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">12:00 PM</span>
+        <span class="event-details">Lunch Break / Networking Block</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">01:15 PM</span>
+        <span class="event-details">Session 2: The Transition Blueprint & Wealth Habits</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">03:00 PM</span>
+        <span class="event-details">Open Q&A Panel & Closing Remarks</span>
+      </div>
+    </div>
+
+    <!-- 3. CLICKABLE SURVEY SQUARE HUB -->
+    <div class="survey-square-container">
+      <a href="YOUR_GOOGLE_FORMS_SURVEY_LINK" target="_blank" class="interactive-survey-square">
+        <div class="survey-square-content">
+          <span class="survey-square-icon">📋</span>
+          <h3>Take Event Survey</h3>
+          <p>Tap here to open the questionnaire and submit your session feedback.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
 
 
 <section id="store" class="tab-content">
