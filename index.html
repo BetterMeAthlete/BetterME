@@ -490,30 +490,65 @@
     </div>
 </section>
 
-<section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 10px;">Events & Registration Portal</h2>
-    <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Secure your ticket purchase via Stripe, then submit your event registration details via Google Forms.</p>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto;">
-        <div class="card-portal" style="text-align: center; border: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <span style="color: var(--gold-primary); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px;">Step 1: Payment</span>
-                <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin: 0 0 10px 0;">Better Me Better Athlete</h3>
-                <p style="font-size: 14px; opacity: 0.8; margin: 0 0 20px 0;">Sunday, Sept 27th | Brampton, ON</p>
-            </div>
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold">Secure My Seat Via Stripe</a>
+<!-- SEPTEMBER EVENTS ACCORDION SECTION -->
+<div class="event-accordion">
+  <button class="accordion-header" onclick="toggleAccordion('sept-event')">
+    🏀 September Feature Event: Elite Prep & Professional Realities 
+    <span class="icon">▼</span>
+  </button>
+  
+  <div id="sept-event" class="accordion-content" style="display:none;">
+    <!-- Featured Speakers Grid -->
+    <div class="speakers-section">
+      <h3>Featured Guest Speakers</h3>
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <img src="images/speaker1.jpg" alt="Featured Speaker" class="speaker-thumb">
+          <h4>Keaton Cole</h4>
+          <p>Founder, Heartwork Academy</p>
         </div>
-
-        <div class="card-portal" style="text-align: center; border: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px;">Step 2: Documentation</span>
-                <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin: 0 0 10px 0;">Athlete Event Survey</h3>
-                <p style="font-size: 14px; opacity: 0.8; margin: 0 0 20px 0;">Submit dietary requirements, media releases, and standard waivers.</p>
-            </div>
-            <a href="https://forms.gle/Mz6pEXbkWJ3zPDLZA" target="_blank" class="btn-gold" style="background: linear-gradient(135deg, #673ab7 0%, #512da8 100%); color: white; box-shadow: 0 4px 15px rgba(103, 58, 183, 0.3);">Fill Out Registration Form</a>
-        </div>
+        <!-- Add your additional guest speaker cards here -->
+      </div>
     </div>
-</section>
+
+    <!-- Event Day Timeline -->
+    <div class="timeline-section">
+      <h3>Event Schedule & Itinerary</h3>
+      <ul class="event-timeline">
+        <li><strong>09:00 AM</strong> - Welcome & Academy Introduction (The Big Idea)</li>
+        <li><strong>10:15 AM</strong> - Session 1: Navigating the Business & Media Training</li>
+        <li><strong>12:00 PM</strong> - Lunch Break / Networking Block</li>
+        <li><strong>01:15 PM</strong> - Session 2: The Transition Blueprint & Wealth Habits</li>
+        <li><strong>03:00 PM</strong> - Open Q&A Panel & Closing Remarks</li>
+      </ul>
+    </div>
+    
+    <!-- RESTORED: Survey Tab/Square Area -->
+    <div class="survey-square-hub">
+      <div class="survey-card">
+        <div class="survey-icon">📋</div>
+        <h4>Post-Event Athlete Survey</h4>
+        <p>Your feedback shapes the academy. Drop your thoughts, takeaways, and review of today's sessions.</p>
+        <a href="YOUR_GOOGLE_FORMS_SURVEY_LINK" target="_blank" class="survey-btn">Complete Event Survey</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleAccordion(id) {
+  var x = document.getElementById(id);
+  var header = x.previousElementSibling;
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    header.classList.add("active");
+  } else {
+    x.style.display = "none";
+    header.classList.remove("active");
+  }
+}
+</script>
+
 
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 5px;">The Vault</h2>
@@ -539,15 +574,36 @@
         </div>
     </div>
 
-    <div class="vault-grid">
-        <div class="vault-card">
-            <div>
-                <h3 style="font-size: 38px; margin: 0; color: var(--gold-primary); font-family:'Archivo Black';">$40</h3>
-                <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">Individual Entry Ticket</h4>
-                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 25px 0; line-height: 1.5;">Provides standard live event seat access to the venue along with your included food/catering setup.</p>
-            </div>
-            <a href="https://buy.stripe.com/5kA7sK9wHe958i69AC" target="_blank" class="btn-gold" style="width: 100%; box-sizing: border-box;">Get Ticket Only</a>
-        </div>
+   <div class="vault-grid">
+  <!-- Interactive Video Playback Square -->
+  <div class="vault-square video-trigger" onclick="openVaultVideo('YOUR_VIDEO_EMBED_OR_FILE_URL')">
+    <div class="vault-overlay">
+      <span class="play-icon">▶</span>
+      <h3>Stream Session Recording</h3>
+      <p>Tap to watch the complete training replay</p>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Modal for Seamless Tablet Playback -->
+<div id="videoModal" class="video-modal" style="display:none;" onclick="closeVaultVideo()">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <iframe id="vaultPlayer" width="100%" height="450" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+function openVaultVideo(videoUrl) {
+  document.getElementById('vaultPlayer').src = videoUrl;
+  document.getElementById('videoModal').style.display = 'flex';
+}
+function closeVaultVideo() {
+  document.getElementById('videoModal').style.display = 'none';
+  document.getElementById('vaultPlayer').src = '';
+}
+</script>
+
 
         <div class="vault-card featured">
             <div>
