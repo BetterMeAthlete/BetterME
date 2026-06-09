@@ -1,519 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heartwork Academy | Keaton Cole</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartwork Academy - Live Events</title>
 
-        :root {
-            --gold-primary: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            --blue-dark: #000a1a;
-            --blue-mid: #0a2e6b;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --border-light: rgba(255, 255, 255, 0.08);
-            --academy-orange: #E8630A;
-            --academy-green: #22C55E;
-        }
+<style>
+  /* --- GLOBAL CORE STYLING --- */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+  }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--blue-dark);
-            background: linear-gradient(to bottom, #0d1b3e 0%, var(--blue-dark) 100%);
-            color: #ffffff; 
-            margin: 0; 
-            padding-bottom: 100px;
-            min-height: 100vh;
-            background-attachment: fixed;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        nav { 
-            background: rgba(0, 10, 26, 0.95); 
-            backdrop-filter: blur(10px);
-            padding: 20px 0; 
-            display: flex; 
-            justify-content: space-around; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
+  .interactive-event-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
 
-        nav a { 
-            color: #ffffff; 
-            text-decoration: none; 
-            font-weight: 800; 
-            font-size: 12px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            opacity: 0.6; 
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        nav a:hover, nav a.active-tab { 
-            opacity: 1; 
-            color: var(--gold-primary); 
-        }
-        nav a.active-tab::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gold-gradient);
-            border-radius: 2px;
-        }
+  /* --- 1. THE MASTER BETTER ME BETTER ATHLETE CARD --- */
+  .better-me-main-card {
+    width: 100%;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+    border: 2px solid #ff5722; /* Premium Academy Orange Border */
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-        .tab-content { 
-            display: none; 
-            padding: 40px 20px; 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            animation: fadeIn 0.4s ease-out;
-        }
+  .better-me-main-card:active {
+    transform: scale(0.98);
+  }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  .card-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
-        /* --- QUOTE MARQUEE LAYOUT --- */
-        .daily-quote-card {
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 20px 25px;
-            margin-bottom: 35px;
-            text-align: center;
-            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.02);
-        }
-        .daily-quote-text {
-            font-size: 16px;
-            font-style: italic;
-            font-weight: 500;
-            line-height: 1.5;
-            color: #ffffff;
-            margin: 0 0 8px 0;
-        }
-        .daily-quote-author {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold-primary);
-            font-weight: 700;
-        }
+  .card-main-icon {
+    font-size: 40px;
+    background: rgba(255, 87, 34, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+  }
 
-        /* --- LOCKER ROOM HERO STYLES --- */
-        .locker-hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 40px;
-        }
+  .card-text-left h2 {
+    margin: 0 0 6px 0;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+  }
 
-        .hero-left h1 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 48px;
-            line-height: 1.1;
-            text-transform: uppercase;
-            margin: 0 0 20px 0;
-            letter-spacing: -1px;
-            background: linear-gradient(180deg, #ffffff 0%, #a3b8cc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  .card-text-left p {
+    margin: 0;
+    color: #b3b3b3;
+    font-size: 15px;
+  }
 
-        .hero-left h1 span {
-            display: block;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  .arrow-icon {
+    font-size: 20px;
+    color: #ff5722;
+    transition: transform 0.3s ease;
+  }
 
-        .hero-left p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.7);
-            margin: 0 0 25px 0;
-            max-width: 520px;
-        }
+  /* --- DROPDOWN SLIDE CONTAINER --- */
+  .event-hidden-content {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: 30px 24px;
+    margin-top: -8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
 
-        .hero-right {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 24px;
-            padding: 30px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
+  /* --- 2. OFFICIAL RUNDOWN FLYER STYLING --- */
+  .flyer-display-block {
+    text-align: center;
+    margin-bottom: 35px;
+    background: #000000;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #222;
+  }
 
-        .main-logo { width: 100%; max-width: 240px; height: auto; margin-bottom: 15px; }
+  .responsive-flyer-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-height: 600px;
+  }
 
-        .playbook-card {
-            background: rgba(10, 46, 107, 0.3);
-            border-left: 4px solid var(--gold-primary);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 40px;
-        }
+  /* --- 3. SIDE-BY-SIDE MAIN SPEAKERS GRID --- */
+  .speakers-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 35px;
+  }
 
-        .playbook-card h3 {
-            font-family: 'Archivo Black', sans-serif;
-            margin: 0 0 10px 0;
-            font-size: 16px;
-            text-transform: uppercase;
-            color: var(--gold-primary);
-            letter-spacing: 0.5px;
-        }
+  @media (max-width: 600px) {
+    .speakers-showcase-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 
-        /* --- GLOBAL PORTAL LAYOUTS --- */
-        .card-portal {
-            background: rgba(0, 10, 26, 0.4);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 30px;
-            transition: border-color 0.3s ease;
-        }
+  .speaker-profile-card {
+    background: #222222;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #333333;
+  }
 
-        .btn-gold { 
-            background: var(--gold-gradient); 
-            color: #000000; 
-            padding: 16px 30px; 
-            text-decoration: none !important; 
-            font-weight: 800; 
-            border-radius: 50px; 
-            display: inline-block;
-            text-align: center; 
-            border: none; 
-            text-transform: uppercase; 
-            font-size: 12px; 
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-        }
+  .speaker-photo-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ff5722;
+  }
 
-        /* --- THE VAULT / STORE STYLES --- */
-        .vault-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 20px;
-        }
+  .speaker-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-        .vault-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .vault-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .vault-card.featured {
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            background: rgba(212, 175, 55, 0.03);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.08);
-        }
+  .speaker-profile-card h3 {
+    margin: 0 0 6px 0;
+    font-size: 18px;
+  }
 
-        .media-showcase-box {
-            background: rgba(0, 10, 26, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 30px;
-            align-items: center;
-            text-align: left;
-        }
+  .speaker-title {
+    margin: 0;
+    color: #ff5722;
+    font-size: 14px;
+    font-weight: 600;
+  }
 
-        .book-img-display {
-            width: 100%;
-            max-width: 240px;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            display: block;
-            margin: 0 auto;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+  /* --- 4. RUNDOWN TIMELINE ITINERARY --- */
+  .event-itinerary-box {
+    background: #222222;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 35px;
+    border: 1px solid #333333;
+  }
 
-        .video-player-container {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            background: #000;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            aspect-ratio: 16/9;
-        }
+  .event-itinerary-box h3 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 10px;
+  }
 
-        /* --- UNIFIED ACADEMY LMS STYLES --- */
-        .lms-layout {
-            display: grid;
-            grid-template-columns: 310px 1fr;
-            gap: 25px;
-            margin-top: 25px;
-            text-align: left;
-        }
+  .timeline-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #2a2a2a;
+  }
 
-        .lms-sidebar {
-            background: rgba(0, 10, 26, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-            height: fit-content;
-            max-height: 85vh;
-            overflow-y: auto;
-        }
+  @media (max-width: 500px) {
+    .timeline-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+  }
 
-        .lms-phase-title {
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 20px 0 10px 0;
-        }
-        .lms-phase-title:first-child { margin-top: 0; }
-        .lms-phase-title.m1 { color: var(--academy-orange); }
-        .lms-phase-title.m2 { color: var(--gold-primary); }
-        .lms-phase-title.m3 { color: var(--academy-green); }
+  .time-stamp {
+    width: 160px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-align: center;
+  }
 
-        .lms-nav-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 12px 15px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .lms-nav-item:hover { background: rgba(212, 175, 55, 0.12); color: #fff; }
-        .lms-nav-item.active-lesson { background: var(--gold-gradient) !important; color: #000000 !important; font-weight: 800; border-color: var(--gold-primary); }
-        .badge-status { font-size: 12px; margin-right: 4px; }
+  /* Matching your flyer color codes */
+  .highlight-yellow {
+    background-color: #ffb300;
+    color: #000000;
+  }
 
-        .lms-player-window {
-            background: #000a1a;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+  .highlight-orange {
+    background-color: #e65100;
+    color: #ffffff;
+  }
 
-        .player-header {
-            background: linear-gradient(135deg, #030d28 0%, var(--blue-mid) 100%);
-            padding: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
+  .event-details {
+    padding-left: 20px;
+    font-size: 16px;
+    color: #e0e0e0;
+  }
 
-        .player-header span {
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold-primary);
-            display: block;
-            margin-bottom: 5px;
-        }
+  .closing-row {
+    border-bottom: none;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
 
-        .player-header h2 {
-            font-family: 'Archivo Black', sans-serif;
-            margin: 0;
-            font-size: 26px;
-            text-transform: uppercase;
-        }
+  .closing-row .time-stamp {
+    background: #424242;
+    color: #ffffff;
+  }
 
-        .player-body {
-            padding: 30px;
-            font-size: 15px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.9);
-        }
+  /* --- 5. THE STANDALONE CLICKABLE SURVEY SQUARE --- */
+  .survey-square-container {
+    display: flex;
+    justify-content: center;
+  }
 
-        .player-footer {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 20px 30px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  .interactive-survey-square {
+    width: 100%;
+    max-width: 400px;
+    background: linear-gradient(135deg, #152319 0%, #0d1710 100%);
+    border: 2px solid #2e7d32; /* Rich Green Border for Surveys */
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: block;
+  }
 
-        .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 30px 0; padding-top: 30px; }
-        
-        .interactive-box { background: rgba(255, 255, 255, 0.02); border-radius: 14px; padding: 24px; margin-top: 25px; border: 1px solid rgba(212,175,55,0.15); }
-        .quiz-option { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px; margin-top: 10px; cursor: pointer; font-size: 14px; transition: all 0.2s ease; }
-        .quiz-option:hover { background: rgba(255,255,255,0.08); }
-        .quiz-option.correct { background: rgba(46, 204, 113, 0.15) !important; border-color: #2ecc71 !important; color: #2ecc71; font-weight: 700; }
-        .quiz-option.incorrect { background: rgba(231, 76, 60, 0.15) !important; border-color: #e74c3c !important; color: #e74c3c; }
-        .reflection-textarea { width: 100%; height: 110px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 14px; color: white; font-family: inherit; font-size: 14px; box-sizing: border-box; resize: vertical; margin-top: 12px; transition: border-color 0.2s; }
-        .reflection-textarea:focus { outline: none; border-color: var(--gold-primary); }
+  .interactive-survey-square:hover, .interactive-survey-square:active {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(46, 125, 50, 0.3);
+  }
 
-        /* --- ASSESSMENT ACCORDION --- */
-        .assessment-details {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 10px;
-            margin-top: 12px;
-            overflow: hidden;
-        }
-        .assessment-details summary {
-            padding: 15px 20px;
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--gold-primary);
-            font-size: 14px;
-            background: rgba(0,0,0,0.2);
-            outline: none;
-            user-select: none;
-        }
-        .assessment-content {
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
+  .survey-square-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 12px;
+  }
 
-        @media (max-width: 900px) {
-            .locker-hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .hero-left h1 { font-size: 36px; }
-            .hero-left p { margin: 0 auto 20px auto; }
-            .lms-layout { grid-template-columns: 1fr; }
-            .vault-grid { grid-template-columns: 1fr; }
-            .media-showcase-box { grid-template-columns: 1fr; text-align: center; }
-        }
-    </style>
+  .interactive-survey-square h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    color: #4caf50;
+  }
+
+  .interactive-survey-square p {
+    margin: 0;
+    color: #a5d6a7;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+</style>
 </head>
 <body>
 
-<nav>
-    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker Room</a>
-    <a id="tab-link-academy" onclick="switchTab('academy')">The Academy</a>
-    <a id="tab-link-events" onclick="switchTab('events')">Live Events</a>
-    <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
-</nav>
+<div class="interactive-event-wrapper">
 
-<section id="locker-room" class="tab-content">
-    <div class="daily-quote-card">
-        <p class="daily-quote-text" id="quote-display-text">"Loading your elite daily directive..."</p>
-        <div class="daily-quote-author" id="quote-display-author">HEARTWORK ACADEMY</div>
+  <!-- THE MAIN CLICKABLE CARD -->
+  <button class="better-me-main-card" onclick="toggleEventDetails()" aria-expanded="false" aria-controls="event-details-dropdown">
+    <div class="card-header-flex">
+      <span class="card-main-icon">🏀</span>
+      <div class="card-text-left">
+        <h2>Better Me Better Athlete</h2>
+        <p>Sept 27th, 2026 • Tap to view full event details & schedule</p>
+      </div>
+    </div>
+    <span id="dropdown-arrow-indicator" class="arrow-icon">▼</span>
+  </button>
+
+  <!-- THE HIDDEN DETAILS WINDOW (DROPS DOWN ON TOUCH) -->
+  <div id="event-details-dropdown" class="event-hidden-content" style="display: none;">
+    
+    <!-- 1. THE OFFICIAL EVENT FLYER -->
+    <div class="flyer-display-block">
+      <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
     </div>
 
-    <div class="locker-hero-grid">
-        <div class="hero-left">
-            <h1>Build The Blueprint <span>Beyond The Court</span></h1>
-            <p>You have the skill vectors down on the hardwood. Now, develop the business minds, financial compliance strategies, and branding assets needed to thrive as an elite, generational athlete.</p>
-            <button class="btn-gold" onclick="switchTab('academy')">Enter The Academy Portal →</button>
-        </div>
-        <div class="hero-right">
-            <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK ACADEMY">
-            <div style="font-size: 13px; font-weight: bold; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 1px;">Directed by Coach Keaton Cole</div>
-        </div>
-    </div>
-
-    <div class="playbook-card">
-        <h3>🧠 Academy Mission Mandate</h3>
-        <p style="font-size: 15px; font-weight: 500; line-height: 1.6; margin: 0; opacity: 0.9;">
-            "To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."
-        </p>
-    </div>
-</section>
-
-<section id="academy" class="tab-content">
-    <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="font-family:'Archivo Black'; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin: 0 0 5px 0;">Playbook Course Player</h2>
-        <p style="font-size: 14px; opacity: 0.7; margin: 0;" id="academy-top-progress">Progress: 0/10 Lessons Completed</p>
-    </div>
-
-    <div class="lms-layout">
-        <aside class="lms-sidebar">
-            <div class="lms-phase-title m1">Module 1 · Foundations</div>
-            <div class="lms-nav-item active-lesson" id="nav-l1" onclick="loadLesson(1)"><span class="badge-status" id="badge-l1">🔳</span> 1. Athlete Mindset</div>
-            <div class="lms-nav-item" id="nav-l2" onclick="loadLesson(2)"><span class="badge-status" id="badge-l2">🔳</span> 2. Body Maintenance</div>
-            <div class="lms-nav-item" id="nav-l3" onclick="loadLesson(3)"><span class="badge-status" id="badge-l3">🔳</span> 3. Early is On Time</div>
-            <div class="lms-nav-item" id="nav-l4" onclick="loadLesson(4)"><span class="badge-status" id="badge-l4">🔳</span> 4. Digital Footprint</div>
-            
-            <div class="lms-phase-title m2">Module 2 · The Business</div>
-            <div class="lms-nav-item" id="nav-l5" onclick="loadLesson(5)"><span class="badge-status" id="badge-l5">🔳</span> 5. Game as a Business</div>
-            <div class="lms-nav-item" id="nav-l6" onclick="loadLesson(6)"><span class="badge-status" id="badge-l6">🔳</span> 6. Agents & Circles</div>
-            <div class="lms-nav-item" id="nav-l7" onclick="loadLesson(7)"><span class="badge-status" id="badge-l7">🔳</span> 7. Financial Literacy</div>
-            <div class="lms-nav-item" id="nav-l8" onclick="loadLesson(8)"><span class="badge-status" id="badge-l8">🔳</span> 8. Brand & Media</div>
-            
-            <div class="lms-phase-title m3">Module 3 · Legacy</div>
-            <div class="lms-nav-item" id="nav-l9" onclick="loadLesson(9)"><span class="badge-status" id="badge-l9">🔳</span> 9. Next Level Paths</div>
-            <div class="lms-nav-item" id="nav-l10" onclick="loadLesson(10)"><span class="badge-status" id="badge-l10">🔳</span> 10. Know Myself</div>
-        </aside>
-
-        <div class="lms-player-window">
-            <div class="player-header">
-                <span id="player-banner-tag">MODULE 1.1</span>
-                <h2 id="player-title">The Athlete's Mindset</h2>
-            </div>
-            <div class="player-body" id="player-body">
-                </div>
-            <div class="player-footer">
-                <label style="display:inline-flex; align-items:center; font-size:13px; cursor:pointer; font-weight:600;">
-                    <input type="checkbox" id="lesson-check" onchange="toggleComplete()" style="margin-right:8px; transform: scale(1.1);"> Mark Unit Task as Completed
-                </label>
-                <button class="btn-gold" style="padding: 10px 22px; font-size: 11px;" onclick="nextLesson()">Next Lesson →</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- LIVE EVENTS HEADER CARD SECTION -->
-<section id="live-events-layout">
-  
-  <!-- "BETTER ME BETTER ATHLETE" INTRO CARD -->
-  <div class="better-me-athlete-card">
-    <div class="card-badge">✨ ACADEMY STANDARD</div>
-    <h2>Better Me Better Athlete</h2>
-    <p>Developing elite performance on the floor starts with building the person off it. This showcase event is designed to give competitive athletes the blueprint for personal growth, mental excellence, and sports professionalism.</p>
-  </div>
-
-  <!-- MAIN EVENT CONTAINER -->
-  <div class="main-event-block">
-    <h2 class="section-main-title">🏀 Featured Event: Elite Prep & Professional Realities</h2>
-
-    <!-- EVENT FLYER DISPLAY WINDOW -->
-    <div class="event-flyer-container">
-      <!-- You can swap 'event-flyer.jpg' with your saved flyer image filename -->
-      <img src="images/event-flyer.jpg" alt="Heartwork Academy Event Flyer" class="center-flyer-image">
-    </div>
-
-    <!-- MAIN SPEAKERS PROFILES WITH PROVIDED IMAGES -->
+    <!-- 2. THE MAIN SPEAKERS SIDE-BY-SIDE GRID -->
     <div class="speakers-showcase-grid">
       
-      <!-- SPEAKER 1 -->
+      <!-- Speaker 1 (Keaton Cole) -->
       <div class="speaker-profile-card">
         <div class="speaker-photo-wrapper">
           <img src="1000001065.jpg" alt="Keaton Cole" class="speaker-image">
@@ -522,44 +303,44 @@
         <p class="speaker-title">Founder, Heartwork Academy</p>
       </div>
 
-      <!-- SPEAKER 2 -->
+      <!-- Speaker 2 (Guest Speaker) -->
       <div class="speaker-profile-card">
         <div class="speaker-photo-wrapper">
-          <img src="1000001066.jpg" alt="Featured Guest Speaker" class="speaker-image">
+          <img src="1000001066.jpg" alt="Featured Speaker" class="speaker-image">
         </div>
         <h3>Featured Speaker</h3>
-        <p class="speaker-title">Industry Broadcaster & Professional Guide</p>
+        <p class="speaker-title">Industry Broadcaster & Guide</p>
       </div>
-
     </div>
 
-    <!-- EVENT ITINERARY OUTLINE -->
+    <!-- 3. UPDATED EVENT ITINERARY (MATCHING YOUR RUNDOWN IMAGE) -->
     <div class="event-itinerary-box">
-      <h3>Event Schedule & Outline</h3>
+      <h3>Official Event Rundown</h3>
       <div class="timeline-row">
-        <span class="time-stamp">09:00 AM</span>
-        <span class="event-details">Welcome & Academy Introduction (The Big Idea)</span>
+        <span class="time-stamp highlight-yellow">3:00 PM - 3:45 PM</span>
+        <span class="event-details">Dine In & Set The Tone</span>
       </div>
       <div class="timeline-row">
-        <span class="time-stamp">10:15 AM</span>
-        <span class="event-details">Session 1: Navigating the Business & Media Training</span>
+        <span class="time-stamp highlight-orange">3:50 PM - 4:40 PM</span>
+        <span class="event-details">Panel Discussion</span>
       </div>
       <div class="timeline-row">
-        <span class="time-stamp">12:00 PM</span>
-        <span class="event-details">Lunch Break / Networking Block</span>
+        <span class="time-stamp highlight-yellow">4:45 PM - 5:45 PM</span>
+        <span class="event-details">Media Training</span>
       </div>
       <div class="timeline-row">
-        <span class="time-stamp">01:15 PM</span>
-        <span class="event-details">Session 2: The Transition Blueprint & Wealth Habits</span>
+        <span class="time-stamp highlight-orange">5:50 PM - 6:50 PM</span>
+        <span class="event-details">Money Matters</span>
       </div>
-      <div class="timeline-row">
-        <span class="time-stamp">03:00 PM</span>
-        <span class="event-details">Open Q&A Panel & Closing Remarks</span>
+      <div class="timeline-row closing-row">
+        <span class="time-stamp">Closing</span>
+        <span class="event-details">Closing Remarks • Food & SWAG Included</span>
       </div>
     </div>
 
-    <!-- THE INTERACTIVE SURVEY SQUARE -->
+    <!-- 4. STANDALONE INTERACTIVE SURVEY SQUARE -->
     <div class="survey-square-container">
+      <!-- Swap YOUR_GOOGLE_FORMS_SURVEY_LINK with your actual active survey link when ready -->
       <a href="YOUR_GOOGLE_FORMS_SURVEY_LINK" target="_blank" class="interactive-survey-square">
         <div class="survey-square-content">
           <span class="survey-square-icon">📋</span>
@@ -570,340 +351,30 @@
     </div>
 
   </div>
-</section>
-
-
-
-<section id="store" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: var(--gold-primary); text-transform: uppercase; font-size: 24px; margin-bottom: 5px;">The Vault</h2>
-    <p style="text-align: center; font-size: 15px; opacity: 0.7; margin-top: 0; margin-bottom: 40px;">Select your live event entry ticket options and premium training assets below.</p>
-    
-    <div class="media-showcase-box">
-        <div>
-            <img src="8A3D1794-1.jpg" alt="Point Guard Cover" class="book-img-display">
-            <h4 style="text-align: center; margin: 15px 0 5px 0; font-family: 'Archivo Black'; font-size: 15px; text-transform: uppercase;">Point Guard: A Diary</h4>
-            <p style="text-align: center; font-size: 12px; margin: 0; color: var(--gold-primary); font-weight: bold;">By Keaton Cole</p>
-        </div>
-        <div>
-            <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">🎥 Book Trailer Launch Presentation</span>
-            <div class="video-player-container">
-                <video controls width="100%" poster="8A3D1794-1.jpg">
-                    <source src="book-launch-promo.mp4" type="video/mp4">
-                    Your web client platform does not natively support HTML5 video loops.
-                </video>
-            </div>
-            <p style="font-size: 13px; opacity: 0.7; line-height: 1.5; margin: 15px 0 0 0;">
-                Watch the official high-energy promotional video asset used during the initial platform launch of Coach Keaton Cole's master journal work.
-            </p>
-        </div>
-    </div>
-
-   <div class="vault-grid">
-  <!-- Interactive Video Playback Square -->
-  <div class="vault-square video-trigger" onclick="openVaultVideo('YOUR_VIDEO_EMBED_OR_FILE_URL')">
-    <div class="vault-overlay">
-      <span class="play-icon">▶</span>
-      <h3>Stream Session Recording</h3>
-      <p>Tap to watch the complete training replay</p>
-    </div>
-  </div>
 </div>
 
-<!-- Lightbox Modal for Seamless Tablet Playback -->
-<div id="videoModal" class="video-modal" style="display:none;" onclick="closeVaultVideo()">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <iframe id="vaultPlayer" width="100%" height="450" src="" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
+<!-- MINI-SCRIPT TO RUN THE TOUCH/CLICK TOGGLE ACTION -->
 <script>
-function openVaultVideo(videoUrl) {
-  document.getElementById('vaultPlayer').src = videoUrl;
-  document.getElementById('videoModal').style.display = 'flex';
-}
-function closeVaultVideo() {
-  document.getElementById('videoModal').style.display = 'none';
-  document.getElementById('vaultPlayer').src = '';
+function toggleEventDetails() {
+  var detailsBox = document.getElementById("event-details-dropdown");
+  var arrow = document.getElementById("dropdown-arrow-indicator");
+  var button = document.querySelector(".better-me-main-card");
+  
+  if (detailsBox.style.display === "none" || detailsBox.style.display === "") {
+    detailsBox.style.display = "block";
+    button.setAttribute("aria-expanded", "true");
+    arrow.textContent = "▲";
+    // Smoothly curve the bottom borders of the main card when open to join the dropdown box
+    button.style.borderRadius = "16px 16px 0 0";
+  } else {
+    detailsBox.style.display = "none";
+    button.setAttribute("aria-expanded", "false");
+    arrow.textContent = "▼";
+    // Return to standard smooth card edges when closed
+    button.style.borderRadius = "16px";
+  }
 }
 </script>
 
-
-        <div class="vault-card featured">
-            <div>
-                <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">🔥 Best Value Experience</span>
-                <h3 style="font-size: 38px; margin: 0; color: var(--gold-primary); font-family:'Archivo Black';">$55</h3>
-                <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">Premium Athlete Bundle</h4>
-                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 25px 0; line-height: 1.5;">Full live event admission, complete venue catering, academy access, and a physical copy of <strong>POINT GUARD: A Diary</strong>.</p>
-            </div>
-            <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold" style="width: 100%; box-sizing: border-box;">Get Full Bundle</a>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <div class="vault-grid">
-        <div class="vault-card">
-            <div>
-                <h4 style="margin: 0 0 8px 0; font-family: 'Archivo Black'; text-transform: uppercase; font-size: 14px;">Purchase Standalone Copy</h4>
-                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Order a separate copy of the standalone physical paperback book directly through global Amazon distribution portals.</p>
-            </div>
-            <a href="https://www.amazon.ca/POINT-GUARD-DIARY-KEATON-COLE/dp/1777201519/" target="_blank" class="btn-gold" style="background: #e65c00; color: white; width: 100%; box-sizing: border-box;">Buy on Amazon Portals</a>
-        </div>
-
-        <div class="vault-card">
-            <div>
-                <h3 style="font-size: 34px; margin: 0; color: var(--gold-primary); font-family:'Archivo Black';">$600</h3>
-                <h4 style="margin: 15px 0 8px 0; text-transform: uppercase; font-size: 14px;">Team Workshop Package</h4>
-                <p style="font-size: 13px; opacity: 0.7; margin: 0 0 20px 0; line-height: 1.5;">Book premium custom development instruction and program alignment sessions directly for your entire roster.</p>
-            </div>
-            <a href="https://buy.stripe.com/00w9ASfV54vi1TI8Ya7kc00" target="_blank" class="btn-gold" style="width: 100%; box-sizing: border-box;">Book Workshop</a>
-        </div>
-    </div>
-</section>
-
-<script>
-    const motivationalQuotesBase = [
-        { text: "Your digital footprint is either building an asset class or processing an explicit liability. Review every story before it posts.", author: "Keaton Cole" },
-        { text: "If you want to attain sustainable wealth options, configure structural boundaries on overhead spending parallel to asset jumps.", author: "Keaton Cole" },
-        { text: "Skill sets get you through the front gateway entrance. Professional compliance, decorum, and execution keep you in the room.", author: "Keaton Cole" },
-        { text: "I've missed more than 9,000 shots in my career... I've failed over and over again in my life. And that is why I succeed.", author: "Michael Jordan" },
-        { text: "You can't achieve massive elite execution benchmarks without processing a high degree of tedious, mundane everyday framework metrics.", author: "Kobe Bryant" },
-        { text: "The cross-functional business translation profile of an athlete relies on applying team orchestration directly into systems.", author: "LeBron James" },
-        { text: "Greatness is not a fixed genetic baseline assignment. It is an iterative compounding cycle of calculated micro-efforts.", author: "Author Maxim" },
-        { text: "Do not adapt to the surrounding environment frameworks. Disrupt them by executing calculated excellence consistently.", author: "Speaker Core" }
-    ];
-
-    function calculateActiveQuoteCycle() {
-        const epochReferenceDay = new Date(2026, 0, 1); 
-        const todaySystemClock = new Date();
-        const timeDeltaSpan = todaySystemClock - epochReferenceDay;
-        const totalDaysElapsed = Math.floor(timeDeltaSpan / (1000 * 60 * 60 * 24));
-        
-        const secureDayOffset = totalDaysElapsed >= 0 ? totalDaysElapsed : 0;
-        const selectedIndex = secureDayOffset % motivationalQuotesBase.length;
-        
-        const activeQuote = motivationalQuotesBase[selectedIndex];
-        document.getElementById('quote-display-text').innerText = `"${activeQuote.text}"`;
-        document.getElementById('quote-display-author').innerText = activeQuote.author;
-    }
-
-    function switchTab(tabId) {
-        const sections = document.querySelectorAll('.tab-content');
-        sections.forEach(sec => sec.style.display = 'none');
-        document.getElementById(tabId).style.display = 'block';
-        
-        const anchors = document.querySelectorAll('nav a');
-        anchors.forEach(a => a.classList.remove('active-tab'));
-        
-        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
-        if(tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
-        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
-        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
-        window.scrollTo(0,0);
-    }
-
-    let currentModuleId = 1;
-    let completeStatus = Array(11).fill(false);
-    let userCourseNotes = { 
-        1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "",
-        "assessment": ["", "", "", "", "", "", "", "", "", "", ""] 
-    };
-
-    function trackNoteChange(moduleId, value) { userCourseNotes[moduleId] = value; }
-    function trackAssessmentChange(index, value) { userCourseNotes["assessment"][index] = value; }
-
-    const lessonsData = {
-        1: { 
-            tag: "MODULE 1.1", 
-            title: "The Athlete's Mindset", 
-            prompt: "What triggers performance anxiety during intense periods of competitive evaluation?", 
-            quizQ: "How does a growth configuration process mistakes on court?", 
-            quizOptions: ["By treating execution breakdown as feedback data", "By completely ignoring performance review sequences"], 
-            correctIdx: 0, 
-            html: `<p><strong>Core Concept:</strong> Your mind handles high stakes and pressure long before physical skill execution steps onto competitive floors. Setbacks are data points, not failures.</p>` 
-        },
-        2: { 
-            tag: "MODULE 1.2", 
-            title: "Your Body Carries You", 
-            prompt: "Identify one sleep or proactive fueling baseline adjustment strategy to support high output windows.", 
-            quizQ: "When is the optimal target physical recovery window opened?", 
-            quizOptions: ["Immediately overnight during standard sleeping cycles", "30-60 minutes post-workout via macro loading", "The morning following an intense tracking block"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Sustainable careers rely heavily upon structured active mobility work, targeted sleeping windows, and strict nutrition rules.</p>` 
-        },
-        3: { 
-            tag: "MODULE 1.3", 
-            title: "Early is On Time", 
-            prompt: "Draft your routine sequence blueprint to ensure arrival metrics clear target parameters consistently.", 
-            quizQ: "What does arriving early to media setups communicate directly to executives?", 
-            quizOptions: ["A lack of alternative lifestyle options", "Professional reliability and structural compliance", "Unnecessary expenditure of operational baseline energy"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Punctuality directly communicates professional reliability to training personnel, media partners, and enterprise stakeholders.</p>` 
-        },
-        4: { 
-            tag: "MODULE 1.4", 
-            title: "Digital Footprint", 
-            prompt: "Perform a baseline critique audit of your public messaging channels. What liabilities exist?", 
-            quizQ: "What parameter dictates permanent risk metrics regarding public platform uploads?", 
-            quizOptions: ["The size of the current verification follow tier", "The screenshot test—everything archived can resurface", "The type of content deletion filters active"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Brand properties and corporate evaluation systems carefully review interactive archives across public messaging platforms.</p>` 
-        },
-        5: { 
-            tag: "MODULE 2.1", 
-            title: "Game as a Business", 
-            prompt: "How does enterprise monetization and league structural compliance affect modern athletic career steps?", 
-            quizQ: "What role does an elite team builder occupy inside the macro sports commerce system?", 
-            quizOptions: ["Hourly external labor assets", "The core foundational product asset", "Passive contractor units"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Professional leagues function primarily as content generation entertainment platforms where players act as foundational businesses.</p>` 
-        },
-        6: { 
-            tag: "MODULE 2.2", 
-            title: "Agents & Circles", 
-            prompt: "List three validation requirements you expect representation frameworks to pass before signing.", 
-            quizQ: "What criteria secures an operational representation pact safely?", 
-            quizOptions: ["A friendly verbal pact during family dinners", "Explicit written stipulations passed through third-party audits", "A string of confirmation text alerts"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Keep your close representation structures restricted to individuals whose core business practices face rigorous external verification audits.</p>` 
-        },
-        7: { 
-            tag: "MODULE 2.3", 
-            title: "Financial Literacy", 
-            prompt: "Detail your basic allocation model for separating temporary operational overhead from asset foundations.", 
-            quizQ: "What describes the lifestyle creep trap common to rookie professional windows?", 
-            quizOptions: ["Relocating closer to standard facility zones", "Expanding structural consumption parameters matching revenue jumps", "Standard inflation shifts index updates"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Maintain simple cash oversight procedures and retain clear distribution boundaries separating principal funds from temporary operations costs.</p>` 
-        },
-        8: { 
-            tag: "MODULE 2.4", 
-            title: "Brand & Media", 
-            prompt: "Draft a clear template answer sequence intended to defuse high-pressure hostile interview lines.", 
-            quizQ: "Which core skill asset updates via intentional and strategic media distribution cycles?", 
-            quizOptions: ["Vertical athletic response velocity", "Composure metrics and personal enterprise protection", "Aerobic baseline conditioning volume"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Cultivate distinct distribution channels for your audience, enabling direct connection options completely independent of specific sports team contracts.</p>` 
-        },
-        9: { 
-            tag: "MODULE 3.1", 
-            title: "Next Level Paths", 
-            prompt: "List validation parameters separating international development, domestic professional tiers, and college tracking plans.", 
-            quizQ: "What item provides structural safety metrics across complex team recruitment procedures?", 
-            quizOptions: ["The aesthetic value design of standard jerseys", "Rigorous cross-alignment in parameter transparency and insurance protections", "Arena seat allocation volumes"], 
-            correctIdx: 1, 
-            html: `<p><strong>Core Concept:</strong> Explore complex selection pathways spanning options across international clubs, college recruitment frameworks, and developer league layers.</p>` 
-        },
-        10: {
-            isAssessment: true, 
-            tag: "MODULE 3.2", 
-            title: "Know Myself Assessment Workbook",
-            questions: [
-                { q: "1. Who am I?", sub: "If you were to describe yourself, what is there to say about you?" },
-                { q: "2. What am I good at?", sub: "Something other than basketball! List strengths (cooking, writing, communicating, drawing, listening, etc.)." },
-                { q: "3. Who do I want to become?", sub: "Think about the next 6 months, 5 years, and entirely (Father, Professional Baller, Teacher, Author, etc.). What needs to change, let go of, or keep to be that person daily?" },
-                { q: "4. What expectations are you expecting to manifest?", sub: "What are your goals? Think about basketball, in life as a brother/sister, as a mature adult, etc." },
-                { q: "5. What kind of books do I enjoy reading?", sub: "Think of sports magazines, specific authors, or genres. Why do you like them?" },
-                { q: "6. What sports outlet do I listen to and why?", sub: "Examples: ESPN, Uninterrupted, First Take, etc." },
-                { q: "7. What do people say about me?", sub: "Think about what your family, friends, and teammates say about your character." },
-                { q: "8. Who is my favorite basketball player and why?", sub: "Think about their style of play, if your talent level matches theirs, and what attracts you to their off-court character." },
-                { q: "9. Post-Ball Career Execution Moves", sub: "When you finish your ball career, what do you want to do (during if you could or after)? E.g., Shoe brands, team ownership stakes, media networks." },
-                { q: "10. Legacy Impact Blueprint", sub: "What impact do you want to leave behind for the next generation? What do you want to pass down?" },
-                { q: "11. The Satisfaction Reality Check", sub: "If you were to reach your goal, how will you feel? If that goal doesn't provide validation, how will you pivot?" }
-            ]
-        }
-    };
-
-    function loadLesson(id) {
-        currentModuleId = id;
-        const data = lessonsData[id];
-        document.getElementById('player-banner-tag').innerText = data.tag;
-        document.getElementById('player-title').innerText = data.title;
-        let combinedHtml = "";
-        
-        if (data.isAssessment) {
-            combinedHtml += `<p style="font-size:14px; opacity:0.8; margin-bottom: 15px;"><em>[DOWNLOADABLE PDF WORKBOOK MODE]</em> Complete your ultimate internal profile mapping file fields below.</p><div>`;
-            data.questions.forEach((item, index) => {
-                const existingVal = userCourseNotes["assessment"][index] || "";
-                combinedHtml += `
-                    <details class="assessment-details">
-                        <summary>${item.q} <span style="font-size:11px; opacity:0.5; float:right;">▼ Expand Question Fields</span></summary>
-                        <div class="assessment-content">
-                            <p style="font-size:13px; color:rgba(255,255,255,0.7); margin:0 0 10px 0; line-height: 1.4;">${item.sub}</p>
-                            <textarea class="reflection-textarea" style="height:90px;" oninput="trackAssessmentChange(${index}, this.value)" placeholder="Type your personal blueprint insights here...">${existingVal}</textarea>
-                        </div>
-                    </details>`;
-            });
-            combinedHtml += `</div>`;
-        } else {
-            combinedHtml = data.html + `
-                <div class="interactive-box">
-                    <span style="color:var(--gold-primary); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">✍️ Playbook Reflection Workbook Notebook</span>
-                    <p style="font-size:14px; margin:5px 0 10px 0;">${data.prompt}</p>
-                    <textarea class="reflection-textarea" oninput="trackNoteChange(${id}, this.value)" placeholder="Type response data points here...">${userCourseNotes[id] || ""}</textarea>
-                </div>
-                <div class="interactive-box" style="border-color: rgba(255,128,51,0.25);">
-                    <span style="color:#ff8033; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; display:block; margin-bottom:5px;">🧠 Lesson Knowledge Check</span>
-                    <p style="font-size:14px; margin:0 0 12px 0; font-weight:600;">${data.quizQ}</p>
-                    <div id="quiz-options-container">`;
-            data.quizOptions.forEach((opt, idx) => {
-                combinedHtml += `<div class="quiz-option" onclick="submitAnswer(this, ${idx}, ${data.correctIdx})">${opt}</div>`;
-            });
-            combinedHtml += `</div></div>`;
-        }
-        
-        document.getElementById('player-body').innerHTML = combinedHtml;
-        document.getElementById('lesson-check').checked = completeStatus[id];
-        
-        for (let i = 1; i <= 10; i++) { 
-            const el = document.getElementById('nav-l' + i); 
-            if(el) el.classList.remove('active-lesson'); 
-        }
-        document.getElementById('nav-l' + id).classList.add('active-lesson');
-    }
-
-    function submitAnswer(element, selectedIdx, correctIdx) {
-        const siblings = element.parentNode.children;
-        for(let item of siblings) item.classList.remove('correct', 'incorrect');
-        if(selectedIdx === correctIdx) {
-            element.classList.add('correct');
-            if(!completeStatus[currentModuleId]) { 
-                document.getElementById('lesson-check').checked = true; 
-                toggleComplete(); 
-            }
-        } else {
-            element.classList.add('incorrect'); 
-            siblings[correctIdx].classList.add('correct');
-        }
-    }
-
-    function toggleComplete() {
-        const checked = document.getElementById('lesson-check').checked;
-        completeStatus[currentModuleId] = checked;
-        const badge = document.getElementById('badge-l' + currentModuleId);
-        if(badge) badge.innerText = checked ? "✅" : "🔳";
-        
-        // Calculate Total Active Checkmarks
-        let currentCount = 0;
-        for(let i = 1; i <= 10; i++) { if(completeStatus[i]) currentCount++; }
-        document.getElementById('academy-top-progress').innerText = `Progress: ${currentCount}/10 Lessons Completed`;
-    }
-
-    function nextLesson() { 
-        if (currentModuleId < 10) {
-            loadLesson(currentModuleId + 1); 
-        } else {
-            alert("Excellent Work! You have reviewed all foundational parameters inside the Heartwork Academy Course Player blueprint.");
-            loadLesson(1);
-        }
-    }
-
-    window.onload = function() {
-        calculateActiveQuoteCycle();
-        switchTab('locker-room');
-        loadLesson(1);
-    };
-</script>
 </body>
 </html>
