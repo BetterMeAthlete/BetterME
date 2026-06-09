@@ -490,66 +490,88 @@
     </div>
 </section>
 
-<section id="events" class="tab-content">
-    <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">Events & Focus</h2>
-    
-    <details class="card">
-        <summary style="cursor: pointer; outline: none; list-style: none;">
-            <span style="color:#ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1.5px;">👇 Tap to Expand Schedule & Speakers</span>
-            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
-            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
-            
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
-                <div>📅 Sunday, Sept 27th</div>
-                <div>🕒 3:00 PM - 7:00 PM</div>
-                <div>📍 Brampton, ON</div>
-            </div>
-            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
-        </summary>
+<!-- LIVE EVENTS HEADER CARD SECTION -->
+<section id="live-events-layout">
+  
+  <!-- "BETTER ME BETTER ATHLETE" INTRO CARD -->
+  <div class="better-me-athlete-card">
+    <div class="card-badge">✨ ACADEMY STANDARD</div>
+    <h2>Better Me Better Athlete</h2>
+    <p>Developing elite performance on the floor starts with building the person off it. This showcase event is designed to give competitive athletes the blueprint for personal growth, mental excellence, and sports professionalism.</p>
+  </div>
 
-        <div class="workshop-details" style="margin-top: 20px;">
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
-            <div class="speaker-container">
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
-                    <div class="speaker-name">Akil Augustine</div>
-                    <div class="speaker-title">MediaLit</div>
-                </div>
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
-                    <div class="speaker-name">Christopher Duff</div>
-                    <div class="speaker-title">Entrepreneur</div>
-                </div>
-            </div>
+  <!-- MAIN EVENT CONTAINER -->
+  <div class="main-event-block">
+    <h2 class="section-main-title">🏀 Featured Event: Elite Prep & Professional Realities</h2>
 
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Event Rundown</span>
-            <div class="rundown-item">
-                <div class="rundown-time">3:00PM - 3:45PM</div>
-                <div class="rundown-block">Dine In & Set Tone</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">3:50PM - 4:40PM</div>
-                <div class="rundown-block">Panel Discussion</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">4:45PM - 5:45PM</div>
-                <div class="rundown-block">Media Training</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">5:50PM - 6:50PM</div>
-                <div class="rundown-block">Money Matters</div>
-            </div>
-
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block;">Secure My Seat</a>
-        </div>
-    </details>
-
-    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
-        <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
+    <!-- EVENT FLYER DISPLAY WINDOW -->
+    <div class="event-flyer-container">
+      <!-- You can swap 'event-flyer.jpg' with your saved flyer image filename -->
+      <img src="images/event-flyer.jpg" alt="Heartwork Academy Event Flyer" class="center-flyer-image">
     </div>
+
+    <!-- MAIN SPEAKERS PROFILES WITH PROVIDED IMAGES -->
+    <div class="speakers-showcase-grid">
+      
+      <!-- SPEAKER 1 -->
+      <div class="speaker-profile-card">
+        <div class="speaker-photo-wrapper">
+          <img src="1000001065.jpg" alt="Keaton Cole" class="speaker-image">
+        </div>
+        <h3>Keaton Cole</h3>
+        <p class="speaker-title">Founder, Heartwork Academy</p>
+      </div>
+
+      <!-- SPEAKER 2 -->
+      <div class="speaker-profile-card">
+        <div class="speaker-photo-wrapper">
+          <img src="1000001066.jpg" alt="Featured Guest Speaker" class="speaker-image">
+        </div>
+        <h3>Featured Speaker</h3>
+        <p class="speaker-title">Industry Broadcaster & Professional Guide</p>
+      </div>
+
+    </div>
+
+    <!-- EVENT ITINERARY OUTLINE -->
+    <div class="event-itinerary-box">
+      <h3>Event Schedule & Outline</h3>
+      <div class="timeline-row">
+        <span class="time-stamp">09:00 AM</span>
+        <span class="event-details">Welcome & Academy Introduction (The Big Idea)</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">10:15 AM</span>
+        <span class="event-details">Session 1: Navigating the Business & Media Training</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">12:00 PM</span>
+        <span class="event-details">Lunch Break / Networking Block</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">01:15 PM</span>
+        <span class="event-details">Session 2: The Transition Blueprint & Wealth Habits</span>
+      </div>
+      <div class="timeline-row">
+        <span class="time-stamp">03:00 PM</span>
+        <span class="event-details">Open Q&A Panel & Closing Remarks</span>
+      </div>
+    </div>
+
+    <!-- THE INTERACTIVE SURVEY SQUARE -->
+    <div class="survey-square-container">
+      <a href="YOUR_GOOGLE_FORMS_SURVEY_LINK" target="_blank" class="interactive-survey-square">
+        <div class="survey-square-content">
+          <span class="survey-square-icon">📋</span>
+          <h3>Take Event Survey</h3>
+          <p>Tap here to open the questionnaire and submit your session feedback.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
 </section>
+
 
 
 <section id="store" class="tab-content">
