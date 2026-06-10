@@ -1,91 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Heartwork Academy Player Portal</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartwork Academy</title>
 <style>
-  /* --- GLOBAL APP CORE THEME & OUTLINE --- */
-  * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #0c0c0c;
-    color: #ffffff;
+  /* --- BULLETPROOF DARK CORE RESET --- */
+  html, body {
+    background-color: #0d0d0d !important;
+    color: #ffffff !important;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: sans-serif;
   }
-
-  /* --- PREMIUM NAVIGATION HEADER --- */
-  header {
-    background-color: #121212;
-    border-bottom: 2px solid #ff5722; /* Core Academy Orange Accent Outline */
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-container {
-    max-width: 1000px;
+  
+  /* --- CONTAINER LIMITS --- */
+  .app-layout-wrapper {
+    max-width: 800px;
     margin: 0 auto;
+    padding: 15px;
+  }
+
+  /* --- BRANDING HEADER --- */
+  .app-main-header {
+    background-color: #161616;
+    border-bottom: 2px solid #ff5722;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .app-main-header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .app-main-header span {
+    color: #ff5722;
+  }
+
+  /* --- NAVIGATION BUTTONS GRID --- */
+  .navigation-grid-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 25px;
+  }
+  .nav-action-button {
+    background-color: #1c1c1c;
+    border: 1px solid #333333;
+    color: #aaaaaa;
+    padding: 12px 4px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .nav-action-button.active-tab {
+    color: #ffffff;
+    border-color: #ff5722;
+    background-color: rgba(255, 87, 34, 0.1);
+  }
+
+  /* --- CARD INTERACTIVE VIEWPORTS --- */
+  .content-display-panel {
+    display: none;
+  }
+  .content-display-panel.visible-panel {
+    display: block;
+  }
+
+  /* --- LOCKER ROOM MOTIVATION --- */
+  .motivation-hero-box {
+    background: #1c1c1c;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    border: 1px solid #2d2d2d;
+  }
+  .motivation-hero-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* --- LIVE EVENTS DROPDOWN SYSTEM --- */
+  .event-clickable-trigger {
+    width: 100%;
+    background: #1c1c1c;
+    border: 2px solid #ff5722;
+    border-radius: 10px;
+    padding: 18px;
+    color: #ffffff;
+    text-align: left;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  .dropdown-revealed-box {
+    background: #141414;
+    border: 2px solid #ff5722;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 20px 15px;
+    margin-top: -2px;
+  }
+  .flyer-img-frame img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+  .speakers-double-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .individual-speaker-card {
+    background: #222;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #333;
+  }
+  .speaker-round-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    overflow: hidden;
+    border: 2px solid #ff5722;
+  }
+  .speaker-round-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  .brand-logo {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 1px;
+  /* SCHEDULE rows */
+  .itinerary-schedule-container {
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .schedule-row-item {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 14px;
+  }
+  .badge-label {
+    width: 130px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  /* GREEN SURVEY CARD */
+  .standalone-survey-square {
+    display: block;
+    background: linear-gradient(135deg, #112015 0%, #09120c 100%);
+    border: 2px solid #2e7d32;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
     color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
-  .brand-logo span {
-    color: #ff5722;
+  /* --- VAULT CARD BOXES --- */
+  .vault-squares-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
-
-  /* --- APP NAVIGATION TABS BAR --- */
-  nav {
-    background-color: #161616;
-    border-bottom: 1px solid #222222;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .nav-tabs {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    padding: 0;
-    list-style: none;
-  }
-
-  .tab-btn {
-    background: none;
-    border: none;
-    color: #888888;
-    padding: 16px 24px;
-    font-size: 15px;
-    font-weight: 600;
+  .vault-interactive-square {
+    background: #1c1c1c;
+    border-left: 4px solid #ff5722;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border-bottom: 3px solid transparent;
   }
 
-  .tab-btn:hover {
-    color: #ffffff;
+  /* --- ACADEMY OUTLINK BLOCK --- */
+  .academy-portal-frame {
+    background: #1c1c1c;
+    border: 1px solid #ff5722;
+    border-radius: 12px;
+    padding: 30px 15px;
+    text-align: center;
   }
+  .academy-portal-frame a {
+    display: inline-block;
+    background: #ff5722;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 28px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 15px 0;
+  }
+</style>
+</head>
+<body>
 
-  .tab-btn.active {
-    color: #ff
+<div class="app-layout-wrapper">
+
+  <div class="app-main-header">
+    <h1>HEARTWORK <span>ACADEMY</span></h1>
+  </div>
+
+  <div class="navigation-grid-row">
+    <button class="nav-action-button active-tab" id="btn-lock" onclick="openAppTab('view-lock', 'btn-lock')">Locker</button>
+    <button class="nav-action-button" id="btn-even" onclick="openAppTab('view-even', 'btn-even')">Events</button>
+    <button class="nav-action-button" id="btn-vaul" onclick="openAppTab('view-vaul', 'btn-vaul')">Vault</button>
+    <button class="nav-action-button" id="btn-acad" onclick="openAppTab('view-acad', 'btn-acad')">Academy</button>
+  </div>
+
+  <div id="view-lock" class="content-display-panel visible-panel">
+    <div class="motivation-hero-box">
+      <p>“Every skill you build in sports — discipline, teamwork, pressure management, goal-setting — is a life skill in disguise.”</p>
+      <strong style="color:#ff5722;">- Keaton Cole</strong>
+    </div>
+  </div>
+
+  <div id="view-even" class="content-display-panel">
+    <button class="event-clickable-trigger" onclick="toggleAccordionWindow()">
+      <div>
+        <strong style="font-size:16px; display:block; margin-bottom:2px;">Better Me Better Athlete</strong>
+        <span style="color:#aaa; font-size:13px;">Sept 27th • Tap to open rundown details</span>
+      </div>
+      <span id="indicator-arrow" style="color:#ff5722; font-weight:bold;">▼</span>
+    </button>
+    
+    <div id="dropdown-target" class="dropdown-revealed-box" style="display: none;">
+      
+      <div class="flyer-img-frame">
+        <img src="1000000997.png" alt="Event Details Flyer">
+      </div>
+
+      <div class="speakers-double-column">
+        <div class="individual-speaker-card">
+          <div class="speaker-round-avatar"><img src="1000001065.jpg" alt="Keaton Cole"></div>
+          <strong style="font-size:14px; display:block;">Keaton Cole</strong>
+          <span style="font-size:11px; color:#ff5722;">Academy Founder</span>
+        </div>
+        <div class="individual-speaker-card">
+          <div class="speaker-round-avatar"><img src="1000001066.jpg" alt="Featured Speaker"></div>
+          <strong style="font-size:14px; display:block;">Featured Speaker</strong>
+          <span style="font-size:11px; color:#ff5722;">Industry Expert</span>
+        </div>
+      </div>
+
+      <div class="itinerary-schedule-container">
+        <div class="schedule-row-item">
+          <span class="badge-label" style="background:#ffb300; color:#000;">3:00-3:45 PM</span>
+          <span class
