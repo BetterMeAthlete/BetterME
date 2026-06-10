@@ -1,264 +1,674 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heartwork Academy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Heartwork Academy Player Portal</title>
+
 <style>
-  /* --- BULLETPROOF DARK CORE RESET --- */
-  html, body {
-    background-color: #0d0d0d !important;
-    color: #ffffff !important;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+  /* --- GLOBAL APP CORE THEME & OUTLINE --- */
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
   }
   
-  /* --- CONTAINER LIMITS --- */
-  .app-layout-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 15px;
-  }
-
-  /* --- BRANDING HEADER --- */
-  .app-main-header {
-    background-color: #161616;
-    border-bottom: 2px solid #ff5722;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  .app-main-header h1 {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0c0c0c;
+    color: #ffffff;
     margin: 0;
-    font-size: 24px;
-    letter-spacing: 1px;
-  }
-  .app-main-header span {
-    color: #ff5722;
-  }
-
-  /* --- NAVIGATION BUTTONS GRID --- */
-  .navigation-grid-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 25px;
-  }
-  .nav-action-button {
-    background-color: #1c1c1c;
-    border: 1px solid #333333;
-    color: #aaaaaa;
-    padding: 12px 4px;
-    font-size: 13px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: center;
-  }
-  .nav-action-button.active-tab {
-    color: #ffffff;
-    border-color: #ff5722;
-    background-color: rgba(255, 87, 34, 0.1);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
-  /* --- CARD INTERACTIVE VIEWPORTS --- */
-  .content-display-panel {
-    display: none;
-  }
-  .content-display-panel.visible-panel {
-    display: block;
-  }
-
-  /* --- LOCKER ROOM MOTIVATION --- */
-  .motivation-hero-box {
-    background: #1c1c1c;
-    border-radius: 12px;
-    padding: 30px 20px;
-    text-align: center;
-    border: 1px solid #2d2d2d;
-  }
-  .motivation-hero-box p {
-    font-size: 18px;
-    line-height: 1.5;
-    font-style: italic;
+  /* --- PREMIUM NAVIGATION HEADER --- */
+  header {
+    background-color: #121212;
+    border-bottom: 2px solid #ff5722; /* Core Academy Orange Accent Outline */
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
-  /* --- LIVE EVENTS DROPDOWN SYSTEM --- */
-  .event-clickable-trigger {
-    width: 100%;
-    background: #1c1c1c;
-    border: 2px solid #ff5722;
-    border-radius: 10px;
-    padding: 18px;
-    color: #ffffff;
-    text-align: left;
-    cursor: pointer;
+  .header-container {
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .dropdown-revealed-box {
-    background: #141414;
+
+  .brand-logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-logo span {
+    color: #ff5722;
+  }
+
+  /* --- APP NAVIGATION TABS BAR --- */
+  nav {
+    background-color: #161616;
+    border-bottom: 1px solid #222222;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .nav-tabs {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: #888888;
+    padding: 16px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 3px solid transparent;
+  }
+
+  .tab-btn:hover {
+    color: #ffffff;
+  }
+
+  .tab-btn.active {
+    color: #ff5722;
+    border-bottom: 3px solid #ff5722;
+    background: rgba(255, 87, 34, 0.04);
+  }
+
+  /* --- MAIN VIEWS CONTAINER --- */
+  main {
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  .app-view {
+    display: none; /* Controlled via script switches */
+  }
+
+  .app-view.active-view {
+    display: block;
+    animation: fadeIn 0.25s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ==========================================================================
+     TAB 1 LAYOUT: LOCKER ROOM (UNCHANGED MOTIVATIONAL QUOTES ARCHITECTURE)
+     ========================================================================== */
+  .locker-room-hero {
+    background: linear-gradient(135deg, #181818 0%, #222222 100%);
+    border-radius: 12px;
+    padding: 40px 24px;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    margin-bottom: 24px;
+  }
+
+  .quote-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+    color: #ff5722;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  #daily-quote-text {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+    color: #ffffff;
+    font-style: italic;
+  }
+
+  #daily-quote-author {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff5722;
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     TAB 2 LAYOUT: LIVE EVENTS (INTERACTIVE BETTER ME BETTER ATHLETE DROPDOWN)
+     ========================================================================== */
+  .better-me-main-card {
+    width: 100%;
+    background: #121212;
+    border: 2px solid #ff5722; 
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: border-radius 0.2s ease;
+  }
+
+  .card-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .card-main-icon {
+    font-size: 32px;
+    background: rgba(255, 87, 34, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .card-text-left h2 {
+    margin: 0 0 4px 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .card-text-left p {
+    margin: 0;
+    color: #aaaaaa;
+    font-size: 14px;
+  }
+
+  .arrow-icon {
+    font-size: 16px;
+    color: #ff5722;
+    transition: transform 0.3s ease;
+  }
+
+  .event-hidden-content {
+    background-color: #161616;
     border: 2px solid #ff5722;
     border-top: none;
-    border-radius: 0 0 10px 10px;
-    padding: 20px 15px;
+    border-radius: 0 0 12px 12px;
+    padding: 24px 16px;
     margin-top: -2px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   }
-  .flyer-img-frame img {
+
+  .flyer-display-block {
+    text-align: center;
+    margin-bottom: 25px;
+    background: #000000;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #222222;
+  }
+
+  .responsive-flyer-img {
     max-width: 100%;
     height: auto;
     border-radius: 6px;
-    margin-bottom: 20px;
+    max-height: 500px;
   }
-  .speakers-double-column {
+
+  .speakers-showcase-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 25px;
   }
-  .individual-speaker-card {
-    background: #222;
-    padding: 12px;
-    border-radius: 6px;
+
+  .speaker-profile-card {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 16px;
     text-align: center;
-    border: 1px solid #333;
+    border: 1px solid #2d2d2d;
   }
-  .speaker-round-avatar {
-    width: 70px;
-    height: 70px;
+
+  .speaker-photo-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 12px auto;
     border-radius: 50%;
-    margin: 0 auto 10px auto;
     overflow: hidden;
     border: 2px solid #ff5722;
   }
-  .speaker-round-avatar img {
+
+  .speaker-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  /* SCHEDULE rows */
-  .itinerary-schedule-container {
-    background: #1c1c1c;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  .event-itinerary-box {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #2d2d2d;
   }
-  .schedule-row-item {
+
+  .event-itinerary-box h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #2d2d2d;
+    padding-bottom: 8px;
+  }
+
+  .timeline-row {
     display: flex;
-    padding: 8px 0;
+    align-items: center;
+    padding: 10px 0;
     border-bottom: 1px solid #2a2a2a;
-    font-size: 14px;
   }
-  .badge-label {
-    width: 130px;
+
+  .time-stamp {
+    width: 140px;
     font-weight: bold;
-    padding: 2px 6px;
+    font-size: 12px;
+    padding: 4px 8px;
     border-radius: 4px;
     text-align: center;
   }
 
-  /* GREEN SURVEY CARD */
-  .standalone-survey-square {
-    display: block;
-    background: linear-gradient(135deg, #112015 0%, #09120c 100%);
-    border: 2px solid #2e7d32;
-    border-radius: 10px;
+  .highlight-yellow { background-color: #ffb300; color: #000000; }
+  .highlight-orange { background-color: #e65100; color: #ffffff; }
+  .highlight-gray { background-color: #424242; color: #ffffff; }
+
+  .event-details {
+    padding-left: 15px;
+    font-size: 15px;
+    color: #e0e0e0;
+  }
+
+  /* SURVEY TAB BOX */
+  .survey-square-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .interactive-survey-square {
+    width: 100%;
+    max-width: 360px;
+    background: linear-gradient(135deg, #152319 0%, #0d1710 100%);
+    border: 2px solid #2e7d32; /* Green Identity for Surveys */
+    border-radius: 12px;
     padding: 20px;
     text-align: center;
     text-decoration: none;
     color: #ffffff;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
   }
 
-  /* --- VAULT CARD BOXES --- */
-  .vault-squares-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .interactive-survey-square:active {
+    transform: scale(0.98);
   }
-  .vault-interactive-square {
-    background: #1c1c1c;
-    border-left: 4px solid #ff5722;
-    border-radius: 8px;
-    padding: 20px;
+
+  /* ==========================================================================
+     TAB 3 LAYOUT: THE VAULT (ROBUST LIGHTBOX VIDEO TRIGGER GRID)
+     ========================================================================== */
+  .vault-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .vault-square-card {
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 24px;
     text-align: center;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* --- ACADEMY OUTLINK BLOCK --- */
-  .academy-portal-frame {
-    background: #1c1c1c;
-    border: 1px solid #ff5722;
-    border-radius: 12px;
-    padding: 30px 15px;
-    text-align: center;
+  .vault-square-card:active {
+    transform: scale(0.97);
   }
-  .academy-portal-frame a {
-    display: inline-block;
-    background: #ff5722;
-    color: #fff;
-    text-decoration: none;
-    padding: 14px 28px;
+
+  .vault-square-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background-color: #ff5722;
+  }
+
+  .video-play-badge {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 87, 34, 0.1);
+    border: 1px solid #ff5722;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    color: #ff5722;
+    font-size: 18px;
+  }
+
+  /* VIDEO LIGHTBOX MODAL STYLING */
+  .video-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 16px;
+  }
+
+  .modal-frame-holder {
+    width: 100%;
+    max-width: 760px;
+    background: #000000;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid #333333;
+    overflow: hidden;
+  }
+
+  .modal-close-trigger {
+    position: absolute;
+    top: 10px; right: 15px;
+    color: #ffffff;
+    font-size: 30px;
     font-weight: bold;
-    border-radius: 6px;
-    margin: 15px 0;
+    cursor: pointer;
+    z-index: 1010;
+  }
+
+  .aspect-ratio-box {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 widescreen mapping */
+    height: 0;
+  }
+
+  .aspect-ratio-box iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+  }
+
+  /* ==========================================================================
+     TAB 4 LAYOUT: THE ACADEMY CONTAINER (STANDALONE PORTAL ROUTER)
+     ========================================================================== */
+  .academy-launch-container {
+    background: linear-gradient(135deg, #121212 0%, #1c1c1c 100%);
+    border: 1px solid #ff5722;
+    border-radius: 16px;
+    padding: 32px 20px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+
+  .classroom-launch-btn {
+    display: inline-block;
+    background-color: #ff5722;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .classroom-launch-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 6px rgba(255, 87, 34, 0.2);
+  }
+
+  /* --- APP GENERAL FOOTER NOTES --- */
+  footer {
+    background-color: #121212;
+    border-top: 1px solid #222222;
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    color: #555555;
   }
 </style>
 </head>
 <body>
 
-<div class="app-layout-wrapper">
+  <header>
+    <div class="header-container">
+      <div class="brand-logo">HEARTWORK <span>ACADEMY</span></div>
+      <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888888;">Athlete Hub</div>
+    </div>
+  </header>
 
-  <div class="app-main-header">
-    <h1>HEARTWORK <span>ACADEMY</span></h1>
-  </div>
+  <nav>
+    <ul class="nav-tabs">
+      <li><button class="tab-btn active" onclick="switchView('view-locker')">👟 Locker Room</button></li>
+      <li><button class="tab-btn" onclick="switchView('view-events')">📅 Live Events</button></li>
+      <li><button class="tab-btn" onclick="switchView('view-vault')">🔒 The Vault</button></li>
+      <li><button class="tab-btn" onclick="switchView('view-academy')">🎒 The Academy</button></li>
+    </ul>
+  </nav>
 
-  <div class="navigation-grid-row">
-    <button class="nav-action-button active-tab" id="btn-lock" onclick="openAppTab('view-lock', 'btn-lock')">Locker</button>
-    <button class="nav-action-button" id="btn-even" onclick="openAppTab('view-even', 'btn-even')">Events</button>
-    <button class="nav-action-button" id="btn-vaul" onclick="openAppTab('view-vaul', 'btn-vaul')">Vault</button>
-    <button class="nav-action-button" id="btn-acad" onclick="openAppTab('view-acad', 'btn-acad')">Academy</button>
-  </div>
+  <main>
 
-  <div id="view-lock" class="content-display-panel visible-panel">
-    <div class="motivation-hero-box">
-      <p>“Every skill you build in sports — discipline, teamwork, pressure management, goal-setting — is a life skill in disguise.”</p>
-      <strong style="color:#ff5722;">- Keaton Cole</strong>
+    <div id="view-locker" class="app-view active-view">
+      <div class="locker-room-hero">
+        <div class="quote-container">
+          <span class="quote-mark">“</span>
+          <p id="daily-quote-text">Every skill you build in sports — discipline, teamwork, pressure management, goal-setting — is a life skill in disguise.</p>
+          <p id="daily-quote-author">Keaton Cole</p>
+        </div>
+      </div>
+      <div style="color: #666666; font-size: 13px; text-align: center;">🔥 Daily inspiration system is calibrated through late 2027.</div>
+    </div>
+
+    <div id="view-events" class="app-view">
+      <div class="events-tab-card-hub">
+
+        <button class="better-me-main-card" onclick="toggleEventDetails()" aria-expanded="false" aria-controls="event-details-dropdown">
+          <div class="card-header-flex">
+            <span class="card-main-icon">🏀</span>
+            <div>
+              <h2>Better Me Better Athlete</h2>
+              <p>Sept 27th, 2026 • Tap to view full event schedule</p>
+            </div>
+          </div>
+          <span id="dropdown-arrow-indicator" class="arrow-icon">▼</span>
+        </button>
+
+        <div id="event-details-dropdown" class="event-hidden-content" style="display: none;">
+          
+          <div class="flyer-display-block">
+            <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
+          </div>
+
+          <div class="speakers-showcase-grid">
+            <div class="speaker-profile-card">
+              <div class="speaker-photo-wrapper">
+                <img src="1000001065.jpg" alt="Keaton Cole" class="speaker-image">
+              </div>
+              <h3>Keaton Cole</h3>
+              <p class="speaker-title">Founder, Heartwork Academy</p>
+            </div>
+
+            <div class="speaker-profile-card">
+              <div class="speaker-photo-wrapper">
+                <img src="1000001066.jpg" alt="Featured Speaker" class="speaker-image">
+              </div>
+              <h3>Featured Speaker</h3>
+              <p class="speaker-title">Industry Broadcaster & Guide</p>
+            </div>
+          </div>
+
+          <div class="event-itinerary-box">
+            <h3>Official Event Rundown</h3>
+            
+            <div class="timeline-row">
+              <span class="time-stamp highlight-yellow">3:00 PM - 3:45 PM</span>
+              <span class="event-details">Dine In & Set The Tone</span>
+            </div>
+            
+            <div class="timeline-row">
+              <span class="time-stamp highlight-orange">3:50 PM - 4:40 PM</span>
+              <span class="event-details">Panel Discussion</span>
+            </div>
+            
+            <div class="timeline-row">
+              <span class="time-stamp highlight-yellow">4:45 PM - 5:45 PM</span>
+              <span class="event-details">Media Training</span>
+            </div>
+            
+            <div class="timeline-row">
+              <span class="time-stamp highlight-orange">5:50 PM - 6:50 PM</span>
+              <span class="event-details">Money Matters</span>
+            </div>
+            
+            <div class="timeline-row" style="border-bottom: none; background: rgba(255,255,255,0.02); margin-top: 8px; padding: 12px; border-radius: 6px;">
+              <span class="time-stamp highlight-gray">Closing</span>
+              <span class="event-details" style="font-style: italic; color: #aaaaaa;">Closing Remarks • Food & SWAG Included</span>
+            </div>
+          </div>
+
+          <div class="survey-square-container">
+            <a href="YOUR_GOOGLE_FORMS_SURVEY_LINK" target="_blank" class="interactive-survey-square">
+              <span class="survey-square-icon">📋</span>
+              <h3 style="margin: 0 0 4px 0; font-size: 18px; color: #4caf50;">Take Event Survey</h3>
+              <p style="margin: 0; color: #a5d6a7; font-size: 13px;">Tap here to open the questionnaire and submit feedback.</p>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="view-vault" class="app-view">
+      <div class="vault-grid">
+        
+        <div class="vault-square-card" onclick="triggerVaultVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <div class="video-play-badge">▶</div>
+          <h3 style="margin: 0 0 6px 0; font-size: 17px;">Main Training Session</h3>
+          <p style="margin: 0; color: #777777; font-size: 13px;">Complete Session Video Playback</p>
+        </div>
+
+        </div>
+    </div>
+
+    <div id="view-academy" class="app-view">
+      <div class="academy-launch-container">
+        <span style="font-size: 40px; display: block; margin-bottom: 12px;">🏫</span>
+        <h2 style="margin: 0 0 8px 0; font-size: 22px;">Beyond The Court Framework</h2>
+        <p style="margin: 0 auto; max-width: 500px; color: #aaaaaa; font-size: 15px; line-height: 1.5;">Your interactive modules, live workspaces, and reflection packet files are fully active on our dedicated standalone course server.</p>
+        
+        <a href="https://classroom.google.com/c/ODY2NDg0NTEyMDc1?cjc=7vc25j2z" target="_blank" class="classroom-launch-btn">
+          🎒 Enter Google Classroom Course
+        </a>
+        
+        <p style="margin: 0; color: #555555; font-size: 13px;">Class Code Connection: <strong>7vc25j2z</strong></p>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="lightboxOverlay" class="video-modal-overlay" onclick="shutdownVaultVideo()">
+    <div class="modal-frame-holder" onclick="event.stopPropagation()">
+      <span class="modal-close-trigger" onclick="shutdownVaultVideo()">&times;</span>
+      <div class="aspect-ratio-box">
+        <iframe id="lightboxFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
-  <div id="view-even" class="content-display-panel">
-    <button class="event-clickable-trigger" onclick="toggleAccordionWindow()">
-      <div>
-        <strong style="font-size:16px; display:block; margin-bottom:2px;">Better Me Better Athlete</strong>
-        <span style="color:#aaa; font-size:13px;">Sept 27th • Tap to open rundown details</span>
-      </div>
-      <span id="indicator-arrow" style="color:#ff5722; font-weight:bold;">▼</span>
-    </button>
-    
-    <div id="dropdown-target" class="dropdown-revealed-box" style="display: none;">
+  <footer>
+    &copy; 2026 Heartwork Academy. All Rights Reserved.
+  </footer>
+
+  <script>
+    // 1. APP MULTIPAGE VIEW ENGINE CONTROLLER
+    function switchView(targetViewId) {
+      // Deactivate all views
+      var views = document.querySelectorAll('.app-view');
+      for (var i = 0; i < views.length; i++) {
+        views[i].classList.remove('active-view');
+      }
       
-      <div class="flyer-img-frame">
-        <img src="1000000997.png" alt="Event Details Flyer">
-      </div>
+      // Deactivate all nav buttons
+      var buttons = document.querySelectorAll('.tab-btn');
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove('active');
+      }
+      
+      // Activate target view
+      document.getElementById(targetViewId).classList.add('active-view');
+      
+      // Activate matching tab button highlights based on trigger index
+      var currentBtn = event.currentTarget;
+      if (currentBtn) {
+        currentBtn.classList.add('active');
+      }
+    }
 
-      <div class="speakers-double-column">
-        <div class="individual-speaker-card">
-          <div class="speaker-round-avatar"><img src="1000001065.jpg" alt="Keaton Cole"></div>
-          <strong style="font-size:14px; display:block;">Keaton Cole</strong>
-          <span style="font-size:11px; color:#ff5722;">Academy Founder</span>
-        </div>
-        <div class="individual-speaker-card">
-          <div class="speaker-round-avatar"><img src="1000001066.jpg" alt="Featured Speaker"></div>
-          <strong style="font-size:14px; display:block;">Featured Speaker</strong>
-          <span style="font-size:11px; color:#ff5722;">Industry Expert</span>
-        </div>
-      </div>
+    // 2. LIVE EVENTS TAB DROPDOWN CONTROLLER ENGINE
+    function toggleEventDetails() {
+      var box = document.getElementById("event-details-dropdown");
+      var arrow = document.getElementById("dropdown-arrow-indicator");
+      var btn = document.querySelector(".better-me-main-card");
+      
+      if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+        arrow.textContent = "▲";
+        btn.style.borderRadius = "12px 12px 0 0";
+      } else {
+        box.style.display = "none";
+        arrow.textContent = "▼";
+        btn.style.borderRadius = "12px";
+      }
+    }
 
-      <div class="itinerary-schedule-container">
-        <div class="schedule-row-item">
-          <span class="badge-label" style="background:#ffb300; color:#000;">3:00-3:45 PM</span>
-          <span class
+    // 3. THE VAULT SEAMLESS LIGHTBOX DISPLAY CORE ENGINE
+    function triggerVaultVideo(videoEmbedUrl) {
+      document.getElementById("lightboxFrame").src = videoEmbedUrl;
+      document.getElementById("lightboxOverlay").style.display = "flex";
+    }
+
+    function shutdownVaultVideo() {
+      document.getElementById("lightboxOverlay").style.display = "none";
+      document.getElementById("lightboxFrame").src = "";
+    }
+  </script>
+
+</body>
+</html>
