@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heartwork Academy | Keaton Cole</title>
+    <title>Heartwork Academy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800&display=swap');
 
@@ -55,7 +55,20 @@
         }
 
         .hero-section { text-align: center; padding: 40px 20px; }
-        .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
+        
+        /* Clean Text Logo Replacement to Prevent Image Loading Errors */
+        .logo-placeholder {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 32px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+        .logo-placeholder span {
+            color: #d4af37;
+        }
 
         .btn-gold { 
             background: #d4af37;
@@ -82,7 +95,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1); 
         }
 
-        /* --- NEW MINIMALIST LOCKER LAYOUT SYSTEM --- */
+        /* --- LOCKER ROOM LAYOUT SYSTEM --- */
         .locker-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -100,11 +113,6 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 30px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .locker-card:hover {
-            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .objective-title {
@@ -195,14 +203,18 @@
             text-align: center; 
             border: 1px solid rgba(255, 255, 255, 0.05); 
         }
-        .speaker-headshot { 
-            width: 95px; 
-            height: 95px; 
+        .speaker-headshot-fallback { 
+            width: 80px; 
+            height: 80px; 
             margin: 0 auto 12px auto; 
             border-radius: 50%; 
-            background-size: cover; 
-            background-position: center; 
+            background: #000a1a;
             border: 3px solid #d4af37; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #d4af37;
         }
         .speaker-name {
             font-weight: 700; 
@@ -323,6 +335,24 @@
 
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
+        .book-box-fallback {
+            width: 130px;
+            height: 180px;
+            background: #000a1a;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 12px;
+            color: #fff;
+            text-transform: uppercase;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
         @media (max-width: 768px) {
             .rundown-item { flex-direction: column; align-items: flex-start; padding: 12px; }
             .rundown-time { padding: 0 0 8px 4px; text-align: left; min-width: auto; }
@@ -341,16 +371,14 @@
     <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
-<!-- TAB 1: LOCKER ROOM -->
 <section id="locker-room" class="tab-content">
     
     <div class="locker-hero">
-        <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
+        <div class="logo-placeholder">HEART<span>WORK</span></div>
     </div>
     
     <div class="locker-grid">
         
-        <!-- BLOCK 1: THE OBJECTIVE -->
         <div class="locker-card" style="text-align: center; border-bottom: 3px solid #d4af37;">
             <div class="objective-title">Program Objective</div>
             <p class="objective-quote">
@@ -358,7 +386,6 @@
             </p>
         </div>
 
-        <!-- BLOCK 2: THE ESSENCE -->
         <div class="locker-card">
             <div class="split-block">
                 <span class="split-tag tag-reality">The Reality</span>
@@ -391,7 +418,6 @@
             </div>
         </div>
 
-        <!-- BLOCK 3: ENGINE GENERATED DAILY BLUEPRINT -->
         <div class="locker-card" style="border-left: 3px solid #ff8033;">
             <div class="blueprint-header">
                 <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">⚡ The Daily Blueprint</span>
@@ -405,13 +431,11 @@
 
     </div>
 
-    <!-- ANCHORED SECTION FOOTER -->
     <footer class="locker-footer">
         © 2026 Heartwork Academy. All Rights Reserved.
     </footer>
 </section>
 
-<!-- TAB 2: ONLINE ACADEMY PORTAL -->
 <section id="academy" class="tab-content">
     <div class="classroom-hero">
         <span class="classroom-badge">Now Streamlined & Upgraded</span>
@@ -462,7 +486,6 @@
     </div>
 </section>
 
-<!-- TAB 3: LIVE EVENTS -->
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 25px;">Events & Focus</h2>
     
@@ -484,12 +507,12 @@
             <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
             <div class="speaker-container">
                 <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
+                    <div class="speaker-headshot-fallback">Média</div>
                     <div class="speaker-name">Akil Augustine</div>
                     <div class="speaker-title">MediaLit</div>
                 </div>
                 <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
+                    <div class="speaker-headshot-fallback">Biz</div>
                     <div class="speaker-name">Christopher Duff</div>
                     <div class="speaker-title">Entrepreneur</div>
                 </div>
@@ -524,12 +547,11 @@
     </div>
 </section>
 
-<!-- TAB 4: THE VAULT / ARCHIVE STORE -->
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">The Vault</h2>
     
     <div class="card" style="text-align: center;">
-        <img src="book-cover.jpg" alt="Point Guard Cover" style="width: 100%; max-width: 180px; height: auto; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.4);">
+        <div class="book-box-fallback">Diary Book</div>
         <p style="color: #d4af37; font-size: 18px; font-weight: 800; text-transform: uppercase; margin-top: 5px; letter-spacing: 1.5px;">Point Guard: A Diary</p>
         <p style="font-size: 14px; opacity: 0.7; margin: 0 0 10px 0;">By Keaton Cole</p>
         <a href="https://www.amazon.ca/s?k=Point+Guard+A+Diary+Keaton+Cole" target="_blank" class="btn-gold">Get on Amazon</a>
@@ -562,88 +584,4 @@
     </div>
 
     <div class="card" style="text-align: center;">
-        <h3 style="font-size: 40px; margin: 0; color: #ffffff;">$40</h3>
-        <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold; opacity: 0.9;">Per Athlete Rate</p>
-        
-        <div style="background: rgba(0,0,0,0.15); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
-            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">
-                <li>Full Elite Training Session Access</li>
-                <li style="text-decoration: line-through; opacity: 0.5;">POINT GUARD: A Diary book not included</li>
-            </ul>
-        </div>
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.2); color:#fff;">Secure Checkout</a>
-    </div>
-</section>
-
-<script>
-    // Tab Controller Engine Layout Switcher
-    function switchTab(tabId) {
-        const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.style.display = 'none');
-        
-        document.getElementById(tabId).style.display = 'block';
-        
-        const links = document.querySelectorAll('nav a');
-        links.forEach(link => link.classList.remove('active-tab'));
-        
-        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
-        if(tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
-        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
-        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
-        
-        window.scrollTo(0,0);
-    }
-
-    // --- HIGH IMPACT MATRIX GENERATOR FOR DAILY QUOTES ---
-    const heartworkQuotesMatrix = [
-        { text: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.", author: "Michael Jordan", category: "Athlete" },
-        { text: "You can't put a limit on anything. The more you dream, the farther you get.", author: "Michael Phelps", category: "Athlete" },
-        { text: "If you're walking down the right path and you're willing to keep walking, eventually you'll make progress.", author: "Barack Obama", category: "Leader" },
-        { text: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.", author: "Maya Angelou", category: "Author" },
-        { text: "Dreams without goals are just dreams. commitment and consistency are the keys to stepping into reality.", author: "Denzel Washington", category: "Actor" },
-        { text: "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has.", author: "Margaret Mead", category: "Anthropologist" },
-        { text: "Your time is limited, so don't waste it living someone else's life. Have the courage to follow your heart.", author: "Steve Jobs", category: "Founder" },
-        { text: "The cross-cultural variations in how human beings dream tell us that potential is universal, but systems must be constructed to nurture it.", author: "Ruth Benedict", category: "Anthropologist" },
-        { text: "You don't choose your assignments in life; your assignments choose you. Be prepared to master whatever game you are dropped into.", author: "Denzel Washington", category: "Actor" },
-        { text: "You may encounter many defeats, but you must not be defeated. In fact, it may be necessary to encounter the defeats, so you can know who you are.", author: "Maya Angelou", category: "Author" },
-        { text: "The size of your success is measured by the strength of your desire; the size of your dream; and how you handle disappointment along the way.", author: "Robert Kiyosaki", category: "Finance" },
-        { text: "Hard work beats talent when talent fails to work hard.", author: "Kevin Durant", category: "Athlete" },
-        { text: "If you have no confidence in self, you are twice defeated in the race of life. With confidence, you have won even before you have started.", author: "Marcus Garvey", category: "Leader" },
-        { text: "The most important thing is to try and inspire people so that they can be great in whatever they want to do.", author: "Kobe Bryant", category: "Athlete" },
-        { text: "Don't aspire to make a living on the court or stage; aspire to make a difference in the world.", author: "Denzel Washington", category: "Actor" },
-        { text: "Do the best you can until you know better. Then when you know better, do better.", author: "Maya Angelou", category: "Author" },
-        { text: "An anthropologist notes that human societies succeed when skills are passed down purposefully. Build structures that outlast your game.", author: "Claude Lévi-Strauss", category: "Anthropologist" },
-        { text: "Business opportunities are like buses, there's always another one coming. But you have to be at the station to catch it.", author: "Richard Branson", category: "Founder" },
-        { text: "Everything negative—pressure, challenges—is all an opportunity for me to rise.", author: "Kobe Bryant", category: "Athlete" },
-        { text: "The value of identity is that so often it is hidden behind the uniform. Unpack the uniform to find the real asset.", author: "Franz Boas", category: "Anthropologist" }
-    ];
-
-    function runDailyQuoteEngine() {
-        try {
-            const today = new Date();
-            const startOfEpoch = new Date(today.getFullYear(), 0, 1);
-            const absoluteDayCount = Math.floor((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
-            
-            const selectedIndex = absoluteDayCount % heartworkQuotesMatrix.length;
-            const dailyData = heartworkQuotesMatrix[selectedIndex];
-
-            document.getElementById('daily-quote-text').innerText = `"${dailyData.text}"`;
-            document.getElementById('daily-quote-author').innerText = `- ${dailyData.author}`;
-            document.getElementById('daily-quote-category').innerText = dailyData.category;
-        } catch (e) {
-            document.getElementById('daily-quote-text').innerText = '"Dreams without goals are just dreams. Commitment and consistency are the keys to execution."';
-            document.getElementById('daily-quote-author').innerText = '- Denzel Washington';
-            document.getElementById('daily-quote-category').innerText = 'Actor';
-        }
-    }
-
-    // Initialize Default View Settings on Startup
-    window.onload = function() {
-        switchTab('locker-room');
-        runDailyQuoteEngine();
-    };
-</script>
-
-</body>
-</html>
+        <h3 style
