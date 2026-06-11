@@ -82,6 +82,40 @@
             border: 1px solid rgba(255, 255, 255, 0.1); 
         }
 
+        /* High-Impact Copy Container Styling */
+        .impact-card {
+            background: rgba(0, 10, 26, 0.75);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .impact-section {
+            margin-bottom: 25px;
+        }
+        .impact-section:last-child {
+            margin-bottom: 0;
+        }
+        .impact-tag {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .tag-red { color: #ff5252; }
+        .tag-orange { color: #ff8033; }
+        .tag-gold { color: #f9d976; }
+        
+        .impact-text {
+            font-size: 14px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
         /* --- ORIGINAL DROPDOWN DESIGN SYSTEM --- */
         details { 
             background: rgba(255, 255, 255, 0.08); 
@@ -278,43 +312,59 @@
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
     
+    <!-- PROGRAM OBJECTIVE CARD -->
     <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Program Objective</span>
         <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
     </div>
 
-    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px;">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">⚡ WEEKLY FOCUS AUDIO</span>
-        <h3 style="font-family:'Archivo Black'; font-size: 20px; margin: 5px 0 2px 0; text-transform: uppercase;">Next-Play Speed</h3>
-        <p style="font-size: 14px; opacity: 0.6; margin: 0 0 20px 0;">A 4-Minute Blueprint on Mental Grit by Coach Keaton Cole</p>
+    <!-- HIGH-IMPACT REALITY STRATEGY CARD -->
+    <div class="impact-card">
+        <div class="impact-section">
+            <span class="impact-tag tag-red">⚠️ The Reality</span>
+            <p class="impact-text">
+                The odds are stacked against student athletes — and that's not an opinion, it's a fact. Fewer than 2% ever reach the professional ranks. Only 1–2% earn a full NCAA athletic scholarship. In basketball specifically, just 0.8–1.2% make it to the NBA or WNBA. Even broader professional opportunities — the G-League, international leagues, overseas careers — only absorb roughly 15–20% of those who pursue them.
+            </p>
+        </div>
         
-        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px;">
-            <div style="flex-grow: 1;">
-                <div style="font-size: 13px; font-weight: 800; margin-bottom: 4px;">Weekly Briefing_04.mp3</div>
-                <div style="font-size: 12px; opacity: 0.5; font-family: monospace;">Duration: 4:12</div>
-            </div>
+        <div class="impact-section">
+            <span class="impact-tag tag-orange">🛑 The Problem</span>
+            <p class="impact-text" style="margin-bottom: 12px;">
+                Here's what makes this so critical: student athletes pour everything they have into the dream. Every ounce of time, energy, and focus. And rightfully so — in the middle of the journey, that dream is everything. It's not a phase. It's an identity.
+            </p>
+            <p class="impact-text">
+                But for the majority, the day comes when that dream gets set aside. And when it does, most aren't ready. They've been told their whole career to "have a Plan B" — but no one ever helped them build one. No resume. No work history. No clarity on who they are outside of the sport. What follows is an identity crisis, depression, and the overwhelming feeling of stepping into the real world completely unprepared.
+            </p>
+        </div>
+        
+        <div class="impact-section" style="border-top: 1px solid rgba(212, 175, 55, 0.15); padding-top: 20px;">
+            <span class="impact-tag tag-gold">💎 The Solution</span>
+            <p class="impact-text" style="font-style: italic; color: #f9d976; margin-bottom: 12px; font-weight: 600;">
+                "If you fail to plan, you plan to fail."
+            </p>
+            <p class="impact-text">
+                Heartwork was built for this moment — not after the dream ends, but during the journey. We strategically invest time into the individual while they're still competing. Character development. Soft skills. Financial literacy. Lifestyle awareness. Business acumen. The tools and self-knowledge that position any person — athlete or not — to step into life with clarity and power.
+            </p>
+            <p class="impact-text" style="margin-top: 12px; font-weight: 700; color: #ffffff;">
+                Because the goal was never just to make it. The goal is to be ready for whatever comes next.
+            </p>
         </div>
     </div>
 
-    <div class="card" style="text-align: left; padding: 30px;">
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Coaching Challenge & Vision</span>
-        <p style="font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; color: rgba(255,255,255,0.95);">
-            Coaches wear many hats as leaders. They are role models, guardians and mentors. Their priorities include but are not limited to training, scheduling logistics, athletes safety & wellness, academics and of course winning. The amount of time and dedication they assume for themselves and athletes is that which creates true legacy and success, that is carried with pride.
-        </p>
-        <p style="font-size: 14px; line-height: 1.65; margin: 0 0 20px 0; color: rgba(255,255,255,0.95);">
-            What if our athletes were to dedicate time to enrich their lives, for both on and off the court? Kourtside Excellence has been created as a development staple in the complexity of being an athlete, that benefits them in the here and now, and guides them into their respective futures.
-        </p>
-        
-        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">The Kourtside Mission</span>
-            <p style="font-size: 14px; line-height: 1.65; margin: 0; color: rgba(255,255,255,0.85);">
-                Kourtside Excellence is here to bridge that gap. Through educational, lived experience, and knowledge acquired, and Expert insights Kourtside Excellence will foster an atmosphere to build your athletes outside the game. We aim to develop their ability to adapt and apply the skills learned from sports to various life scenarios.
-            </p>
+    <!-- DYNAMIC DAILY QUOTE ENGINE (REPLACES AUDIO BRIEFING) -->
+    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px; border-left: 4px solid #ff8033;">
+        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">⚡ THE DAILY BLUEPRINT Blueprint</span>
+        <div id="quote-container">
+            <p id="daily-quote-text" style="font-size: 16px; font-weight: 600; line-height: 1.6; margin: 5px 0 12px 0; color: #ffffff; font-style: italic;">"Loading your daily focus block..."</p>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span id="daily-quote-author" style="font-family:'Archivo Black'; font-size: 13px; text-transform: uppercase; color: #d4af37; letter-spacing: 0.5px;">- Loading</span>
+                <span id="daily-quote-category" style="font-size: 11px; background: rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 20px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase;">Focus</span>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- TAB 2: ONLINE ACADEMY PORTAL (MIGRATED TO GOOGLE CLASSROOM) -->
+<!-- TAB 2: ONLINE ACADEMY PORTAL -->
 <section id="academy" class="tab-content">
     <div class="classroom-hero">
         <span class="classroom-badge">Now Streamlined & Upgraded</span>
@@ -365,25 +415,22 @@
     </div>
 </section>
 
-<!-- TAB 3: LIVE EVENTS (RESTORED TO ORIGINAL DETAILS/SUMMARY DROPDOWN) -->
+<!-- TAB 3: LIVE EVENTS -->
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 25px;">Events & Focus</h2>
     
     <details>
         <summary>Better Me Better Athlete</summary>
         
-        <!-- OFFICIAL IMAGE WORKSHOP FLYER -->
         <div class="flyer-display-block">
             <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
         </div>
 
-        <!-- DETAILED GEOGRAPHY RUNNER NOTES -->
         <div style="text-align: center; margin-bottom: 25px; font-size: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="font-weight: 700; color: #f9d976; margin-bottom: 4px;">📅 Sunday, September 27th</div>
             <div style="opacity: 0.8;">🕒 3:00 PM - 7:00 PM &bull; 📍 Brampton, ON</div>
         </div>
 
-        <!-- FEATURED PRESENTERS ROW -->
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
         <div class="speaker-container">
             <div class="speaker-box">
@@ -398,7 +445,6 @@
             </div>
         </div>
 
-        <!-- TIME FRAME SCHEDULING MATRIX -->
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Official Event Rundown</span>
         <div class="itinerary-schedule-container">
             <div class="rundown-item">
@@ -425,11 +471,9 @@
             </div>
         </div>
 
-        <!-- CALL TO ACTION ACTION PORTALS -->
         <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px;">Secure My Seat</a>
     </details>
 
-    <!-- FEEDBACK FORM MODULE -->
     <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center; margin-top: 25px;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
         <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
@@ -508,9 +552,57 @@
         window.scrollTo(0,0);
     }
 
+    // --- HIGH IMPACT MATRIX GENERATOR FOR DAILY QUOTES ---
+    // Mathematically scales through 2026/2027 based on system timestamps smoothly
+    const heartworkQuotesMatrix = [
+        { text: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.", author: "Michael Jordan", category: "Athlete" },
+        { text: "You can't put a limit on anything. The more you dream, the farther you get.", author: "Michael Phelps", category: "Athlete" },
+        { text: "If you're walking down the right path and you're willing to keep walking, eventually you'll make progress.", author: "Barack Obama", category: "Leader" },
+        { text: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.", author: "Maya Angelou", category: "Author" },
+        { text: "Dreams without goals are just dreams. commitment and consistency are the keys to stepping into reality.", author: "Denzel Washington", category: "Actor" },
+        { text: "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has.", author: "Margaret Mead", category: "Anthropologist" },
+        { text: "Your time is limited, so don't waste it living someone else's life. Have the courage to follow your heart.", author: "Steve Jobs", category: "Founder" },
+        { text: "The cross-cultural variations in how human beings dream tell us that potential is universal, but systems must be constructed to nurture it.", author: "Ruth Benedict", category: "Anthropologist" },
+        { text: "You don't choose your assignments in life; your assignments choose you. Be prepared to master whatever game you are dropped into.", author: "Denzel Washington", category: "Actor" },
+        { text: "You may encounter many defeats, but you must not be defeated. In fact, it may be necessary to encounter the defeats, so you can know who you are.", author: "Maya Angelou", category: "Author" },
+        { text: "The size of your success is measured by the strength of your desire; the size of your dream; and how you handle disappointment along the way.", author: "Robert Kiyosaki", category: "Finance" },
+        { text: "Hard work beats talent when talent fails to work hard.", author: "Kevin Durant", category: "Athlete" },
+        { text: "If you have no confidence in self, you are twice defeated in the race of life. With confidence, you have won even before you have started.", author: "Marcus Garvey", category: "Leader" },
+        { text: "The most important thing is to try and inspire people so that they can be great in whatever they want to do.", author: "Kobe Bryant", category: "Athlete" },
+        { text: "Don't aspire to make a living on the court or stage; aspire to make a difference in the world.", author: "Denzel Washington", category: "Actor" },
+        { text: "Do the best you can until you know better. Then when you know better, do better.", author: "Maya Angelou", category: "Author" },
+        { text: "An anthropologist notes that human societies succeed when skills are passed down purposefully. Build structures that outlast your game.", author: "Claude Lévi-Strauss", category: "Anthropologist" },
+        { text: "Business opportunities are like buses, there's always another one coming. But you have to be at the station to catch it.", author: "Richard Branson", category: "Founder" },
+        { text: "Everything negative—pressure, challenges—is all an opportunity for me to rise.", author: "Kobe Bryant", category: "Athlete" },
+        { text: "The value of identity is that so often it is hidden behind the uniform. Unpack the uniform to find the real asset.", author: "Franz Boas", category: "Anthropologist" }
+    ];
+
+    function runDailyQuoteEngine() {
+        try {
+            const today = new Date();
+            // Create a deterministic day count calculation from the raw system clock
+            const startOfEpoch = new Date(today.getFullYear(), 0, 1);
+            const absoluteDayCount = Math.floor((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
+            
+            // Map the calculated deterministic offset safely across the quotes array length
+            const selectedIndex = absoluteDayCount % heartworkQuotesMatrix.length;
+            const dailyData = heartworkQuotesMatrix[selectedIndex];
+
+            document.getElementById('daily-quote-text').innerText = `"${dailyData.text}"`;
+            document.getElementById('daily-quote-author').innerText = `- ${dailyData.author}`;
+            document.getElementById('daily-quote-category').innerText = dailyData.category;
+        } catch (e) {
+            // Fallback gracefully in case of unexpected execution environment parameters
+            document.getElementById('daily-quote-text').innerText = '"Dreams without goals are just dreams. Commitment and consistency are the keys to execution."';
+            document.getElementById('daily-quote-author').innerText = '- Denzel Washington';
+            document.getElementById('daily-quote-category').innerText = 'Actor';
+        }
+    }
+
     // Initialize Default View Settings on Startup
     window.onload = function() {
         switchTab('locker-room');
+        runDailyQuoteEngine();
     };
 </script>
 
