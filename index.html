@@ -116,40 +116,13 @@
             margin: 0;
         }
 
-        /* --- ORIGINAL DROPDOWN DESIGN SYSTEM --- */
-        details { 
-            background: rgba(255, 255, 255, 0.08); 
-            padding: 20px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+        /* --- DROPDOWN DESIGN SYSTEM --- */
+        details.card {
+            padding: 30px;
         }
-        summary { 
-            font-family: 'Archivo Black', sans-serif; 
-            font-size: 18px; 
-            color: #ffffff; 
-            text-transform: uppercase; 
-            cursor: pointer; 
-            outline: none; 
-            padding: 5px 0;
-        }
-        summary::-webkit-details-marker { color: #d4af37; }
+        summary::-webkit-details-marker { display: none; }
 
         /* --- IMAGES & WORKSHOP GRID INFRASTRUCTURE --- */
-        .flyer-display-block {
-            text-align: center;
-            margin: 20px 0 25px 0;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .responsive-flyer-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            max-height: 520px;
-        }
         .speaker-container { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -172,15 +145,18 @@
             background-position: center; 
             border: 3px solid #d4af37; 
         }
+        .speaker-name {
+            font-weight: 700; 
+            font-size: 15px;
+        }
+        .speaker-title {
+            font-size: 12px; 
+            color: #ff8033; 
+            font-weight: 600; 
+            margin-top: 2px;
+        }
         
         /* --- TIMELINE SCHEDULE SYSTEM --- */
-        .itinerary-schedule-container {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
         .rundown-item { 
             display: flex; 
             align-items: center; 
@@ -190,7 +166,7 @@
             padding: 8px; 
             border-left: 4px solid #ff8033; 
         }
-        .rundown-item:last-child { margin-bottom: 0; border-left-color: #424242; }
+        .rundown-item:last-child { margin-bottom: 0; }
         .rundown-time { 
             padding: 10px; 
             font-weight: 800; 
@@ -306,19 +282,16 @@
     <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
 </nav>
 
-<!-- TAB 1: LOCKER ROOM -->
 <section id="locker-room" class="tab-content">
     <div class="hero-section">
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
     
-    <!-- PROGRAM OBJECTIVE CARD -->
     <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Program Objective</span>
         <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
     </div>
 
-    <!-- HIGH-IMPACT REALITY STRATEGY CARD -->
     <div class="impact-card">
         <div class="impact-section">
             <span class="impact-tag tag-red">⚠️ The Reality</span>
@@ -351,9 +324,8 @@
         </div>
     </div>
 
-    <!-- DYNAMIC DAILY QUOTE ENGINE (REPLACES AUDIO BRIEFING) -->
     <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px; border-left: 4px solid #ff8033;">
-        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">⚡ THE DAILY BLUEPRINT Blueprint</span>
+        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">⚡ THE DAILY BLUEPRINT</span>
         <div id="quote-container">
             <p id="daily-quote-text" style="font-size: 16px; font-weight: 600; line-height: 1.6; margin: 5px 0 12px 0; color: #ffffff; font-style: italic;">"Loading your daily focus block..."</p>
             <div style="display: flex; align-items: center; justify-content: space-between;">
@@ -364,7 +336,6 @@
     </div>
 </section>
 
-<!-- TAB 2: ONLINE ACADEMY PORTAL -->
 <section id="academy" class="tab-content">
     <div class="classroom-hero">
         <span class="classroom-badge">Now Streamlined & Upgraded</span>
@@ -415,38 +386,39 @@
     </div>
 </section>
 
-<!-- TAB 3: LIVE EVENTS -->
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 25px;">Events & Focus</h2>
     
-    <details>
-        <summary>Better Me Better Athlete</summary>
-        
-        <div class="flyer-display-block">
-            <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
-        </div>
-
-        <div style="text-align: center; margin-bottom: 25px; font-size: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="font-weight: 700; color: #f9d976; margin-bottom: 4px;">📅 Sunday, September 27th</div>
-            <div style="opacity: 0.8;">🕒 3:00 PM - 7:00 PM &bull; 📍 Brampton, ON</div>
-        </div>
-
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
-        <div class="speaker-container">
-            <div class="speaker-box">
-                <div class="speaker-headshot" style="background-image: url('1000001065.jpg');"></div>
-                <div style="font-weight: 700; font-size: 15px;">Keaton Cole</div>
-                <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Founder, Heartwork Academy</div>
+    <details class="card">
+        <summary style="cursor: pointer; outline: none; list-style: none;">
+            <span style="color:#ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1.5px;">👇 Tap to Expand Schedule & Speakers</span>
+            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
+            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
+                <div>📅 Sunday, Sept 27th</div>
+                <div>🕒 3:00 PM - 7:00 PM</div>
+                <div>📍 Brampton, ON</div>
             </div>
-            <div class="speaker-box">
-                <div class="speaker-headshot" style="background-image: url('1000001066.jpg');"></div>
-                <div style="font-weight: 700; font-size: 15px;">Featured Speaker</div>
-                <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Industry Guide & Broadcaster</div>
-            </div>
-        </div>
+            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
+        </summary>
 
-        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Official Event Rundown</span>
-        <div class="itinerary-schedule-container">
+        <div class="workshop-details" style="margin-top: 20px;">
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
+            <div class="speaker-container">
+                <div class="speaker-box">
+                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
+                    <div class="speaker-name">Akil Augustine</div>
+                    <div class="speaker-title">MediaLit</div>
+                </div>
+                <div class="speaker-box">
+                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
+                    <div class="speaker-name">Christopher Duff</div>
+                    <div class="speaker-title">Entrepreneur</div>
+                </div>
+            </div>
+
+            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Event Rundown</span>
             <div class="rundown-item">
                 <div class="rundown-time">3:00PM - 3:45PM</div>
                 <div class="rundown-block">Dine In & Set Tone</div>
@@ -463,25 +435,18 @@
                 <div class="rundown-time">5:50PM - 6:50PM</div>
                 <div class="rundown-block">Money Matters</div>
             </div>
-            <div class="rundown-item" style="border-left-color: #424242; background: rgba(255,255,255,0.01);">
-                <div class="rundown-time" style="color: #aaa;">Closing</div>
-                <div style="flex-grow: 1; padding: 12px 15px; font-size: 13px; color: #aaaaaa; font-style: italic;">
-                    Closing Remarks &bull; Food & SWAG Included
-                </div>
-            </div>
-        </div>
 
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px;">Secure My Seat</a>
+            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="margin-top: 15px; display: block;">Secure My Seat</a>
+        </div>
     </details>
 
-    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center; margin-top: 25px;">
+    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
         <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
         <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
     </div>
 </section>
 
-<!-- TAB 4: THE VAULT / ARCHIVE STORE -->
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">The Vault</h2>
     
@@ -509,102 +474,4 @@
         
         <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
-            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6;">
-                <li>Full Elite Training Session Access</li>
-                <li style="color: #f9d976; font-weight: 700;">Includes a copy of POINT GUARD: A Diary 📚</li>
-                <li>Academy Framework Digital Templates</li>
-            </ul>
-        </div>
-        <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold">Secure Checkout</a>
-    </div>
-
-    <div class="card" style="text-align: center;">
-        <h3 style="font-size: 40px; margin: 0; color: #ffffff;">$40</h3>
-        <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold; opacity: 0.9;">Per Athlete Rate</p>
-        
-        <div style="background: rgba(0,0,0,0.15); border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
-            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">
-                <li>Full Elite Training Session Access</li>
-                <li style="text-decoration: line-through; opacity: 0.5;">POINT GUARD: A Diary book not included</li>
-            </ul>
-        </div>
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="background: rgba(255,255,255,0.2); color:#fff;">Secure Checkout</a>
-    </div>
-</section>
-
-<script>
-    // Tab Controller Engine Layout Switcher
-    function switchTab(tabId) {
-        const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.style.display = 'none');
-        
-        document.getElementById(tabId).style.display = 'block';
-        
-        const links = document.querySelectorAll('nav a');
-        links.forEach(link => link.classList.remove('active-tab'));
-        
-        if(tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
-        if(tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
-        if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
-        if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
-        
-        window.scrollTo(0,0);
-    }
-
-    // --- HIGH IMPACT MATRIX GENERATOR FOR DAILY QUOTES ---
-    // Mathematically scales through 2026/2027 based on system timestamps smoothly
-    const heartworkQuotesMatrix = [
-        { text: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.", author: "Michael Jordan", category: "Athlete" },
-        { text: "You can't put a limit on anything. The more you dream, the farther you get.", author: "Michael Phelps", category: "Athlete" },
-        { text: "If you're walking down the right path and you're willing to keep walking, eventually you'll make progress.", author: "Barack Obama", category: "Leader" },
-        { text: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.", author: "Maya Angelou", category: "Author" },
-        { text: "Dreams without goals are just dreams. commitment and consistency are the keys to stepping into reality.", author: "Denzel Washington", category: "Actor" },
-        { text: "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has.", author: "Margaret Mead", category: "Anthropologist" },
-        { text: "Your time is limited, so don't waste it living someone else's life. Have the courage to follow your heart.", author: "Steve Jobs", category: "Founder" },
-        { text: "The cross-cultural variations in how human beings dream tell us that potential is universal, but systems must be constructed to nurture it.", author: "Ruth Benedict", category: "Anthropologist" },
-        { text: "You don't choose your assignments in life; your assignments choose you. Be prepared to master whatever game you are dropped into.", author: "Denzel Washington", category: "Actor" },
-        { text: "You may encounter many defeats, but you must not be defeated. In fact, it may be necessary to encounter the defeats, so you can know who you are.", author: "Maya Angelou", category: "Author" },
-        { text: "The size of your success is measured by the strength of your desire; the size of your dream; and how you handle disappointment along the way.", author: "Robert Kiyosaki", category: "Finance" },
-        { text: "Hard work beats talent when talent fails to work hard.", author: "Kevin Durant", category: "Athlete" },
-        { text: "If you have no confidence in self, you are twice defeated in the race of life. With confidence, you have won even before you have started.", author: "Marcus Garvey", category: "Leader" },
-        { text: "The most important thing is to try and inspire people so that they can be great in whatever they want to do.", author: "Kobe Bryant", category: "Athlete" },
-        { text: "Don't aspire to make a living on the court or stage; aspire to make a difference in the world.", author: "Denzel Washington", category: "Actor" },
-        { text: "Do the best you can until you know better. Then when you know better, do better.", author: "Maya Angelou", category: "Author" },
-        { text: "An anthropologist notes that human societies succeed when skills are passed down purposefully. Build structures that outlast your game.", author: "Claude Lévi-Strauss", category: "Anthropologist" },
-        { text: "Business opportunities are like buses, there's always another one coming. But you have to be at the station to catch it.", author: "Richard Branson", category: "Founder" },
-        { text: "Everything negative—pressure, challenges—is all an opportunity for me to rise.", author: "Kobe Bryant", category: "Athlete" },
-        { text: "The value of identity is that so often it is hidden behind the uniform. Unpack the uniform to find the real asset.", author: "Franz Boas", category: "Anthropologist" }
-    ];
-
-    function runDailyQuoteEngine() {
-        try {
-            const today = new Date();
-            // Create a deterministic day count calculation from the raw system clock
-            const startOfEpoch = new Date(today.getFullYear(), 0, 1);
-            const absoluteDayCount = Math.floor((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
-            
-            // Map the calculated deterministic offset safely across the quotes array length
-            const selectedIndex = absoluteDayCount % heartworkQuotesMatrix.length;
-            const dailyData = heartworkQuotesMatrix[selectedIndex];
-
-            document.getElementById('daily-quote-text').innerText = `"${dailyData.text}"`;
-            document.getElementById('daily-quote-author').innerText = `- ${dailyData.author}`;
-            document.getElementById('daily-quote-category').innerText = dailyData.category;
-        } catch (e) {
-            // Fallback gracefully in case of unexpected execution environment parameters
-            document.getElementById('daily-quote-text').innerText = '"Dreams without goals are just dreams. Commitment and consistency are the keys to execution."';
-            document.getElementById('daily-quote-author').innerText = '- Denzel Washington';
-            document.getElementById('daily-quote-category').innerText = 'Actor';
-        }
-    }
-
-    // Initialize Default View Settings on Startup
-    window.onload = function() {
-        switchTab('locker-room');
-        runDailyQuoteEngine();
-    };
-</script>
-
-</body>
-</html>
+            <ul style="margin: 0; padding-left
