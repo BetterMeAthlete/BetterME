@@ -82,69 +82,29 @@
             border: 1px solid rgba(255, 255, 255, 0.1); 
         }
 
-        /* --- EVENTS INTERACTIVE ACCORDION CARD STYLING --- */
-        .better-me-main-card {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid #d4af37; 
-            border-radius: 20px;
-            padding: 25px 30px;
-            text-align: left;
-            color: #ffffff;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: border-radius 0.2s ease, background 0.2s ease;
+        /* --- ORIGINAL DROPDOWN DESIGN SYSTEM --- */
+        details { 
+            background: rgba(255, 255, 255, 0.08); 
+            padding: 20px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
         }
-        .better-me-main-card:hover {
-            background: rgba(255, 255, 255, 0.12);
+        summary { 
+            font-family: 'Archivo Black', sans-serif; 
+            font-size: 18px; 
+            color: #ffffff; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            outline: none; 
+            padding: 5px 0;
         }
-        .card-header-flex {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .card-main-icon {
-            font-size: 36px;
-            background: rgba(212, 175, 55, 0.15);
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-        }
-        .card-text-left h2 {
-            font-family: 'Archivo Black', sans-serif;
-            margin: 0 0 4px 0;
-            font-size: 22px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .card-text-left p {
-            margin: 0;
-            color: #d4af37;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .arrow-icon {
-            font-size: 18px;
-            color: #d4af37;
-            transition: transform 0.3s ease;
-        }
-        .event-hidden-content {
-            background-color: rgba(0, 10, 26, 0.85);
-            border: 2px solid #d4af37;
-            border-top: none;
-            border-radius: 0 0 20px 20px;
-            padding: 30px 25px;
-            margin-top: -5px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-        }
+        summary::-webkit-details-marker { color: #d4af37; }
 
         /* --- IMAGES & WORKSHOP GRID INFRASTRUCTURE --- */
         .flyer-display-block {
             text-align: center;
-            margin-bottom: 25px;
+            margin: 20px 0 25px 0;
             background: rgba(0, 0, 0, 0.4);
             padding: 12px;
             border-radius: 14px;
@@ -276,9 +236,14 @@
             margin-bottom: 25px;
             border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        .stat-item text-align: center {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
+        .stat-item {
+            text-align: center;
+        }
+        .stat-item span {
+            font-size: 11px;
+            opacity: 0.7;
+            font-weight: 600;
+            text-transform: uppercase;
         }
         .stat-item strong {
             display: block;
@@ -287,8 +252,6 @@
             font-family: 'Archivo Black', sans-serif;
         }
 
-        .bullet-list { margin: 10px 0 15px 0; padding-left: 20px; color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.65; }
-        .bullet-list li { margin-bottom: 6px; }
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
         @media (max-width: 768px) {
@@ -363,17 +326,17 @@
         </p>
 
         <div class="stats-banner">
-            <div class="stat-item" style="text-align: center;">
+            <div class="stat-item">
                 <strong>3</strong>
-                <span style="font-size: 11px; opacity: 0.7; font-weight: 600; text-transform: uppercase;">Core Modules</span>
+                <span>Core Modules</span>
             </div>
-            <div class="stat-item" style="text-align: center;">
+            <div class="stat-item">
                 <strong>7</strong>
-                <span style="font-size: 11px; opacity: 0.7; font-weight: 600; text-transform: uppercase;">Deep-Dive Units</span>
+                <span>Deep-Dive Units</span>
             </div>
-            <div class="stat-item" style="text-align: center;">
+            <div class="stat-item">
                 <strong>100%</strong>
-                <span style="font-size: 11px; opacity: 0.7; font-weight: 600; text-transform: uppercase;">Mobile Ready</span>
+                <span>Mobile Ready</span>
             </div>
         </div>
 
@@ -402,83 +365,69 @@
     </div>
 </section>
 
-<!-- TAB 3: LIVE EVENTS -->
+<!-- TAB 3: LIVE EVENTS (RESTORED TO ORIGINAL DETAILS/SUMMARY DROPDOWN) -->
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 25px;">Events & Focus</h2>
     
-    <div class="events-tab-card-hub">
-        <!-- THE MAIN INTERACTIVE TOUCH CARD -->
-        <button class="better-me-main-card" onclick="toggleEventDetails()">
-            <div class="card-header-flex">
-                <span class="card-main-icon">🏀</span>
-                <div class="card-text-left">
-                    <h2>Better Me Better Athlete</h2>
-                    <p>Sept 27th • Tap to view full event blueprint</p>
-                </div>
-            </div>
-            <span id="dropdown-arrow-indicator" class="arrow-icon">▼</span>
-        </button>
-
-        <!-- HIDDEN DROPDOWN PROFILE (DROPS DOWN ON TAP) -->
-        <div id="event-details-dropdown" class="event-hidden-content" style="display: none;">
-            
-            <!-- OFFICIAL IMAGE WORKSHOP FLYER -->
-            <div class="flyer-display-block">
-                <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
-            </div>
-
-            <!-- DETAILED GEOGRAPHY RUNNER NOTES -->
-            <div style="text-align: center; margin-bottom: 25px; font-size: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="font-weight: 700; color: #f9d976; margin-bottom: 4px;">📅 Sunday, September 27th</div>
-                <div style="opacity: 0.8;">🕒 3:00 PM - 7:00 PM &bull; 📍 Brampton, ON</div>
-            </div>
-
-            <!-- FEATURED PRESENTERS ROW -->
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
-            <div class="speaker-container">
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('1000001065.jpg');"></div>
-                    <div style="font-weight: 700; font-size: 15px;">Keaton Cole</div>
-                    <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Founder, Heartwork Academy</div>
-                </div>
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('1000001066.jpg');"></div>
-                    <div style="font-weight: 700; font-size: 15px;">Featured Speaker</div>
-                    <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Industry Guide & Broadcaster</div>
-                </div>
-            </div>
-
-            <!-- TIME FRAME SCHEDULING MATRIX -->
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Official Event Rundown</span>
-            <div class="itinerary-schedule-container">
-                <div class="rundown-item">
-                    <div class="rundown-time">3:00PM - 3:45PM</div>
-                    <div class="rundown-block">Dine In & Set Tone</div>
-                </div>
-                <div class="rundown-item">
-                    <div class="rundown-time">3:50PM - 4:40PM</div>
-                    <div class="rundown-block">Panel Discussion</div>
-                </div>
-                <div class="rundown-item">
-                    <div class="rundown-time">4:45PM - 5:45PM</div>
-                    <div class="rundown-block">Media Training</div>
-                </div>
-                <div class="rundown-item">
-                    <div class="rundown-time">5:50PM - 6:50PM</div>
-                    <div class="rundown-block">Money Matters</div>
-                </div>
-                <div class="rundown-item" style="border-left-color: #424242; background: rgba(255,255,255,0.01);">
-                    <div class="rundown-time" style="color: #aaa;">Closing</div>
-                    <div style="flex-grow: 1; padding: 12px 15px; font-size: 13px; color: #aaaaaa; font-style: italic;">
-                        Closing Remarks &bull; Food & SWAG Included
-                    </div>
-                </div>
-            </div>
-
-            <!-- CALL TO ACTION ACTION PORTALS -->
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px;">Secure My Seat</a>
+    <details>
+        <summary>Better Me Better Athlete</summary>
+        
+        <!-- OFFICIAL IMAGE WORKSHOP FLYER -->
+        <div class="flyer-display-block">
+            <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
         </div>
-    </div>
+
+        <!-- DETAILED GEOGRAPHY RUNNER NOTES -->
+        <div style="text-align: center; margin-bottom: 25px; font-size: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-weight: 700; color: #f9d976; margin-bottom: 4px;">📅 Sunday, September 27th</div>
+            <div style="opacity: 0.8;">🕒 3:00 PM - 7:00 PM &bull; 📍 Brampton, ON</div>
+        </div>
+
+        <!-- FEATURED PRESENTERS ROW -->
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
+        <div class="speaker-container">
+            <div class="speaker-box">
+                <div class="speaker-headshot" style="background-image: url('1000001065.jpg');"></div>
+                <div style="font-weight: 700; font-size: 15px;">Keaton Cole</div>
+                <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Founder, Heartwork Academy</div>
+            </div>
+            <div class="speaker-box">
+                <div class="speaker-headshot" style="background-image: url('1000001066.jpg');"></div>
+                <div style="font-weight: 700; font-size: 15px;">Featured Speaker</div>
+                <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Industry Guide & Broadcaster</div>
+            </div>
+        </div>
+
+        <!-- TIME FRAME SCHEDULING MATRIX -->
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Official Event Rundown</span>
+        <div class="itinerary-schedule-container">
+            <div class="rundown-item">
+                <div class="rundown-time">3:00PM - 3:45PM</div>
+                <div class="rundown-block">Dine In & Set Tone</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">3:50PM - 4:40PM</div>
+                <div class="rundown-block">Panel Discussion</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">4:45PM - 5:45PM</div>
+                <div class="rundown-block">Media Training</div>
+            </div>
+            <div class="rundown-item">
+                <div class="rundown-time">5:50PM - 6:50PM</div>
+                <div class="rundown-block">Money Matters</div>
+            </div>
+            <div class="rundown-item" style="border-left-color: #424242; background: rgba(255,255,255,0.01);">
+                <div class="rundown-time" style="color: #aaa;">Closing</div>
+                <div style="flex-grow: 1; padding: 12px 15px; font-size: 13px; color: #aaaaaa; font-style: italic;">
+                    Closing Remarks &bull; Food & SWAG Included
+                </div>
+            </div>
+        </div>
+
+        <!-- CALL TO ACTION ACTION PORTALS -->
+        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px;">Secure My Seat</a>
+    </details>
 
     <!-- FEEDBACK FORM MODULE -->
     <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center; margin-top: 25px;">
@@ -557,23 +506,6 @@
         if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
         
         window.scrollTo(0,0);
-    }
-
-    // Interactive Dropdown Accordion Controller
-    function toggleEventDetails() {
-        var box = document.getElementById("event-details-dropdown");
-        var arrow = document.getElementById("dropdown-arrow-indicator");
-        var btn = document.querySelector(".better-me-main-card");
-        
-        if (box.style.display === "none" || box.style.display === "") {
-            box.style.display = "block";
-            arrow.textContent = "▲";
-            btn.style.borderRadius = "20px 20px 0 0";
-        } else {
-            box.style.display = "none";
-            arrow.textContent = "▼";
-            btn.style.borderRadius = "20px";
-        }
     }
 
     // Initialize Default View Settings on Startup
