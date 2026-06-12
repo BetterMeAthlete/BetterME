@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Heartwork Academy | Keaton Cole</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght=400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800&display=swap');
 
         body { 
             font-family: 'Inter', sans-serif; 
@@ -30,6 +30,8 @@
             top: 0; 
             z-index: 1000; 
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         nav a { 
@@ -38,25 +40,55 @@
             font-weight: 700; 
             font-size: 13px; 
             text-transform: uppercase; 
-            opacity: 0.7; 
+            opacity: 0.6; 
             cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
         }
         nav a:hover, nav a.active-tab { 
             opacity: 1; 
             color: #d4af37; 
         }
+        
+        /* Subtle indicator under active nav tab */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        nav a.active-tab::after {
+            width: 100%;
+        }
 
-        /* JavaScript Controlled Tab Engine */
+        /* --- VISUAL FLAIR: SMOOTH TAB TRANSITIONS --- */
         .tab-content { 
             display: none; 
             padding: 20px; 
             max-width: 700px; 
             margin: 0 auto; 
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        /* Active class injected by JS engine triggers the animation */
+        .tab-content.show-active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-section { text-align: center; padding: 40px 20px; }
         .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
 
+        /* --- VISUAL FLAIR: SHIMMER BUTTON EXTRAVAGANZA --- */
         .btn-gold { 
             background: #d4af37;
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
@@ -72,31 +104,65 @@
             font-size: 11px; 
             letter-spacing: 1.5px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+        }
+        
+        .btn-gold:active {
+            transform: translateY(0);
         }
 
+        /* Ambient sweeping light reflex */
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: lightShimmer 6s infinite linear;
+        }
+
+        @keyframes lightShimmer {
+            0% { left: -150%; }
+            15% { left: 150%; }
+            100% { left: 150%; }
+        }
+
+        /* --- CARDS & BLOCKS GRAPHICS LAYER --- */
         .card { 
-            background: rgba(255, 255, 255, 0.08); 
+            background: rgba(255, 255, 255, 0.06); 
             padding: 30px; 
             border-radius: 20px; 
             margin-bottom: 25px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        /* High-Impact Copy Container Styling */
         .impact-card {
             background: rgba(0, 10, 26, 0.75);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 24px;
             padding: 35px;
             margin-bottom: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .impact-section {
-            margin-bottom: 25px;
-        }
-        .impact-section:last-child {
-            margin-bottom: 0;
-        }
+        .impact-section { margin-bottom: 25px; }
+        .impact-section:last-child { margin-bottom: 0; }
+        
         .impact-tag {
             font-family: 'Archivo Black', sans-serif;
             font-size: 14px;
@@ -116,13 +182,48 @@
             margin: 0;
         }
 
-        /* --- DROPDOWN DESIGN SYSTEM --- */
-        details.card {
-            padding: 30px;
+        /* --- VISUAL FLAIR: SMOOTHING INTERACTIVE DROPDOWNS --- */
+        details { 
+            background: rgba(255, 255, 255, 0.06); 
+            padding: 20px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            transition: all 0.3s ease-in-out;
         }
-        summary::-webkit-details-marker { display: none; }
+        details[open] { 
+            border-color: rgba(212, 175, 55, 0.4); 
+            background: rgba(255, 255, 255, 0.09);
+        }
+        summary { 
+            font-family: 'Archivo Black', sans-serif; 
+            font-size: 18px; 
+            color: #ffffff; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            outline: none; 
+            padding: 5px 0;
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+        summary:hover { color: #d4af37; }
+        summary::-webkit-details-marker { color: #d4af37; }
 
-        /* --- IMAGES & WORKSHOP GRID INFRASTRUCTURE --- */
+        .flyer-display-block {
+            text-align: center;
+            margin: 20px 0 25px 0;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .responsive-flyer-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-height: 520px;
+        }
+        
         .speaker-container { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -130,7 +231,7 @@
             margin: 20px 0 25px 0; 
         }
         .speaker-box { 
-            background: rgba(255, 255, 255, 0.05); 
+            background: rgba(255, 255, 255, 0.04); 
             border-radius: 16px; 
             padding: 20px 15px; 
             text-align: center; 
@@ -145,18 +246,14 @@
             background-position: center; 
             border: 3px solid #d4af37; 
         }
-        .speaker-name {
-            font-weight: 700; 
-            font-size: 15px;
-        }
-        .speaker-title {
-            font-size: 12px; 
-            color: #ff8033; 
-            font-weight: 600; 
-            margin-top: 2px;
-        }
         
-        /* --- TIMELINE SCHEDULE SYSTEM --- */
+        .itinerary-schedule-container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
         .rundown-item { 
             display: flex; 
             align-items: center; 
@@ -166,7 +263,7 @@
             padding: 8px; 
             border-left: 4px solid #ff8033; 
         }
-        .rundown-item:last-child { margin-bottom: 0; }
+        .rundown-item:last-child { margin-bottom: 0; border-left-color: #424242; }
         .rundown-time { 
             padding: 10px; 
             font-weight: 800; 
@@ -187,9 +284,8 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- GOOGLE CLASSROOM PROMO ELEMENTS --- */
         .classroom-hero {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0, 10, 26, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(0, 10, 26, 0.85) 100%);
             border: 2px solid #d4af37;
             border-radius: 24px;
             padding: 40px 30px;
@@ -218,8 +314,8 @@
             text-align: left;
         }
         .classroom-feature {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             padding: 20px;
             border-radius: 16px;
         }
@@ -246,9 +342,7 @@
             margin-bottom: 25px;
             border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        .stat-item {
-            text-align: center;
-        }
+        .stat-item { text-align: center; }
         .stat-item span {
             font-size: 11px;
             opacity: 0.7;
@@ -275,13 +369,14 @@
 </head>
 <body>
 
-<nav>
-    <a id="tab-link-locker" onclick="switchTab('locker-room')">Locker</a>
-    <a id="tab-link-academy" onclick="switchTab('academy')">Academy</a>
-    <a id="tab-link-events" onclick="switchTab('events')">Events</a>
-    <a id="tab-link-store" onclick="switchTab('store')">The Vault</a>
+<nav role="navigation" aria-label="Main Navigation">
+    <a id="tab-link-locker" href="#" onclick="event.preventDefault(); switchTab('locker-room')">Locker</a>
+    <a id="tab-link-academy" href="#" onclick="event.preventDefault(); switchTab('academy')">Academy</a>
+    <a id="tab-link-events" href="#" onclick="event.preventDefault(); switchTab('events')">Events</a>
+    <a id="tab-link-store" href="#" onclick="event.preventDefault(); switchTab('store')">The Vault</a>
 </nav>
 
+<!-- TAB 1: LOCKER ROOM -->
 <section id="locker-room" class="tab-content">
     <div class="hero-section">
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
@@ -324,6 +419,7 @@
         </div>
     </div>
 
+    <!-- FIXED COPY TYPO HERE -->
     <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px; border-left: 4px solid #ff8033;">
         <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">⚡ THE DAILY BLUEPRINT</span>
         <div id="quote-container">
@@ -336,6 +432,7 @@
     </div>
 </section>
 
+<!-- TAB 2: ONLINE ACADEMY PORTAL -->
 <section id="academy" class="tab-content">
     <div class="classroom-hero">
         <span class="classroom-badge">Now Streamlined & Upgraded</span>
@@ -382,43 +479,42 @@
             </div>
         </div>
 
-        <a href="https://classroom.google.com" target="_blank" class="btn-gold" style="font-size: 12px; padding: 16px 35px; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">Enter Digital Classroom</a>
+        <a href="https://classroom.google.com" target="_blank" class="btn-gold" style="font-size: 12px; padding: 16px 35px;">Enter Digital Classroom</a>
     </div>
 </section>
 
+<!-- TAB 3: LIVE EVENTS -->
 <section id="events" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37; margin-bottom: 25px;">Events & Focus</h2>
     
-    <details class="card">
-        <summary style="cursor: pointer; outline: none; list-style: none;">
-            <span style="color:#ff8033; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1.5px;">👇 Tap to Expand Schedule & Speakers</span>
-            <h2 style="font-family:'Archivo Black'; font-size: 26px; text-transform: uppercase; margin: 5px 0;">Better Me Better Athlete</h2>
-            <p style="font-size:18px; margin: 0 0 15px 0; font-weight: 700; color: #d4af37;">Industry, Money & Media</p>
-            
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 15px; opacity: 0.9;">
-                <div>📅 Sunday, Sept 27th</div>
-                <div>🕒 3:00 PM - 7:00 PM</div>
-                <div>📍 Brampton, ON</div>
-            </div>
-            <div class="btn-gold" style="margin: 20px auto 0 auto; pointer-events: none;">View Event Details</div>
-        </summary>
+    <details>
+        <summary>Better Me Better Athlete</summary>
+        
+        <div class="flyer-display-block">
+            <img src="1000000997.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
+        </div>
 
-        <div class="workshop-details" style="margin-top: 20px;">
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
-            <div class="speaker-container">
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-akil.jpg');"></div>
-                    <div class="speaker-name">Akil Augustine</div>
-                    <div class="speaker-title">MediaLit</div>
-                </div>
-                <div class="speaker-box">
-                    <div class="speaker-headshot" style="background-image: url('speaker-chris.jpg');"></div>
-                    <div class="speaker-name">Christopher Duff</div>
-                    <div class="speaker-title">Entrepreneur</div>
-                </div>
-            </div>
+        <div style="text-align: center; margin-bottom: 25px; font-size: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="font-weight: 700; color: #f9d976; margin-bottom: 4px;">📅 Sunday, September 27th</div>
+            <div style="opacity: 0.8;">🕒 3:00 PM - 7:00 PM &bull; 📍 Brampton, ON</div>
+        </div>
 
-            <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Event Rundown</span>
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
+        <div class="speaker-container">
+            <div class="speaker-box">
+                <div class="speaker-headshot" style="background-image: url('1000001065.jpg');"></div>
+                <div style="font-weight: 700; font-size: 15px;">Keaton Cole</div>
+                <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Founder, Heartwork Academy</div>
+            </div>
+            <div class="speaker-box">
+                <div class="speaker-headshot" style="background-image: url('1000001066.jpg');"></div>
+                <div style="font-weight: 700; font-size: 15px;">Featured Speaker</div>
+                <div style="font-size: 12px; color: #ff8033; font-weight: 600; margin-top: 2px;">Industry Guide & Broadcaster</div>
+            </div>
+        </div>
+
+        <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Official Event Rundown</span>
+        <div class="itinerary-schedule-container">
             <div class="rundown-item">
                 <div class="rundown-time">3:00PM - 3:45PM</div>
                 <div class="rundown-block">Dine In & Set Tone</div>
@@ -435,18 +531,25 @@
                 <div class="rundown-time">5:50PM - 6:50PM</div>
                 <div class="rundown-block">Money Matters</div>
             </div>
-
-            <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="margin-top: 15px; display: block;">Secure My Seat</a>
+            <div class="rundown-item" style="border-left-color: #424242; background: rgba(255,255,255,0.01);">
+                <div class="rundown-time" style="color: #aaa;">Closing</div>
+                <div style="flex-grow: 1; padding: 12px 15px; font-size: 13px; color: #aaaaaa; font-style: italic;">
+                    Closing Remarks &bull; Food & SWAG Included
+                </div>
+            </div>
         </div>
+
+        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px;">Secure My Seat</a>
     </details>
 
-    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center;">
+    <div class="card" style="padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center; margin-top: 25px;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Feedback</span>
         <h3 style="font-family:'Archivo Black'; font-size: 22px; text-transform: uppercase; margin: 10px 0 15px 0;">Workshop Survey</h3>
         <a href="https://forms.gle/vonb5f2fRMYUDoms9" target="_blank" class="btn-gold">Complete Form</a>
     </div>
 </section>
 
+<!-- TAB 4: THE VAULT / ARCHIVE STORE -->
 <section id="store" class="tab-content">
     <h2 style="font-family:'Archivo Black'; text-align:center; color: #d4af37;">The Vault</h2>
     
@@ -499,12 +602,24 @@
 </section>
 
 <script>
-    // Tab Controller Engine Layout Switcher
+    // --- ADVANCED TAB SYSTEM WITH TRANSITION SUPPORT & DEEP-LINKING ---
     function switchTab(tabId) {
         const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => tab.style.display = 'none');
         
-        document.getElementById(tabId).style.display = 'block';
+        // Remove active rendering classes first to trigger fade down
+        tabs.forEach(tab => {
+            tab.classList.remove('show-active');
+            tab.style.display = 'none';
+        });
+        
+        // Target active view window frame
+        const targetedTab = document.getElementById(tabId);
+        targetedTab.style.display = 'block';
+        
+        // Tiny timeout separates the block drawing engine from the opacity cascade logic
+        setTimeout(() => {
+            targetedTab.classList.add('show-active');
+        }, 20);
         
         const links = document.querySelectorAll('nav a');
         links.forEach(link => link.classList.remove('active-tab'));
@@ -514,16 +629,19 @@
         if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
         if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
         
+        // Updates URL hash elegantly for bookmarking/direct sharing
+        window.history.replaceState(null, null, `#${tabId}`);
         window.scrollTo(0,0);
     }
 
     // --- HIGH IMPACT MATRIX GENERATOR FOR DAILY QUOTES ---
+    // FIXED DENZEL WORD CAPITALIZATION TYPO IN DATA MODEL
     const heartworkQuotesMatrix = [
         { text: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.", author: "Michael Jordan", category: "Athlete" },
         { text: "You can't put a limit on anything. The more you dream, the farther you get.", author: "Michael Phelps", category: "Athlete" },
         { text: "If you're walking down the right path and you're willing to keep walking, eventually you'll make progress.", author: "Barack Obama", category: "Leader" },
         { text: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.", author: "Maya Angelou", category: "Author" },
-        { text: "Dreams without goals are just dreams. commitment and consistency are the keys to stepping into reality.", author: "Denzel Washington", category: "Actor" },
+        { text: "Dreams without goals are just dreams. Commitment and consistency are the keys to stepping into reality.", author: "Denzel Washington", category: "Actor" },
         { text: "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has.", author: "Margaret Mead", category: "Anthropologist" },
         { text: "Your time is limited, so don't waste it living someone else's life. Have the courage to follow your heart.", author: "Steve Jobs", category: "Founder" },
         { text: "The cross-cultural variations in how human beings dream tell us that potential is universal, but systems must be constructed to nurture it.", author: "Ruth Benedict", category: "Anthropologist" },
@@ -545,7 +663,8 @@
         try {
             const today = new Date();
             const startOfEpoch = new Date(today.getFullYear(), 0, 1);
-            const absoluteDayCount = Math.floor((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
+            // Math.round fixes shifting hour offsets during transition windows of standard time
+            const absoluteDayCount = Math.round((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
             
             const selectedIndex = absoluteDayCount % heartworkQuotesMatrix.length;
             const dailyData = heartworkQuotesMatrix[selectedIndex];
@@ -560,9 +679,18 @@
         }
     }
 
-    // Initialize Default View Settings on Startup
+    // Initialize Routing Architecture seamlessly via window initialization routines
     window.onload = function() {
-        switchTab('locker-room');
+        // Deep link parsing routing layer
+        const currentHash = window.location.hash.replace('#', '');
+        const validTabs = ['locker-room', 'academy', 'events', 'store'];
+        
+        if (currentHash && validTabs.includes(currentHash)) {
+            switchTab(currentHash);
+        } else {
+            switchTab('locker-room');
+        }
+        
         runDailyQuoteEngine();
     };
 </script>
