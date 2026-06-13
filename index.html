@@ -51,7 +51,6 @@
             color: #d4af37; 
         }
         
-        /* Subtle indicator under active nav tab */
         nav a::after {
             content: '';
             position: absolute;
@@ -67,7 +66,6 @@
             width: 100%;
         }
 
-        /* --- VISUAL FLAIR: SMOOTH TAB TRANSITIONS --- */
         .tab-content { 
             display: none; 
             padding: 20px; 
@@ -78,17 +76,69 @@
             transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
-        /* Active class injected by JS engine triggers the animation */
         .tab-content.show-active {
             display: block;
             opacity: 1;
             transform: translateY(0);
         }
 
-        .hero-section { text-align: center; padding: 40px 20px; }
+        .hero-section { text-align: center; padding: 40px 20px 20px 20px; }
         .main-logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block;}
 
-        /* --- VISUAL FLAIR: SHIMMER BUTTON EXTRAVAGANZA --- */
+        /* --- FOUNDER PROFILE HEADER CARD --- */
+        .founder-profile-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 24px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .founder-avatar-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .founder-avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+        .founder-info h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 4px 0;
+            color: #ffffff;
+        }
+        .founder-title {
+            font-size: 12px;
+            color: #d4af37;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 8px 0;
+        }
+        .founder-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .profile-tag {
+            font-size: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
         .btn-gold { 
             background: #d4af37;
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); 
@@ -119,7 +169,6 @@
             transform: translateY(0);
         }
 
-        /* Ambient sweeping light reflex */
         .btn-gold::before {
             content: '';
             position: absolute;
@@ -138,7 +187,6 @@
             100% { left: 150%; }
         }
 
-        /* --- CARDS & BLOCKS GRAPHICS LAYER --- */
         .card { 
             background: rgba(255, 255, 255, 0.06); 
             padding: 30px; 
@@ -182,7 +230,6 @@
             margin: 0;
         }
 
-        /* --- VISUAL FLAIR: SMOOTHING INTERACTIVE DROPDOWNS --- */
         details { 
             background: rgba(255, 255, 255, 0.06); 
             padding: 20px; 
@@ -359,6 +406,8 @@
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 40px 0 20px 0; padding-top: 20px; }
 
         @media (max-width: 768px) {
+            .founder-profile-card { flex-direction: column; text-align: center; padding: 25px 20px; }
+            .founder-tags { justify-content: center; }
             .rundown-item { flex-direction: column; align-items: flex-start; padding: 12px; }
             .rundown-time { padding: 0 0 8px 4px; text-align: left; min-width: auto; }
             .rundown-block { width: 100%; box-sizing: border-box; text-align: left; }
@@ -381,12 +430,43 @@
     <div class="hero-section">
         <img src="heartwork-logo.png" class="main-logo" alt="HEARTWORK">
     </div>
+
+    <!-- NEW CONTENT: Founder Profile Card Placement -->
+    <div class="founder-profile-card">
+        <div class="founder-avatar-container">
+            <img src="keaton-profile.jpg" alt="Keaton Cole" class="founder-avatar">
+        </div>
+        <div class="founder-info">
+            <h2>Keaton Cole</h2>
+            <div class="founder-title">Founder, Heartwork Academy</div>
+            <div class="founder-tags">
+                <span class="profile-tag">📚 Self Published Author</span>
+                <span class="profile-tag">🤝 Mentor</span>
+                <span class="profile-tag">🖋️ Poetic</span>
+                <span class="profile-tag">💎 Founder</span>
+            </div>
+        </div>
+    </div>
     
-    <div class="card" style="border-left: 4px solid #d4af37; text-align: center;">
+    <!-- Program Objective -->
+    <div class="card" style="border-left: 4px solid #d4af37; text-align: center; margin-bottom: 25px;">
         <span style="color: #d4af37; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1.5px;">Program Objective</span>
         <p style="font-size: 18px; font-weight: 600; line-height: 1.5; margin: 5px 0;">"To enlighten and prepare young athletes for the multifaceted realities they will encounter in their athletic career and personal lives."</p>
     </div>
 
+    <!-- Daily Inspiration Card -->
+    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px; border-left: 4px solid #ff8033; margin-bottom: 25px;">
+        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">⚡ Daily Inspiration</span>
+        <div id="quote-container">
+            <p id="daily-quote-text" style="font-size: 16px; font-weight: 600; line-height: 1.6; margin: 5px 0 12px 0; color: #ffffff; font-style: italic;">"Loading your daily focus block..."</p>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span id="daily-quote-author" style="font-family:'Archivo Black'; font-size: 13px; text-transform: uppercase; color: #d4af37; letter-spacing: 0.5px;">- Loading</span>
+                <span id="daily-quote-category" style="font-size: 11px; background: rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 20px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase;">Focus</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reality / Problem / Solution Container -->
     <div class="impact-card">
         <div class="impact-section">
             <span class="impact-tag tag-red">⚠️ The Reality</span>
@@ -416,18 +496,6 @@
             <p class="impact-text" style="margin-top: 12px; font-weight: 700; color: #ffffff;">
                 Because the goal was never just to make it. The goal is to be ready for whatever comes next.
             </p>
-        </div>
-    </div>
-
-    <!-- FIXED COPY TYPO HERE -->
-    <div class="card" style="background: rgba(255, 255, 255, 0.05); text-align: left; padding: 25px; border-left: 4px solid #ff8033;">
-        <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">⚡ THE DAILY BLUEPRINT</span>
-        <div id="quote-container">
-            <p id="daily-quote-text" style="font-size: 16px; font-weight: 600; line-height: 1.6; margin: 5px 0 12px 0; color: #ffffff; font-style: italic;">"Loading your daily focus block..."</p>
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <span id="daily-quote-author" style="font-family:'Archivo Black'; font-size: 13px; text-transform: uppercase; color: #d4af37; letter-spacing: 0.5px;">- Loading</span>
-                <span id="daily-quote-category" style="font-size: 11px; background: rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 20px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase;">Focus</span>
-            </div>
         </div>
     </div>
 </section>
@@ -602,21 +670,17 @@
 </section>
 
 <script>
-    // --- ADVANCED TAB SYSTEM WITH TRANSITION SUPPORT & DEEP-LINKING ---
     function switchTab(tabId) {
         const tabs = document.querySelectorAll('.tab-content');
         
-        // Remove active rendering classes first to trigger fade down
         tabs.forEach(tab => {
             tab.classList.remove('show-active');
             tab.style.display = 'none';
         });
         
-        // Target active view window frame
         const targetedTab = document.getElementById(tabId);
         targetedTab.style.display = 'block';
         
-        // Tiny timeout separates the block drawing engine from the opacity cascade logic
         setTimeout(() => {
             targetedTab.classList.add('show-active');
         }, 20);
@@ -629,13 +693,10 @@
         if(tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
         if(tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
         
-        // Updates URL hash elegantly for bookmarking/direct sharing
         window.history.replaceState(null, null, `#${tabId}`);
         window.scrollTo(0,0);
     }
 
-    // --- HIGH IMPACT MATRIX GENERATOR FOR DAILY QUOTES ---
-    // FIXED DENZEL WORD CAPITALIZATION TYPO IN DATA MODEL
     const heartworkQuotesMatrix = [
         { text: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.", author: "Michael Jordan", category: "Athlete" },
         { text: "You can't put a limit on anything. The more you dream, the farther you get.", author: "Michael Phelps", category: "Athlete" },
@@ -663,7 +724,6 @@
         try {
             const today = new Date();
             const startOfEpoch = new Date(today.getFullYear(), 0, 1);
-            // Math.round fixes shifting hour offsets during transition windows of standard time
             const absoluteDayCount = Math.round((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
             
             const selectedIndex = absoluteDayCount % heartworkQuotesMatrix.length;
@@ -679,9 +739,7 @@
         }
     }
 
-    // Initialize Routing Architecture seamlessly via window initialization routines
     window.onload = function() {
-        // Deep link parsing routing layer
         const currentHash = window.location.hash.replace('#', '');
         const validTabs = ['locker-room', 'academy', 'events', 'store'];
         
