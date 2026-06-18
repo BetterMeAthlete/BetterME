@@ -528,6 +528,7 @@
             .classroom-grid { grid-template-columns: 1fr; }
         }
     </style>
+    <script src="quotes-data.js"></script>
 </head>
 <body>
 
@@ -580,7 +581,7 @@
 
         <div class="impact-card-single solution">
             <span class="impact-tag tag-gold">💎 The Solution</span>
-            <p class="impact-text impact-pull">"If you fail to plan, you plan to fail" - Benjamin Franklin</p>
+            <p class="impact-text impact-pull">"If you fail to plan, you plan to fail."</p>
             <p class="impact-text">Heartwork was built for this moment — not after the dream ends, but during the journey. We strategically invest time into the individual while they're still competing. Character development. Soft skills. Financial literacy. Lifestyle awareness. Business acumen.</p>
             <p class="impact-text">The tools and self-knowledge that position any person — athlete or not — to step into life with clarity and power.</p>
             <p class="impact-text impact-close">Because the goal was never just to make it. The goal is to be ready for whatever comes next.</p>
@@ -713,7 +714,7 @@
     <div class="card audio-card">
         <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 1.5px; text-align: center;">🎙️ Before You Read</span>
         <p style="font-size: 17px; font-weight: 800; text-transform: uppercase; margin: 4px 0 4px 0; text-align: center; letter-spacing: 0.5px;">Point Guard</p>
-        <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 18px 0; text-align: center;">A spoken-word by Keaton Cole</p>
+        <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 18px 0; text-align: center;">A spoken-word journey, by Keaton Cole</p>
 
         <audio id="poem-audio" preload="metadata" src="point-guard-poem.mp3"></audio>
 
@@ -848,43 +849,14 @@
         window.scrollTo(0, 0);
     }
 
-    const heartworkQuotesMatrix = [
-        { text: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.", author: "Michael Jordan" },
-        { text: "You can't put a limit on anything. The more you dream, the farther you get.", author: "Michael Phelps" },
-        { text: "If you're walking down the right path and you're willing to keep walking, eventually you'll make progress.", author: "Barack Obama" },
-        { text: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.", author: "Maya Angelou" },
-        { text: "Dreams without goals are just dreams. Commitment and consistency are the keys to stepping into reality.", author: "Denzel Washington" },
-        { text: "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has.", author: "Margaret Mead" },
-        { text: "Your time is limited, so don't waste it living someone else's life. Have the courage to follow your heart.", author: "Steve Jobs" },
-        { text: "The cross-cultural variations in how human beings dream tell us that potential is universal, but systems must be constructed to nurture it.", author: "Ruth Benedict" },
-        { text: "You don't choose your assignments in life; your assignments choose you. Be prepared to master whatever game you are dropped into.", author: "Denzel Washington" },
-        { text: "You may encounter many defeats, but you must not be defeated. In fact, it may be necessary to encounter the defeats, so you can know who you are.", author: "Maya Angelou" },
-        { text: "The size of your success is measured by the strength of your desire; the size of your dream; and how you handle disappointment along the way.", author: "Robert Kiyosaki" },
-        { text: "Hard work beats talent when talent fails to work hard.", author: "Kevin Durant" },
-        { text: "If you have no confidence in self, you are twice defeated in the race of life. With confidence, you have won even before you have started.", author: "Marcus Garvey" },
-        { text: "The most important thing is to try and inspire people so that they can be great in whatever they want to do.", author: "Kobe Bryant" },
-        { text: "Don't aspire to make a living on the court or stage; aspire to make a difference in the world.", author: "Denzel Washington" },
-        { text: "Do the best you can until you know better. Then when you know better, do better.", author: "Maya Angelou" },
-        { text: "An anthropologist notes that human societies succeed when skills are passed down purposefully. Build structures that outlast your game.", author: "Claude Lévi-Strauss" },
-        { text: "Business opportunities are like buses, there's always another one coming. But you have to be at the station to catch it.", author: "Richard Branson" },
-        { text: "Everything negative—pressure, challenges—is all an opportunity for me to rise.", author: "Kobe Bryant" },
-        { text: "The value of identity is that so often it is hidden behind the uniform. Unpack the uniform to find the real asset.", author: "Franz Boas" }
-    ];
-
     function runDailyQuoteEngine() {
         try {
-            const today = new Date();
-            const startOfEpoch = new Date(today.getFullYear(), 0, 1);
-            const absoluteDayCount = Math.round((today - startOfEpoch) / (24 * 60 * 60 * 1000)) + today.getFullYear();
-
-            const selectedIndex = absoluteDayCount % heartworkQuotesMatrix.length;
-            const dailyData = heartworkQuotesMatrix[selectedIndex];
-
+            const dailyData = getTodaysQuote();
             document.getElementById('daily-quote-text').innerText = `"${dailyData.text}"`;
             document.getElementById('daily-quote-author').innerText = dailyData.author;
         } catch (e) {
-            document.getElementById('daily-quote-text').innerText = '"Dreams without goals are just dreams. Commitment and consistency are the keys to execution."';
-            document.getElementById('daily-quote-author').innerText = 'Denzel Washington';
+            document.getElementById('daily-quote-text').innerText = '"All growth starts at the end of your comfort zone."';
+            document.getElementById('daily-quote-author').innerText = 'Tony Robbins';
         }
     }
 
