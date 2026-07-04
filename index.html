@@ -38,9 +38,7 @@
 
         nav.bottom-nav {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -52,259 +50,114 @@
             z-index: 1000;
         }
         nav.bottom-nav a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
             color: rgba(255,255,255,0.5);
             text-decoration: none;
-            font-size: 10.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            flex: 1;
+            font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            cursor: pointer; flex: 1;
             transition: color 0.25s ease, transform 0.25s ease;
             padding: 4px 0;
         }
-        nav.bottom-nav a .nav-icon {
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.25s ease;
-        }
+        nav.bottom-nav a .nav-icon { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; }
         nav.bottom-nav a .nav-icon svg { width: 100%; height: 100%; }
         nav.bottom-nav a.active-tab { color: #d4af37; }
         nav.bottom-nav a.active-tab .nav-icon { transform: translateY(-2px); }
         nav.bottom-nav a.active-tab .nav-dot { opacity: 1; transform: scale(1); }
-        .nav-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #d4af37;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.25s ease;
-            margin-top: -2px;
-        }
+        .nav-dot { width: 4px; height: 4px; border-radius: 50%; background: #d4af37; opacity: 0; transform: scale(0); transition: all 0.25s ease; margin-top: -2px; }
 
         .tab-content {
-            display: none;
-            padding: 22px 18px;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(15px);
+            display: none; padding: 22px 18px; max-width: 700px; margin: 0 auto;
+            opacity: 0; transform: translateY(15px);
             transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .tab-content.show-active { display: block; opacity: 1; transform: translateY(0); }
 
-        .hero-section { text-align: center; padding: 10px 10px 6px 10px; }
-        .main-logo { width: 100%; max-width: 300px; height: auto; margin: 0 auto; display: block; }
-
         .founder-profile-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(212, 175, 55, 0.18);
-            border-radius: 22px;
-            padding: 22px;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
+            border-radius: 22px; padding: 22px; margin-bottom: 18px;
+            display: flex; align-items: center; gap: 18px;
         }
         .founder-avatar {
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
-            object-fit: cover;
-            object-position: center 15%;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-            flex-shrink: 0;
+            width: 76px; height: 76px; border-radius: 50%;
+            border: 2px solid #d4af37; object-fit: cover; object-position: center 15%;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); flex-shrink: 0;
         }
-        .founder-info h2 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 17px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0 0 4px 0;
-        }
-        .founder-title {
-            font-size: 11px;
-            color: #d4af37;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 0 8px 0;
-        }
+        .founder-info h2 { font-family: 'Archivo Black', sans-serif; font-size: 17px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 4px 0; }
+        .founder-title { font-size: 11px; color: #d4af37; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0; }
         .founder-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .profile-tag {
-            font-size: 9.5px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 4px 9px;
-            border-radius: 20px;
-            color: rgba(255,255,255,0.8);
-            font-weight: 600;
-        }
+        .profile-tag { font-size: 9.5px; background: rgba(255, 255, 255, 0.08); padding: 4px 9px; border-radius: 20px; color: rgba(255,255,255,0.8); font-weight: 600; }
 
         .mission-card {
-            border-radius: 20px;
-            padding: 22px;
-            margin-bottom: 18px;
-            text-align: center;
+            border-radius: 20px; padding: 22px; margin-bottom: 18px; text-align: center;
             background: linear-gradient(160deg, rgba(212, 175, 55, 0.1) 0%, rgba(255,255,255,0.03) 100%);
             border: 1px solid rgba(212, 175, 55, 0.25);
         }
-        .mission-eyebrow {
-            color: #d4af37;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.8px;
-            margin-bottom: 10px;
-            display: block;
-        }
+        .mission-eyebrow { color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 10px; display: block; }
         .mission-card p { font-size: 16.5px; font-weight: 600; line-height: 1.5; margin: 0; }
 
         .quote-strip {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+            display: flex; align-items: center; gap: 14px;
             background: rgba(255, 255, 255, 0.04);
-            border-left: 3px solid #ff8033;
-            border-radius: 14px;
-            padding: 14px 16px;
-            margin-bottom: 26px;
+            border-left: 3px solid #ff8033; border-radius: 14px;
+            padding: 14px 16px; margin-bottom: 26px;
         }
         .quote-strip .bolt { font-size: 18px; flex-shrink: 0; }
-        .quote-strip-text {
-            font-size: 13px;
-            line-height: 1.45;
-            font-style: italic;
-            color: rgba(255,255,255,0.92);
-            margin: 0;
-        }
-        .quote-strip-author {
-            font-size: 10.5px;
-            color: #d4af37;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 3px;
-            display: block;
-        }
+        .quote-strip-text { font-size: 13px; line-height: 1.45; font-style: italic; color: rgba(255,255,255,0.92); margin: 0; }
+        .quote-strip-author { font-size: 10.5px; color: #d4af37; font-weight: 700; text-transform: uppercase; margin-top: 3px; display: block; }
 
-        .section-label {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.5);
-            margin: 0 4px 12px 4px;
-        }
+        .section-label { font-family: 'Archivo Black', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); margin: 0 4px 12px 4px; }
 
         .impact-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 10px; }
-        .impact-card-single {
-            background: rgba(0, 10, 26, 0.65);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
+        .impact-card-single { background: rgba(0, 10, 26, 0.65); border-radius: 20px; padding: 24px; box-shadow: 0 10px 24px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); }
         .impact-card-single.reality { border-left: 3px solid #ff5252; }
         .impact-card-single.problem { border-left: 3px solid #ff8033; }
         .impact-card-single.solution { border: 1px solid rgba(212, 175, 55, 0.35); border-left: 3px solid #f9d976; background: rgba(212, 175, 55, 0.05); }
-
-        .impact-tag {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .impact-tag { font-family: 'Archivo Black', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         .tag-red { color: #ff5252; }
         .tag-orange { color: #ff8033; }
         .tag-gold { color: #f9d976; }
-
-        .impact-text {
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.88);
-            margin: 0 0 10px 0;
-        }
+        .impact-text { font-size: 13.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.88); margin: 0 0 10px 0; }
         .impact-text:last-child { margin-bottom: 0; }
         .impact-pull { font-style: italic; color: #f9d976; font-weight: 600; }
         .impact-close { font-weight: 700; color: #ffffff; }
 
         .btn-gold {
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            color: #000000;
-            padding: 14px 25px;
-            text-decoration: none !important;
-            font-weight: 800;
-            border-radius: 50px;
-            display: inline-block;
-            text-align: center;
-            border: none;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            color: #000000; padding: 14px 25px; text-decoration: none !important;
+            font-weight: 800; border-radius: 50px; display: inline-block; text-align: center;
+            border: none; text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px;
+            cursor: pointer; position: relative; overflow: hidden;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35); }
         .btn-gold:active { transform: translateY(0); }
         .btn-gold::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -150%;
-            width: 50%; height: 100%;
+            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
             background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            animation: lightShimmer 6s infinite linear;
+            transform: skewX(-25deg); animation: lightShimmer 6s infinite linear;
         }
         @keyframes lightShimmer { 0% { left: -150%; } 15% { left: 150%; } 100% { left: 150%; } }
 
         .card {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 26px;
-            border-radius: 20px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06); padding: 26px; border-radius: 20px;
+            margin-bottom: 18px; border: 1px solid rgba(255, 255, 255, 0.08);
             transition: border-color 0.3s ease, background 0.3s ease;
         }
         .card:hover { border-color: rgba(212, 175, 55, 0.2); background: rgba(255, 255, 255, 0.08); }
 
         details {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px 20px;
-            border-radius: 18px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05); padding: 18px 20px; border-radius: 18px;
+            margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease-in-out;
         }
         details[open] { border-color: rgba(212, 175, 55, 0.4); background: rgba(255, 255, 255, 0.08); }
         summary {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 16px;
-            color: #ffffff;
-            text-transform: uppercase;
-            cursor: pointer;
-            outline: none;
-            padding: 4px 0;
-            user-select: none;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: color 0.2s ease;
+            font-family: 'Archivo Black', sans-serif; font-size: 16px; color: #ffffff;
+            text-transform: uppercase; cursor: pointer; outline: none; padding: 4px 0;
+            user-select: none; list-style: none; display: flex; align-items: center;
+            justify-content: space-between; transition: color 0.2s ease;
         }
         summary::-webkit-details-marker { display: none; }
         summary:hover { color: #d4af37; }
@@ -312,214 +165,128 @@
         details[open] summary::after { transform: rotate(45deg); }
 
         .flyer-display-block {
-            text-align: center;
-            margin: 16px 0 20px 0;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 10px;
-            border-radius: 14px;
+            text-align: center; margin: 16px 0 20px 0;
+            background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .responsive-flyer-img { max-width: 100%; height: auto; border-radius: 8px; max-height: 480px; }
 
         .speaker-container { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0 20px 0; }
-        .speaker-box {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 18px 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .speaker-headshot {
-            width: 80px; height: 80px;
-            margin: 0 auto 10px auto;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            border: 3px solid #d4af37;
-        }
+        .speaker-box { background: rgba(255, 255, 255, 0.04); border-radius: 16px; padding: 18px 12px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .speaker-headshot { width: 80px; height: 80px; margin: 0 auto 10px auto; border-radius: 50%; background-size: cover; background-position: center; border: 3px solid #d4af37; }
 
-        .itinerary-schedule-container {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 16px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .rundown-item {
-            display: flex; align-items: center;
-            margin-bottom: 12px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px; padding: 8px;
-            border-left: 4px solid #ff8033;
-        }
+        .itinerary-schedule-container { background: rgba(0, 0, 0, 0.2); padding: 16px; border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .rundown-item { display: flex; align-items: center; margin-bottom: 12px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 8px; border-left: 4px solid #ff8033; }
         .rundown-item:last-child { margin-bottom: 0; border-left-color: #424242; }
         .rundown-time { padding: 8px; font-weight: 800; font-size: 12px; min-width: 120px; color: #ff8033; text-align: center; }
-        .rundown-block {
-            flex-grow: 1;
-            background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            color: #000000; padding: 11px 14px; border-radius: 10px;
-            font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
-        }
+        .rundown-block { flex-grow: 1; background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%); color: #000000; padding: 11px 14px; border-radius: 10px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 
+        /* ===== EVENT PRICING SECTION ===== */
+        .event-pricing-section {
+            margin-top: 24px;
+        }
+        .event-pricing-flow-note {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .event-pricing-flow-note .flow-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+        .event-pricing-flow-note p { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,0.85); margin: 0; }
+        .event-pricing-flow-note strong { color: #f9d976; }
+
+        .event-price-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 14px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+        .event-price-card:hover { border-color: rgba(212, 175, 55, 0.25); }
+        .event-price-card.featured {
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            background: rgba(212, 175, 55, 0.04);
+        }
+        .event-price-badge {
+            font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1.5px; color: #ff8033; margin-bottom: 8px; display: block;
+        }
+        .event-price-amount {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 42px; color: #d4af37; margin: 0 0 4px 0; line-height: 1;
+        }
+        .event-price-amount.white { color: #ffffff; }
+        .event-price-label { font-size: 14px; font-weight: 700; margin: 0 0 14px 0; opacity: 0.9; }
+        .event-price-includes {
+            background: rgba(0,0,0,0.2); border-radius: 12px;
+            padding: 12px 14px; text-align: left; margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .event-price-includes ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+        .event-price-includes li.highlight { color: #f9d976; font-weight: 700; }
+        .event-price-includes li.strikethrough { text-decoration: line-through; opacity: 0.45; }
+
+        /* ===== ACADEMY TAB ===== */
         .classroom-hero {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(0, 10, 26, 0.85) 100%);
-            border: 2px solid #d4af37;
-            border-radius: 22px;
-            padding: 32px 22px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 2px solid #d4af37; border-radius: 22px; padding: 32px 22px;
+            text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
         .classroom-badge {
-            background: #0a2e6b;
-            color: #d4af37;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 10.5px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 14px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: #0a2e6b; color: #d4af37; padding: 6px 16px; border-radius: 50px;
+            font-size: 10.5px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+            display: inline-block; margin-bottom: 14px; border: 1px solid rgba(212, 175, 55, 0.3);
         }
         .classroom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; text-align: left; }
-        .classroom-feature {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 18px; border-radius: 16px;
-        }
-        .classroom-feature h4 {
-            margin: 0 0 8px 0; color: #f9d976; font-size: 14px;
-            font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
-        }
+        .classroom-feature { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.06); padding: 18px; border-radius: 16px; }
+        .classroom-feature h4 { margin: 0 0 8px 0; color: #f9d976; font-size: 14px; font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
         .classroom-feature p { margin: 0; font-size: 12.5px; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
-        .stats-banner {
-            display: flex; justify-content: space-around;
-            background: rgba(0, 10, 26, 0.6);
-            border-radius: 14px; padding: 14px;
-            margin-bottom: 22px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
+        .stats-banner { display: flex; justify-content: space-around; background: rgba(0, 10, 26, 0.6); border-radius: 14px; padding: 14px; margin-bottom: 22px; border: 1px solid rgba(212, 175, 55, 0.15); }
         .stat-item { text-align: center; }
         .stat-item span { font-size: 10.5px; opacity: 0.7; font-weight: 600; text-transform: uppercase; }
         .stat-item strong { display: block; font-size: 19px; color: #d4af37; font-family: 'Archivo Black', sans-serif; }
 
         .section-divider { border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 34px 0 18px 0; padding-top: 18px; }
 
+        /* ===== AUDIO PLAYER ===== */
         .audio-card { text-align: center; }
-
         .player-controls { display: flex; align-items: center; gap: 16px; }
         .play-btn {
-            flex-shrink: 0;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: none;
+            flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; border: none;
             background: linear-gradient(135deg, #d4af37 0%, #f9d976 50%, #b8860b 100%);
-            color: #000000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+            color: #000000; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .play-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
         .play-btn:active { transform: scale(0.97); }
         .play-btn svg { width: 24px; height: 24px; }
-
         .player-progress-wrap { flex-grow: 1; text-align: left; }
-        .player-progress-bar {
-            position: relative;
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 10px;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        .player-progress-fill {
-            position: absolute;
-            top: 0; left: 0;
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #d4af37, #f9d976);
-            border-radius: 10px;
-            transition: width 0.1s linear;
-        }
-        .player-time-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-            font-size: 11px;
-            color: rgba(255,255,255,0.55);
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
+        .player-progress-bar { position: relative; width: 100%; height: 6px; background: rgba(255,255,255,0.12); border-radius: 10px; cursor: pointer; overflow: hidden; }
+        .player-progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #d4af37, #f9d976); border-radius: 10px; transition: width 0.1s linear; }
+        .player-time-row { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 600; letter-spacing: 0.3px; }
+
+        /* ===== ARCHIVE TAB ===== */
+        .archive-empty-state { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.12); border-radius: 18px; padding: 30px 20px; text-align: center; margin-bottom: 10px; }
+        .archive-empty-icon { font-size: 36px; display: block; margin-bottom: 12px; }
+        .archive-empty-state p { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+
+        .gallery-feed { display: flex; flex-direction: column; gap: 16px; }
+        .gallery-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; overflow: hidden; transition: border-color 0.3s ease; }
+        .gallery-card:hover { border-color: rgba(212, 175, 55, 0.25); }
+        .gallery-img { width: 100%; height: auto; display: block; object-fit: cover; max-height: 380px; }
+        .gallery-caption { font-size: 12.5px; color: rgba(255,255,255,0.65); font-weight: 600; padding: 12px 16px; margin: 0; border-top: 1px solid rgba(255,255,255,0.05); }
 
         .site-footer { text-align: center; padding: 30px 20px 110px 20px; max-width: 700px; margin: 0 auto; }
         .footer-logo { height: 22px; width: auto; opacity: 0.6; margin-bottom: 10px; filter: grayscale(0.3); }
         .footer-copy { font-size: 11px; color: rgba(255,255,255,0.4); margin: 0; letter-spacing: 0.3px; }
-
-        /* ===== ARCHIVE TAB ===== */
-        .archive-block-label {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #d4af37;
-            margin: 0 4px 14px 4px;
-        }
-        .archive-empty-state {
-            background: rgba(255,255,255,0.03);
-            border: 1px dashed rgba(255,255,255,0.12);
-            border-radius: 18px;
-            padding: 30px 20px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .archive-empty-icon {
-            font-size: 36px;
-            display: block;
-            margin-bottom: 12px;
-        }
-        .archive-empty-state p {
-            font-size: 13.5px;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* ===== PERSONAL GALLERY ===== */
-        .gallery-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .gallery-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-        .gallery-card:hover { border-color: rgba(212, 175, 55, 0.25); }
-        .gallery-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            max-height: 380px;
-        }
-        .gallery-caption {
-            font-size: 12.5px;
-            color: rgba(255,255,255,0.65);
-            font-weight: 600;
-            padding: 12px 16px;
-            margin: 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
 
         @media (max-width: 768px) {
             .founder-profile-card { padding: 18px; }
@@ -538,6 +305,7 @@
     <img src="heartwork-logo.png" alt="HEARTWORK">
 </div>
 
+<!-- TAB 1: HOME -->
 <section id="locker-room" class="tab-content">
     <div class="founder-profile-card">
         <img src="1000001175.jpg" alt="Keaton Cole" class="founder-avatar">
@@ -572,14 +340,12 @@
             <p class="impact-text">The odds are stacked against student athletes — and that's not an opinion, it's a fact. Fewer than 2% ever reach the professional ranks. Only 1–2% earn a full NCAA athletic scholarship.</p>
             <p class="impact-text">In basketball specifically, just 0.8–1.2% make it to the NBA or WNBA. Even broader professional opportunities — the G-League, international leagues, overseas careers — only absorb roughly 15–20% of those who pursue them.</p>
         </div>
-
         <div class="impact-card-single problem">
             <span class="impact-tag tag-orange">🛑 The Problem</span>
             <p class="impact-text">Student athletes pour everything they have into the dream. Every ounce of time, energy, and focus. And rightfully so — in the middle of the journey, that dream is everything. It's not a phase. It's an identity.</p>
             <p class="impact-text">But for the majority, the day comes when that dream gets set aside. And when it does, most aren't ready. They've been told their whole career to "have a Plan B" — but no one ever helped them build one. No resume. No work history. No clarity on who they are outside of the sport.</p>
             <p class="impact-text">What follows is an identity crisis, depression, and the overwhelming feeling of stepping into the real world completely unprepared.</p>
         </div>
-
         <div class="impact-card-single solution">
             <span class="impact-tag tag-gold">💎 The Solution</span>
             <p class="impact-text impact-pull">"If you fail to plan, you plan to fail" - Unknown</p>
@@ -590,62 +356,44 @@
     </div>
 </section>
 
+<!-- TAB 2: ACADEMY -->
 <section id="academy" class="tab-content">
     <div class="classroom-hero">
         <span class="classroom-badge">Now Streamlined & Upgraded</span>
         <h2 style="font-family:'Archivo Black'; font-size: 26px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px;">Beyond The Court</h2>
         <p style="font-size: 14px; color: #f9d976; font-weight: 600; margin: 0 0 18px 0;">The Official Google Classroom Interactive Learning Course</p>
-
         <p style="font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.9); max-width: 580px; margin: 0 auto 22px auto;">
             We have fully migrated our masterclass ecosystem directly into Google Classroom! Get ready for a seamless interactive environment featuring downloadable homework playbooks, guided video assignments, and peer discussions focused on building your career off the hardwood.
         </p>
-
         <div class="stats-banner">
             <div class="stat-item"><strong>3</strong><span>Core Modules</span></div>
             <div class="stat-item"><strong>7</strong><span>Deep-Dive Units</span></div>
             <div class="stat-item"><strong>100%</strong><span>Mobile Ready</span></div>
         </div>
-
         <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 13px; text-transform: uppercase; color: #fff; letter-spacing: 1px; margin-bottom: 14px; text-align: left;">Inside the Playbook:</h3>
-
         <div class="classroom-grid">
-            <div class="classroom-feature">
-                <h4>🧠 Athlete Mindset</h4>
-                <p>Build unshakeable growth mindsets, SMART goal roadmaps, and professional career standards.</p>
-            </div>
-            <div class="classroom-feature">
-                <h4>💼 Business IQ</h4>
-                <p>Master sports agency evaluation, multi-tier contract structures, and financial asset literacy.</p>
-            </div>
-            <div class="classroom-feature">
-                <h4>📣 Brand & PR</h4>
-                <p>Navigate media handling protocols, pre/post-game interviews, and active digital brand safety.</p>
-            </div>
-            <div class="classroom-feature">
-                <h4>🌅 Life Transitions</h4>
-                <p>Identify transferable athletic skills to design your lifelong career trajectory after sports.</p>
-            </div>
+            <div class="classroom-feature"><h4>🧠 Athlete Mindset</h4><p>Build unshakeable growth mindsets, SMART goal roadmaps, and professional career standards.</p></div>
+            <div class="classroom-feature"><h4>💼 Business IQ</h4><p>Master sports agency evaluation, multi-tier contract structures, and financial asset literacy.</p></div>
+            <div class="classroom-feature"><h4>📣 Brand & PR</h4><p>Navigate media handling protocols, pre/post-game interviews, and active digital brand safety.</p></div>
+            <div class="classroom-feature"><h4>🌅 Life Transitions</h4><p>Identify transferable athletic skills to design your lifelong career trajectory after sports.</p></div>
         </div>
-
         <a href="https://classroom.google.com" target="_blank" class="btn-gold" style="font-size: 12px; padding: 16px 35px;">Enter Digital Classroom</a>
     </div>
 </section>
 
+<!-- TAB 3: EVENTS -->
 <section id="events" class="tab-content">
     <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">Events & Focus</div>
 
     <details>
         <summary>Better Me Better Athlete</summary>
-
         <div class="flyer-display-block">
             <img src="1.png" alt="Better Me Better Athlete Rundown Flyer" class="responsive-flyer-img">
         </div>
-
         <div style="text-align: center; margin-bottom: 20px; font-size: 14px; background: rgba(255,255,255,0.02); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="font-weight: 700; color: #f9d976; margin-bottom: 4px;">📅 Sunday, September 27th</div>
             <div style="opacity: 0.8;">🕒 3:00 PM - 7:00 PM &bull; 📍 Brampton, ON</div>
         </div>
-
         <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">Featured Speakers</span>
         <div class="speaker-container">
             <div class="speaker-box">
@@ -659,41 +407,77 @@
                 <div style="font-size: 11px; color: #ff8033; font-weight: 600; margin-top: 2px;">Entrepreneur</div>
             </div>
         </div>
-
         <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">Official Event Rundown</span>
         <div class="itinerary-schedule-container">
-            <div class="rundown-item">
-                <div class="rundown-time">3:00PM - 3:45PM</div>
-                <div class="rundown-block">Dine In & Set Tone</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">3:50PM - 4:40PM</div>
-                <div class="rundown-block">Panel Discussion</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">4:45PM - 5:45PM</div>
-                <div class="rundown-block">Media Training</div>
-            </div>
-            <div class="rundown-item">
-                <div class="rundown-time">5:50PM - 6:50PM</div>
-                <div class="rundown-block">Money Matters</div>
-            </div>
+            <div class="rundown-item"><div class="rundown-time">3:00PM - 3:45PM</div><div class="rundown-block">Dine In & Set Tone</div></div>
+            <div class="rundown-item"><div class="rundown-time">3:50PM - 4:40PM</div><div class="rundown-block">Panel Discussion</div></div>
+            <div class="rundown-item"><div class="rundown-time">4:45PM - 5:45PM</div><div class="rundown-block">Media Training</div></div>
+            <div class="rundown-item"><div class="rundown-time">5:50PM - 6:50PM</div><div class="rundown-block">Money Matters</div></div>
             <div class="rundown-item" style="border-left-color: #424242; background: rgba(255,255,255,0.01);">
                 <div class="rundown-time" style="color: #aaa;">Closing</div>
-                <div style="flex-grow: 1; padding: 11px 14px; font-size: 12.5px; color: #aaaaaa; font-style: italic;">
-                    Closing Remarks &bull; Food & SWAG Included
-                </div>
+                <div style="flex-grow: 1; padding: 11px 14px; font-size: 12.5px; color: #aaaaaa; font-style: italic;">Closing Remarks &bull; Food & SWAG Included</div>
             </div>
         </div>
 
-        <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 12px;">Secure My Seat</a>
+        <!-- PRICING SECTION -->
+        <div class="event-pricing-section">
+            <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 14px; display: block; letter-spacing: 1.5px;">Secure Your Spot</span>
+
+            <div class="event-pricing-flow-note">
+                <span class="flow-icon">ℹ️</span>
+                <p>Select the option that applies to you below. After completing your purchase, you'll be <strong>automatically directed to your registration and consent form</strong> — no extra steps needed. Food & SWAG included for all attendees.</p>
+            </div>
+
+            <!-- $55 MOST POPULAR -->
+            <div class="event-price-card featured">
+                <span class="event-price-badge">🔥 Most Popular</span>
+                <p class="event-price-amount">$55</p>
+                <p class="event-price-label">Per Athlete Session Rate</p>
+                <div class="event-price-includes">
+                    <ul>
+                        <li>Full Elite Training Session Access</li>
+                        <li class="highlight">Includes a copy of POINT GUARD: A Diary 📚</li>
+                        <li>Academy Framework Digital Templates</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/00wdR8aAL3re7e24HU7kc02" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box;">Secure My Seat — $55</a>
+            </div>
+
+            <!-- $40 -->
+            <div class="event-price-card">
+                <p class="event-price-amount white">$40</p>
+                <p class="event-price-label">Per Athlete Rate</p>
+                <div class="event-price-includes">
+                    <ul>
+                        <li>Full Elite Training Session Access</li>
+                        <li class="strikethrough">POINT GUARD: A Diary book not included</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/6oU8wO6kvbXK2XMb6i7kc01" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box; background: rgba(255,255,255,0.18); color: #fff;">Secure My Seat — $40</a>
+            </div>
+
+            <!-- $600 TEAM -->
+            <div class="event-price-card">
+                <p class="event-price-amount">$600</p>
+                <p class="event-price-label">Team Workshop Package</p>
+                <div class="event-price-includes">
+                    <ul>
+                        <li>Full group session access for your team</li>
+                        <li>Ideal for coaches, programs & organizations</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/00w9ASfV54vi1TI8Ya7kc00" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box;">Secure My Spot — $600</a>
+            </div>
+
+            <p style="font-size: 11px; color: rgba(255,255,255,0.35); text-align: center; margin: 8px 0 0 0;">⚠️ Only 50 spots available. Seats are not guaranteed until payment is complete.</p>
+        </div>
     </details>
 
     <details>
         <summary>📋 Registration & Release Form</summary>
         <div style="text-align: center; padding: 14px 8px 4px 8px;">
             <p style="font-size: 13.5px; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0 0 18px 0;">
-                To complete registration, please fill out our secure digital form, which covers both the media waiver (authorizing photo/video capture and highlights throughout the academy programming) and the parent/guardian liability release required for all minor participating student-athletes prior to checking in.
+                Paid already and need to access the form directly? Use the link below. This form covers both the media waiver and the parent/guardian liability release required for all minor participating student-athletes.
             </p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKwhOfqVCfKH-1EL_MU_cNclxdd6C1MOD8HXEkxleX65rxoQ/viewform?usp=header" target="_blank" class="btn-gold" style="display: block; width: 100%; box-sizing: border-box;">Open Registration Form</a>
         </div>
@@ -706,6 +490,32 @@
     </div>
 </section>
 
+<!-- TAB 4: ARCHIVE -->
+<section id="archive" class="tab-content">
+    <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">Archive</div>
+
+    <div class="section-label">🎥 Past Events</div>
+    <div class="archive-empty-state">
+        <span class="archive-empty-icon">📁</span>
+        <p>Event recaps, photos and video highlights will live here after each workshop. Check back after the next event.</p>
+    </div>
+
+    <div class="section-divider">
+        <div class="section-label">📸 The Man Behind The Mission</div>
+    </div>
+    <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin: 0 4px 18px 4px; line-height: 1.6;">A look at the journey — on the court, in the classroom, and beyond.</p>
+
+    <div class="gallery-feed">
+        <div class="gallery-card"><img src="gallery-1.jpg" alt="On the court" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'"><p class="gallery-caption">On the court</p></div>
+        <div class="gallery-card"><img src="gallery-2.jpg" alt="Graduation day" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'"><p class="gallery-caption">Graduation day</p></div>
+        <div class="gallery-card"><img src="gallery-3.jpg" alt="In the jersey" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'"><p class="gallery-caption">In the jersey</p></div>
+        <div class="gallery-card"><img src="gallery-4.jpg" alt="Coaching session" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'"><p class="gallery-caption">Coaching session</p></div>
+        <div class="gallery-card"><img src="gallery-5.jpg" alt="Behind the scenes" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'"><p class="gallery-caption">Behind the scenes</p></div>
+    </div>
+    <p style="font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; margin: 18px 0 0 0;">More photos added over time.</p>
+</section>
+
+<!-- TAB 5: VAULT -->
 <section id="store" class="tab-content">
     <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">The Vault</div>
 
@@ -713,9 +523,7 @@
         <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: block; letter-spacing: 1.5px; text-align: center;">🎙️ Before You Read</span>
         <p style="font-size: 17px; font-weight: 800; text-transform: uppercase; margin: 4px 0 4px 0; text-align: center; letter-spacing: 0.5px;">Point Guard</p>
         <p style="font-size: 12.5px; opacity: 0.7; margin: 0 0 18px 0; text-align: center;">A spoken-word by Keaton Cole</p>
-
         <audio id="poem-audio" preload="metadata" src="point-guard-poem.mp3"></audio>
-
         <div class="player-controls">
             <button id="play-pause-btn" class="play-btn" onclick="togglePoemAudio()" aria-label="Play">
                 <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -754,7 +562,6 @@
         <span style="color: #ff8033; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px;">🔥 MOST POPULAR</span>
         <h3 style="font-size: 38px; margin: 0; color: #d4af37;">$55</h3>
         <p style="font-size: 15px; margin-bottom: 14px; font-weight: bold;">Per Athlete Session Rate</p>
-
         <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="font-size: 12.5px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
             <ul style="margin: 0; padding-left: 18px; font-size: 12.5px; color: rgba(255,255,255,0.85); line-height: 1.6;">
@@ -769,7 +576,6 @@
     <div class="card" style="text-align: center;">
         <h3 style="font-size: 38px; margin: 0; color: #ffffff;">$40</h3>
         <p style="font-size: 15px; margin-bottom: 14px; font-weight: bold; opacity: 0.9;">Per Athlete Rate</p>
-
         <div style="background: rgba(0,0,0,0.15); border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="font-size: 12.5px; font-weight: 700; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">What's Included:</div>
             <ul style="margin: 0; padding-left: 18px; font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.6;">
@@ -781,49 +587,6 @@
     </div>
 </section>
 
-<section id="archive" class="tab-content">
-    <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">Archive</div>
-
-    <!-- PAST EVENTS RECAP -->
-    <div class="archive-block-label">🎥 Past Events</div>
-    <div class="archive-empty-state" id="archive-events-placeholder">
-        <span class="archive-empty-icon">📁</span>
-        <p>Event recaps, photos and video highlights will live here after each workshop. Check back after the next event.</p>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- PERSONAL GALLERY -->
-    <div class="archive-block-label">📸 The Man Behind The Mission</div>
-    <p style="font-size: 13px; color: rgba(255,255,255,0.6); margin: 0 4px 20px 4px; line-height: 1.55;">A look at the journey — on the court, in the classroom, and beyond.</p>
-
-    <div class="gallery-feed" id="gallery-feed">
-        <!-- Each photo card: src, caption. Add more as you upload photos to the repo. -->
-        <div class="gallery-card">
-            <img src="gallery-1.jpg" alt="On the court" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'">
-            <p class="gallery-caption">On the court</p>
-        </div>
-        <div class="gallery-card">
-            <img src="gallery-2.jpg" alt="Graduation day" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'">
-            <p class="gallery-caption">Graduation day</p>
-        </div>
-        <div class="gallery-card">
-            <img src="gallery-3.jpg" alt="In the jersey" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'">
-            <p class="gallery-caption">In the jersey</p>
-        </div>
-        <div class="gallery-card">
-            <img src="gallery-4.jpg" alt="Coaching session" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'">
-            <p class="gallery-caption">Coaching session</p>
-        </div>
-        <div class="gallery-card">
-            <img src="gallery-5.jpg" alt="Behind the scenes" class="gallery-img" onerror="this.closest('.gallery-card').style.display='none'">
-            <p class="gallery-caption">Behind the scenes</p>
-        </div>
-    </div>
-
-    <p style="font-size: 11.5px; color: rgba(255,255,255,0.35); text-align:center; margin-top: 10px; font-style: italic;">More photos added over time.</p>
-</section>
-
 <footer class="site-footer">
     <img src="heartwork-logo.png" alt="Heartwork Academy" class="footer-logo">
     <p class="footer-copy">© 2026 Heartwork Academy. All rights reserved.</p>
@@ -831,61 +594,38 @@
 
 <nav class="bottom-nav" role="navigation" aria-label="Main Navigation">
     <a id="tab-link-locker" href="#" onclick="event.preventDefault(); switchTab('locker-room')">
-        <span class="nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </span>
-        Home
-        <span class="nav-dot"></span>
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        Home <span class="nav-dot"></span>
     </a>
     <a id="tab-link-academy" href="#" onclick="event.preventDefault(); switchTab('academy')">
-        <span class="nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </span>
-        Academy
-        <span class="nav-dot"></span>
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        Academy <span class="nav-dot"></span>
     </a>
     <a id="tab-link-events" href="#" onclick="event.preventDefault(); switchTab('events')">
-        <span class="nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </span>
-        Events
-        <span class="nav-dot"></span>
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+        Events <span class="nav-dot"></span>
     </a>
     <a id="tab-link-archive" href="#" onclick="event.preventDefault(); switchTab('archive')">
-        <span class="nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-        </span>
-        Archive
-        <span class="nav-dot"></span>
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span>
+        Archive <span class="nav-dot"></span>
     </a>
     <a id="tab-link-store" href="#" onclick="event.preventDefault(); switchTab('store')">
-        <span class="nav-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        </span>
-        Vault
-        <span class="nav-dot"></span>
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+        Vault <span class="nav-dot"></span>
     </a>
 </nav>
 
 <script>
     function switchTab(tabId) {
-        const tabs = document.querySelectorAll('.tab-content');
-
-        tabs.forEach(tab => {
+        document.querySelectorAll('.tab-content').forEach(tab => {
             tab.classList.remove('show-active');
             tab.style.display = 'none';
         });
+        const target = document.getElementById(tabId);
+        target.style.display = 'block';
+        setTimeout(() => target.classList.add('show-active'), 20);
 
-        const targetedTab = document.getElementById(tabId);
-        targetedTab.style.display = 'block';
-
-        setTimeout(() => {
-            targetedTab.classList.add('show-active');
-        }, 20);
-
-        const links = document.querySelectorAll('nav.bottom-nav a');
-        links.forEach(link => link.classList.remove('active-tab'));
-
+        document.querySelectorAll('nav.bottom-nav a').forEach(link => link.classList.remove('active-tab'));
         if (tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
         if (tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
         if (tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
@@ -915,62 +655,36 @@
     const currentTimeLabel = document.getElementById('current-time');
     const totalTimeLabel = document.getElementById('total-time');
 
-    function formatTime(seconds) {
-        if (!isFinite(seconds) || isNaN(seconds)) return '0:00';
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    function formatTime(s) {
+        if (!isFinite(s) || isNaN(s)) return '0:00';
+        return `${Math.floor(s/60)}:${('0'+Math.floor(s%60)).slice(-2)}`;
     }
-
     function togglePoemAudio() {
         if (!poemAudio) return;
-        if (poemAudio.paused) {
-            poemAudio.play();
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        } else {
-            poemAudio.pause();
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
-        }
+        if (poemAudio.paused) { poemAudio.play(); playIcon.style.display='none'; pauseIcon.style.display='block'; }
+        else { poemAudio.pause(); playIcon.style.display='block'; pauseIcon.style.display='none'; }
     }
-
     function seekPoemAudio(e) {
         if (!poemAudio || !poemAudio.duration) return;
         const rect = progressBar.getBoundingClientRect();
-        const clickRatio = (e.clientX - rect.left) / rect.width;
-        poemAudio.currentTime = clickRatio * poemAudio.duration;
+        poemAudio.currentTime = ((e.clientX - rect.left) / rect.width) * poemAudio.duration;
     }
-
     if (poemAudio) {
-        poemAudio.addEventListener('loadedmetadata', () => {
-            totalTimeLabel.innerText = formatTime(poemAudio.duration);
-        });
+        poemAudio.addEventListener('loadedmetadata', () => { totalTimeLabel.innerText = formatTime(poemAudio.duration); });
         poemAudio.addEventListener('timeupdate', () => {
-            if (poemAudio.duration) {
-                const pct = (poemAudio.currentTime / poemAudio.duration) * 100;
-                progressFill.style.width = pct + '%';
-            }
+            if (poemAudio.duration) progressFill.style.width = (poemAudio.currentTime / poemAudio.duration * 100) + '%';
             currentTimeLabel.innerText = formatTime(poemAudio.currentTime);
         });
         poemAudio.addEventListener('ended', () => {
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
-            progressFill.style.width = '0%';
-            currentTimeLabel.innerText = '0:00';
+            playIcon.style.display='block'; pauseIcon.style.display='none';
+            progressFill.style.width='0%'; currentTimeLabel.innerText='0:00';
         });
     }
 
     window.onload = function () {
-        const currentHash = window.location.hash.replace('#', '');
-        const validTabs = ['locker-room', 'academy', 'events', 'archive', 'store'];
-
-        if (currentHash && validTabs.includes(currentHash)) {
-            switchTab(currentHash);
-        } else {
-            switchTab('locker-room');
-        }
-
+        const hash = window.location.hash.replace('#', '');
+        const valid = ['locker-room', 'academy', 'events', 'archive', 'store'];
+        switchTab(valid.includes(hash) ? hash : 'locker-room');
         runDailyQuoteEngine();
     };
 </script>
