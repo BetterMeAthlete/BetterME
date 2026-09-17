@@ -381,7 +381,29 @@
     </div>
 </section>
 
-<!-- TAB 3: EVENTS -->
+<!-- TAB 3: PODCAST -->
+<section id="podcast" class="tab-content">
+    <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">Heartwork Podcast</div>
+
+    <div class="card" style="text-align: center; padding: 20px;">
+        <span style="color: #d4af37; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 1.5px;">Episode 1</span>
+        <h3 style="font-family:'Archivo Black'; font-size: 20px; text-transform: uppercase; margin: 0 0 16px 0;">Listen Now</h3>
+        
+        <!-- Spotify Embedded Player -->
+        <iframe 
+            style="border-radius:12px" 
+            src="https://open.spotify.com/embed/episode/3UNpOanLSQe09YtogOuWiL?utm_source=generator&theme=0" 
+            width="100%" 
+            height="152" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<!-- TAB 4: EVENTS -->
 <section id="events" class="tab-content">
     <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">Events & Focus</div>
 
@@ -491,7 +513,7 @@
     </div>
 </section>
 
-<!-- TAB 4: ARCHIVE -->
+<!-- TAB 5: ARCHIVE -->
 <section id="archive" class="tab-content">
     <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">Archive</div>
 
@@ -516,7 +538,7 @@
     <p style="font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; margin: 18px 0 0 0;">More photos added over time.</p>
 </section>
 
-<!-- TAB 5: VAULT -->
+<!-- TAB 6: VAULT -->
 <section id="store" class="tab-content">
     <div class="section-label" style="text-align:center; margin: 4px 0 18px 0;">The Vault</div>
 
@@ -617,6 +639,17 @@
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
         Academy <span class="nav-dot"></span>
     </a>
+    <a id="tab-link-podcast" href="#" onclick="event.preventDefault(); switchTab('podcast')">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+        </span>
+        Podcast <span class="nav-dot"></span>
+    </a>
     <a id="tab-link-events" href="#" onclick="event.preventDefault(); switchTab('events')">
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
         Events <span class="nav-dot"></span>
@@ -638,12 +671,15 @@
             tab.style.display = 'none';
         });
         const target = document.getElementById(tabId);
-        target.style.display = 'block';
-        setTimeout(() => target.classList.add('show-active'), 20);
+        if (target) {
+            target.style.display = 'block';
+            setTimeout(() => target.classList.add('show-active'), 20);
+        }
 
         document.querySelectorAll('nav.bottom-nav a').forEach(link => link.classList.remove('active-tab'));
         if (tabId === 'locker-room') document.getElementById('tab-link-locker').classList.add('active-tab');
         if (tabId === 'academy') document.getElementById('tab-link-academy').classList.add('active-tab');
+        if (tabId === 'podcast') document.getElementById('tab-link-podcast').classList.add('active-tab');
         if (tabId === 'events') document.getElementById('tab-link-events').classList.add('active-tab');
         if (tabId === 'archive') document.getElementById('tab-link-archive').classList.add('active-tab');
         if (tabId === 'store') document.getElementById('tab-link-store').classList.add('active-tab');
@@ -699,7 +735,7 @@
 
     window.onload = function () {
         const hash = window.location.hash.replace('#', '');
-        const valid = ['locker-room', 'academy', 'events', 'archive', 'store'];
+        const valid = ['locker-room', 'academy', 'podcast', 'events', 'archive', 'store'];
         switchTab(valid.includes(hash) ? hash : 'locker-room');
         runDailyQuoteEngine();
     };
